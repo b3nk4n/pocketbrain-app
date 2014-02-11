@@ -7,6 +7,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using PocketBrain.App.Resources;
+using PhoneKit.Framework.Support;
 
 namespace PocketBrain.App
 {
@@ -67,6 +68,9 @@ namespace PocketBrain.App
         // Dieser Code wird beim ersten Starten der Anwendung nicht ausgeführt
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            // fast-app-resume
+            if (e.IsApplicationInstancePreserved)
+                return;
         }
 
         // Code, der ausgeführt werden soll, wenn die Anwendung deaktiviert wird (in den Hintergrund gebracht wird)
@@ -84,6 +88,8 @@ namespace PocketBrain.App
         // Code, der bei einem Navigationsfehler ausgeführt wird
         private void RootFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
         {
+            ErrorReportingManager.Instance.Save(e.Exception);
+
             if (Debugger.IsAttached)
             {
                 // Navigationsfehler. Unterbrechen und Debugger öffnen
@@ -94,6 +100,8 @@ namespace PocketBrain.App
         // Code, der bei Ausnahmefehlern ausgeführt wird
         private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
         {
+            ErrorReportingManager.Instance.Save(e.ExceptionObject);
+
             if (Debugger.IsAttached)
             {
                 // Ein Ausnahmefehler ist aufgetreten. Unterbrechen und Debugger öffnen
@@ -136,6 +144,10 @@ namespace PocketBrain.App
 
             // Dieser Handler wird nicht mehr benötigt und kann entfernt werden
             RootFrame.Navigated -= CompleteInitializePhoneApplication;
+
+            ErrorReportingManager.Instance.CheckAndReport(
+                "apps@bsautermeister.de",
+                "[pocketBRAIN] Error Report");
         }
 
         private void CheckForResetNavigation(object sender, NavigationEventArgs e)
