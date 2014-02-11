@@ -33,6 +33,11 @@ namespace PocketBrain.App
                 FeedbackManager.Instance.StartSecond();
             });
 
+            NewNoteButton.Click += (s, e) =>
+                {
+                    NavigationService.Navigate(new Uri("/NotePage.xaml", UriKind.Relative));
+                };
+
             DataContext = NoteListViewModel.Instance;
         }
 
