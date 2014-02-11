@@ -11,7 +11,7 @@ namespace PocketBrain.App.Controls
     /// <summary>
     /// The localized about page.
     /// </summary>
-    class LocalizedAboutControl : AboutControlBase
+    public class LocalizedAboutControl : AboutControlBase
     {
         /// <summary>
         /// Localizes the user controls contents and texts.

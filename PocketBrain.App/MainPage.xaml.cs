@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
+﻿using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using PocketBrain.App.Resources;
 using PhoneKit.Framework.Support;
+using PocketBrain.App.ViewModel;
+using System;
 
 namespace PocketBrain.App
 {
@@ -36,6 +32,8 @@ namespace PocketBrain.App
                 //MessageBox.Show("Equals 7 startups of the app.");
                 FeedbackManager.Instance.StartSecond();
             });
+
+            DataContext = NoteListViewModel.Instance;
         }
 
         /// <summary>
@@ -64,6 +62,10 @@ namespace PocketBrain.App
 
             // Ein neues Menüelement mit der lokalisierten Zeichenfolge aus AppResources erstellen
             ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarAbout);
+            appBarMenuItem.Click += (s, e) =>
+                {
+                    NavigationService.Navigate(new Uri("/AboutPage.xaml", UriKind.Relative));
+                };
             ApplicationBar.MenuItems.Add(appBarMenuItem);
         }
     }

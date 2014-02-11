@@ -122,7 +122,7 @@ namespace PocketBrain.App
 
             // Frame erstellen, aber noch nicht als RootVisual festlegen. Dadurch kann der Begrüßungsbildschirm
             // aktiv bleiben, bis die Anwendung bereit für das Rendern ist.
-            RootFrame = new PhoneApplicationFrame();
+            RootFrame = new TransitionFrame();
             RootFrame.Navigated += CompleteInitializePhoneApplication;
 
             // Navigationsfehler behandeln
