@@ -10,8 +10,14 @@ using Microsoft.Phone.Shell;
 
 namespace PocketBrain.App
 {
+    /// <summary>
+    /// The about page.
+    /// </summary>
     public partial class AboutPage : PhoneApplicationPage
     {
+        /// <summary>
+        /// Creates an about page instance.
+        /// </summary>
         public AboutPage()
         {
             InitializeComponent();

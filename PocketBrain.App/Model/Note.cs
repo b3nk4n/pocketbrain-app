@@ -24,9 +24,9 @@ namespace PocketBrain.App.Model
         public string Content { get; set; }
 
         /// <summary>
-        /// The optional attached image.
+        /// The optional attached image stored in isolated storage.
         /// </summary>
-        public Uri AttachedImageUri { get; set; }
+        public string AttachedImagePath { get; set; }
 
         /// <summary>
         /// The creation date.
@@ -60,12 +60,12 @@ namespace PocketBrain.App.Model
         /// </summary>
         /// <param name="title">The title.</param>
         /// <param name="content">The content text.</param>
-        /// <param name="attachedImageUri">The attached image URI.</param>
-        public Note(string title, string content, Uri attachedImageUri)
+        /// <param name="attachedImageUri">The attached image path.</param>
+        public Note(string title, string content, string attachedImagePath)
         {
             Title = title;
             Content = content;
-            AttachedImageUri = attachedImageUri;
+            AttachedImagePath = attachedImagePath;
 
             DateCreated = DateTime.Now;
         }

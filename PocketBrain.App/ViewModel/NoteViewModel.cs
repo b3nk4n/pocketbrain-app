@@ -83,18 +83,18 @@ namespace PocketBrain.App.ViewModel
         /// <summary>
         /// Gets or sets the attached image.
         /// </summary>
-        public Uri AttachedImageUri
+        public string AttachedImagePath
         {
             get 
             {
-                return _note.AttachedImageUri;
+                return _note.AttachedImagePath;
             }
             set
             {
-                if (_note.AttachedImageUri != value)
+                if (_note.AttachedImagePath != value)
                 {
-                    _note.AttachedImageUri = value;
-                    NotifyPropertyChanged("AttachedImageUri");
+                    _note.AttachedImagePath = value;
+                    NotifyPropertyChanged("AttachedImagePath");
                 }
             }
         }

@@ -82,29 +82,7 @@ namespace PocketBrain.App.ViewModel
                 var note = new NoteViewModel(new Note("Untitled", "..."));
                 Notes.Insert(0, note);
                 SelectedNote = note;
-                /*if (IsCurrentNoteUnsaved)
-                {
-                    var note = SelectedNote;
-                    if (!string.IsNullOrEmpty(note.Title))
-                        Notes.Add(note);
-                    else
-                        MessageBox.Show("Title vergessen?"); //TODO change text here
-                }*/
             });
-
-            // generate test data
-            //if (Debugger.IsAttached)
-            //{
-            //    Notes.Add(new NoteViewModel(new Note("Title1", "Content text 1.")));
-            //    Notes.Add(new NoteViewModel(new Note("Title2", "Content text 2. Content text 2.")));
-            //    Notes.Add(new NoteViewModel(new Note("Title3", "Content text 3. Content text 3. Content text 3.")));
-            //    Notes.Add(new NoteViewModel(new Note("Title4", "Content text 4.")));
-            //    Notes.Add(new NoteViewModel(new Note("Title5", "Content text 5.")));
-            //    Notes.Add(new NoteViewModel(new Note("Title6", "Content text 6.")));
-            //    Notes.Add(new NoteViewModel(new Note("Title7", "Content text 7.")));
-            //    Notes.Add(new NoteViewModel(new Note("Title8", "Content text 8.")));
-            //    Notes.Add(new NoteViewModel(new Note("Title9", "Content text 9.")));
-            //}
 
             Load();
         }
