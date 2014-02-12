@@ -5,6 +5,7 @@ using PocketBrain.App.Resources;
 using PhoneKit.Framework.Support;
 using PocketBrain.App.ViewModel;
 using System;
+using System.Windows.Controls;
 
 namespace PocketBrain.App
 {
@@ -32,6 +33,19 @@ namespace PocketBrain.App
                 //MessageBox.Show("Equals 7 startups of the app.");
                 FeedbackManager.Instance.StartSecond();
             });
+
+            NotesList.SelectionChanged += (s, e) =>
+                {
+                    var listBox = s as ListBox;
+
+                    if (listBox == null)
+                        return;
+
+                    NoteListViewModel.Instance.SelectedNote = (NoteViewModel)listBox.SelectedItem;
+
+                    if (NoteListViewModel.Instance.IsNoteSelected)
+                        NavigationService.Navigate(new Uri("/NotePage.xaml", UriKind.Relative));
+                };
 
             NewNoteButton.Click += (s, e) =>
                 {

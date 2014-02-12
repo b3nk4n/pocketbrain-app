@@ -17,6 +17,11 @@ namespace PocketBrain.App
         {
             InitializeComponent();
 
+            DeleteNoteButton.Click += (s, e) =>
+                {
+                    NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+                };
+
             DataContext = NoteListViewModel.Instance;
         }
     }

@@ -45,9 +45,9 @@ namespace PocketBrain.App.ViewModel
         private ICommand _deleteSelectedNoteCommand;
 
         /// <summary>
-        /// The save command.
+        /// The add note command.
         /// </summary>
-        private ICommand _saveSelectedNoteCommand;
+        private ICommand _addNoteCommand;
 
         #endregion
 
@@ -63,7 +63,7 @@ namespace PocketBrain.App.ViewModel
                 if (IsNoteSelected)
                 {
                     _notes.Remove(_selectedNote);
-                    _selectedNote = null;
+                    SelectedNote = null;
                 }
             },
             () =>
@@ -71,20 +71,19 @@ namespace PocketBrain.App.ViewModel
                 return IsNoteSelected;
             });
 
-            _saveSelectedNoteCommand = new DelegateCommand(() =>
+            _addNoteCommand = new DelegateCommand(() =>
             {
-                if (IsCurrentNoteUnsaved)
+                var note = new NoteViewModel(new Note("Untitled", "..."));
+                Notes.Insert(0, note);
+                SelectedNote = note;
+                /*if (IsCurrentNoteUnsaved)
                 {
                     var note = SelectedNote;
                     if (!string.IsNullOrEmpty(note.Title))
                         Notes.Add(note);
                     else
                         MessageBox.Show("Title vergessen?"); //TODO change text here
-                }
-            },
-            () =>
-            {
-                return IsNoteSelected;
+                }*/
             });
 
             // generate test data
@@ -139,6 +138,10 @@ namespace PocketBrain.App.ViewModel
         /// </summary>
         public NoteViewModel SelectedNote
         {
+            set
+            {
+                _selectedNote = value;
+            }
             get
             {
                 return _selectedNote;
@@ -181,11 +184,11 @@ namespace PocketBrain.App.ViewModel
         /// <summary>
         /// The save selected note command.
         /// </summary>
-        public ICommand SaveSelectedNoteCommand
+        public ICommand AddNoteCommand
         {
             get
             {
-                return _saveSelectedNoteCommand;
+                return _addNoteCommand;
             }
         }
 
