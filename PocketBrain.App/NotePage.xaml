@@ -55,7 +55,12 @@
                 <StackPanel DataContext="{Binding SelectedNote}">
                     <TextBox Text="{Binding Title, Mode=TwoWay}" />
                     <TextBox Text="{Binding Content, Mode=TwoWay}" Height="320" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" />
-                    <Image Source="{Binding AttachedImageUri, Mode=TwoWay}" Height="200" Width="200" />
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="ImageFromAblumButton" Content="Album" />
+                        <Image Source="{Binding AttachedImageUri, Mode=TwoWay}" Height="200" Width="200" />
+                        <Button x:Name="ImageFromCameraButton" Content="Camera" />
+                    </StackPanel>
+                    
                 </StackPanel>
             </StackPanel>
         </Grid>

@@ -8,6 +8,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using PocketBrain.App.Resources;
 using PhoneKit.Framework.Support;
+using PocketBrain.App.ViewModel;
 
 namespace PocketBrain.App
 {
@@ -77,12 +78,14 @@ namespace PocketBrain.App
         // Dieser Code wird beim Schließen der Anwendung nicht ausgeführt
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
+            NoteListViewModel.Instance.Save();
         }
 
         // Code, der beim Schließen der Anwendung ausgeführt wird (z. B. wenn der Benutzer auf "Zurück" klickt)
         // Dieser Code wird beim Deaktivieren der Anwendung nicht ausgeführt
         private void Application_Closing(object sender, ClosingEventArgs e)
         {
+            NoteListViewModel.Instance.Save();
         }
 
         // Code, der bei einem Navigationsfehler ausgeführt wird

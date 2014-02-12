@@ -9,13 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using PhoneKit.Framework.Core.Storage;
 
 namespace PocketBrain.App.ViewModel
 {
     /// <summary>
     /// Represents note list view model.
     /// </summary>
-    public class NoteListViewModel
+    public class NoteListViewModel : ViewModelBase
     {
         #region Members
 
@@ -27,12 +28,17 @@ namespace PocketBrain.App.ViewModel
         /// <summary>
         /// The note collection.
         /// </summary>
-        private IList<NoteViewModel> _notes = new ObservableCollection<NoteViewModel>();
+        private ObservableCollection<NoteViewModel> _notes = new ObservableCollection<NoteViewModel>();
 
         /// <summary>
         /// The selected note.
         /// </summary>
         private NoteViewModel _selectedNote;
+
+        /// <summary>
+        /// Indicates whether the data has been loaded.
+        /// </summary>
+        private bool _isDataLoaded;
 
         /// <summary>
         /// Indicates whether the current note is unsaved.
@@ -87,23 +93,49 @@ namespace PocketBrain.App.ViewModel
             });
 
             // generate test data
-            if (Debugger.IsAttached)
-            {
-                Notes.Add(new NoteViewModel(new Note("Title1", "Content text 1.")));
-                Notes.Add(new NoteViewModel(new Note("Title2", "Content text 2. Content text 2.")));
-                Notes.Add(new NoteViewModel(new Note("Title3", "Content text 3. Content text 3. Content text 3.")));
-                Notes.Add(new NoteViewModel(new Note("Title4", "Content text 4.")));
-                Notes.Add(new NoteViewModel(new Note("Title5", "Content text 5.")));
-                Notes.Add(new NoteViewModel(new Note("Title6", "Content text 6.")));
-                Notes.Add(new NoteViewModel(new Note("Title7", "Content text 7.")));
-                Notes.Add(new NoteViewModel(new Note("Title8", "Content text 8.")));
-                Notes.Add(new NoteViewModel(new Note("Title9", "Content text 9.")));
-            }
+            //if (Debugger.IsAttached)
+            //{
+            //    Notes.Add(new NoteViewModel(new Note("Title1", "Content text 1.")));
+            //    Notes.Add(new NoteViewModel(new Note("Title2", "Content text 2. Content text 2.")));
+            //    Notes.Add(new NoteViewModel(new Note("Title3", "Content text 3. Content text 3. Content text 3.")));
+            //    Notes.Add(new NoteViewModel(new Note("Title4", "Content text 4.")));
+            //    Notes.Add(new NoteViewModel(new Note("Title5", "Content text 5.")));
+            //    Notes.Add(new NoteViewModel(new Note("Title6", "Content text 6.")));
+            //    Notes.Add(new NoteViewModel(new Note("Title7", "Content text 7.")));
+            //    Notes.Add(new NoteViewModel(new Note("Title8", "Content text 8.")));
+            //    Notes.Add(new NoteViewModel(new Note("Title9", "Content text 9.")));
+            //}
+
+            Load();
         }
 
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Loads the notes data.
+        /// </summary>
+        private void Load()
+        {
+            if (_isDataLoaded)
+                return;
+
+            var loadedNotes = StorageHelper.LoadSerializedFile<ObservableCollection<NoteViewModel>>("notes.data");
+
+            if (loadedNotes != null)
+                Notes = loadedNotes;
+
+            _isDataLoaded = true;
+        }
+
+        /// <summary>
+        /// Saves the notes data.
+        /// </summary>
+        public bool Save()
+        {
+            return StorageHelper.SaveAsSerializedFile<IList<NoteViewModel>>("notes.data", _notes);
+        }
 
         #endregion
 
@@ -125,8 +157,16 @@ namespace PocketBrain.App.ViewModel
         /// <summary>
         /// Gets the notes list.
         /// </summary>
-        public IList<NoteViewModel> Notes
+        public ObservableCollection<NoteViewModel> Notes
         {
+            private set
+            {
+                if (_notes != value)
+                {
+                    _notes = value;
+                    NotifyPropertyChanged("Notes");
+                }
+            }
             get
             {
                 return _notes;
