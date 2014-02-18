@@ -46,14 +46,9 @@ namespace PocketBrain.App.ViewModel
         private bool _isCurrentNoteUnsaved = false;
 
         /// <summary>
-        /// The delete command.
-        /// </summary>
-        private ICommand _deleteSelectedNoteCommand;
-
-        /// <summary>
         /// The add note command.
         /// </summary>
-        private ICommand _addNoteCommand;
+        private DelegateCommand _addNoteCommand;
 
         #endregion
 
@@ -64,22 +59,9 @@ namespace PocketBrain.App.ViewModel
         /// </summary>
         public NoteListViewModel()
         {
-            _deleteSelectedNoteCommand = new DelegateCommand(() =>
-            {
-                if (IsNoteSelected)
-                {
-                    _notes.Remove(_selectedNote);
-                    SelectedNote = null;
-                }
-            },
-            () =>
-            {
-                return IsNoteSelected;
-            });
-
             _addNoteCommand = new DelegateCommand(() =>
             {
-                var note = new NoteViewModel(_notes, new Note("Untitled", "..."));
+                var note = new NoteViewModel(new Note("Untitled", "..."));
                 Notes.Insert(0, note);
                 SelectedNote = note;
             });
@@ -112,7 +94,8 @@ namespace PocketBrain.App.ViewModel
         /// </summary>
         public bool Save()
         {
-            return StorageHelper.SaveAsSerializedFile<IList<NoteViewModel>>("notes.data", _notes);
+            var res = StorageHelper.SaveAsSerializedFile<ObservableCollection<NoteViewModel>>("notes.data", _notes);
+            return res;
         }
 
         #endregion
@@ -185,17 +168,6 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return _isCurrentNoteUnsaved;
-            }
-        }
-
-        /// <summary>
-        /// The delete selected note command.
-        /// </summary>
-        public ICommand DeleteSelectedNoteCommand
-        {
-            get
-            {
-                return _deleteSelectedNoteCommand;
             }
         }
 

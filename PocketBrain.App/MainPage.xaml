@@ -52,7 +52,7 @@
             <StackPanel>
                 <Button x:Name="NewNoteButton" Content="+ new note"
                         Command="{Binding AddNoteCommand}"/>
-                <ListBox x:Name="NotesList" ItemsSource="{Binding Notes}">
+                <ListBox x:Name="NotesList" ItemsSource="{Binding Notes}" Height="610">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Border>

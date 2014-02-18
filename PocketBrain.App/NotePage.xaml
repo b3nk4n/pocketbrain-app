@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converter="clr-namespace:PhoneKit.Framework.Conversion;assembly=PhoneKit.Framework"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -34,6 +35,10 @@
             </toolkit:NavigationOutTransition.Forward>
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
+    
+    <phone:PhoneApplicationPage.Resources>
+        <converter:BooleanToVisibilityConverter x:Key="boolToVis" />
+    </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot ist das Stammraster, in dem alle anderen Seiteninhalte platziert werden-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -50,16 +55,20 @@
 
         <!--ContentPanel - zusätzliche Inhalte hier platzieren-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <StackPanel DataContext="{Binding SelectedNote}">
-                <Button x:Name="DeleteNoteButton" Content="delelte" Command="{Binding DeleteCommand}" />
-                <TextBox Text="{Binding Title, Mode=TwoWay}" />
-                <TextBox Text="{Binding Content, Mode=TwoWay}" Height="320" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" />
-                <StackPanel Orientation="Horizontal">
-                    <Button x:Name="ImageFromAblumButton" Content="Album" />
-                    <Image x:Name="AttachementImage" Height="200" Width="200" />
+            <ScrollViewer>
+                <StackPanel DataContext="{Binding SelectedNote}">
+                    <Button x:Name="DeleteNoteButton" Content="delelte" Command="{Binding DeleteCommand}" />
+                    <TextBox Text="{Binding Title, Mode=TwoWay}" />
+                    <TextBox Text="{Binding Content, Mode=TwoWay}" Height="320" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" />
+                    <Image x:Name="AttachementImage" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" Stretch="UniformToFill" Height="320" />
+                    <Button x:Name="ImageFromAblumButton" Content="Add attachement" Command="{Binding AddAttachementCommand}"
+                        Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}, ConverterParameter=!}"/>
+                    <Button Content="Remove attachement" Command="{Binding RemoveAttachementCommand}"
+                        Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}"/>
                 </StackPanel>
-            </StackPanel>
+            </ScrollViewer>
         </Grid>
     </Grid>
 
 </phone:PhoneApplicationPage>
+    

@@ -1,7 +1,9 @@
-﻿using PhoneKit.Framework.Core.MVVM;
+﻿using Microsoft.Phone.Tasks;
+using PhoneKit.Framework.Core.MVVM;
+using PhoneKit.Framework.Core.Storage;
 using PocketBrain.App.Model;
 using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Windows.Input;
 
 namespace PocketBrain.App.ViewModel
@@ -19,14 +21,24 @@ namespace PocketBrain.App.ViewModel
         private Note _note;
 
         /// <summary>
-        /// The container of this item.
+        /// The random number generator to generate unique file names.
         /// </summary>
-        private IList<NoteViewModel> _container;
+        private Random _random = new Random();
 
         /// <summary>
         /// The delete command.
         /// </summary>
-        private ICommand _deleteCommand;
+        private DelegateCommand _deleteCommand;
+
+        /// <summary>
+        /// The removes the attachement command.
+        /// </summary>
+        private DelegateCommand _removeAttachementCommand;
+
+        /// <summary>
+        /// The add attachement command.
+        /// </summary>
+        private DelegateCommand _addAttachementCommand;
  
         #endregion
 
@@ -35,9 +47,8 @@ namespace PocketBrain.App.ViewModel
         /// <summary>
         /// Creates an empty note.
         /// </summary>
-        /// <param name="container">The container of the note.</param>
-        public NoteViewModel(IList<NoteViewModel> container)
-            : this(container, new Note())
+        public NoteViewModel()
+            : this(new Note())
         {
         }
 
@@ -46,19 +57,93 @@ namespace PocketBrain.App.ViewModel
         /// </summary>
         /// <param name="container">The container of the note.</param>
         /// <param name="note">The note.</param>
-        public NoteViewModel(IList<NoteViewModel> container, Note note)
+        public NoteViewModel(Note note)
         {
-            _container = container;
             _note = note;
 
             _deleteCommand = new DelegateCommand(() =>
                 {
-                    _container.Remove(this);
+                    RemoveAttachement();
+                    NoteListViewModel.Instance.Notes.Remove(this);
+                });
+
+            _removeAttachementCommand = new DelegateCommand(() =>
+                {
+                    if (_note.HasAttachement)
+                    {
+                        RemoveAttachement();
+                    }
+                },
+                () => {
+                    return _note.HasAttachement;
+                });
+
+            _addAttachementCommand = new DelegateCommand(() =>
+                {
+                    var task = new PhotoChooserTask();
+                    task.ShowCamera = true;
+                    task.Completed += (se, pr) =>
+                    {
+                        if (pr.Error != null || pr.TaskResult != TaskResult.OK)
+                            return;
+
+                        // save a copy in local storage
+                        string filePath = GetUniqueLocalFilePathOfFile(pr.OriginalFileName);
+                        if (StorageHelper.SaveFileFromStream(filePath, pr.ChosenPhoto))
+                        {
+                            SetAttachement(filePath);
+                        }
+                    };
+                    task.Show();
+                },
+                () =>
+                {
+                    return !_note.HasAttachement;
                 });
         }
 
-
         #endregion
+
+        /// <summary>
+        /// Gets the unique local file name for the given file to copy.
+        /// </summary>
+        /// <param name="fileName">The file name</param>
+        /// <returns>The unique file name in isolated storage.</returns>
+        private string GetUniqueLocalFilePathOfFile(string fileName)
+        {
+            FileInfo fileInfo = new FileInfo(fileName);
+            return string.Format("/attachements/{0:000000}_{1}", _random.Next(0, 1000000), fileInfo.Name);
+        }
+
+        /// <summary>
+        /// Sets the new attachement image and notifies the UI and command manager.
+        /// </summary>
+        /// <param name="filePath">The file path of the attachement.</param>
+        private void SetAttachement(string filePath)
+        {
+            NoteListViewModel.Instance.SelectedNote.AttachedImagePath = filePath;
+            NotifyPropertyChanged("HasAttachement");
+            UpdateCanExecuteChanged();
+        }
+
+        /// <summary>
+        /// Remvoes the attached image and notifies the UI and command manager.
+        /// </summary>
+        private void RemoveAttachement()
+        {
+            _note.RemoveAttachement();
+            NotifyPropertyChanged("HasAttachement");
+            UpdateCanExecuteChanged();
+        }
+
+        /// <summary>
+        /// Updates the command manager to test the canExecute predicates.
+        /// </summary>
+        private void UpdateCanExecuteChanged()
+        {
+            _removeAttachementCommand.RaiseCanExecuteChanged();
+            _addAttachementCommand.RaiseCanExecuteChanged();
+        }
 
         #region Properties
 
@@ -115,7 +200,19 @@ namespace PocketBrain.App.ViewModel
                 {
                     _note.AttachedImagePath = value;
                     NotifyPropertyChanged("AttachedImagePath");
+                    NotifyPropertyChanged("HasAttachement");
                 }
+            }
+        }
+
+        /// <summary>
+        /// Gets whether the note has an attachement.
+        /// </summary>
+        public bool HasAttachement
+        {
+            get
+            {
+                return _note.HasAttachement;
             }
         }
 
@@ -138,6 +235,28 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return _deleteCommand;
+            }
+        }
+
+        /// <summary>
+        /// Gets the remove attachement command.
+        /// </summary>
+        public ICommand RemoveAttachementCommand
+        {
+            get
+            {
+                return _removeAttachementCommand;
+            }
+        }
+
+        /// <summary>
+        /// Gets the remove attachement command.
+        /// </summary>
+        public ICommand AddAttachementCommand
+        {
+            get
+            {
+                return _addAttachementCommand;
             }
         }
 

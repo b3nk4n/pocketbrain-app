@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PhoneKit.Framework.Core.Storage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -68,6 +69,44 @@ namespace PocketBrain.App.Model
             AttachedImagePath = attachedImagePath;
 
             DateCreated = DateTime.Now;
+        }
+
+        #endregion
+
+        #region Methods
+        
+        /// <summary>
+        /// Deletes the attached file and also its local copy in isolated storage.
+        /// </summary>
+        public void RemoveAttachement()
+        {
+            if (HasAttachement)
+            {
+                // copy the attachement file path to get no race condition
+                var attachementPathCopy = AttachedImagePath;
+                AttachedImagePath = null;
+
+                // delete file in background task
+                Task.Run(() =>
+                {
+                    StorageHelper.DeleteFile(attachementPathCopy);
+                });
+            }
+        }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets whether the note has an attachement.
+        /// </summary>
+        public bool HasAttachement
+        {
+            get
+            {
+                return !string.IsNullOrEmpty(AttachedImagePath);
+            }
         }
 
         #endregion

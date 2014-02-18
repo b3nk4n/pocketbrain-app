@@ -25,12 +25,10 @@ namespace PocketBrain.App
             // register startup actions
             StartupActionManager.Instance.Register(2, ActionExecutionRule.LessOrEquals, () =>
             {
-                //MessageBox.Show("Less or Equals 2 startups of the app.");
                 FeedbackManager.Instance.StartFirst();
             });
             StartupActionManager.Instance.Register(7, ActionExecutionRule.Equals, () =>
             {
-                //MessageBox.Show("Equals 7 startups of the app.");
                 FeedbackManager.Instance.StartSecond();
             });
 
@@ -74,11 +72,6 @@ namespace PocketBrain.App
             // ApplicationBar der Seite einer neuen Instanz von ApplicationBar zuweisen
             ApplicationBar = new ApplicationBar();
             ApplicationBar.Mode = ApplicationBarMode.Minimized;
-
-            // Eine neue Schaltfläche erstellen und als Text die lokalisierte Zeichenfolge aus AppResources zuweisen.
-            //ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-            //appBarButton.Text = AppResources.AppBarButtonText;
-            //ApplicationBar.Buttons.Add(appBarButton);
 
             // Ein neues Menüelement mit der lokalisierten Zeichenfolge aus AppResources erstellen
             ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarAbout);
