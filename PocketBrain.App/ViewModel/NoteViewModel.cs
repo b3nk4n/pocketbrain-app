@@ -1,6 +1,8 @@
 ﻿using PhoneKit.Framework.Core.MVVM;
 using PocketBrain.App.Model;
 using System;
+using System.Collections.Generic;
+using System.Windows.Input;
 
 namespace PocketBrain.App.ViewModel
 {
@@ -15,6 +17,16 @@ namespace PocketBrain.App.ViewModel
         /// The note model.
         /// </summary>
         private Note _note;
+
+        /// <summary>
+        /// The container of this item.
+        /// </summary>
+        private IList<NoteViewModel> _container;
+
+        /// <summary>
+        /// The delete command.
+        /// </summary>
+        private ICommand _deleteCommand;
  
         #endregion
 
@@ -23,18 +35,26 @@ namespace PocketBrain.App.ViewModel
         /// <summary>
         /// Creates an empty note.
         /// </summary>
-        public NoteViewModel()
-            : this(new Note())
+        /// <param name="container">The container of the note.</param>
+        public NoteViewModel(IList<NoteViewModel> container)
+            : this(container, new Note())
         {
         }
 
         /// <summary>
         /// Creates a note.
         /// </summary>
+        /// <param name="container">The container of the note.</param>
         /// <param name="note">The note.</param>
-        public NoteViewModel(Note note)
+        public NoteViewModel(IList<NoteViewModel> container, Note note)
         {
+            _container = container;
             _note = note;
+
+            _deleteCommand = new DelegateCommand(() =>
+                {
+                    _container.Remove(this);
+                });
         }
 
 
@@ -107,6 +127,17 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return _note.DateCreated;
+            }
+        }
+
+        /// <summary>
+        /// Gets the delete note command.
+        /// </summary>
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                return _deleteCommand;
             }
         }
 

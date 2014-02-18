@@ -79,7 +79,7 @@ namespace PocketBrain.App.ViewModel
 
             _addNoteCommand = new DelegateCommand(() =>
             {
-                var note = new NoteViewModel(new Note("Untitled", "..."));
+                var note = new NoteViewModel(_notes, new Note("Untitled", "..."));
                 Notes.Insert(0, note);
                 SelectedNote = note;
             });

@@ -56,10 +56,15 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Border>
+                                <toolkit:ContextMenuService.ContextMenu>
+                                    <toolkit:ContextMenu>
+                                        <toolkit:MenuItem Header="Delete" Command="{Binding DeleteCommand}" />
+                                    </toolkit:ContextMenu>
+                                </toolkit:ContextMenuService.ContextMenu>
                                 <StackPanel>
                                     <TextBlock Text="{Binding Title}" />
                                     <TextBlock Text="{Binding Content}"
-                                               TextTrimming="WordEllipsis" TextWrapping="Wrap" />
+                                               TextTrimming="WordEllipsis" TextWrapping="Wrap" MaxHeight="100" />
                                 </StackPanel>
                             </Border>
                         </DataTemplate>

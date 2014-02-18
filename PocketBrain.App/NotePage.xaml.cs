@@ -30,7 +30,7 @@ namespace PocketBrain.App
 
             DeleteNoteButton.Click += (s, e) =>
                 {
-                    NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+                    NavigationService.GoBack();
                 };
 
             ImageFromAblumButton.Click += (s, e) =>
@@ -70,7 +70,8 @@ namespace PocketBrain.App
         /// Updates the attached image from the models image path.
         /// </summary>
         /// <remarks>
-        /// Binding the image URI or path didn't work, so we do it now this way manuelly.
+        /// Binding the image URI or path didn't work when the image is located in isolated storage,
+        /// so we do it now this way manuelly.
         /// </remarks>
         private void UpdateAttachedImageSource()
         {
