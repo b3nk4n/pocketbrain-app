@@ -18,11 +18,14 @@ namespace PocketBrain.App.Controls
         /// </summary>
         protected override void LocalizeContent()
         {
+            // app
             ApplicationIconSource = new Uri("/Assets/ApplicationIcon.png", UriKind.Relative);
             ApplicationTitle = AppResources.ApplicationTitle;
             ApplicationVersion = AppResources.ApplicationVersion;
             ApplicationAuthor = AppResources.ApplicationAuthor;
             ApplicationDescription = AppResources.ApplicationDescription;
+
+            // buttons
             SupportAndFeedbackText = AppResources.SupportAndFeedback;
             SupportAndFeedbackEmail = "apps@bsautermeister.de";
             PrivacyInfoText = AppResources.PrivacyInfo;
@@ -30,6 +33,9 @@ namespace PocketBrain.App.Controls
             RateAndReviewText = AppResources.RateAndReview;
             MoreAppsText = AppResources.MoreApps;
             MoreAppsSearchTerms = "Benjamin Sautermeister";
+
+            // contributors
+            ContributorsListVisibility = System.Windows.Visibility.Visible;
         }
     }
 }
