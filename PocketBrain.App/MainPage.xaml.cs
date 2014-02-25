@@ -32,18 +32,7 @@ namespace PocketBrain.App
                 FeedbackManager.Instance.StartSecond();
             });
 
-            NotesList.SelectionChanged += (s, e) =>
-                {
-                    var listBox = s as ListBox;
-
-                    if (listBox == null)
-                        return;
-
-                    NoteListViewModel.Instance.SelectedNote = (NoteViewModel)listBox.SelectedItem;
-
-                    if (NoteListViewModel.Instance.IsNoteSelected)
-                        NavigationService.Navigate(new Uri("/NotePage.xaml", UriKind.Relative));
-                };
+            NotesList.SelectionChanged += NotesList_SelectionChanged;
 
             NewNoteButton.Click += (s, e) =>
                 {
@@ -54,12 +43,41 @@ namespace PocketBrain.App
         }
 
         /// <summary>
+        /// The selection changed event of the notes list.
+        /// </summary>
+        /// <param name="sender">The event sender.</param>
+        /// <param name="e">The event args.</param>
+        private void NotesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var listBox = sender as ListBox;
+
+            if (listBox == null)
+                return;
+
+            string noteId = ((NoteViewModel)listBox.SelectedItem).Id;
+
+            // unselect the item
+            NotesList.SelectionChanged -= NotesList_SelectionChanged;
+            NotesList.SelectedItem = null;
+            NotesList.SelectionChanged += NotesList_SelectionChanged;
+
+            NavigationService.Navigate(new Uri("/NotePage.xaml?id=" + noteId, UriKind.Relative));
+        }
+
+        /// <summary>
         /// When the page is navigated to.
         /// </summary>
         /// <param name="e">The event args.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
+            if (NavigationContext.QueryString.ContainsKey("clearbackstack"))
+            {
+
+                while (NavigationService.CanGoBack)
+                    NavigationService.RemoveBackEntry();
+            }
 
             StartupActionManager.Instance.Fire();
         }

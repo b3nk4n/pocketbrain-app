@@ -1,6 +1,10 @@
-﻿using PhoneKit.Framework.Core.Storage;
+﻿using Microsoft.Phone.Shell;
+using PhoneKit.Framework.Core.Storage;
+using PhoneKit.Framework.Core.Tile;
+using PhoneKit.Framework.Tile;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +17,15 @@ namespace PocketBrain.App.Model
     public class Note
     {
         #region Members
+
+
+        /// <summary>
+        /// The note ID.
+        /// </summary>
+        /// <remarks>
+        /// Public set required for JSON serialization.
+        /// </remarks>
+        public string Id { get; set; }
 
         /// <summary>
         /// The note title.
@@ -64,6 +77,7 @@ namespace PocketBrain.App.Model
         /// <param name="attachedImageUri">The attached image path.</param>
         public Note(string title, string content, string attachedImagePath)
         {
+            Id = Guid.NewGuid().ToString();
             Title = title;
             Content = content;
             AttachedImagePath = attachedImagePath;

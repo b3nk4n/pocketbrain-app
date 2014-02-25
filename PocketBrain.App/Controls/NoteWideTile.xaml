@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="PocketBrain.App.Controls.NoteWideTile"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="336" d:DesignWidth="691" Height="336" Width="691">
+    <Border Background="{StaticResource PhoneAccentBrush}">
+        <Grid x:Name="LayoutRoot" Margin="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="Title" Grid.Row="0" Text="Lorem ipsum fasd asdf asdf asdfas df fasd"
+                       Style="{StaticResource PhoneTextExtraLargeStyle}" TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
+            <TextBlock x:Name="Text" Grid.Row="1" Text="is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+                        Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
+        </Grid>
+    </Border>
+</UserControl>

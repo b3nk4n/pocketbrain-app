@@ -43,27 +43,23 @@
     <!--LayoutRoot ist das Stammraster, in dem alle anderen Seiteninhalte platziert werden-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--TitlePanel enthält den Namen der Anwendung und den Seitentitel-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MEINE ANWENDUNG" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="Seitenname" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
 
         <!--ContentPanel - zusätzliche Inhalte hier platzieren-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <ScrollViewer>
-                <StackPanel DataContext="{Binding SelectedNote}">
-                    <Button x:Name="DeleteNoteButton" Content="delelte" Command="{Binding DeleteCommand}" />
+                <StackPanel>
+                    <Button x:Name="DeleteNoteButton" Content="delelte/cancel" Command="{Binding DeleteCommand}" />
+                    <Button  Content="pin" Command="{Binding PinToStartCommand}" />
                     <TextBox Text="{Binding Title, Mode=TwoWay}" />
-                    <TextBox Text="{Binding Content, Mode=TwoWay}" Height="320" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" />
-                    <Image x:Name="AttachementImage" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" Stretch="UniformToFill" Height="320" />
+                    <TextBox Text="{Binding Content, Mode=TwoWay}" Height="320" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" />
+                    <Image x:Name="AttachementImage" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" Stretch="UniformToFill" Margin="12,0,12,0" Height="432" />
                     <Button x:Name="ImageFromAblumButton" Content="Add attachement" Command="{Binding AddAttachementCommand}"
                         Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}, ConverterParameter=!}"/>
-                    <Button Content="Remove attachement" Command="{Binding RemoveAttachementCommand}"
+                    <Button x:Name="RemoveAttachementButton" Content="Remove attachement" Command="{Binding RemoveAttachementCommand}"
                         Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}"/>
                 </StackPanel>
             </ScrollViewer>

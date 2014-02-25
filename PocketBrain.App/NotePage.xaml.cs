@@ -3,6 +3,7 @@ using Microsoft.Phone.Controls;
 using PocketBrain.App.ViewModel;
 using System.Windows.Media.Imaging;
 using PhoneKit.Framework.Core.Storage;
+using System;
 
 namespace PocketBrain.App
 {
@@ -12,6 +13,12 @@ namespace PocketBrain.App
     public partial class NotePage : PhoneApplicationPage
     {
         /// <summary>
+        /// The acive note ID.
+        /// </summary>
+        /// <remarks>Required to remember the active note when an attachement is going to be selected.</remarks>
+        private string _aciveId;
+
+        /// <summary>
         /// Creates the note page instance.
         /// </summary>
         public NotePage()
@@ -20,10 +27,18 @@ namespace PocketBrain.App
 
             DeleteNoteButton.Click += (s, e) =>
                 {
-                    NavigationService.GoBack();
+                    ClearAttachedImageSource();
+
+                    if (NavigationService.CanGoBack)
+                        NavigationService.GoBack(); 
+                    else
+                        NavigationService.Navigate(new Uri("/MainPage.xaml?clearbackstack=true", UriKind.Relative));
                 };
 
-            DataContext = NoteListViewModel.Instance;
+            RemoveAttachementButton.Click += (s, e) =>
+                {
+                    ClearAttachedImageSource();
+                };
         }
 
         /// <summary>
@@ -32,7 +47,52 @@ namespace PocketBrain.App
         /// <param name="e">The event args</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            UpdateAttachedImageSource();
+            base.OnNavigatedTo(e);
+
+            NoteViewModel currentNote;
+
+            if (NavigationContext.QueryString.ContainsKey("id"))
+            {
+                currentNote = NoteListViewModel.Instance.GetNoteById(NavigationContext.QueryString["id"]);
+            }
+            else if (!string.IsNullOrEmpty(_aciveId))
+            {
+                currentNote = NoteListViewModel.Instance.GetNoteById(_aciveId);
+            }
+            else
+            {
+                currentNote = new NoteViewModel();
+                NoteListViewModel.Instance.Notes.Insert(0, currentNote);
+                _aciveId = currentNote.Id;
+            }
+
+            // set the current note as binding context
+            DataContext = currentNote;
+
+            UpdateAttachedImageSource(currentNote);
+        }
+
+        /// <summary>
+        /// Saves the live tile, when the user leaves the notes page.
+        /// </summary>
+        /// <param name="e">The navigation event args.</param>
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            // filter navigation to library/camera and delete button event
+            if (e.NavigationMode == NavigationMode.New)
+                return;
+
+            // reset the active note
+            _aciveId = null;
+
+            NoteViewModel note = DataContext as NoteViewModel;
+
+            if (note != null)
+            {
+                note.UpdateTile();
+            }
         }
 
         /// <summary>
@@ -42,16 +102,38 @@ namespace PocketBrain.App
         /// Binding the image URI or path didn't work when the image is located in isolated storage,
         /// so we do it now this way manuelly.
         /// </remarks>
-        private void UpdateAttachedImageSource()
+        /// <param name="note">The current note view model.</param>
+        private void UpdateAttachedImageSource(NoteViewModel note)
         {
-            var imagePath = NoteListViewModel.Instance.SelectedNote.AttachedImagePath;
+            if (note == null)
+            {
+                AttachementImage.Source = null;
+                return;
+            }
+
+            var imagePath = note.AttachedImagePath;
             
             if (!string.IsNullOrEmpty(imagePath))
             {
                 BitmapImage img = new BitmapImage();
-                img.SetSource(StorageHelper.GetFileStream(imagePath));
-                AttachementImage.Source = img;
+                using (var imageStream = StorageHelper.GetFileStream(imagePath))
+                {
+                    img.SetSource(imageStream);
+                    AttachementImage.Source = img;
+                }
             }
+        }
+
+        /// <summary>
+        /// Clears the attached image source.
+        /// </summary>
+        /// <remarks>
+        /// This is required because the image can not be deleted when any control has still
+        /// any reference to this file.
+        /// </remarks>
+        private void ClearAttachedImageSource()
+        {
+            AttachementImage.Source = null;
         }
     }
 }

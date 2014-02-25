@@ -55,14 +55,15 @@
                 <ListBox x:Name="NotesList" ItemsSource="{Binding Notes}" Height="610">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Border>
+                            <Border Background="{StaticResource PhoneAccentBrush}" Width="400">
                                 <toolkit:ContextMenuService.ContextMenu>
                                     <toolkit:ContextMenu>
                                         <toolkit:MenuItem Header="Delete" Command="{Binding DeleteCommand}" />
+                                        <toolkit:MenuItem Header="Pin to start" Command="{Binding PinToStartCommand}" />
                                     </toolkit:ContextMenu>
                                 </toolkit:ContextMenuService.ContextMenu>
                                 <StackPanel>
-                                    <TextBlock Text="{Binding Title}" />
+                                    <TextBlock Text="{Binding DisplayedTitle}" />
                                     <TextBlock Text="{Binding Content}"
                                                TextTrimming="WordEllipsis" TextWrapping="Wrap" MaxHeight="100" />
                                 </StackPanel>

@@ -1,9 +1,15 @@
-﻿using Microsoft.Phone.Tasks;
+﻿using Microsoft.Phone.Shell;
+using Microsoft.Phone.Tasks;
+using PhoneKit.Framework.Core.Graphics;
 using PhoneKit.Framework.Core.MVVM;
 using PhoneKit.Framework.Core.Storage;
+using PhoneKit.Framework.Core.Tile;
+using PhoneKit.Framework.Tile;
+using PocketBrain.App.Controls;
 using PocketBrain.App.Model;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace PocketBrain.App.ViewModel
@@ -39,6 +45,11 @@ namespace PocketBrain.App.ViewModel
         /// The add attachement command.
         /// </summary>
         private DelegateCommand _addAttachementCommand;
+
+        /// <summary>
+        /// The pin to start command for a single note.
+        /// </summary>
+        private DelegateCommand _pinToStartCommand;
  
         #endregion
 
@@ -64,6 +75,8 @@ namespace PocketBrain.App.ViewModel
             _deleteCommand = new DelegateCommand(() =>
                 {
                     RemoveAttachement();
+                    ClearTileImages();
+                    UnpinTile();
                     NoteListViewModel.Instance.Notes.Remove(this);
                 });
 
@@ -100,6 +113,15 @@ namespace PocketBrain.App.ViewModel
                 {
                     return !_note.HasAttachement;
                 });
+
+            _pinToStartCommand = new DelegateCommand(() =>
+                {
+                    PinOrUpdateTile();
+                },
+                () =>
+                {
+                    return !LiveTileHelper.TileExists(NavigationUri);
+                });
         }
 
         #endregion
@@ -109,10 +131,10 @@ namespace PocketBrain.App.ViewModel
         /// </summary>
         /// <param name="fileName">The file name</param>
         /// <returns>The unique file name in isolated storage.</returns>
-        private string GetUniqueLocalFilePathOfFile(string fileName)
+        public string GetUniqueLocalFilePathOfFile(string fileName)
         {
             FileInfo fileInfo = new FileInfo(fileName);
-            return string.Format("/attachements/{0:000000}_{1}", _random.Next(0, 1000000), fileInfo.Name);
+            return string.Format(LiveTileHelper.SHARED_SHELL_CONTENT_PATH + "attachements/{0:000000}_{1}", _random.Next(0, 1000000), fileInfo.Name);
         }
 
         /// <summary>
@@ -121,8 +143,9 @@ namespace PocketBrain.App.ViewModel
         /// <param name="filePath">The file path of the attachement.</param>
         private void SetAttachement(string filePath)
         {
-            NoteListViewModel.Instance.SelectedNote.AttachedImagePath = filePath;
+            _note.AttachedImagePath = filePath;
             NotifyPropertyChanged("HasAttachement");
+
             UpdateCanExecuteChanged();
         }
 
@@ -133,6 +156,7 @@ namespace PocketBrain.App.ViewModel
         {
             _note.RemoveAttachement();
             NotifyPropertyChanged("HasAttachement");
+
             UpdateCanExecuteChanged();
         }
 
@@ -145,7 +169,96 @@ namespace PocketBrain.App.ViewModel
             _addAttachementCommand.RaiseCanExecuteChanged();
         }
 
+        /// <summary>
+        /// Pins or updates a single note to the start page.
+        /// </summary>
+        private void PinOrUpdateTile()
+        {
+            var noteWideGfx = GraphicsHelper.Create(new NoteWideTile(_note.Title, _note.Content));
+            var noteWideUri = StorageHelper.SaveJpeg(LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile_wide_{0}.jpeg", _note.Id), noteWideGfx);
+            var noteNormalGfx = GraphicsHelper.Create(new NoteNormalTile(_note.Title, _note.Content));
+            var noteNormalUri = StorageHelper.SaveJpeg(LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile_normal_{0}.jpeg", _note.Id), noteNormalGfx);
+
+            if (HasAttachement)
+            {
+                var imageUri = new Uri(StorageHelper.ISTORAGE_SCHEME + AttachedImagePath, UriKind.Absolute);
+
+                var tile = new FlipTileData
+                {
+                    BackBackgroundImage = imageUri,
+                    WideBackBackgroundImage = imageUri,
+                    SmallBackgroundImage = imageUri,
+                    WideBackgroundImage = noteWideUri,
+                    BackgroundImage = noteNormalUri
+                };
+
+                LiveTilePinningHelper.PinOrUpdateTile(NavigationUri, tile);
+            }
+            else
+            {
+                var imageUri = new Uri("/Assets/Tiles/FlipCycleTileSmall.png", UriKind.Relative);
+
+                var tile = new FlipTileData
+                {
+                    SmallBackgroundImage = imageUri,
+                    WideBackgroundImage = noteWideUri,
+                    BackgroundImage = noteNormalUri
+                };
+
+                LiveTilePinningHelper.PinOrUpdateTile(NavigationUri, tile);
+            }
+        }
+
+        /// <summary>
+        /// Updates the secondary live tile, if one exists.
+        /// </summary>
+        public void UpdateTile()
+        {
+            // update tile image
+            if (LiveTileHelper.TileExists(NavigationUri))
+                PinOrUpdateTile();
+        }
+
+        /// <summary>
+        /// Unpins the secondary tile from start if one exists.
+        /// </summary>
+        public void UnpinTile()
+        {
+            LiveTileHelper.RemoveTile(NavigationUri);
+        }
+
+        /// <summary>
+        /// Clears all the generated tile images when these exist.
+        /// </summary>
+        private void ClearTileImages()
+        {
+            // delete file in background task
+            Task.Run(() =>
+            {
+                StorageHelper.DeleteFile(LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile_wide_{0}.jpeg", _note.Id));
+                StorageHelper.DeleteFile(LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile_normal_{0}.jpeg", _note.Id));
+            });
+        }
+
         #region Properties
+
+        /// <summary>
+        /// Gets the note ID.
+        /// </summary>
+        /// <remarks>
+        /// Public set for JSON deserialization.
+        /// </remarks>
+        public string Id
+        {
+            get
+            {
+                return _note.Id;
+            }
+            set
+            {
+                _note.Id = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the title.
@@ -162,7 +275,19 @@ namespace PocketBrain.App.ViewModel
                 {
                     _note.Title = value;
                     NotifyPropertyChanged("Title");
+                    NotifyPropertyChanged("DisplayedTitle");
                 }
+            }
+        }
+
+        /// <summary>
+        /// Gets the displayed title.
+        /// </summary>
+        public string DisplayedTitle
+        {
+            get
+            {
+                return string.IsNullOrEmpty(_note.Title) ? "Untitled" : _note.Title;
             }
         }
 
@@ -228,6 +353,17 @@ namespace PocketBrain.App.ViewModel
         }
 
         /// <summary>
+        /// Gets the navigation URI.
+        /// </summary>
+        public Uri NavigationUri
+        {
+            get
+            {
+                return new Uri("/NotePage.xaml?id=" + _note.Id, UriKind.Relative);
+            }
+        }
+
+        /// <summary>
         /// Gets the delete note command.
         /// </summary>
         public ICommand DeleteCommand
@@ -257,6 +393,17 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return _addAttachementCommand;
+            }
+        }
+
+        /// <summary>
+        /// Gets the pin to start command.
+        /// </summary>
+        public ICommand PinToStartCommand
+        {
+            get
+            {
+                return _pinToStartCommand;
             }
         }
 

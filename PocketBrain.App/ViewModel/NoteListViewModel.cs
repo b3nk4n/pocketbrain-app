@@ -33,7 +33,7 @@ namespace PocketBrain.App.ViewModel
         /// <summary>
         /// The selected note.
         /// </summary>
-        private NoteViewModel _selectedNote;
+        //private NoteViewModel _selectedNote;
 
         /// <summary>
         /// Indicates whether the data has been loaded.
@@ -45,11 +45,6 @@ namespace PocketBrain.App.ViewModel
         /// </summary>
         private bool _isCurrentNoteUnsaved = false;
 
-        /// <summary>
-        /// The add note command.
-        /// </summary>
-        private DelegateCommand _addNoteCommand;
-
         #endregion
 
         #region Constructors
@@ -59,19 +54,28 @@ namespace PocketBrain.App.ViewModel
         /// </summary>
         public NoteListViewModel()
         {
-            _addNoteCommand = new DelegateCommand(() =>
-            {
-                var note = new NoteViewModel(new Note("Untitled", "..."));
-                Notes.Insert(0, note);
-                SelectedNote = note;
-            });
-
             Load();
         }
 
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Gets the note with the given ID.
+        /// </summary>
+        /// <param name="id">The note ID.</param>
+        /// <returns>Returns the note or NULL if the note does not exist.</returns>
+        public NoteViewModel GetNoteById(string id)
+        {
+            foreach (var note in _notes)
+            {
+                if (note.Id == id)
+                    return note;
+            }
+
+            return null;
+        }
 
         /// <summary>
         /// Loads the notes data.
@@ -97,6 +101,8 @@ namespace PocketBrain.App.ViewModel
             var res = StorageHelper.SaveAsSerializedFile<ObservableCollection<NoteViewModel>>("notes.data", _notes);
             return res;
         }
+
+        //public void SetSelectedTile
 
         #endregion
 
@@ -135,32 +141,6 @@ namespace PocketBrain.App.ViewModel
         }
 
         /// <summary>
-        /// Gets the selected note.
-        /// </summary>
-        public NoteViewModel SelectedNote
-        {
-            set
-            {
-                _selectedNote = value;
-            }
-            get
-            {
-                return _selectedNote;
-            }
-        }
-
-        /// <summary>
-        /// Gets whether a note is selected.
-        /// </summary>
-        public bool IsNoteSelected
-        {
-            get
-            {
-                return _selectedNote != null;
-            }
-        }
-
-        /// <summary>
         /// Gets whether the current note is unsaved. This flag is used for newly created notes.
         /// </summary>
         public bool IsCurrentNoteUnsaved
@@ -168,17 +148,6 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return _isCurrentNoteUnsaved;
-            }
-        }
-
-        /// <summary>
-        /// The save selected note command.
-        /// </summary>
-        public ICommand AddNoteCommand
-        {
-            get
-            {
-                return _addNoteCommand;
             }
         }
 
