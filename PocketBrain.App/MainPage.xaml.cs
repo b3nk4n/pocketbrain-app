@@ -23,11 +23,11 @@ namespace PocketBrain.App
             BuildLocalizedApplicationBar();
 
             // register startup actions
-            StartupActionManager.Instance.Register(2, ActionExecutionRule.LessOrEquals, () =>
+            StartupActionManager.Instance.Register(5, ActionExecutionRule.Equals, () =>
             {
                 FeedbackManager.Instance.StartFirst();
             });
-            StartupActionManager.Instance.Register(7, ActionExecutionRule.Equals, () =>
+            StartupActionManager.Instance.Register(10, ActionExecutionRule.Equals, () =>
             {
                 FeedbackManager.Instance.StartSecond();
             });

@@ -4,6 +4,8 @@ using PocketBrain.App.ViewModel;
 using System.Windows.Media.Imaging;
 using PhoneKit.Framework.Core.Storage;
 using System;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace PocketBrain.App
 {
@@ -27,7 +29,12 @@ namespace PocketBrain.App
 
             Loaded += (s, e) =>
                 {
-                    Text.Focus();
+                    if (Text.Text.Length == 0)
+                    {
+                        // select the text end of the notes content text field
+                        Text.Focus();
+                        Text.Select(Text.Text.Length, 0);
+                    }
                 };
 
             DeleteNoteButton.Click += (s, e) =>
@@ -139,6 +146,32 @@ namespace PocketBrain.App
         private void ClearAttachedImageSource()
         {
             AttachementImage.Source = null;
+        }
+
+        /// <summary>
+        /// The manipulation delta event for pinch zoom of the attachement image.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The event args.</param>
+        private void AttachementImage_ManipulationDelta(object sender, System.Windows.Input.ManipulationDeltaEventArgs e)
+        {
+            if (e.PinchManipulation != null)
+            {
+                var transform = (CompositeTransform)AttachementImage.RenderTransform;
+
+                // Scale Manipulation
+                transform.ScaleX = e.PinchManipulation.CumulativeScale;
+                transform.ScaleY = e.PinchManipulation.CumulativeScale;
+
+                // Translate manipulation
+                var originalCenter = e.PinchManipulation.Original.Center;
+                var newCenter = e.PinchManipulation.Current.Center;
+                transform.TranslateX = newCenter.X - originalCenter.X;
+                transform.TranslateY = newCenter.Y - originalCenter.Y;
+
+                // end 
+                e.Handled = true;
+            }
         }
     }
 }
