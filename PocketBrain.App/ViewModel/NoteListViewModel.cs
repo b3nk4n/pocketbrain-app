@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using PhoneKit.Framework.Core.Storage;
+using Microsoft.Phone.Shell;
+using PocketBrain.App.Resources;
+using PhoneKit.Framework.Core.Tile;
 
 namespace PocketBrain.App.ViewModel
 {
@@ -29,11 +32,6 @@ namespace PocketBrain.App.ViewModel
         /// The note collection.
         /// </summary>
         private ObservableCollection<NoteViewModel> _notes = new ObservableCollection<NoteViewModel>();
-
-        /// <summary>
-        /// The selected note.
-        /// </summary>
-        //private NoteViewModel _selectedNote;
 
         /// <summary>
         /// Indicates whether the data has been loaded.
@@ -102,7 +100,39 @@ namespace PocketBrain.App.ViewModel
             return res;
         }
 
-        //public void SetSelectedTile
+        /// <summary>
+        /// Updates the primary tile.
+        /// </summary>
+        public void UpdatePrimaryTile()
+        {
+            var count = _notes.Count;
+
+            var tileData = new IconicTileData
+            {
+                Count = count,
+                Title = AppResources.ApplicationTitle,
+                WideContent1 = string.Empty,
+                WideContent2 = string.Empty,
+                WideContent3 = string.Empty,
+            };
+
+            if (count > 0)
+            {
+                tileData.WideContent1 = _notes[0].DisplayedTitle;
+                var content = _notes[0].Content;
+                if (!string.IsNullOrEmpty(content))
+                {
+                    var contentFragments = content.Split(new[]{'\n', '\r'});
+                    tileData.WideContent2 = contentFragments[0];
+
+                    if (contentFragments.Length > 1)
+                        tileData.WideContent3 = contentFragments[2];
+                }
+                
+            }
+
+            LiveTileHelper.UpdateDefaultTile(tileData);
+        }
 
         #endregion
 

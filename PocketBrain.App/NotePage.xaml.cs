@@ -25,6 +25,11 @@ namespace PocketBrain.App
         {
             InitializeComponent();
 
+            Loaded += (s, e) =>
+                {
+                    Text.Focus();
+                };
+
             DeleteNoteButton.Click += (s, e) =>
                 {
                     ClearAttachedImageSource();

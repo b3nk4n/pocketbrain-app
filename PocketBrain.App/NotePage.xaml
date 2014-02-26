@@ -54,8 +54,9 @@
                 <StackPanel>
                     <Button x:Name="DeleteNoteButton" Content="delelte/cancel" Command="{Binding DeleteCommand}" />
                     <Button  Content="pin" Command="{Binding PinToStartCommand}" />
-                    <TextBox Text="{Binding Title, Mode=TwoWay}" />
-                    <TextBox Text="{Binding Content, Mode=TwoWay}" Height="320" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" />
+                    <toolkit:PhoneTextBox Hint="Untitled" Text="{Binding Title, Mode=TwoWay}" />
+                    <TextBox x:Name="Text" Text="{Binding Content, Mode=TwoWay}"
+                             Height="320" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" />
                     <Image x:Name="AttachementImage" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" Stretch="UniformToFill" Margin="12,0,12,0" Height="432" />
                     <Button x:Name="ImageFromAblumButton" Content="Add attachement" Command="{Binding AddAttachementCommand}"
                         Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}, ConverterParameter=!}"/>

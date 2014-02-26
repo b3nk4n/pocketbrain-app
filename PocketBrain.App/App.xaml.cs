@@ -79,6 +79,7 @@ namespace PocketBrain.App
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
             NoteListViewModel.Instance.Save();
+            NoteListViewModel.Instance.UpdatePrimaryTile();
         }
 
         // Code, der beim Schließen der Anwendung ausgeführt wird (z. B. wenn der Benutzer auf "Zurück" klickt)
@@ -86,6 +87,7 @@ namespace PocketBrain.App
         private void Application_Closing(object sender, ClosingEventArgs e)
         {
             NoteListViewModel.Instance.Save();
+            NoteListViewModel.Instance.UpdatePrimaryTile();
         }
 
         // Code, der bei einem Navigationsfehler ausgeführt wird

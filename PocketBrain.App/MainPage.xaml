@@ -50,8 +50,7 @@
         <!--ContentPanel - zusätzliche Inhalte hier platzieren-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
-                <Button x:Name="NewNoteButton" Content="+ new note"
-                        Command="{Binding AddNoteCommand}"/>
+                <Button x:Name="NewNoteButton" Content="+ new note" />
                 <ListBox x:Name="NotesList" ItemsSource="{Binding Notes}" Height="610">
                     <ListBox.ItemTemplate>
                         <DataTemplate>

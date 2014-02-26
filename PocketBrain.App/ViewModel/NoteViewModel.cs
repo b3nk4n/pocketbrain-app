@@ -32,6 +32,16 @@ namespace PocketBrain.App.ViewModel
         private Random _random = new Random();
 
         /// <summary>
+        /// The wide tile path of the rendered image.
+        /// </summary>
+        private readonly string _tileWidePath;
+
+        /// <summary>
+        /// The normal tile path of the rendered image.
+        /// </summary>
+        private readonly string _tileNormalPath;
+
+        /// <summary>
         /// The delete command.
         /// </summary>
         private DelegateCommand _deleteCommand;
@@ -122,6 +132,10 @@ namespace PocketBrain.App.ViewModel
                 {
                     return !LiveTileHelper.TileExists(NavigationUri);
                 });
+
+            // init the paths for the rendred tile images
+            _tileWidePath = LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile_wide_{0}.jpeg", Id);
+            _tileNormalPath = LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile_normal_{0}.jpeg", Id);
         }
 
         #endregion
@@ -174,10 +188,10 @@ namespace PocketBrain.App.ViewModel
         /// </summary>
         private void PinOrUpdateTile()
         {
-            var noteWideGfx = GraphicsHelper.Create(new NoteWideTile(_note.Title, _note.Content));
-            var noteWideUri = StorageHelper.SaveJpeg(LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile_wide_{0}.jpeg", _note.Id), noteWideGfx);
-            var noteNormalGfx = GraphicsHelper.Create(new NoteNormalTile(_note.Title, _note.Content));
-            var noteNormalUri = StorageHelper.SaveJpeg(LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile_normal_{0}.jpeg", _note.Id), noteNormalGfx);
+            var noteWideGfx = GraphicsHelper.Create(new NoteWideTile(DisplayedTitle, Content));
+            var noteWideUri = StorageHelper.SaveJpeg(_tileWidePath, noteWideGfx);
+            var noteNormalGfx = GraphicsHelper.Create(new NoteNormalTile(DisplayedTitle, Content));
+            var noteNormalUri = StorageHelper.SaveJpeg(_tileNormalPath, noteNormalGfx);
 
             if (HasAttachement)
             {
@@ -235,8 +249,8 @@ namespace PocketBrain.App.ViewModel
             // delete file in background task
             Task.Run(() =>
             {
-                StorageHelper.DeleteFile(LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile_wide_{0}.jpeg", _note.Id));
-                StorageHelper.DeleteFile(LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile_normal_{0}.jpeg", _note.Id));
+                StorageHelper.DeleteFile(_tileWidePath);
+                StorageHelper.DeleteFile(_tileWidePath);
             });
         }
 
