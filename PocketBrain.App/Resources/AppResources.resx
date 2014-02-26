@@ -125,6 +125,10 @@
     <value>about</value>
     <comment>AppBar</comment>
   </data>
+  <data name="AppBarLockScreen" xml:space="preserve">
+    <value>set lockscreen</value>
+    <comment>MainPage</comment>
+  </data>
   <data name="ApplicationAuthor" xml:space="preserve">
     <value>by Benjamin Sautermeister</value>
     <comment>AboutPage</comment>

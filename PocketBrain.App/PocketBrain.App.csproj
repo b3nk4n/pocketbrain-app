@@ -98,6 +98,12 @@
     </Compile>
     <Compile Include="Controls\LocalizedAboutControl.cs" />
     <Compile Include="Controls\LocalizedFeedbackDialogControl.cs" />
+    <Compile Include="Controls\NoteLockScreen.xaml.cs">
+      <DependentUpon>NoteLockScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NoteLockScreenDual.xaml.cs">
+      <DependentUpon>NoteLockScreenDual.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\NoteNormalTile.xaml.cs">
       <DependentUpon>NoteNormalTile.xaml</DependentUpon>
     </Compile>
@@ -127,6 +133,14 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="AboutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NoteLockScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NoteLockScreenDual.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

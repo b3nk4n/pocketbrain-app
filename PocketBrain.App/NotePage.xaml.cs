@@ -63,7 +63,8 @@ namespace PocketBrain.App
 
             NoteViewModel currentNote;
 
-            if (NavigationContext.QueryString.ContainsKey("id"))
+            if (NavigationContext.QueryString != null && 
+                NavigationContext.QueryString.ContainsKey("id"))
             {
                 currentNote = NoteListViewModel.Instance.GetNoteById(NavigationContext.QueryString["id"]);
             }

@@ -6,6 +6,9 @@ using PhoneKit.Framework.Support;
 using PocketBrain.App.ViewModel;
 using System;
 using System.Windows.Controls;
+using PhoneKit.Framework.Voice;
+using PhoneKit.Framework.Core.LockScreen;
+using PhoneKit.Framework.Core.Graphics;
 
 namespace PocketBrain.App
 {
@@ -72,7 +75,8 @@ namespace PocketBrain.App
         {
             base.OnNavigatedTo(e);
 
-            if (NavigationContext.QueryString.ContainsKey("clearbackstack"))
+            if (NavigationContext.QueryString != null && 
+                NavigationContext.QueryString.ContainsKey("clearbackstack"))
             {
 
                 while (NavigationService.CanGoBack)
@@ -82,22 +86,49 @@ namespace PocketBrain.App
             StartupActionManager.Instance.Fire();
         }
 
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            // verify it was a BACK button or a WINDOWS button
+            if (e.NavigationMode == NavigationMode.Back ||
+                e.Uri.OriginalString == "app://external/")
+            {
+                NoteListViewModel.Instance.UpdateLockScreen();
+            }
+        }
+
         /// <summary>
         /// Builds the localized app bar.
         /// </summary>
         private void BuildLocalizedApplicationBar()
         {
-            // ApplicationBar der Seite einer neuen Instanz von ApplicationBar zuweisen
+            // app bar
             ApplicationBar = new ApplicationBar();
             ApplicationBar.Mode = ApplicationBarMode.Minimized;
 
-            // Ein neues Menüelement mit der lokalisierten Zeichenfolge aus AppResources erstellen
-            ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarAbout);
-            appBarMenuItem.Click += (s, e) =>
+            // about
+            if (!LockScreenHelper.HasAccess())
+            {
+                ApplicationBarMenuItem appBarMenuItem1 = new ApplicationBarMenuItem(AppResources.AppBarLockScreen);
+                appBarMenuItem1.Click += async (s, e) =>
+                {
+                    if (await LockScreenHelper.VerifyAccessAsync())
+                    {
+                        // remove app bar menu item
+                        ApplicationBar.MenuItems.Remove(appBarMenuItem1);
+                    }
+                };
+                ApplicationBar.MenuItems.Add(appBarMenuItem1);
+            }
+
+            // about
+            ApplicationBarMenuItem appBarMenuItem2 = new ApplicationBarMenuItem(AppResources.AppBarAbout);
+            appBarMenuItem2.Click += (s, e) =>
                 {
                     NavigationService.Navigate(new Uri("/AboutPage.xaml", UriKind.Relative));
                 };
-            ApplicationBar.MenuItems.Add(appBarMenuItem);
+            ApplicationBar.MenuItems.Add(appBarMenuItem2);
         }
     }
 }

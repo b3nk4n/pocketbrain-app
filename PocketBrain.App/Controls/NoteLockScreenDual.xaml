@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="PocketBrain.App.Controls.NoteLockScreenDual"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="1280" d:DesignWidth="786"
+    Height="1280" Width="786">
+
+    <Border Background="{StaticResource PhoneAccentBrush}">
+        <Grid x:Name="LayoutRoot" Margin="24,64,24,640">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <!-- col 1 -->
+            <StackPanel Grid.Column="0">
+                <TextBlock x:Name="Title1" Text="Lorem ipsum" TextWrapping="Wrap"
+                       Style="{StaticResource PhoneTextLargeStyle}" Margin="12,0,12,12"/>
+                <TextBlock x:Name="Text1" Text="is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+                        Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
+            </StackPanel>
+            
+            <!-- col 2 -->
+            <StackPanel Grid.Column="1">
+                <TextBlock x:Name="Title2" Text="Lorem ipsum is simply dummy text of the printing and typesetting industry" TextWrapping="Wrap"
+                       Style="{StaticResource PhoneTextLargeStyle}" Margin="12,0,12,12"/>
+                <TextBlock x:Name="Text2" Text="is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+                       Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

@@ -13,6 +13,10 @@ using PhoneKit.Framework.Core.Storage;
 using Microsoft.Phone.Shell;
 using PocketBrain.App.Resources;
 using PhoneKit.Framework.Core.Tile;
+using PocketBrain.App.Controls;
+using PhoneKit.Framework.Core.Graphics;
+using System.Windows.Media.Imaging;
+using PhoneKit.Framework.Core.LockScreen;
 
 namespace PocketBrain.App.ViewModel
 {
@@ -42,6 +46,12 @@ namespace PocketBrain.App.ViewModel
         /// Indicates whether the current note is unsaved.
         /// </summary>
         private bool _isCurrentNoteUnsaved = false;
+
+        /// <summary>
+        /// The persistent name of the next lockscreen image to toggle from A to B,
+        /// which is required for lockscreen image update.
+        /// </summary>
+        private StoredObject<string> _nextLockScreenExtension = new StoredObject<string>("nextLockScreenExtension", "A");
 
         #endregion
 
@@ -132,6 +142,31 @@ namespace PocketBrain.App.ViewModel
             }
 
             LiveTileHelper.UpdateDefaultTile(tileData);
+        }
+
+        /// <summary>
+        /// Updates the lockscreen image, if the application has access to it.
+        /// </summary>
+        public void UpdateLockScreen()
+        {
+            if (!LockScreenHelper.HasAccess() || _notes.Count == 0)
+                return;
+
+            WriteableBitmap lockGfx;
+
+            // select the template to render
+            if (_notes.Count == 1)
+                lockGfx = GraphicsHelper.Create(new NoteLockScreen());
+            else
+                lockGfx = GraphicsHelper.Create(new NoteLockScreenDual());
+
+            // render lock image
+            var nextExtension = _nextLockScreenExtension.Value;
+            var lockUri = StorageHelper.SaveJpeg(string.Format("/locknote_{0}.jpg", nextExtension), lockGfx);
+            _nextLockScreenExtension.Value = (nextExtension == "A") ? "B" : "A";
+
+            // set lockscreen image
+            LockScreenHelper.SetLockScreenImage(lockUri, true);
         }
 
         #endregion
