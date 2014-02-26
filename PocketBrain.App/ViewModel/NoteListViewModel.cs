@@ -156,9 +156,9 @@ namespace PocketBrain.App.ViewModel
 
             // select the template to render
             if (_notes.Count == 1)
-                lockGfx = GraphicsHelper.Create(new NoteLockScreen());
+                lockGfx = GraphicsHelper.Create(new NoteLockScreen(_notes[0].DisplayedTitle, _notes[0].Content));
             else
-                lockGfx = GraphicsHelper.Create(new NoteLockScreenDual());
+                lockGfx = GraphicsHelper.Create(new NoteLockScreenDual(_notes[0].DisplayedTitle, _notes[0].Content, _notes[1].DisplayedTitle, _notes[1].Content));
 
             // render lock image
             var nextExtension = _nextLockScreenExtension.Value;

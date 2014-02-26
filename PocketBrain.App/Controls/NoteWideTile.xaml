@@ -14,10 +14,10 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <TextBlock x:Name="Title" Grid.Row="0" Text="Lorem ipsum fasd asdf asdf asdfas df fasd"
+            <TextBlock x:Name="Title" Grid.Row="0" FontWeight="Medium" Text="Lorem ipsum fasd asdf asdf asdfas df fasd"
                        Style="{StaticResource PhoneTextExtraLargeStyle}" TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
             <TextBlock x:Name="Text" Grid.Row="1" Text="is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
-                        Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
+                        Style="{StaticResource PhoneTextNormalStyle}" FontSize="22" TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
         </Grid>
     </Border>
 </UserControl>

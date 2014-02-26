@@ -10,11 +10,22 @@ using Microsoft.Phone.Shell;
 
 namespace PocketBrain.App.Controls
 {
+    /// <summary>
+    /// The note lock screen template.
+    /// </summary>
     public partial class NoteLockScreen : UserControl
     {
-        public NoteLockScreen()
+        /// <summary>
+        /// Creates a NoteLockScreen instance.
+        /// </summary>
+        /// <param name="title">The title.</param>
+        /// <param name="text">The content text.</param>
+        public NoteLockScreen(string title, string text)
         {
             InitializeComponent();
+
+            this.Title.Text = title;
+            this.Text.Text = text;
         }
     }
 }
