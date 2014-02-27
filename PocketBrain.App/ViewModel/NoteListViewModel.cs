@@ -17,6 +17,7 @@ using PocketBrain.App.Controls;
 using PhoneKit.Framework.Core.Graphics;
 using System.Windows.Media.Imaging;
 using PhoneKit.Framework.Core.LockScreen;
+using System.Windows.Media;
 
 namespace PocketBrain.App.ViewModel
 {
@@ -53,6 +54,11 @@ namespace PocketBrain.App.ViewModel
         /// </summary>
         private StoredObject<string> _nextLockScreenExtension = new StoredObject<string>("nextLockScreenExtension", "A");
 
+        /// <summary>
+        /// The lockscreen command.
+        /// </summary>
+        private DelegateCommand _lockScreenCommand;
+
         #endregion
 
         #region Constructors
@@ -63,6 +69,17 @@ namespace PocketBrain.App.ViewModel
         public NoteListViewModel()
         {
             Load();
+
+            _lockScreenCommand = new DelegateCommand(async () =>
+            {
+                if (await LockScreenHelper.VerifyAccessAsync())
+                {
+                    NotifyPropertyChanged("HasLockScreenAccess");
+                }
+            }, () =>
+            {
+                return !HasLockScreenAccess;
+            });
         }
 
         #endregion
@@ -124,6 +141,7 @@ namespace PocketBrain.App.ViewModel
                 WideContent1 = string.Empty,
                 WideContent2 = string.Empty,
                 WideContent3 = string.Empty,
+                BackgroundColor = (Color)Application.Current.Resources["MyPhoneChromeColor"]
             };
 
             if (count > 0)
@@ -136,7 +154,7 @@ namespace PocketBrain.App.ViewModel
                     tileData.WideContent2 = contentFragments[0];
 
                     if (contentFragments.Length > 1)
-                        tileData.WideContent3 = contentFragments[2];
+                        tileData.WideContent3 = contentFragments[1];
                 }
                 
             }
@@ -213,6 +231,28 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return _isCurrentNoteUnsaved;
+            }
+        }
+
+        /// <summary>
+        /// Gets the lock screen command.
+        /// </summary>
+        public ICommand LockScreenCommand
+        {
+            get
+            {
+                return _lockScreenCommand;
+            }
+        }
+
+        /// <summary>
+        /// Gets whether the application has lockscreen access.
+        /// </summary>
+        public bool HasLockScreenAccess
+        {
+            get
+            {
+                return LockScreenHelper.HasAccess();
             }
         }
 

@@ -9,6 +9,8 @@ using System.Windows.Controls;
 using PhoneKit.Framework.Voice;
 using PhoneKit.Framework.Core.LockScreen;
 using PhoneKit.Framework.Core.Graphics;
+using System.Windows;
+using System.Windows.Media;
 
 namespace PocketBrain.App
 {
@@ -22,24 +24,31 @@ namespace PocketBrain.App
         {
             InitializeComponent();
 
-            // Beispielcode zur Lokalisierung der ApplicationBar
-            BuildLocalizedApplicationBar();
+            Loaded += (s, e) =>
+                {
+                    WelcomeAnimation.Stop();
+                    if (NoteListViewModel.Instance.Notes.Count == 0)
+                        WelcomeAnimation.Begin();
+                };
 
             // register startup actions
             StartupActionManager.Instance.Register(5, ActionExecutionRule.Equals, () =>
-            {
-                FeedbackManager.Instance.StartFirst();
-            });
+                {
+                    FeedbackManager.Instance.StartFirst();
+                });
             StartupActionManager.Instance.Register(10, ActionExecutionRule.Equals, () =>
-            {
-                FeedbackManager.Instance.StartSecond();
-            });
-
-            NotesList.SelectionChanged += NotesList_SelectionChanged;
+                {
+                    FeedbackManager.Instance.StartSecond();
+                });
 
             NewNoteButton.Click += (s, e) =>
                 {
                     NavigationService.Navigate(new Uri("/NotePage.xaml", UriKind.Relative));
+                };
+
+            AboutButton.Click += (s, e) =>
+                {
+                    NavigationService.Navigate(new Uri("/AboutPage.xaml", UriKind.Relative));
                 };
 
             DataContext = NoteListViewModel.Instance;
@@ -60,9 +69,9 @@ namespace PocketBrain.App
             string noteId = ((NoteViewModel)listBox.SelectedItem).Id;
 
             // unselect the item
-            NotesList.SelectionChanged -= NotesList_SelectionChanged;
+            /*NotesList.SelectionChanged -= NotesList_SelectionChanged;
             NotesList.SelectedItem = null;
-            NotesList.SelectionChanged += NotesList_SelectionChanged;
+            NotesList.SelectionChanged += NotesList_SelectionChanged;*/
 
             NavigationService.Navigate(new Uri("/NotePage.xaml?id=" + noteId, UriKind.Relative));
         }
@@ -86,6 +95,10 @@ namespace PocketBrain.App
             StartupActionManager.Instance.Fire();
         }
 
+        /// <summary>
+        /// Is called when the page is navigated from.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
@@ -99,36 +112,16 @@ namespace PocketBrain.App
         }
 
         /// <summary>
-        /// Builds the localized app bar.
+        /// Event handler when a note is clicked.
         /// </summary>
-        private void BuildLocalizedApplicationBar()
+        /// <param name="sender">The clicked note.</param>
+        /// <param name="e">The event args.</param>
+        private void NoteClicked(object sender, RoutedEventArgs e)
         {
-            // app bar
-            ApplicationBar = new ApplicationBar();
-            ApplicationBar.Mode = ApplicationBarMode.Minimized;
+            var noteId = ((Button)sender).Tag as string;
 
-            // about
-            if (!LockScreenHelper.HasAccess())
-            {
-                ApplicationBarMenuItem appBarMenuItem1 = new ApplicationBarMenuItem(AppResources.AppBarLockScreen);
-                appBarMenuItem1.Click += async (s, e) =>
-                {
-                    if (await LockScreenHelper.VerifyAccessAsync())
-                    {
-                        // remove app bar menu item
-                        ApplicationBar.MenuItems.Remove(appBarMenuItem1);
-                    }
-                };
-                ApplicationBar.MenuItems.Add(appBarMenuItem1);
-            }
-
-            // about
-            ApplicationBarMenuItem appBarMenuItem2 = new ApplicationBarMenuItem(AppResources.AppBarAbout);
-            appBarMenuItem2.Click += (s, e) =>
-                {
-                    NavigationService.Navigate(new Uri("/AboutPage.xaml", UriKind.Relative));
-                };
-            ApplicationBar.MenuItems.Add(appBarMenuItem2);
+            if (!string.IsNullOrEmpty(noteId))
+                NavigationService.Navigate(new Uri("/NotePage.xaml?id=" + noteId, UriKind.Relative));
         }
     }
 }

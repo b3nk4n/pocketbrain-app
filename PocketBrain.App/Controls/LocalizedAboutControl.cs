@@ -1,5 +1,5 @@
-﻿using PocketBrain.App.Resources;
-using PhoneKit.Framework.Controls;
+﻿using PhoneKit.Framework.Controls;
+using PocketBrain.App.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +35,7 @@ namespace PocketBrain.App.Controls
             MoreAppsSearchTerms = "Benjamin Sautermeister";
 
             // contributors
-            ContributorsListVisibility = System.Windows.Visibility.Visible;
+            ContributorsListVisibility = System.Windows.Visibility.Collapsed;
         }
     }
 }

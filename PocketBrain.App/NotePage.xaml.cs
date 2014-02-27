@@ -15,12 +15,6 @@ namespace PocketBrain.App
     public partial class NotePage : PhoneApplicationPage
     {
         /// <summary>
-        /// The acive note ID.
-        /// </summary>
-        /// <remarks>Required to remember the active note when an attachement is going to be selected.</remarks>
-        private string _aciveId;
-
-        /// <summary>
         /// Creates the note page instance.
         /// </summary>
         public NotePage()
@@ -61,29 +55,27 @@ namespace PocketBrain.App
         {
             base.OnNavigatedTo(e);
 
-            NoteViewModel currentNote;
-
             if (NavigationContext.QueryString != null && 
                 NavigationContext.QueryString.ContainsKey("id"))
             {
-                currentNote = NoteListViewModel.Instance.GetNoteById(NavigationContext.QueryString["id"]);
+                _currentNote = NoteListViewModel.Instance.GetNoteById(NavigationContext.QueryString["id"]);
             }
-            else if (!string.IsNullOrEmpty(_aciveId))
+            else if (_currentNote != null && !string.IsNullOrEmpty(_currentNote.Id))
             {
-                currentNote = NoteListViewModel.Instance.GetNoteById(_aciveId);
+                _currentNote = NoteListViewModel.Instance.GetNoteById(_currentNote.Id);
             }
             else
             {
-                currentNote = new NoteViewModel();
-                NoteListViewModel.Instance.Notes.Insert(0, currentNote);
-                _aciveId = currentNote.Id;
+                _currentNote = new NoteViewModel();
             }
 
             // set the current note as binding context
-            DataContext = currentNote;
+            DataContext = _currentNote;
 
-            UpdateAttachedImageSource(currentNote);
+            UpdateAttachedImageSource(_currentNote);
         }
+
+        private NoteViewModel _currentNote;
 
         /// <summary>
         /// Saves the live tile, when the user leaves the notes page.
@@ -95,16 +87,22 @@ namespace PocketBrain.App
 
             // filter navigation to library/camera and delete button event
             if (e.NavigationMode == NavigationMode.New)
-                return;
-
-            // reset the active note
-            _aciveId = null;
-
-            NoteViewModel note = DataContext as NoteViewModel;
-
-            if (note != null)
             {
-                note.UpdateTile();
+                // add the note to the list, if it wasn't already stored before
+                if (!NoteListViewModel.Instance.Notes.Contains(_currentNote))
+                    NoteListViewModel.Instance.Notes.Insert(0, _currentNote);
+                return;
+            }
+
+            // save the current note
+            if (_currentNote != null && _currentNote.IsValid)
+            {
+                // add the note to the list, if it wasn't already stored before
+                if (!NoteListViewModel.Instance.Notes.Contains(_currentNote))
+                    NoteListViewModel.Instance.Notes.Insert(0, _currentNote);
+
+                _currentNote.UpdateTile();
+                _currentNote = null;
             }
         }
 
@@ -118,22 +116,22 @@ namespace PocketBrain.App
         /// <param name="note">The current note view model.</param>
         private void UpdateAttachedImageSource(NoteViewModel note)
         {
-            if (note == null)
+            if (note != null && note.HasAttachement)
             {
-                AttachementImage.Source = null;
-                return;
-            }
+                var imagePath = note.AttachedImagePath;
 
-            var imagePath = note.AttachedImagePath;
-            
-            if (!string.IsNullOrEmpty(imagePath))
-            {
                 BitmapImage img = new BitmapImage();
                 using (var imageStream = StorageHelper.GetFileStream(imagePath))
                 {
                     img.SetSource(imageStream);
                     AttachementImage.Source = img;
+                    AttachementImageContainer.Visibility = System.Windows.Visibility.Visible;
                 }
+            }
+            else
+            {
+                AttachementImage.Source = null;
+                AttachementImageContainer.Visibility = System.Windows.Visibility.Collapsed;
             }
         }
 

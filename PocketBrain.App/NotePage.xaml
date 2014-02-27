@@ -12,8 +12,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True">
+    mc:Ignorable="d">
 
     <toolkit:TransitionService.NavigationInTransition>
         <toolkit:NavigationInTransition>
@@ -43,7 +42,7 @@
     </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot ist das Stammraster, in dem alle anderen Seiteninhalte platziert werden-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="{StaticResource MyPhoneChromeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -51,36 +50,66 @@
         <!--TitlePanel enthält den Namen der Anwendung und den Seitentitel-->
 
         <!--ContentPanel - zusätzliche Inhalte hier platzieren-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ScrollViewer>
-                <StackPanel>
-                    <toolkit:PhoneTextBox Hint="Untitled" Text="{Binding Title, Mode=TwoWay}" />
-                    <Grid>
-                        <TextBlock Text="{Binding DateCreated, Converter={StaticResource shortTime}}" Style="{StaticResource PhoneTextSmallStyle}" HorizontalAlignment="Left" />
-                        <TextBlock Text="{Binding DateCreated, Converter={StaticResource shortDate}}" Style="{StaticResource PhoneTextSmallStyle}" HorizontalAlignment="Right" />
+        <Grid x:Name="ContentPanel" Grid.Row="1">
+            <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                <StackPanel Margin="0,-124,0,0">
+                    <Grid Margin="0,0,0,92">
+                        <TextBlock Text="{Binding DateCreated, Converter={StaticResource shortTime}}" Style="{StaticResource PhoneTextSmallStyle}" Foreground="Gray" HorizontalAlignment="Left" />
+                        <TextBlock Text="{Binding DateCreated, Converter={StaticResource shortDate}}" Style="{StaticResource PhoneTextSmallStyle}" Foreground="Gray" HorizontalAlignment="Right" />
                     </Grid>
-                    <TextBox x:Name="Text" Text="{Binding Content, Mode=TwoWay}"
-                             Height="Auto" MinHeight="320" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" />
-                    <Grid Margin="12,0,12,0" Height="432" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}">
+                    <toolkit:PhoneTextBox Hint="Untitled" Text="{Binding Title, Mode=TwoWay}" FontSize="32" Foreground="{StaticResource PhoneAccentBrush}" Style="{StaticResource CustomPhoneTextBoxStyle}" />
+                    <Border Padding="0,4,0,0"
+                            Background="{StaticResource PhoneAccentBrush}">
+                        <toolkit:PhoneTextBox x:Name="Text" Text="{Binding Content, Mode=TwoWay}"
+                                 Height="Auto" MinHeight="420" TextWrapping="Wrap" AcceptsReturn="True"
+                                 Style="{StaticResource CustomPhoneTextBoxStyle}"/>
+                    </Border>
+                    <Grid Height="480" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}">
                         <Grid.Clip>
-                            <RectangleGeometry Rect="0,0,432,432" />
+                            <RectangleGeometry Rect="0,0,480,480" />
                         </Grid.Clip>
-                        <Image x:Name="AttachementImage"
-                               Stretch="UniformToFill" Height="432"
+                        <Border x:Name="AttachementImageContainer" Padding="0,4,0,0"
+                                Background="{StaticResource PhoneAccentBrush}">
+                            <Image x:Name="AttachementImage"
+                               Stretch="UniformToFill" Height="480" Width="480"
                                ManipulationDelta="AttachementImage_ManipulationDelta"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center">
-                            <Image.RenderTransform>
-                                <CompositeTransform CenterX="216" CenterY="216" />
-                            </Image.RenderTransform>
-                        </Image>
+                                <Image.RenderTransform>
+                                    <CompositeTransform CenterX="240" CenterY="240" />
+                                </Image.RenderTransform>
+                            </Image>
+                        </Border>
                     </Grid>
-                    <Button x:Name="ImageFromAblumButton" Content="Add attachement" Command="{Binding AddAttachementCommand}"
-                        Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}, ConverterParameter=!}"/>
-                    <Button x:Name="RemoveAttachementButton" Content="Remove attachement" Command="{Binding RemoveAttachementCommand}"
-                        Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}"/>
-                    <Button  Content="pin" Command="{Binding PinToStartCommand}" />
-                    <Button x:Name="DeleteNoteButton" Content="delelte/cancel" Command="{Binding DeleteCommand}" />
+
+                    <Border Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
+                        <StackPanel>
+                            <Button x:Name="ImageFromAblumButton" Command="{Binding AddAttachementCommand}"
+                        Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}, ConverterParameter=!}"
+                        Style="{StaticResource CustomButtonStyle}">
+                                <Image Source="Assets/AppBar/appbar.paperclip.png" Height="52" />
+                            </Button>
+                            <Button x:Name="RemoveAttachementButton" Command="{Binding RemoveAttachementCommand}"
+                                Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}"
+                                Style="{StaticResource CustomButtonStyle}">
+                                <Image Source="Assets/AppBar/appbar.paperclip.remove.png" Height="52" />
+                            </Button>
+                            <Button Command="{Binding PinToStartCommand}"
+                                Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}}"
+                                Style="{StaticResource CustomButtonStyle}">
+                                <Image Source="Assets/AppBar/appbar.pin.png" Height="52" />
+                            </Button>
+                            <Button Command="{Binding UnpinFromStartCommand}"
+                                Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}, ConverterParameter=!}"
+                                Style="{StaticResource CustomButtonStyle}">
+                                <Image Source="Assets/AppBar/appbar.pin.remove.png" Height="52" />
+                            </Button>
+                            <Button x:Name="DeleteNoteButton" Command="{Binding DeleteCommand}"
+                                Style="{StaticResource CustomButtonStyle}">
+                                <Image Source="Assets/AppBar/appbar.delete.png" Height="52" />
+                            </Button>
+                        </StackPanel>
+                    </Border>
                 </StackPanel>
             </ScrollViewer>
         </Grid>

@@ -60,6 +60,11 @@ namespace PocketBrain.App.ViewModel
         /// The pin to start command for a single note.
         /// </summary>
         private DelegateCommand _pinToStartCommand;
+
+        /// <summary>
+        /// The unpin from start command for a single note.
+        /// </summary>
+        private DelegateCommand _unpinFromStartCommand;
  
         #endregion
 
@@ -85,9 +90,11 @@ namespace PocketBrain.App.ViewModel
             _deleteCommand = new DelegateCommand(() =>
                 {
                     RemoveAttachement();
-                    ClearTileImages();
                     UnpinTile();
-                    NoteListViewModel.Instance.Notes.Remove(this);
+
+                    // delte the item in the list if it was saved before
+                    if (NoteListViewModel.Instance.Notes.Contains(this))
+                        NoteListViewModel.Instance.Notes.Remove(this);
                 });
 
             _removeAttachementCommand = new DelegateCommand(() =>
@@ -127,10 +134,23 @@ namespace PocketBrain.App.ViewModel
             _pinToStartCommand = new DelegateCommand(() =>
                 {
                     PinOrUpdateTile();
+                    UpdateCanExecuteChanged();
+                    NotifyPropertyChanged("CanPinToStart");
                 },
                 () =>
                 {
-                    return !LiveTileHelper.TileExists(NavigationUri);
+                    return CanPinToStart;
+                });
+
+            _unpinFromStartCommand = new DelegateCommand(() =>
+                {
+                    UnpinTile();
+                    UpdateCanExecuteChanged();
+                    NotifyPropertyChanged("CanPinToStart");
+                },
+                () =>
+                {
+                    return !CanPinToStart;
                 });
 
             // init the paths for the rendred tile images
@@ -181,6 +201,8 @@ namespace PocketBrain.App.ViewModel
         {
             _removeAttachementCommand.RaiseCanExecuteChanged();
             _addAttachementCommand.RaiseCanExecuteChanged();
+            _pinToStartCommand.RaiseCanExecuteChanged();
+            _unpinFromStartCommand.RaiseCanExecuteChanged();
         }
 
         /// <summary>
@@ -203,7 +225,7 @@ namespace PocketBrain.App.ViewModel
                     WideBackBackgroundImage = imageUri,
                     SmallBackgroundImage = imageUri,
                     WideBackgroundImage = noteWideUri,
-                    BackgroundImage = noteNormalUri
+                    BackgroundImage = noteNormalUri,
                 };
 
                 LiveTilePinningHelper.PinOrUpdateTile(NavigationUri, tile);
@@ -221,6 +243,7 @@ namespace PocketBrain.App.ViewModel
 
                 LiveTilePinningHelper.PinOrUpdateTile(NavigationUri, tile);
             }
+            NotifyPropertyChanged("CanPinToStart");
         }
 
         /// <summary>
@@ -238,6 +261,7 @@ namespace PocketBrain.App.ViewModel
         /// </summary>
         public void UnpinTile()
         {
+            ClearTileImages();
             LiveTileHelper.RemoveTile(NavigationUri);
         }
 
@@ -378,6 +402,28 @@ namespace PocketBrain.App.ViewModel
         }
 
         /// <summary>
+        /// Indicates whether the tile can be pinned to start or whether the note is already pinned
+        /// </summary>
+        public bool CanPinToStart
+        {
+            get
+            {
+                return !LiveTileHelper.TileExists(NavigationUri);
+            }
+        }
+
+        /// <summary>
+        /// Gets whether the note is valid.
+        /// </summary>
+        public bool IsValid
+        {
+            get
+            {
+                return !string.IsNullOrEmpty(Title) || !string.IsNullOrEmpty(Content) || HasAttachement;
+            }
+        }
+
+        /// <summary>
         /// Gets the delete note command.
         /// </summary>
         public ICommand DeleteCommand
@@ -418,6 +464,17 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return _pinToStartCommand;
+            }
+        }
+
+        /// <summary>
+        /// Gets the unpin from start command.
+        /// </summary>
+        public ICommand UnpinFromStartCommand
+        {
+            get
+            {
+                return _unpinFromStartCommand;
             }
         }
 

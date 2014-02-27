@@ -10,16 +10,16 @@
     d:DesignHeight="1280" d:DesignWidth="786"
     Height="1280" Width="786">
 
-    <Border Background="{StaticResource PhoneAccentBrush}">
+    <Border Background="{StaticResource MyPhoneChromeBrush}">
         <Grid x:Name="LayoutRoot" Margin="24,64,24,700">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <TextBlock x:Name="Title" Grid.Row="0" Text="Lorem ipsum" TextWrapping="Wrap"
-                       Style="{StaticResource PhoneTextLargeStyle}" FontWeight="Medium" Margin="12,0,12,12"/>
+                       Style="{StaticResource PhoneTextExtraLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" Margin="12,0,12,12"/>
             <TextBlock x:Name="Text" Grid.Row="1" Text="is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
-                       Style="{StaticResource PhoneTextNormalStyle}" FontSize="24" TextWrapping="Wrap" TextTrimming="WordEllipsis" />
+                       Style="{StaticResource PhoneTextLargeStyle}" Foreground="White" TextWrapping="Wrap" TextTrimming="WordEllipsis" />
         </Grid>
     </Border>
 </UserControl>
