@@ -19,32 +19,8 @@ namespace PocketBrain.App.ViewModel
     /// <summary>
     /// Represents the note view model.
     /// </summary>
-    public class NoteViewModel : INotifyPropertyChanged //: ViewModelBase 
+    public class NoteViewModel : ViewModelBase 
     {
-        /// <summary>
-        /// The property changed event.
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Notifies the binding system that the specified property was changed.
-        /// </summary>
-        /// <param name="propertyName">The name of the changed property.</param>
-        protected void NotifyPropertyChanged(string propertyName)
-        {
-            PropertyChangedEventHandler handler = this.PropertyChanged;
-            if (handler != null)
-            {
-                var e = new PropertyChangedEventArgs(propertyName);
-                handler(this, e);
-            }
-        }
-
-
-
-
-
-
         #region Members
 
         /// <summary>
@@ -76,6 +52,12 @@ namespace PocketBrain.App.ViewModel
         /// The unpin from start command for a single note.
         /// </summary>
         private DelegateCommand _unpinFromStartCommand;
+
+        /// <summary>
+        /// The photo chooser task.
+        /// </summary>
+        /// <remarks>Must be defined at class level to work properly in tombstoning.</remarks>
+        private PhotoChooserTask _photoTask = new PhotoChooserTask();
  
         #endregion
 
@@ -126,21 +108,7 @@ namespace PocketBrain.App.ViewModel
 
             _addAttachementCommand = new DelegateCommand(() =>
                 {
-                    var task = new PhotoChooserTask();
-                    task.ShowCamera = true;
-                    task.Completed += (se, pr) =>
-                    {
-                        if (pr.Error != null || pr.TaskResult != TaskResult.OK)
-                            return;
-
-                        // save a copy in local storage
-                        string filePath = GetUniqueLocalFilePathOfFile(pr.OriginalFileName);
-                        if (StorageHelper.SaveFileFromStream(filePath, pr.ChosenPhoto))
-                        {
-                            SetAttachement(filePath);
-                        }
-                    };
-                    task.Show();
+                    _photoTask.Show();
                 },
                 () =>
                 {
@@ -168,6 +136,21 @@ namespace PocketBrain.App.ViewModel
                 {
                     return !CanPinToStart;
                 });
+
+            // init photo chooser task
+            _photoTask.ShowCamera = true;
+            _photoTask.Completed += (se, pr) =>
+            {
+                if (pr.Error != null || pr.TaskResult != TaskResult.OK)
+                    return;
+
+                // save a copy in local storage
+                string filePath = GetUniqueLocalFilePathOfFile(pr.OriginalFileName);
+                if (StorageHelper.SaveFileFromStream(filePath, pr.ChosenPhoto))
+                {
+                    SetAttachement(filePath);
+                }
+            };
         }
 
         #endregion

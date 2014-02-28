@@ -122,10 +122,10 @@ namespace PocketBrain.App
                 // add the note to the list, if it wasn't already stored before
                 if (!NoteListViewModel.Instance.Notes.Contains(NoteListViewModel.Instance.CurrentNote))
                     NoteListViewModel.Instance.Notes.Insert(0, NoteListViewModel.Instance.CurrentNote);
-
-                NoteListViewModel.Instance.CurrentNote.UpdateTile();
-                NoteListViewModel.Instance.CurrentNote = null;
             }
+
+            NoteListViewModel.Instance.CurrentNote.UpdateTile();
+            NoteListViewModel.Instance.CurrentNote = null;
         }
 
         /// <summary>

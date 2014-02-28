@@ -75,9 +75,9 @@
                                     <Button Style="{StaticResource CustomButtonStyle}" Margin="-1" Tag="{Binding Id}" Click="NoteClicked">
                                         <toolkit:ContextMenuService.ContextMenu>
                                             <toolkit:ContextMenu>
-                                                <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuDelete, Source={StaticResource LocalizedStrings}}" Command="{Binding DeleteCommand}" />
                                                 <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuPinToStart, Source={StaticResource LocalizedStrings}}" Command="{Binding PinToStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}}" />
                                                 <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuUnpinFromStart, Source={StaticResource LocalizedStrings}}" Command="{Binding UnpinFromStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}, ConverterParameter=!}" />
+                                                <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuDelete, Source={StaticResource LocalizedStrings}}" Command="{Binding DeleteCommand}" />
                                             </toolkit:ContextMenu>
                                         </toolkit:ContextMenuService.ContextMenu>
                                         <Grid Width="440" MinHeight="100" Margin="0,4,0,4">
