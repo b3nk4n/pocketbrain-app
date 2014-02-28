@@ -70,24 +70,6 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die about ähnelt.
-        /// </summary>
-        public static string AppBarAbout {
-            get {
-                return ResourceManager.GetString("AppBarAbout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die set lockscreen ähnelt.
-        /// </summary>
-        public static string AppBarLockScreen {
-            get {
-                return ResourceManager.GetString("AppBarLockScreen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die by Benjamin Sautermeister ähnelt.
         /// </summary>
         public static string ApplicationAuthor {
@@ -97,7 +79,7 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die This application is your quick and easy helper to relieve your brain. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Este aplicativo ajuda você a se lembrar de tudo de sua vida diária. ähnelt.
         /// </summary>
         public static string ApplicationDescription {
             get {
@@ -120,6 +102,42 @@ namespace PocketBrain.App.Resources {
         public static string ApplicationVersion {
             get {
                 return ResourceManager.GetString("ApplicationVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die delete ähnelt.
+        /// </summary>
+        public static string ContextMenuDelete {
+            get {
+                return ResourceManager.GetString("ContextMenuDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die pin to start ähnelt.
+        /// </summary>
+        public static string ContextMenuPinToStart {
+            get {
+                return ResourceManager.GetString("ContextMenuPinToStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die unpin from start ähnelt.
+        /// </summary>
+        public static string ContextMenuUnpinFromStart {
+            get {
+                return ResourceManager.GetString("ContextMenuUnpinFromStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Untitled ähnelt.
+        /// </summary>
+        public static string DefaultTitle {
+            get {
+                return ResourceManager.GetString("DefaultTitle", resourceCulture);
             }
         }
         
@@ -194,42 +212,6 @@ namespace PocketBrain.App.Resources {
         public static string FeedbackYesText {
             get {
                 return ResourceManager.GetString("FeedbackYesText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Loading... ähnelt.
-        /// </summary>
-        public static string InAppStoreLoading {
-            get {
-                return ResourceManager.GetString("InAppStoreLoading", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die There are currently no in-app purchases available. Please try again later. ähnelt.
-        /// </summary>
-        public static string InAppStoreNoProducts {
-            get {
-                return ResourceManager.GetString("InAppStoreNoProducts", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die purchased ähnelt.
-        /// </summary>
-        public static string InAppStorePurchased {
-            get {
-                return ResourceManager.GetString("InAppStorePurchased", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die In-App Store ähnelt.
-        /// </summary>
-        public static string InAppStoreTitle {
-            get {
-                return ResourceManager.GetString("InAppStoreTitle", resourceCulture);
             }
         }
         

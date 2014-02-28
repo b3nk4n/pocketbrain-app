@@ -57,7 +57,7 @@
                         <TextBlock Text="{Binding DateCreated, Converter={StaticResource shortTime}}" Style="{StaticResource PhoneTextSmallStyle}" Foreground="Gray" HorizontalAlignment="Left" />
                         <TextBlock Text="{Binding DateCreated, Converter={StaticResource shortDate}}" Style="{StaticResource PhoneTextSmallStyle}" Foreground="Gray" HorizontalAlignment="Right" />
                     </Grid>
-                    <toolkit:PhoneTextBox Hint="Untitled" Text="{Binding Title, Mode=TwoWay}" FontSize="32" Foreground="{StaticResource PhoneAccentBrush}" Style="{StaticResource CustomPhoneTextBoxStyle}" />
+                    <toolkit:PhoneTextBox Hint="{Binding Path=LocalizedResources.DefaultTitle, Source={StaticResource LocalizedStrings}}" Text="{Binding Title, Mode=TwoWay}" FontSize="32" Foreground="{StaticResource PhoneAccentBrush}" Style="{StaticResource CustomPhoneTextBoxStyle}" />
                     <Border Padding="0,4,0,0"
                             Background="{StaticResource PhoneAccentBrush}">
                         <toolkit:PhoneTextBox x:Name="Text" Text="{Binding Content, Mode=TwoWay}"

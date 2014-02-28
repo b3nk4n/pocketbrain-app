@@ -7,7 +7,9 @@ using PhoneKit.Framework.Core.Tile;
 using PhoneKit.Framework.Tile;
 using PocketBrain.App.Controls;
 using PocketBrain.App.Model;
+using PocketBrain.App.Resources;
 using System;
+using System.ComponentModel;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -17,29 +19,38 @@ namespace PocketBrain.App.ViewModel
     /// <summary>
     /// Represents the note view model.
     /// </summary>
-    public class NoteViewModel : ViewModelBase
+    public class NoteViewModel : INotifyPropertyChanged //: ViewModelBase 
     {
+        /// <summary>
+        /// The property changed event.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Notifies the binding system that the specified property was changed.
+        /// </summary>
+        /// <param name="propertyName">The name of the changed property.</param>
+        protected void NotifyPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = this.PropertyChanged;
+            if (handler != null)
+            {
+                var e = new PropertyChangedEventArgs(propertyName);
+                handler(this, e);
+            }
+        }
+
+
+
+
+
+
         #region Members
 
         /// <summary>
         /// The note model.
         /// </summary>
         private Note _note;
-
-        /// <summary>
-        /// The random number generator to generate unique file names.
-        /// </summary>
-        private Random _random = new Random();
-
-        /// <summary>
-        /// The wide tile path of the rendered image.
-        /// </summary>
-        private readonly string _tileWidePath;
-
-        /// <summary>
-        /// The normal tile path of the rendered image.
-        /// </summary>
-        private readonly string _tileNormalPath;
 
         /// <summary>
         /// The delete command.
@@ -94,7 +105,12 @@ namespace PocketBrain.App.ViewModel
 
                     // delte the item in the list if it was saved before
                     if (NoteListViewModel.Instance.Notes.Contains(this))
+                    {
                         NoteListViewModel.Instance.Notes.Remove(this);
+                    }
+
+                    // clear the current note
+                    NoteListViewModel.Instance.CurrentNote = null;
                 });
 
             _removeAttachementCommand = new DelegateCommand(() =>
@@ -152,10 +168,6 @@ namespace PocketBrain.App.ViewModel
                 {
                     return !CanPinToStart;
                 });
-
-            // init the paths for the rendred tile images
-            _tileWidePath = LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile_wide_{0}.jpeg", Id);
-            _tileNormalPath = LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile_normal_{0}.jpeg", Id);
         }
 
         #endregion
@@ -168,7 +180,7 @@ namespace PocketBrain.App.ViewModel
         public string GetUniqueLocalFilePathOfFile(string fileName)
         {
             FileInfo fileInfo = new FileInfo(fileName);
-            return string.Format(LiveTileHelper.SHARED_SHELL_CONTENT_PATH + "attachements/{0:000000}_{1}", _random.Next(0, 1000000), fileInfo.Name);
+            return string.Format(LiveTileHelper.SHARED_SHELL_CONTENT_PATH + "attachements/{0}_{1}", Id, fileInfo.Name);
         }
 
         /// <summary>
@@ -211,9 +223,9 @@ namespace PocketBrain.App.ViewModel
         private void PinOrUpdateTile()
         {
             var noteWideGfx = GraphicsHelper.Create(new NoteWideTile(DisplayedTitle, Content));
-            var noteWideUri = StorageHelper.SaveJpeg(_tileWidePath, noteWideGfx);
+            var noteWideUri = StorageHelper.SaveJpeg(TileWidePath, noteWideGfx);
             var noteNormalGfx = GraphicsHelper.Create(new NoteNormalTile(DisplayedTitle, Content));
-            var noteNormalUri = StorageHelper.SaveJpeg(_tileNormalPath, noteNormalGfx);
+            var noteNormalUri = StorageHelper.SaveJpeg(TileNormalPath, noteNormalGfx);
 
             if (HasAttachement)
             {
@@ -273,8 +285,8 @@ namespace PocketBrain.App.ViewModel
             // delete file in background task
             Task.Run(() =>
             {
-                StorageHelper.DeleteFile(_tileWidePath);
-                StorageHelper.DeleteFile(_tileWidePath);
+                StorageHelper.DeleteFile(TileNormalPath);
+                StorageHelper.DeleteFile(TileWidePath);
             });
         }
 
@@ -325,7 +337,7 @@ namespace PocketBrain.App.ViewModel
         {
             get
             {
-                return string.IsNullOrEmpty(_note.Title) ? "Untitled" : _note.Title;
+                return string.IsNullOrEmpty(_note.Title) ? AppResources.DefaultTitle : _note.Title;
             }
         }
 
@@ -398,6 +410,28 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return new Uri("/NotePage.xaml?id=" + _note.Id, UriKind.Relative);
+            }
+        }
+
+        /// <summary>
+        /// Gets the path of the wide tile.
+        /// </summary>
+        public string TileWidePath
+        {
+            get
+            {
+                return LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile_wide_{0}.jpeg", Id);
+            }
+        }
+
+        /// <summary>
+        /// Gets the path of the normal tile.
+        /// </summary>
+        public string TileNormalPath
+        {
+            get
+            {
+                return LiveTileHelper.SHARED_SHELL_CONTENT_PATH + string.Format("livetile_normal_{0}.jpeg", Id);
             }
         }
 

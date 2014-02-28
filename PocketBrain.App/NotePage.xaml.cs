@@ -6,6 +6,7 @@ using PhoneKit.Framework.Core.Storage;
 using System;
 using System.Windows.Input;
 using System.Windows.Media;
+using PhoneKit.Framework.Storage;
 
 namespace PocketBrain.App
 {
@@ -55,27 +56,32 @@ namespace PocketBrain.App
         {
             base.OnNavigatedTo(e);
 
+            // load state
+            if (PhoneStateHelper.ValueExists("currentNote"))
+            {
+                NoteListViewModel.Instance.CurrentNote = PhoneStateHelper.LoadValue<NoteViewModel>("currentNote");
+                PhoneStateHelper.DeleteValue("currentNote");
+            }
+
             if (NavigationContext.QueryString != null && 
                 NavigationContext.QueryString.ContainsKey("id"))
             {
-                _currentNote = NoteListViewModel.Instance.GetNoteById(NavigationContext.QueryString["id"]);
+                NoteListViewModel.Instance.CurrentNote = NoteListViewModel.Instance.GetNoteById(NavigationContext.QueryString["id"]);
             }
-            else if (_currentNote != null && !string.IsNullOrEmpty(_currentNote.Id))
+            else if (NoteListViewModel.Instance.CurrentNote != null && !string.IsNullOrEmpty(NoteListViewModel.Instance.CurrentNote.Id))
             {
-                _currentNote = NoteListViewModel.Instance.GetNoteById(_currentNote.Id);
+                NoteListViewModel.Instance.CurrentNote = NoteListViewModel.Instance.GetNoteById(NoteListViewModel.Instance.CurrentNote.Id);
             }
             else
             {
-                _currentNote = new NoteViewModel();
+                NoteListViewModel.Instance.CurrentNote = new NoteViewModel();
             }
 
             // set the current note as binding context
-            DataContext = _currentNote;
+            DataContext = NoteListViewModel.Instance.CurrentNote;
 
-            UpdateAttachedImageSource(_currentNote);
+            UpdateAttachedImageSource(NoteListViewModel.Instance.CurrentNote);
         }
-
-        private NoteViewModel _currentNote;
 
         /// <summary>
         /// Saves the live tile, when the user leaves the notes page.
@@ -85,24 +91,40 @@ namespace PocketBrain.App
         {
             base.OnNavigatedFrom(e);
 
+            // verify it was a BACK button or a WINDOWS button
+            if (e.Uri.OriginalString == "app://external/")
+            {
+                NoteListViewModel.Instance.UpdateLockScreen();
+            }
+
+            // ensure there is an active note
+            if (NoteListViewModel.Instance.CurrentNote == null)
+                return;
+
+            // save state
+            if (e.NavigationMode != NavigationMode.Back || e.Uri.OriginalString == "app://external/")
+            {
+                PhoneStateHelper.SaveValue("currentNote", NoteListViewModel.Instance.CurrentNote);
+            }
+
             // filter navigation to library/camera and delete button event
             if (e.NavigationMode == NavigationMode.New)
             {
                 // add the note to the list, if it wasn't already stored before
-                if (!NoteListViewModel.Instance.Notes.Contains(_currentNote))
-                    NoteListViewModel.Instance.Notes.Insert(0, _currentNote);
+                if (!NoteListViewModel.Instance.Notes.Contains(NoteListViewModel.Instance.CurrentNote))
+                    NoteListViewModel.Instance.Notes.Insert(0, NoteListViewModel.Instance.CurrentNote);
                 return;
             }
 
             // save the current note
-            if (_currentNote != null && _currentNote.IsValid)
+            if (NoteListViewModel.Instance.CurrentNote.IsValid)
             {
                 // add the note to the list, if it wasn't already stored before
-                if (!NoteListViewModel.Instance.Notes.Contains(_currentNote))
-                    NoteListViewModel.Instance.Notes.Insert(0, _currentNote);
+                if (!NoteListViewModel.Instance.Notes.Contains(NoteListViewModel.Instance.CurrentNote))
+                    NoteListViewModel.Instance.Notes.Insert(0, NoteListViewModel.Instance.CurrentNote);
 
-                _currentNote.UpdateTile();
-                _currentNote = null;
+                NoteListViewModel.Instance.CurrentNote.UpdateTile();
+                NoteListViewModel.Instance.CurrentNote = null;
             }
         }
 
@@ -123,6 +145,14 @@ namespace PocketBrain.App
                 BitmapImage img = new BitmapImage();
                 using (var imageStream = StorageHelper.GetFileStream(imagePath))
                 {
+                    // in case of a not successfully saved image
+                    if (imageStream == null)
+                    {
+                        AttachementImage.Source = null;
+                        AttachementImageContainer.Visibility = System.Windows.Visibility.Collapsed;
+                        return;
+                    }
+
                     img.SetSource(imageStream);
                     AttachementImage.Source = img;
                     AttachementImageContainer.Visibility = System.Windows.Visibility.Visible;

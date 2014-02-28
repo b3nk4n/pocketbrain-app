@@ -44,9 +44,9 @@ namespace PocketBrain.App.ViewModel
         private bool _isDataLoaded;
 
         /// <summary>
-        /// Indicates whether the current note is unsaved.
+        /// The current note.
         /// </summary>
-        private bool _isCurrentNoteUnsaved = false;
+        private NoteViewModel _currentNote;
 
         /// <summary>
         /// The persistent name of the next lockscreen image to toggle from A to B,
@@ -167,24 +167,35 @@ namespace PocketBrain.App.ViewModel
         /// </summary>
         public void UpdateLockScreen()
         {
-            if (!LockScreenHelper.HasAccess() || _notes.Count == 0)
+            if (!LockScreenHelper.HasAccess())
                 return;
 
             WriteableBitmap lockGfx;
+            Uri lockUri;
+            bool isLocal;
 
             // select the template to render
-            if (_notes.Count == 1)
-                lockGfx = GraphicsHelper.Create(new NoteLockScreen(_notes[0].DisplayedTitle, _notes[0].Content));
+            if (_notes.Count == 0)
+            {
+                lockUri = new Uri("/Assets/LockScreenPlaceholder.png", UriKind.Relative);
+                isLocal = false;
+            }
             else
-                lockGfx = GraphicsHelper.Create(new NoteLockScreenDual(_notes[0].DisplayedTitle, _notes[0].Content, _notes[1].DisplayedTitle, _notes[1].Content));
+            {
+                if (_notes.Count == 1)
+                    lockGfx = GraphicsHelper.Create(new NoteLockScreen(_notes[0].DisplayedTitle, _notes[0].Content));
+                else
+                    lockGfx = GraphicsHelper.Create(new NoteLockScreenDual(_notes[0].DisplayedTitle, _notes[0].Content, _notes[1].DisplayedTitle, _notes[1].Content));
 
-            // render lock image
-            var nextExtension = _nextLockScreenExtension.Value;
-            var lockUri = StorageHelper.SaveJpeg(string.Format("/locknote_{0}.jpg", nextExtension), lockGfx);
-            _nextLockScreenExtension.Value = (nextExtension == "A") ? "B" : "A";
+                // render lock image
+                var nextExtension = _nextLockScreenExtension.Value;
+                lockUri = StorageHelper.SaveJpeg(string.Format("/locknote_{0}.jpg", nextExtension), lockGfx);
+                isLocal = true;
+                _nextLockScreenExtension.Value = (nextExtension == "A") ? "B" : "A";
+            }
 
             // set lockscreen image
-            LockScreenHelper.SetLockScreenImage(lockUri, true);
+            LockScreenHelper.SetLockScreenImage(lockUri, isLocal);
         }
 
         #endregion
@@ -224,13 +235,17 @@ namespace PocketBrain.App.ViewModel
         }
 
         /// <summary>
-        /// Gets whether the current note is unsaved. This flag is used for newly created notes.
+        /// Gets the current active note.
         /// </summary>
-        public bool IsCurrentNoteUnsaved
+        public NoteViewModel CurrentNote
         {
             get
             {
-                return _isCurrentNoteUnsaved;
+                return _currentNote;
+            }
+            set
+            {
+                _currentNote = value;
             }
         }
 

@@ -7,7 +7,7 @@ using System.Resources;
 // Attributgruppe gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
 [assembly: AssemblyTitle("PocketBrain")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A modern note application.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("PocketBrain")]

@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en" />
+  <Languages xmlns="">
+    <Language code="de" />
+    <Language code="fr" />
+    <Language code="pt" />
+  </Languages>
   <App xmlns="" ProductID="{ab482544-c92e-478e-b1f5-f5c6661d7693}" Title="pocketBRAIN" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="PocketBrain.App author" Description="This application is your quick and easy helper to relieve your brain." Publisher="PocketBrain.App" PublisherID="{47e5a50a-aca2-469e-be1a-a4ac16765a5f}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
@@ -19,21 +24,14 @@
           <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
           <Count>0</Count>
           <IconImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</IconImageURI>
-          <Title>
-          </Title>
-          <Message>
-          </Message>
-          <BackgroundColor>
-          </BackgroundColor>
+          <Title></Title>
+          <Message></Message>
+          <BackgroundColor></BackgroundColor>
           <HasLarge>True</HasLarge>
-          <LargeContent1>
-          </LargeContent1>
-          <LargeContent2>
-          </LargeContent2>
-          <LargeContent3>
-          </LargeContent3>
-          <DeviceLockImageURI IsRelative="true" IsResource="false">
-          </DeviceLockImageURI>
+          <LargeContent1></LargeContent1>
+          <LargeContent2></LargeContent2>
+          <LargeContent3></LargeContent3>
+          <DeviceLockImageURI IsRelative="true" IsResource="false"></DeviceLockImageURI>
         </TemplateIconic>
       </PrimaryToken>
     </Tokens>

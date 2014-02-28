@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutTitle" xml:space="preserve">
-    <value>about</value>
+    <value>sobre</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationAuthor" xml:space="preserve">
-    <value>by Benjamin Sautermeister</value>
+    <value>por Benjamin Sautermeister</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationDescription" xml:space="preserve">
-    <value>Este aplicativo ajuda você a se lembrar de tudo de sua vida diária.</value>
+    <value>O mais rápido aplicativo de soneca com comandos de voz para o Windows Phone.</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
@@ -138,11 +138,11 @@
     <comment>General</comment>
   </data>
   <data name="ContextMenuDelete" xml:space="preserve">
-    <value>delete</value>
+    <value>eliminar</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuPinToStart" xml:space="preserve">
-    <value>pin to start</value>
+    <value>remover ao ecrã principal</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuUnpinFromStart" xml:space="preserve">
@@ -150,7 +150,7 @@
     <comment>ContextMenu</comment>
   </data>
   <data name="DefaultTitle" xml:space="preserve">
-    <value>Untitled</value>
+    <value>Sem titulo</value>
     <comment>General</comment>
   </data>
   <data name="FeedbackBodyText" xml:space="preserve">
@@ -171,61 +171,61 @@ Application Version: {4}
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackMessageText" xml:space="preserve">
-    <value>Sorry to hear you didn't want to rate pocketBRAIN.
+    <value>Lamento saber que você não quer avaliar o pocketBRAIN.
 
-Tell us about your experience or suggest how we can make it even better.</value>
+Conte-nos sobre a sua experiência ou sugira como podemos melhorá-lo.</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackNoText" xml:space="preserve">
-    <value>no thanks</value>
+    <value>não, obrigado</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackSubject" xml:space="preserve">
-    <value>pocketBRAIN Customer Feedback </value>
+    <value>pocketBRAIN Feedback</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackTitleText" xml:space="preserve">
-    <value>Can we make it better?</value>
+    <value>Como podemos melhorar?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackYesText" xml:space="preserve">
-    <value>give feedback</value>
+    <value>enviar feedback</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="MoreApps" xml:space="preserve">
-    <value>more apps</value>
+    <value>mais aplicativos</value>
     <comment>AboutPage</comment>
   </data>
   <data name="PrivacyInfo" xml:space="preserve">
-    <value>privacy info</value>
+    <value>informações de privacidade</value>
     <comment>About Page</comment>
   </data>
   <data name="RateAndReview" xml:space="preserve">
-    <value>rate and review</value>
+    <value>classificar e dar opinião</value>
     <comment>AboutPage</comment>
   </data>
   <data name="RatingMessage10Text" xml:space="preserve">
-    <value>You look to be getting a lot of use out of our application!
+    <value>Você parece estar gostando deste aplicativo!
 
-Why not give us a 5 star rating to show your appreciation?</value>
+Por que não avaliar com 5 estrelas para mostrar a sua importância?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingMessage5Text" xml:space="preserve">
-    <value>We'd love you to rate our app 5 stars
+    <value>Adoraríamos que você classificasse nosso aplicativo com 5 estrelas.
 
-Showing us some love on the store helps us to continue to work on the app and make things even better!</value>
+Mostre o seu interesse na loja e ajude-nos a continuar trabalhando para tornar este aplicativo ainda melhor!</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingNoText" xml:space="preserve">
-    <value>no thanks</value>
+    <value>não, obrigado</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingTitleText" xml:space="preserve">
-    <value>Enjoying pocketBRAIN?</value>
+    <value>Gostando do pocketBRAIN?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingYesText" xml:space="preserve">
-    <value>rate 5 stars</value>
+    <value>avaliar com 5 estrelas</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="ResourceFlowDirection" xml:space="preserve">
@@ -233,11 +233,11 @@ Showing us some love on the store helps us to continue to work on the app and ma
     <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
   </data>
   <data name="ResourceLanguage" xml:space="preserve">
-    <value>en-US</value>
+    <value>pt</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="SupportAndFeedback" xml:space="preserve">
-    <value>support and feedback</value>
+    <value>suporte e feedback</value>
     <comment>About Page</comment>
   </data>
 </root>
