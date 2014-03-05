@@ -304,34 +304,7 @@ namespace PocketBrain.App
             ResetSpeakExpandButtonsVisibility();
         }
 
-        private void MoveCursor(TextBox tbx, int offset)
-        {
-            if (tbx == null || tbx.SelectionLength != 0)
-                return;
-
-            int position = tbx.SelectionStart;
-            int newPosition = (int)MathHelper.Clamp((int)position + offset, (int)0, (int)tbx.Text.Length);
-
-            tbx.Select(newPosition, 0);
-        }
-
-        private void KeyboardExtensionLeftClick(object sender, System.Windows.RoutedEventArgs e)
-        {
-            if (_lastFocusedInputElement != null)
-                _lastFocusedInputElement.Focus();
-
-            MoveCursor(_lastFocusedInputElement as TextBox, -1);
-        }
-
-        private void KeyboardExtensionRightClick(object sender, System.Windows.RoutedEventArgs e)
-        {
-            if (_lastFocusedInputElement != null)
-                _lastFocusedInputElement.Focus();
-
-            MoveCursor(_lastFocusedInputElement as TextBox, 1);
-        }
-
-        #region Layout Manipulation - Keyboard extension
+        #region Keyboard extension
 
         // Constants
         private const double LandscapeShift = -259d;
@@ -402,6 +375,61 @@ namespace PocketBrain.App
             KeyboardExtensionContainer.Margin = new Thickness();
         }
 
+        /// <summary>
+        /// Moves the cursor of the given textbox.
+        /// </summary>
+        /// <param name="tbx">The textbox.</param>
+        /// <param name="offset">The offset to move.</param>
+        private void MoveCursor(TextBox tbx, int offset)
+        {
+            if (tbx == null || tbx.SelectionLength != 0)
+                return;
+
+            int position = tbx.SelectionStart;
+            int newPosition = (int)MathHelper.Clamp((int)position + offset, (int)0, (int)tbx.Text.Length);
+
+            tbx.Select(newPosition, 0);
+        }
+
+        /// <summary>
+        /// The left button event handerl.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The event args.</param>
+        private void KeyboardExtensionLeftClick(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (_lastFocusedInputElement != null)
+                _lastFocusedInputElement.Focus();
+
+            MoveCursor(_lastFocusedInputElement as TextBox, -1);
+        }
+
+        /// <summary>
+        /// The right button event handerl.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The event args.</param>
+        private void KeyboardExtensionRightClick(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (_lastFocusedInputElement != null)
+                _lastFocusedInputElement.Focus();
+
+            MoveCursor(_lastFocusedInputElement as TextBox, 1);
+        }
+
+        /// <summary>
+        /// Keeps the input control fouces when the background of the keybord extension was tapped.
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The event args.</param>
+        private void Polygon_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            if (_lastFocusedInputElement != null)
+                _lastFocusedInputElement.Focus();
+        }
+
         #endregion
+
+        
     }
 }

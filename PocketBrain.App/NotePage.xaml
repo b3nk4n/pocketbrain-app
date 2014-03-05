@@ -174,21 +174,20 @@
                 </Border>
             </StackPanel>
         </ScrollViewer>
-        <Border x:Name="KeyboardExtensionContainer" Background="{StaticResource PhoneAccentBrush}" VerticalAlignment="Top" HorizontalAlignment="Right">
+        <Border x:Name="KeyboardExtensionContainer" VerticalAlignment="Top" HorizontalAlignment="Right">
             <Border.RenderTransform>
                 <TranslateTransform x:Name="KeyboardExtensionTransfrom" Y="1000" />
             </Border.RenderTransform>
-            <Grid  Background="{StaticResource MyPhoneChromeBrush}" Margin="4,4,0,0" Height="92" Width="150">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Style="{StaticResource CustomButtonStyle}" Height="64" VerticalAlignment="Top" Click="KeyboardExtensionLeftClick">
-                    <Image Source="Assets/AppBar/appbar.back.png" Height="32"  />
-                </Button>
-                <Button Grid.Column="1" Style="{StaticResource CustomButtonStyle}" Height="64" VerticalAlignment="Top" Click="KeyboardExtensionRightClick">
-                    <Image Source="Assets/AppBar/appbar.next.png" Height="32" />
-                </Button>
+            <Grid Height="92" Width="140" >
+                <Polygon Width="140" Points="0,92 42,1 140,1 140,92" Fill="{StaticResource PhoneChromeBrush}" Tap="Polygon_Tap"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button Style="{StaticResource CustomKeyboardButtonStyle}" Height="84" Width="48" VerticalAlignment="Top" Click="KeyboardExtensionLeftClick">
+                        <Image Source="Assets/AppBar/appbar.back.cropped.png" Height="24"  />
+                    </Button>
+                    <Button Style="{StaticResource CustomKeyboardButtonStyle}" Height="84" Width="48" VerticalAlignment="Top" Click="KeyboardExtensionRightClick">
+                        <Image Source="Assets/AppBar/appbar.next.cropped.png" Height="24" />
+                    </Button>
+                </StackPanel>
             </Grid>
         </Border>
     </Grid>
