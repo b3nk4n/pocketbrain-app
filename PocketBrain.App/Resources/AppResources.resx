@@ -200,6 +200,14 @@ Tell us about your experience or suggest how we can make it even better.</value>
     <value>Information</value>
     <comment>MessageBox</comment>
   </data>
+  <data name="MessageBoxNoRecUI" xml:space="preserve">
+    <value>Voice recognizer is not activated. Plese refer to your phone settings.</value>
+    <comment>MessageBox</comment>
+  </data>
+  <data name="MessageBoxWarningTitle" xml:space="preserve">
+    <value>Warning</value>
+    <comment>MessageBox</comment>
+  </data>
   <data name="MoreApps" xml:space="preserve">
     <value>more apps</value>
     <comment>AboutPage</comment>

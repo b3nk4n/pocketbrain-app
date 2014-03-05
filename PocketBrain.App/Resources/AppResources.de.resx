@@ -200,6 +200,14 @@ Erzählen Sie uns von Ihren Erfahrungen oder teilen Sie uns Vorschläge mit, dam
     <value>Information</value>
     <comment>MessageBox</comment>
   </data>
+  <data name="MessageBoxNoRecUI" xml:space="preserve">
+    <value>Spracherkennung ist nicht aktiviert. Bitte beziehen Sie sich auf Ihre Telefoneinstellungen.</value>
+    <comment>MessageBox</comment>
+  </data>
+  <data name="MessageBoxWarningTitle" xml:space="preserve">
+    <value>Warnung</value>
+    <comment>MessageBox</comment>
+  </data>
   <data name="MoreApps" xml:space="preserve">
     <value>mehr apps</value>
     <comment>AboutPage</comment>

@@ -234,6 +234,24 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Voice recognizer is not activated. Plese refer to your phone settings. ähnelt.
+        /// </summary>
+        public static string MessageBoxNoRecUI {
+            get {
+                return ResourceManager.GetString("MessageBoxNoRecUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Warning ähnelt.
+        /// </summary>
+        public static string MessageBoxWarningTitle {
+            get {
+                return ResourceManager.GetString("MessageBoxWarningTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die more apps ähnelt.
         /// </summary>
         public static string MoreApps {

@@ -200,6 +200,14 @@ Conte-nos sobre a sua experiência ou sugira como podemos melhorá-lo.</value>
     <value>Informação</value>
     <comment>MessageBox</comment>
   </data>
+  <data name="MessageBoxNoRecUI" xml:space="preserve">
+    <value>Reconhecedor de voz não é ativado. Plese consulte as configurações do telefone.</value>
+    <comment>MessageBox</comment>
+  </data>
+  <data name="MessageBoxWarningTitle" xml:space="preserve">
+    <value>Aviso</value>
+    <comment>MessageBox</comment>
+  </data>
   <data name="MoreApps" xml:space="preserve">
     <value>mais aplicativos</value>
     <comment>AboutPage</comment>

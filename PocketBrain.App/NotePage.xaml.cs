@@ -52,6 +52,24 @@ namespace PocketBrain.App
                     ShareButton.Visibility = System.Windows.Visibility.Collapsed;
                     SharingContainer.Visibility = System.Windows.Visibility.Visible;
                 };
+
+            SpeakButton.Click += (s, e) =>
+            {
+                var note = DataContext as NoteViewModel;
+
+                if (note != null)
+                {
+                    if (!string.IsNullOrEmpty(note.Content))
+                    {
+                        SpeakButton.Visibility = System.Windows.Visibility.Collapsed;
+                        SpeakContainer.Visibility = System.Windows.Visibility.Visible;
+                    }
+                    else
+                    {
+                        note.SpeakReplaceTextCommand.Execute(null);
+                    }
+                }
+            };
         }
 
         /// <summary>
@@ -62,8 +80,9 @@ namespace PocketBrain.App
         {
             base.OnNavigatedTo(e);
 
-            // reset sharing buttons
-            ResetSharingButtonsVisibility();
+            // reset the exdenting buttons
+            ResetSharingExpandButtonsVisibility();
+            ResetSpeakExpandButtonsVisibility();
 
             // load state
             if (PhoneStateHelper.ValueExists("currentNote"))
@@ -187,12 +206,21 @@ namespace PocketBrain.App
         }
 
         /// <summary>
-        /// Resets the settings button visibility.
+        /// Resets the sharing expanding buttons visibility.
         /// </summary>
-        private void ResetSharingButtonsVisibility()
+        private void ResetSharingExpandButtonsVisibility()
         {
             ShareButton.Visibility = System.Windows.Visibility.Visible;
             SharingContainer.Visibility = System.Windows.Visibility.Collapsed;
+        }
+
+        /// <summary>
+        /// Resets the speak expanding buttons visibility.
+        /// </summary>
+        private void ResetSpeakExpandButtonsVisibility()
+        {
+            SpeakButton.Visibility = System.Windows.Visibility.Visible;
+            SpeakContainer.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         /// <summary>
@@ -219,6 +247,26 @@ namespace PocketBrain.App
                 // end 
                 e.Handled = true;
             }
+        }
+
+        /// <summary>
+        /// Resets the exander button state when any sharing button was clicked.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The event args.</param>
+        private void SharingButtonClicked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ResetSharingExpandButtonsVisibility();
+        }
+
+        /// <summary>
+        /// Resets the exander button state when any speak button was clicked.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The event args.</param>
+        private void SpeakButtonClicked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ResetSpeakExpandButtonsVisibility();
         }
     }
 }

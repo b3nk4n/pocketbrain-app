@@ -5,6 +5,7 @@ using PhoneKit.Framework.Core.MVVM;
 using PhoneKit.Framework.Core.Storage;
 using PhoneKit.Framework.Core.Tile;
 using PhoneKit.Framework.Tile;
+using PhoneKit.Framework.Voice;
 using PocketBrain.App.Controls;
 using PocketBrain.App.Model;
 using PocketBrain.App.Resources;
@@ -68,6 +69,21 @@ namespace PocketBrain.App.ViewModel
         /// The WhatsApp sharing command.
         /// </summary>
         private DelegateCommand _shareWhatsappCommand;
+
+        /// <summary>
+        /// The append text command.
+        /// </summary>
+        private DelegateCommand _speakPrependTextCommand;
+
+        /// <summary>
+        /// The append text command.
+        /// </summary>
+        private DelegateCommand _speakReplaceTextCommand;
+
+        /// <summary>
+        /// The append text command.
+        /// </summary>
+        private DelegateCommand _speakAppendTextCommand;
 
         /// <summary>
         /// The photo chooser task.
@@ -184,12 +200,75 @@ namespace PocketBrain.App.ViewModel
                 });
 
             _shareWhatsappCommand = new DelegateCommand(async () =>
-            {
-                if (MessageBox.Show(AppResources.MessageBoxInfoClipboard, AppResources.MessageBoxInfoTitle, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
-                    Clipboard.SetText(string.Format("{0}\r\r{1}", DisplayedTitle, Content));
-                    await Windows.System.Launcher.LaunchUriAsync(new Uri("whatsapp:"));
+                    if (MessageBox.Show(AppResources.MessageBoxInfoClipboard, AppResources.MessageBoxInfoTitle, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                    {
+                        Clipboard.SetText(string.Format("{0}\r\r{1}", DisplayedTitle, Content));
+                        await Windows.System.Launcher.LaunchUriAsync(new Uri("whatsapp:"));
+                    }
+                });
+
+            _speakPrependTextCommand = new DelegateCommand(async () =>
+                {
+                    if (Speech.Instance.HasRecognizerUI)
+                    {
+                        Speech.Instance.RecognizerUI.Settings.ReadoutEnabled = false;
+                        Speech.Instance.RecognizerUI.Settings.ShowConfirmation = false;
+                        var result = await Speech.Instance.RecognizerUI.RecognizeWithUIAsync();
+                        
+                        if (result.ResultStatus == Windows.Phone.Speech.Recognition.SpeechRecognitionUIStatus.Succeeded)
+                        {
+                            Content = string.Format("{0}\r{1}", result.RecognitionResult.Text, Content);
+                        }
+                    }
+                    else
+                    {
+                        // show no rec UI warning message
+                        MessageBox.Show(AppResources.MessageBoxNoRecUI, AppResources.MessageBoxWarningTitle, MessageBoxButton.OK);
+                    }
+
+                });
+
+            _speakReplaceTextCommand = new DelegateCommand(async () =>
+            {
+                if (Speech.Instance.HasRecognizerUI)
+                {
+                    Speech.Instance.RecognizerUI.Settings.ReadoutEnabled = false;
+                    Speech.Instance.RecognizerUI.Settings.ShowConfirmation = false;
+                    var result = await Speech.Instance.RecognizerUI.RecognizeWithUIAsync();
+
+                    if (result.ResultStatus == Windows.Phone.Speech.Recognition.SpeechRecognitionUIStatus.Succeeded)
+                    {
+                        Content = result.RecognitionResult.Text;
+                    }
                 }
+                else
+                {
+                    // show no rec UI warning message
+                    MessageBox.Show(AppResources.MessageBoxNoRecUI, AppResources.MessageBoxWarningTitle, MessageBoxButton.OK);
+                }
+
+            });
+
+            _speakAppendTextCommand = new DelegateCommand(async () =>
+            {
+                if (Speech.Instance.HasRecognizerUI)
+                {
+                    Speech.Instance.RecognizerUI.Settings.ReadoutEnabled = false;
+                    Speech.Instance.RecognizerUI.Settings.ShowConfirmation = false;
+                    var result = await Speech.Instance.RecognizerUI.RecognizeWithUIAsync();
+
+                    if (result.ResultStatus == Windows.Phone.Speech.Recognition.SpeechRecognitionUIStatus.Succeeded)
+                    {
+                        Content += "\r" + result.RecognitionResult.Text;
+                    }
+                }
+                else
+                {
+                    // show no rec UI warning message
+                    MessageBox.Show(AppResources.MessageBoxNoRecUI, AppResources.MessageBoxWarningTitle, MessageBoxButton.OK);
+                }
+
             });
         }
 
@@ -565,6 +644,39 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return _shareWhatsappCommand;
+            }
+        }
+
+        /// <summary>
+        /// Gets speak prepend text command.
+        /// </summary>
+        public ICommand SpeakPrependTextCommand
+        {
+            get
+            {
+                return _speakPrependTextCommand;
+            }
+        }
+
+        /// <summary>
+        /// Gets speak append text command.
+        /// </summary>
+        public ICommand SpeakReplaceTextCommand
+        {
+            get
+            {
+                return _speakReplaceTextCommand;
+            }
+        }
+
+        /// <summary>
+        /// Gets speak append text command.
+        /// </summary>
+        public ICommand SpeakAppendTextCommand
+        {
+            get
+            {
+                return _speakAppendTextCommand;
             }
         }
 

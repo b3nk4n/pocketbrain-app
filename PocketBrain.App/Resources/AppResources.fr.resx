@@ -198,6 +198,14 @@ Application Version: {4}
     <value>Information</value>
     <comment>MessageBox</comment>
   </data>
+  <data name="MessageBoxNoRecUI" xml:space="preserve">
+    <value>Reconnaissance vocale n'est pas activée. S'il vous plaît se référer aux paramètres de votre téléphone.</value>
+    <comment>MessageBox</comment>
+  </data>
+  <data name="MessageBoxWarningTitle" xml:space="preserve">
+    <value>Alerte</value>
+    <comment>MessageBox</comment>
+  </data>
   <data name="MoreApps" xml:space="preserve">
     <value>plus d'applications</value>
     <comment>AboutPage</comment>

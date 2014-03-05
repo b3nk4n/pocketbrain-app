@@ -84,9 +84,32 @@
 
                     <Border Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
                         <StackPanel>
+                            <Button x:Name="SpeakButton"
+                                Style="{StaticResource CustomButtonStyle}">
+                                <Image Source="Assets/AppBar/appbar.microphone.png" Height="52" />
+                            </Button>
+                            <Grid x:Name="SpeakContainer" Visibility="Collapsed">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Command="{Binding SpeakPrependTextCommand}"
+                                    Style="{StaticResource CustomButtonStyle}" Click="SpeakButtonClicked">
+                                    <Image Source="Assets/AppBar/appbar.prepend.png" Height="52" />
+                                </Button>
+                                <Button Grid.Column="1" Command="{Binding SpeakReplaceTextCommand}"
+                                    Style="{StaticResource CustomButtonStyle}" Click="SpeakButtonClicked">
+                                    <Image Source="Assets/AppBar/appbar.replace.png" Height="52" />
+                                </Button>
+                                <Button Grid.Column="2" Command="{Binding SpeakAppendTextCommand}"
+                                    Style="{StaticResource CustomButtonStyle}" Click="SpeakButtonClicked">
+                                    <Image Source="Assets/AppBar/appbar.append.png" Height="52" />
+                                </Button>
+                            </Grid>
                             <Button x:Name="ImageFromAblumButton" Command="{Binding AddAttachementCommand}"
-                        Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}, ConverterParameter=!}"
-                        Style="{StaticResource CustomButtonStyle}">
+                                    Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}, ConverterParameter=!}"
+                                    Style="{StaticResource CustomButtonStyle}">
                                 <Image Source="Assets/AppBar/appbar.paperclip.png" Height="52" />
                             </Button>
                             <Button x:Name="RemoveAttachementButton" Command="{Binding RemoveAttachementCommand}"
@@ -114,16 +137,16 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Button x:Name="ShareEmailButton" Grid.Column="0" Command="{Binding ShareEmailCommand}"
-                                    Style="{StaticResource CustomButtonStyle}">
+                                <Button Grid.Column="0" Command="{Binding ShareEmailCommand}"
+                                    Style="{StaticResource CustomButtonStyle}" Click="SharingButtonClicked">
                                     <Image Source="Assets/AppBar/appbar.email.png" Height="52" />
                                 </Button>
-                                <Button x:Name="ShareMessageButton" Grid.Column="1" Command="{Binding ShareMessageCommand}"
-                                    Style="{StaticResource CustomButtonStyle}">
+                                <Button Grid.Column="1" Command="{Binding ShareMessageCommand}"
+                                    Style="{StaticResource CustomButtonStyle}" Click="SharingButtonClicked">
                                     <Image Source="Assets/AppBar/appbar.message.png" Height="52" />
                                 </Button>
-                                <Button x:Name="ShareWhatsappButton" Grid.Column="2" Command="{Binding ShareWhatsappCommand}"
-                                    Style="{StaticResource CustomButtonStyle}">
+                                <Button Grid.Column="2" Command="{Binding ShareWhatsappCommand}"
+                                    Style="{StaticResource CustomButtonStyle}" Click="SharingButtonClicked">
                                     <Image Source="Assets/AppBar/appbar.whatsapp.png" Height="52" />
                                 </Button>
                             </Grid>
