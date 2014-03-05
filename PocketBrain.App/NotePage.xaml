@@ -104,6 +104,24 @@
                                 Style="{StaticResource CustomButtonStyle}">
                                 <Image Source="Assets/AppBar/appbar.pin.remove.png" Height="52" />
                             </Button>
+                            <Button x:Name="ShareButton"
+                                Style="{StaticResource CustomButtonStyle}">
+                                <Image Source="Assets/AppBar/appbar.share.png" Height="52" />
+                            </Button>
+                            <Grid x:Name="SharingContainer" Visibility="Collapsed">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Button x:Name="ShareEmailButton" Grid.Column="0" Command="{Binding ShareEmailCommand}"
+                                    Style="{StaticResource CustomButtonStyle}">
+                                    <Image Source="Assets/AppBar/appbar.email.png" Height="52" />
+                                </Button>
+                                <Button x:Name="ShareMessageButton" Grid.Column="1" Command="{Binding ShareMessageCommand}"
+                                    Style="{StaticResource CustomButtonStyle}">
+                                    <Image Source="Assets/AppBar/appbar.message.png" Height="52" />
+                                </Button>
+                            </Grid>
                             <Button x:Name="DeleteNoteButton" Command="{Binding DeleteCommand}"
                                 Style="{StaticResource CustomButtonStyle}">
                                 <Image Source="Assets/AppBar/appbar.delete.png" Height="52" />

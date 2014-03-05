@@ -178,12 +178,15 @@
     <Content Include="Assets\AppBar\appbar.add.png" />
     <Content Include="Assets\AppBar\appbar.delete.png" />
     <Content Include="Assets\AppBar\appbar.edit.png" />
+    <Content Include="Assets\AppBar\appbar.email.png" />
     <Content Include="Assets\AppBar\appbar.information.png" />
     <Content Include="Assets\AppBar\appbar.lock.png" />
+    <Content Include="Assets\AppBar\appbar.message.png" />
     <Content Include="Assets\AppBar\appbar.paperclip.png" />
     <Content Include="Assets\AppBar\appbar.paperclip.remove.png" />
     <Content Include="Assets\AppBar\appbar.pin.png" />
     <Content Include="Assets\AppBar\appbar.pin.remove.png" />
+    <Content Include="Assets\AppBar\appbar.share.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

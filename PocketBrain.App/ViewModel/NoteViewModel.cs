@@ -54,6 +54,16 @@ namespace PocketBrain.App.ViewModel
         private DelegateCommand _unpinFromStartCommand;
 
         /// <summary>
+        /// The email sharing command.
+        /// </summary>
+        private DelegateCommand _shareEmailCommand;
+
+        /// <summary>
+        /// The message sharing command.
+        /// </summary>
+        private DelegateCommand _shareMessageCommand;
+
+        /// <summary>
         /// The photo chooser task.
         /// </summary>
         /// <remarks>Must be defined at class level to work properly in tombstoning.</remarks>
@@ -151,6 +161,21 @@ namespace PocketBrain.App.ViewModel
                     SetAttachement(filePath);
                 }
             };
+
+            _shareEmailCommand = new DelegateCommand(() =>
+                {
+                    EmailComposeTask emailTask = new EmailComposeTask();
+                    emailTask.Subject = _note.Title;
+                    emailTask.Body = _note.Content;
+                    emailTask.Show();
+                });
+
+            _shareMessageCommand = new DelegateCommand(() =>
+                {
+                    SmsComposeTask smsTask = new SmsComposeTask();
+                    smsTask.Body = string.Format("{0}\r\r{1}", _note.Title, _note.Content);
+                    smsTask.Show();
+                });
         }
 
         #endregion
@@ -492,6 +517,28 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return _unpinFromStartCommand;
+            }
+        }
+
+        /// <summary>
+        /// Gets the share email command.
+        /// </summary>
+        public ICommand ShareEmailCommand
+        {
+            get
+            {
+                return _shareEmailCommand;
+            }
+        }
+
+        /// <summary>
+        /// Gets the share message command.
+        /// </summary>
+        public ICommand ShareMessageCommand
+        {
+            get
+            {
+                return _shareMessageCommand;
             }
         }
 

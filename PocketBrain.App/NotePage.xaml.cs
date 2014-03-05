@@ -46,6 +46,12 @@ namespace PocketBrain.App
                 {
                     ClearAttachedImageSource();
                 };
+
+            ShareButton.Click += (s, e) =>
+                {
+                    ShareButton.Visibility = System.Windows.Visibility.Collapsed;
+                    SharingContainer.Visibility = System.Windows.Visibility.Visible;
+                };
         }
 
         /// <summary>
@@ -55,6 +61,9 @@ namespace PocketBrain.App
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
+            // reset sharing buttons
+            ResetSharingButtonsVisibility();
 
             // load state
             if (PhoneStateHelper.ValueExists("currentNote"))
@@ -175,6 +184,15 @@ namespace PocketBrain.App
         private void ClearAttachedImageSource()
         {
             AttachementImage.Source = null;
+        }
+
+        /// <summary>
+        /// Resets the settings button visibility.
+        /// </summary>
+        private void ResetSharingButtonsVisibility()
+        {
+            ShareButton.Visibility = System.Windows.Visibility.Visible;
+            SharingContainer.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         /// <summary>
