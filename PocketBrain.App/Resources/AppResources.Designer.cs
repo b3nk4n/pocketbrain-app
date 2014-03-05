@@ -79,7 +79,7 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Este aplicativo ajuda você a se lembrar de tudo de sua vida diária. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die This application helps you to remember all your every day stuff. With no frills. ähnelt.
         /// </summary>
         public static string ApplicationDescription {
             get {
@@ -212,6 +212,24 @@ namespace PocketBrain.App.Resources {
         public static string FeedbackYesText {
             get {
                 return ResourceManager.GetString("FeedbackYesText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The content is copied to the clipboard. ähnelt.
+        /// </summary>
+        public static string MessageBoxInfoClipboard {
+            get {
+                return ResourceManager.GetString("MessageBoxInfoClipboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Information ähnelt.
+        /// </summary>
+        public static string MessageBoxInfoTitle {
+            get {
+                return ResourceManager.GetString("MessageBoxInfoTitle", resourceCulture);
             }
         }
         

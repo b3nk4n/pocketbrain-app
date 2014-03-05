@@ -187,6 +187,7 @@
     <Content Include="Assets\AppBar\appbar.pin.png" />
     <Content Include="Assets\AppBar\appbar.pin.remove.png" />
     <Content Include="Assets\AppBar\appbar.share.png" />
+    <Content Include="Assets\AppBar\appbar.whatsapp.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

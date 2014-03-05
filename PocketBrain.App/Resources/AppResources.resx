@@ -126,7 +126,7 @@
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationDescription" xml:space="preserve">
-    <value>Este aplicativo ajuda você a se lembrar de tudo de sua vida diária.</value>
+    <value>This application helps you to remember all your every day stuff. With no frills.</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
@@ -191,6 +191,14 @@ Tell us about your experience or suggest how we can make it even better.</value>
   <data name="FeedbackYesText" xml:space="preserve">
     <value>give feedback</value>
     <comment>FeedbackDialogControl</comment>
+  </data>
+  <data name="MessageBoxInfoClipboard" xml:space="preserve">
+    <value>The content is copied to the clipboard.</value>
+    <comment>MessageBox</comment>
+  </data>
+  <data name="MessageBoxInfoTitle" xml:space="preserve">
+    <value>Information</value>
+    <comment>MessageBox</comment>
   </data>
   <data name="MoreApps" xml:space="preserve">
     <value>more apps</value>

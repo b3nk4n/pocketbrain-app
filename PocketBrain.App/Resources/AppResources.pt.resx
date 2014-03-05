@@ -126,7 +126,7 @@
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationDescription" xml:space="preserve">
-    <value>O mais rápido aplicativo de soneca com comandos de voz para o Windows Phone.</value>
+    <value>Este aplicativo ajuda você a se lembrar de tudo o seu cada dia coisas. Sem frescuras.</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
@@ -191,6 +191,14 @@ Conte-nos sobre a sua experiência ou sugira como podemos melhorá-lo.</value>
   <data name="FeedbackYesText" xml:space="preserve">
     <value>enviar feedback</value>
     <comment>FeedbackDialogControl</comment>
+  </data>
+  <data name="MessageBoxInfoClipboard" xml:space="preserve">
+    <value>O conteúdo é copiado para a área de transferência.</value>
+    <comment>MessageBox</comment>
+  </data>
+  <data name="MessageBoxInfoTitle" xml:space="preserve">
+    <value>Informação</value>
+    <comment>MessageBox</comment>
   </data>
   <data name="MoreApps" xml:space="preserve">
     <value>mais aplicativos</value>

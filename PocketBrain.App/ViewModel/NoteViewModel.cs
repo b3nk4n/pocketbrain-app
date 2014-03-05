@@ -12,6 +12,7 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace PocketBrain.App.ViewModel
@@ -62,6 +63,11 @@ namespace PocketBrain.App.ViewModel
         /// The message sharing command.
         /// </summary>
         private DelegateCommand _shareMessageCommand;
+
+        /// <summary>
+        /// The WhatsApp sharing command.
+        /// </summary>
+        private DelegateCommand _shareWhatsappCommand;
 
         /// <summary>
         /// The photo chooser task.
@@ -165,17 +171,26 @@ namespace PocketBrain.App.ViewModel
             _shareEmailCommand = new DelegateCommand(() =>
                 {
                     EmailComposeTask emailTask = new EmailComposeTask();
-                    emailTask.Subject = _note.Title;
-                    emailTask.Body = _note.Content;
+                    emailTask.Subject = DisplayedTitle;
+                    emailTask.Body = Content;
                     emailTask.Show();
                 });
 
             _shareMessageCommand = new DelegateCommand(() =>
                 {
                     SmsComposeTask smsTask = new SmsComposeTask();
-                    smsTask.Body = string.Format("{0}\r\r{1}", _note.Title, _note.Content);
+                    smsTask.Body = string.Format("{0}\r\r{1}", DisplayedTitle, Content);
                     smsTask.Show();
                 });
+
+            _shareWhatsappCommand = new DelegateCommand(async () =>
+            {
+                if (MessageBox.Show(AppResources.MessageBoxInfoClipboard, AppResources.MessageBoxInfoTitle, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    Clipboard.SetText(string.Format("{0}\r\r{1}", DisplayedTitle, Content));
+                    await Windows.System.Launcher.LaunchUriAsync(new Uri("whatsapp:"));
+                }
+            });
         }
 
         #endregion
@@ -539,6 +554,17 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return _shareMessageCommand;
+            }
+        }
+
+        /// <summary>
+        /// Gets the share Whatsapp command.
+        /// </summary>
+        public ICommand ShareWhatsappCommand
+        {
+            get
+            {
+                return _shareWhatsappCommand;
             }
         }
 

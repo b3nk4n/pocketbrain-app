@@ -61,7 +61,7 @@
                     <Border Padding="0,4,0,0"
                             Background="{StaticResource PhoneAccentBrush}">
                         <toolkit:PhoneTextBox x:Name="Text" Text="{Binding Content, Mode=TwoWay}"
-                                 Height="Auto" MinHeight="420" TextWrapping="Wrap" AcceptsReturn="True"
+                                 Height="Auto" MinHeight="450" TextWrapping="Wrap" AcceptsReturn="True"
                                  Style="{StaticResource CustomPhoneTextBoxStyle}"/>
                     </Border>
                     <Grid Height="480" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}">
@@ -112,6 +112,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Button x:Name="ShareEmailButton" Grid.Column="0" Command="{Binding ShareEmailCommand}"
                                     Style="{StaticResource CustomButtonStyle}">
@@ -120,6 +121,10 @@
                                 <Button x:Name="ShareMessageButton" Grid.Column="1" Command="{Binding ShareMessageCommand}"
                                     Style="{StaticResource CustomButtonStyle}">
                                     <Image Source="Assets/AppBar/appbar.message.png" Height="52" />
+                                </Button>
+                                <Button x:Name="ShareWhatsappButton" Grid.Column="2" Command="{Binding ShareWhatsappCommand}"
+                                    Style="{StaticResource CustomButtonStyle}">
+                                    <Image Source="Assets/AppBar/appbar.whatsapp.png" Height="52" />
                                 </Button>
                             </Grid>
                             <Button x:Name="DeleteNoteButton" Command="{Binding DeleteCommand}"
