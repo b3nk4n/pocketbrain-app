@@ -62,7 +62,9 @@
         		</Setter.Value>
         	</Setter>
         </Style>
+
         
+
         <Style x:Key="CustomPhoneTextBoxStyle" TargetType="toolkit:PhoneTextBox">
         	<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
         	<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>

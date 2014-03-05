@@ -7,6 +7,10 @@ using System;
 using System.Windows.Input;
 using System.Windows.Media;
 using PhoneKit.Framework.Storage;
+using System.Windows.Controls;
+using Microsoft.Xna.Framework;
+using System.Windows;
+using System.Windows.Data;
 
 namespace PocketBrain.App
 {
@@ -16,6 +20,11 @@ namespace PocketBrain.App
     public partial class NotePage : PhoneApplicationPage
     {
         /// <summary>
+        /// The last focues element to refocus with the keyboard extensions.
+        /// </summary>
+        private Control _lastFocusedInputElement;
+
+        /// <summary>
         /// Creates the note page instance.
         /// </summary>
         public NotePage()
@@ -24,6 +33,8 @@ namespace PocketBrain.App
 
             Loaded += (s, e) =>
                 {
+                    BindToKeyboardFocus();
+
                     if (ContentTextBox.Text.Length == 0)
                     {
                         // select the text end of the notes content text field
@@ -35,12 +46,26 @@ namespace PocketBrain.App
             TitleTextBox.GotFocus += (s, e) =>
                 {
                     ResetSpeakExpandButtonsVisibility();
+                    ShowKeyboardExtension.Begin();
+                };
+
+            TitleTextBox.LostFocus += (s, e) =>
+                {
+                    _lastFocusedInputElement = s as Control;
+                    HideKeyboardExtension.Begin();
                 };
 
             ContentTextBox.GotFocus += (s, e) =>
-            {
-                ResetSpeakExpandButtonsVisibility();
-            };
+                {
+                    ResetSpeakExpandButtonsVisibility();
+                    ShowKeyboardExtension.Begin();
+                };
+
+            ContentTextBox.LostFocus += (s, e) =>
+                {
+                    _lastFocusedInputElement = s as Control;
+                    HideKeyboardExtension.Begin();
+                };
 
             DeleteNoteButton.Click += (s, e) =>
                 {
@@ -278,5 +303,105 @@ namespace PocketBrain.App
         {
             ResetSpeakExpandButtonsVisibility();
         }
+
+        private void MoveCursor(TextBox tbx, int offset)
+        {
+            if (tbx == null || tbx.SelectionLength != 0)
+                return;
+
+            int position = tbx.SelectionStart;
+            int newPosition = (int)MathHelper.Clamp((int)position + offset, (int)0, (int)tbx.Text.Length);
+
+            tbx.Select(newPosition, 0);
+        }
+
+        private void KeyboardExtensionLeftClick(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (_lastFocusedInputElement != null)
+                _lastFocusedInputElement.Focus();
+
+            MoveCursor(_lastFocusedInputElement as TextBox, -1);
+        }
+
+        private void KeyboardExtensionRightClick(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (_lastFocusedInputElement != null)
+                _lastFocusedInputElement.Focus();
+
+            MoveCursor(_lastFocusedInputElement as TextBox, 1);
+        }
+
+        #region Layout Manipulation - Keyboard extension
+
+        // Constants
+        private const double LandscapeShift = -259d;
+        private const double LandscapeShiftWithBar = -328d;
+        private const double Epsilon = 0.00000001d;
+        private const double PortraitShift = -339d;
+        private const double PortraitShiftWithBar = -408d;
+
+        /// <summary>
+        /// The translation Y dependency property.
+        /// </summary>
+        public static readonly DependencyProperty TranslateYProperty = DependencyProperty.Register("TranslateY", typeof(double), typeof(NotePage), new PropertyMetadata(0d, OnRenderYPropertyChanged));
+
+        /// <summary>
+        /// The on render changed event to update the margin.
+        /// </summary>
+        /// <param name="d">The dependency object.</param>
+        /// <param name="e">The event args.</param>
+        private static void OnRenderYPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ((NotePage)d).UpdateTopMargin((double)e.NewValue);
+        }
+
+        /// <summary>
+        /// Gets or sets the Y translation.
+        /// </summary>
+        public double TranslateY
+        {
+            get { return (double)GetValue(TranslateYProperty); }
+            set { SetValue(TranslateYProperty, value); }
+        }
+
+        /// <summary>
+        /// Binds to the keyboard focus.
+        /// </summary>
+        private void BindToKeyboardFocus()
+        {
+            PhoneApplicationFrame frame = Application.Current.RootVisual as PhoneApplicationFrame;
+            if (frame != null)
+            {
+                var group = frame.RenderTransform as TransformGroup;
+                if (group != null)
+                {
+                    var translate = group.Children[0] as TranslateTransform;
+                    var translateYBinding = new Binding("Y");
+                    translateYBinding.Source = translate;
+                    SetBinding(TranslateYProperty, translateYBinding);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Updtes the top margin.
+        /// </summary>
+        /// <param name="translateY">The y translation.</param>
+        private void UpdateTopMargin(double translateY)
+        {
+            KeyboardExtensionContainer.Margin = new Thickness(0, -translateY, 0, 0);
+        }
+
+        /// <summary>
+        /// Resets the margin when the textbox is unfocused.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The event args.</param>
+        private void TextBoxLostFocus(object sender, RoutedEventArgs e)
+        {
+            KeyboardExtensionContainer.Margin = new Thickness();
+        }
+
+        #endregion
     }
 }

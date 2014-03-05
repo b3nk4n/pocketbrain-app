@@ -178,6 +178,7 @@
     <Content Include="Assets\AppBar\appbar.add.png" />
     <Content Include="Assets\AppBar\appbar.append.cropped.png" />
     <Content Include="Assets\AppBar\appbar.append.png" />
+    <Content Include="Assets\AppBar\appbar.back.png" />
     <Content Include="Assets\AppBar\appbar.delete.png" />
     <Content Include="Assets\AppBar\appbar.edit.png" />
     <Content Include="Assets\AppBar\appbar.email.png" />
@@ -186,6 +187,7 @@
     <Content Include="Assets\AppBar\appbar.message.png" />
     <Content Include="Assets\AppBar\appbar.microphone.cropped.png" />
     <Content Include="Assets\AppBar\appbar.microphone.png" />
+    <Content Include="Assets\AppBar\appbar.next.png" />
     <Content Include="Assets\AppBar\appbar.paperclip.png" />
     <Content Include="Assets\AppBar\appbar.paperclip.remove.png" />
     <Content Include="Assets\AppBar\appbar.pin.png" />
