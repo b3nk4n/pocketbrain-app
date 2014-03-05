@@ -210,66 +210,75 @@ namespace PocketBrain.App.ViewModel
 
             _speakPrependTextCommand = new DelegateCommand(async () =>
                 {
-                    if (Speech.Instance.HasRecognizerUI)
+                    try
                     {
-                        Speech.Instance.RecognizerUI.Settings.ReadoutEnabled = false;
-                        Speech.Instance.RecognizerUI.Settings.ShowConfirmation = false;
-                        var result = await Speech.Instance.RecognizerUI.RecognizeWithUIAsync();
-                        
-                        if (result.ResultStatus == Windows.Phone.Speech.Recognition.SpeechRecognitionUIStatus.Succeeded)
+                        if (Speech.Instance.HasRecognizerUI)
                         {
-                            Content = string.Format("{0}\r{1}", result.RecognitionResult.Text, Content);
+                            Speech.Instance.RecognizerUI.Settings.ReadoutEnabled = false;
+                            Speech.Instance.RecognizerUI.Settings.ShowConfirmation = false;
+                            var result = await Speech.Instance.RecognizerUI.RecognizeWithUIAsync();
+                        
+                            if (result.ResultStatus == Windows.Phone.Speech.Recognition.SpeechRecognitionUIStatus.Succeeded)
+                            {
+                                Content = string.Format("{0}\r{1}", result.RecognitionResult.Text, Content);
+                            }
+                        }
+                        else
+                        {
+                            // show no rec UI warning message
+                            MessageBox.Show(AppResources.MessageBoxNoRecUI, AppResources.MessageBoxWarningTitle, MessageBoxButton.OK);
                         }
                     }
-                    else
-                    {
-                        // show no rec UI warning message
-                        MessageBox.Show(AppResources.MessageBoxNoRecUI, AppResources.MessageBoxWarningTitle, MessageBoxButton.OK);
-                    }
-
+                    catch (Exception) { }
                 });
 
             _speakReplaceTextCommand = new DelegateCommand(async () =>
-            {
-                if (Speech.Instance.HasRecognizerUI)
                 {
-                    Speech.Instance.RecognizerUI.Settings.ReadoutEnabled = false;
-                    Speech.Instance.RecognizerUI.Settings.ShowConfirmation = false;
-                    var result = await Speech.Instance.RecognizerUI.RecognizeWithUIAsync();
-
-                    if (result.ResultStatus == Windows.Phone.Speech.Recognition.SpeechRecognitionUIStatus.Succeeded)
+                    try
                     {
-                        Content = result.RecognitionResult.Text;
-                    }
-                }
-                else
-                {
-                    // show no rec UI warning message
-                    MessageBox.Show(AppResources.MessageBoxNoRecUI, AppResources.MessageBoxWarningTitle, MessageBoxButton.OK);
-                }
+                        if (Speech.Instance.HasRecognizerUI)
+                        {
+                            Speech.Instance.RecognizerUI.Settings.ReadoutEnabled = false;
+                            Speech.Instance.RecognizerUI.Settings.ShowConfirmation = false;
+                            var result = await Speech.Instance.RecognizerUI.RecognizeWithUIAsync();
 
-            });
+                            if (result.ResultStatus == Windows.Phone.Speech.Recognition.SpeechRecognitionUIStatus.Succeeded)
+                            {
+                                Content = result.RecognitionResult.Text;
+                            }
+                        }
+                        else
+                        {
+                            // show no rec UI warning message
+                            MessageBox.Show(AppResources.MessageBoxNoRecUI, AppResources.MessageBoxWarningTitle, MessageBoxButton.OK);
+                        }
+                    }
+                    catch (Exception) { }
+                });
 
             _speakAppendTextCommand = new DelegateCommand(async () =>
-            {
-                if (Speech.Instance.HasRecognizerUI)
                 {
-                    Speech.Instance.RecognizerUI.Settings.ReadoutEnabled = false;
-                    Speech.Instance.RecognizerUI.Settings.ShowConfirmation = false;
-                    var result = await Speech.Instance.RecognizerUI.RecognizeWithUIAsync();
+                    try
+                    { 
+                        if (Speech.Instance.HasRecognizerUI)
+                        {
+                            Speech.Instance.RecognizerUI.Settings.ReadoutEnabled = false;
+                            Speech.Instance.RecognizerUI.Settings.ShowConfirmation = false;
+                            var result = await Speech.Instance.RecognizerUI.RecognizeWithUIAsync();
 
-                    if (result.ResultStatus == Windows.Phone.Speech.Recognition.SpeechRecognitionUIStatus.Succeeded)
-                    {
-                        Content += "\r" + result.RecognitionResult.Text;
+                            if (result.ResultStatus == Windows.Phone.Speech.Recognition.SpeechRecognitionUIStatus.Succeeded)
+                            {
+                                Content += "\r" + result.RecognitionResult.Text;
+                            }
+                        }
+                        else
+                        {
+                            // show no rec UI warning message
+                            MessageBox.Show(AppResources.MessageBoxNoRecUI, AppResources.MessageBoxWarningTitle, MessageBoxButton.OK);
+                        }
                     }
-                }
-                else
-                {
-                    // show no rec UI warning message
-                    MessageBox.Show(AppResources.MessageBoxNoRecUI, AppResources.MessageBoxWarningTitle, MessageBoxButton.OK);
-                }
-
-            });
+                    catch (Exception) { }
+                });
         }
 
         #endregion

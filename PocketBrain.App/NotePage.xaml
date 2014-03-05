@@ -57,12 +57,39 @@
                         <TextBlock Text="{Binding DateCreated, Converter={StaticResource shortTime}}" Style="{StaticResource PhoneTextSmallStyle}" Foreground="Gray" HorizontalAlignment="Left" />
                         <TextBlock Text="{Binding DateCreated, Converter={StaticResource shortDate}}" Style="{StaticResource PhoneTextSmallStyle}" Foreground="Gray" HorizontalAlignment="Right" />
                     </Grid>
-                    <toolkit:PhoneTextBox Hint="{Binding Path=LocalizedResources.DefaultTitle, Source={StaticResource LocalizedStrings}}" Text="{Binding Title, Mode=TwoWay}" FontSize="32" Foreground="{StaticResource PhoneAccentBrush}" Style="{StaticResource CustomPhoneTextBoxStyle}" />
+                    <toolkit:PhoneTextBox x:Name="TitleTextBox"  Hint="{Binding Path=LocalizedResources.DefaultTitle, Source={StaticResource LocalizedStrings}}" Text="{Binding Title, Mode=TwoWay}" FontSize="32" Foreground="{StaticResource PhoneAccentBrush}" Style="{StaticResource CustomPhoneTextBoxStyle}" />
                     <Border Padding="0,4,0,0"
                             Background="{StaticResource PhoneAccentBrush}">
-                        <toolkit:PhoneTextBox x:Name="Text" Text="{Binding Content, Mode=TwoWay}"
+                        <Grid Background="{StaticResource MyPhoneChromeBrush}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="58" />
+                            </Grid.ColumnDefinitions>
+                            <toolkit:PhoneTextBox x:Name="ContentTextBox" Grid.Column="0" Text="{Binding Content, Mode=TwoWay}"
                                  Height="Auto" MinHeight="450" TextWrapping="Wrap" AcceptsReturn="True"
                                  Style="{StaticResource CustomPhoneTextBoxStyle}"/>
+                            <StackPanel Grid.Column="1" Margin="0,8,0,0">
+                                <Button x:Name="SpeakButton" Padding="0"
+                                    Style="{StaticResource CustomButtonStyle}">
+                                    <Image Source="Assets/AppBar/appbar.microphone.cropped.png" Height="34" Opacity="0.75" />
+                                </Button>
+                            </StackPanel>
+                            <StackPanel x:Name="SpeakContainer" Grid.Column="1" Visibility="Collapsed"  Margin="0,8,0,0">
+                                <Button Command="{Binding SpeakPrependTextCommand}" Padding="0"
+                                    Style="{StaticResource CustomButtonStyle}" Click="SpeakButtonClicked">
+                                    <Image Source="Assets/AppBar/appbar.prepend.cropped.png" Height="34" Opacity="0.75" />
+                                </Button>
+                                <Button Command="{Binding SpeakReplaceTextCommand}" Padding="0"
+                                    Style="{StaticResource CustomButtonStyle}" Click="SpeakButtonClicked">
+                                    <Image Source="Assets/AppBar/appbar.replace.cropped.png" Height="34" Opacity="0.75" />
+                                </Button>
+                                <Button Command="{Binding SpeakAppendTextCommand}" Padding="0"
+                                    Style="{StaticResource CustomButtonStyle}" Click="SpeakButtonClicked">
+                                    <Image Source="Assets/AppBar/appbar.append.cropped.png" Height="34" Opacity="0.75" />
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                        
                     </Border>
                     <Grid Height="480" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}">
                         <Grid.Clip>
@@ -84,29 +111,6 @@
 
                     <Border Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
                         <StackPanel>
-                            <Button x:Name="SpeakButton"
-                                Style="{StaticResource CustomButtonStyle}">
-                                <Image Source="Assets/AppBar/appbar.microphone.png" Height="52" />
-                            </Button>
-                            <Grid x:Name="SpeakContainer" Visibility="Collapsed">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Button Grid.Column="0" Command="{Binding SpeakPrependTextCommand}"
-                                    Style="{StaticResource CustomButtonStyle}" Click="SpeakButtonClicked">
-                                    <Image Source="Assets/AppBar/appbar.prepend.png" Height="52" />
-                                </Button>
-                                <Button Grid.Column="1" Command="{Binding SpeakReplaceTextCommand}"
-                                    Style="{StaticResource CustomButtonStyle}" Click="SpeakButtonClicked">
-                                    <Image Source="Assets/AppBar/appbar.replace.png" Height="52" />
-                                </Button>
-                                <Button Grid.Column="2" Command="{Binding SpeakAppendTextCommand}"
-                                    Style="{StaticResource CustomButtonStyle}" Click="SpeakButtonClicked">
-                                    <Image Source="Assets/AppBar/appbar.append.png" Height="52" />
-                                </Button>
-                            </Grid>
                             <Button x:Name="ImageFromAblumButton" Command="{Binding AddAttachementCommand}"
                                     Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}, ConverterParameter=!}"
                                     Style="{StaticResource CustomButtonStyle}">

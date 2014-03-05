@@ -24,13 +24,23 @@ namespace PocketBrain.App
 
             Loaded += (s, e) =>
                 {
-                    if (Text.Text.Length == 0)
+                    if (ContentTextBox.Text.Length == 0)
                     {
                         // select the text end of the notes content text field
-                        Text.Focus();
-                        Text.Select(Text.Text.Length, 0);
+                        ContentTextBox.Focus();
+                        ContentTextBox.Select(ContentTextBox.Text.Length, 0);
                     }
                 };
+
+            TitleTextBox.GotFocus += (s, e) =>
+                {
+                    ResetSpeakExpandButtonsVisibility();
+                };
+
+            ContentTextBox.GotFocus += (s, e) =>
+            {
+                ResetSpeakExpandButtonsVisibility();
+            };
 
             DeleteNoteButton.Click += (s, e) =>
                 {

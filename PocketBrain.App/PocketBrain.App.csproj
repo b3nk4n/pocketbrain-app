@@ -176,6 +176,7 @@
   <ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="Assets\AppBar\appbar.add.png" />
+    <Content Include="Assets\AppBar\appbar.append.cropped.png" />
     <Content Include="Assets\AppBar\appbar.append.png" />
     <Content Include="Assets\AppBar\appbar.delete.png" />
     <Content Include="Assets\AppBar\appbar.edit.png" />
@@ -183,12 +184,15 @@
     <Content Include="Assets\AppBar\appbar.information.png" />
     <Content Include="Assets\AppBar\appbar.lock.png" />
     <Content Include="Assets\AppBar\appbar.message.png" />
+    <Content Include="Assets\AppBar\appbar.microphone.cropped.png" />
     <Content Include="Assets\AppBar\appbar.microphone.png" />
     <Content Include="Assets\AppBar\appbar.paperclip.png" />
     <Content Include="Assets\AppBar\appbar.paperclip.remove.png" />
     <Content Include="Assets\AppBar\appbar.pin.png" />
     <Content Include="Assets\AppBar\appbar.pin.remove.png" />
+    <Content Include="Assets\AppBar\appbar.prepend.cropped.png" />
     <Content Include="Assets\AppBar\appbar.prepend.png" />
+    <Content Include="Assets\AppBar\appbar.replace.cropped.png" />
     <Content Include="Assets\AppBar\appbar.replace.png" />
     <Content Include="Assets\AppBar\appbar.share.png" />
     <Content Include="Assets\AppBar\appbar.whatsapp.png" />
