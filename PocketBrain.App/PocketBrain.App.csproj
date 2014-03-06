@@ -126,6 +126,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\KeyboardExtensionViewModel.cs" />
     <Compile Include="ViewModel\NoteListViewModel.cs" />
     <Compile Include="ViewModel\NoteViewModel.cs" />
   </ItemGroup>
@@ -178,6 +179,7 @@
     <Content Include="Assets\AppBar\appbar.add.png" />
     <Content Include="Assets\AppBar\appbar.append.cropped.png" />
     <Content Include="Assets\AppBar\appbar.append.png" />
+    <Content Include="Assets\AppBar\appbar.back.cropped.dark.png" />
     <Content Include="Assets\AppBar\appbar.back.cropped.png" />
     <Content Include="Assets\AppBar\appbar.back.png" />
     <Content Include="Assets\AppBar\appbar.delete.png" />
@@ -188,6 +190,7 @@
     <Content Include="Assets\AppBar\appbar.message.png" />
     <Content Include="Assets\AppBar\appbar.microphone.cropped.png" />
     <Content Include="Assets\AppBar\appbar.microphone.png" />
+    <Content Include="Assets\AppBar\appbar.next.cropped.dark.png" />
     <Content Include="Assets\AppBar\appbar.next.cropped.png" />
     <Content Include="Assets\AppBar\appbar.next.png" />
     <Content Include="Assets\AppBar\appbar.paperclip.png" />

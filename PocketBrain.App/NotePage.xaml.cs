@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using Microsoft.Xna.Framework;
 using System.Windows;
 using System.Windows.Data;
+using Microsoft.Xna.Framework.GamerServices;
 
 namespace PocketBrain.App
 {
@@ -46,6 +47,7 @@ namespace PocketBrain.App
             TitleTextBox.GotFocus += (s, e) =>
                 {
                     ResetSpeakExpandButtonsVisibility();
+
                     ShowKeyboardExtension.Begin();
                 };
 
@@ -58,6 +60,7 @@ namespace PocketBrain.App
             ContentTextBox.GotFocus += (s, e) =>
                 {
                     ResetSpeakExpandButtonsVisibility();
+
                     ShowKeyboardExtension.Begin();
                 };
 
@@ -382,13 +385,30 @@ namespace PocketBrain.App
         /// <param name="offset">The offset to move.</param>
         private void MoveCursor(TextBox tbx, int offset)
         {
-            if (tbx == null || tbx.SelectionLength != 0)
+            if (tbx == null)
                 return;
 
-            int position = tbx.SelectionStart;
-            int newPosition = (int)MathHelper.Clamp((int)position + offset, (int)0, (int)tbx.Text.Length);
+            if (tbx.SelectionLength > 0)
+            {
+                // move selection end
+                int position = tbx.SelectionStart;
+                int newLength = tbx.SelectionLength + offset;
 
-            tbx.Select(newPosition, 0);
+                if (newLength + position > tbx.Text.Length)
+                    newLength = tbx.Text.Length - position;
+                else if (newLength < 0)
+                    newLength = 0;
+
+                tbx.Select(position, newLength);
+            }
+            else if (tbx.SelectionLength == 0)
+            {
+                // move cursor
+                int position = tbx.SelectionStart;
+                int newPosition = (int)MathHelper.Clamp((int)position + offset, (int)0, (int)tbx.Text.Length);
+
+                tbx.Select(newPosition, 0);
+            }
         }
 
         /// <summary>

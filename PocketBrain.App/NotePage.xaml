@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converter="clr-namespace:PhoneKit.Framework.Conversion;assembly=PhoneKit.Framework"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:mvvm="clr-namespace:PocketBrain.App.ViewModel"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -39,11 +40,13 @@
         <converter:BooleanToVisibilityConverter x:Key="boolToVis" />
         <converter:ShortDateConverter x:Key="shortDate" />
         <converter:ShortTimeConverter x:Key="shortTime" />
+        
+        <mvvm:KeyboardExtensionViewModel x:Key="keyboardExViewModel" />
 
         <Storyboard x:Name="ShowKeyboardExtension">
             <DoubleAnimation Storyboard.TargetName="KeyboardExtensionTransfrom" 
                                 Storyboard.TargetProperty="Y"
-                                Duration="0:0:0.5" To="380" >
+                                Duration="0:0:0.4" To="380" >
                 <DoubleAnimation.EasingFunction>
                     <ExponentialEase EasingMode="EaseOut"  />
                 </DoubleAnimation.EasingFunction>
@@ -53,7 +56,7 @@
         <Storyboard x:Name="HideKeyboardExtension">
             <DoubleAnimation Storyboard.TargetName="KeyboardExtensionTransfrom" 
                                 Storyboard.TargetProperty="Y"
-                                Duration="0:0:0.5" To="1000" >
+                                Duration="0:0:0.35" To="1000" >
                 <DoubleAnimation.EasingFunction>
                     <ExponentialEase EasingMode="EaseOut"  />
                 </DoubleAnimation.EasingFunction>
@@ -178,14 +181,14 @@
             <Border.RenderTransform>
                 <TranslateTransform x:Name="KeyboardExtensionTransfrom" Y="1000" />
             </Border.RenderTransform>
-            <Grid Height="92" Width="140" >
+            <Grid Height="92" Width="140" DataContext="{StaticResource keyboardExViewModel}">
                 <Polygon Width="140" Points="0,92 42,1 140,1 140,92" Fill="{StaticResource PhoneChromeBrush}" Tap="Polygon_Tap"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                     <Button Style="{StaticResource CustomKeyboardButtonStyle}" Height="84" Width="48" VerticalAlignment="Top" Click="KeyboardExtensionLeftClick">
-                        <Image Source="Assets/AppBar/appbar.back.cropped.png" Height="24"  />
+                        <Image Source="{Binding LeftButtonImagePath}" Height="24"  />
                     </Button>
                     <Button Style="{StaticResource CustomKeyboardButtonStyle}" Height="84" Width="48" VerticalAlignment="Top" Click="KeyboardExtensionRightClick">
-                        <Image Source="Assets/AppBar/appbar.next.cropped.png" Height="24" />
+                        <Image Source="{Binding RightButtonImagePath}" Height="24" />
                     </Button>
                 </StackPanel>
             </Grid>
