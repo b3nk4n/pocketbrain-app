@@ -11,8 +11,7 @@
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:PocketBrain.App" x:Key="LocalizedStrings"/>
 
-        <!--<Color x:Key="MyPhoneChromeColor">#FF1F1F1F</Color>-->
-        <Color x:Key="MyPhoneChromeColor">#FF1E1E1E</Color>
+        <Color x:Key="MyPhoneChromeColor">#FF2F2F2F</Color>
         <SolidColorBrush x:Key="MyPhoneChromeBrush" Color="{StaticResource MyPhoneChromeColor}" />
         
         <Style x:Key="CustomButtonStyle" TargetType="Button">
