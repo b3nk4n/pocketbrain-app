@@ -138,26 +138,11 @@ namespace PocketBrain.App.ViewModel
             {
                 Count = count,
                 Title = AppResources.ApplicationTitle,
-                WideContent1 = string.Empty,
-                WideContent2 = string.Empty,
-                WideContent3 = string.Empty,
-                BackgroundColor = (Color)Application.Current.Resources["MyPhoneChromeColor"]
             };
 
-            if (count > 0)
-            {
-                tileData.WideContent1 = _notes[0].DisplayedTitle;
-                var content = _notes[0].Content;
-                if (!string.IsNullOrEmpty(content))
-                {
-                    var contentFragments = content.Split(new[]{'\n', '\r'});
-                    tileData.WideContent2 = contentFragments[0];
-
-                    if (contentFragments.Length > 1)
-                        tileData.WideContent3 = contentFragments[1];
-                }
-                
-            }
+            tileData.WideContent1 = (count > 0) ? _notes[0].DisplayedTitle : string.Empty;
+            tileData.WideContent2 = (count > 1) ? _notes[1].DisplayedTitle : string.Empty;
+            tileData.WideContent3 = (count > 2) ? _notes[2].DisplayedTitle : string.Empty;
 
             LiveTileHelper.UpdateDefaultTile(tileData);
         }
