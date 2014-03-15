@@ -59,7 +59,7 @@
             <Border Background="{StaticResource PhoneAccentBrush}" Padding="0,0,0,5">
                 <Button x:Name="NewNoteButton"
                         Style="{StaticResource CustomButtonStyle}">
-                    <Image x:Name="image" Source="Assets/AppBar/appbar.edit.png" Height="52" />
+                    <Image x:Name="image" Source="Assets/AppBar/appbar.memo.add.png" Height="52" />
                 </Button>
             </Border>
             <ScrollViewer x:Name="Scroller" VerticalScrollBarVisibility="Hidden" Height="700">
