@@ -80,6 +80,9 @@ namespace PocketBrain.App
         {
             NoteListViewModel.Instance.Save();
             NoteListViewModel.Instance.UpdatePrimaryTile();
+
+            if (ArchiveListViewModel.IsLoaded)
+                ArchiveListViewModel.Instance.Save();
         }
 
         // Code, der beim Schließen der Anwendung ausgeführt wird (z. B. wenn der Benutzer auf "Zurück" klickt)
@@ -88,6 +91,9 @@ namespace PocketBrain.App
         {
             NoteListViewModel.Instance.Save();
             NoteListViewModel.Instance.UpdatePrimaryTile();
+
+            if (ArchiveListViewModel.IsLoaded)
+                ArchiveListViewModel.Instance.Save();
         }
 
         // Code, der bei einem Navigationsfehler ausgeführt wird

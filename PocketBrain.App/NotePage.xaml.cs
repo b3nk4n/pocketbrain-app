@@ -178,7 +178,10 @@ namespace PocketBrain.App
             {
                 // add the note to the list, if it wasn't already stored before
                 if (!NoteListViewModel.Instance.Notes.Contains(NoteListViewModel.Instance.CurrentNote))
+                {
                     NoteListViewModel.Instance.Notes.Insert(0, NoteListViewModel.Instance.CurrentNote);
+                    MainPage.ScrollToTopOnNextNavigationTo = true;
+                }
                 return;
             }
 
@@ -187,7 +190,10 @@ namespace PocketBrain.App
             {
                 // add the note to the list, if it wasn't already stored before
                 if (!NoteListViewModel.Instance.Notes.Contains(NoteListViewModel.Instance.CurrentNote))
+                {
                     NoteListViewModel.Instance.Notes.Insert(0, NoteListViewModel.Instance.CurrentNote);
+                    MainPage.ScrollToTopOnNextNavigationTo = true;
+                }
             }
 
             NoteListViewModel.Instance.CurrentNote.UpdateTile();
@@ -435,7 +441,7 @@ namespace PocketBrain.App
 
             // guess textbox heigth and move view position
             if (GuestTextHeightInLines(tbx) > 8)
-                Scroller.ScrollToVerticalOffset(tbx.ActualHeight + 100);
+                Scroller.ScrollToVerticalOffset(Math.Max(0, tbx.ActualHeight - 290));
         }
 
         /// <summary>

@@ -137,6 +137,10 @@
     <value>1.2</value>
     <comment>General</comment>
   </data>
+  <data name="ArchiveTitle" xml:space="preserve">
+    <value>archive</value>
+    <comment>ArchivePage</comment>
+  </data>
   <data name="ContextMenuDelete" xml:space="preserve">
     <value>supprimer</value>
     <comment>ContextMenu</comment>

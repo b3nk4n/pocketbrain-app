@@ -40,9 +40,9 @@
         <converter:BooleanToVisibilityConverter x:Key="boolToVis" />
 
         <Storyboard x:Name="WelcomeAnimation" RepeatBehavior="Forever">
-        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="image">
-        		<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="108"/>
-        		<EasingDoubleKeyFrame KeyTime="0:0:1" Value="72">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Opacity)" Storyboard.TargetName="image">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.66"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1">
         			<EasingDoubleKeyFrame.EasingFunction>
         				<CubicEase EasingMode="EaseIn"/>
         			</EasingDoubleKeyFrame.EasingFunction>
@@ -53,22 +53,18 @@
 
     <!--LayoutRoot ist das Stammraster, in dem alle anderen Seiteninhalte platziert werden-->
     <Grid x:Name="LayoutRoot" Background="{StaticResource MyPhoneChromeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
 
         <!--ContentPanel - zusätzliche Inhalte hier platzieren-->
-        <Grid x:Name="ContentPanel" Grid.Row="1">
-            <ScrollViewer VerticalScrollBarVisibility="Hidden">
+        <StackPanel x:Name="ContentPanel">
+            <Border Background="{StaticResource PhoneAccentBrush}" Padding="0,0,0,5">
+                <Button x:Name="NewNoteButton"
+                        Style="{StaticResource CustomButtonStyle}">
+                    <Image x:Name="image" Source="Assets/AppBar/appbar.edit.png" Height="52" />
+                </Button>
+            </Border>
+            <ScrollViewer x:Name="Scroller" VerticalScrollBarVisibility="Hidden" Height="700">
                 <StackPanel>
-                    <Border Background="{StaticResource PhoneAccentBrush}" Padding="0,0,0,4">
-                        <Button x:Name="NewNoteButton"
-                        Style="{StaticResource CustomButtonStyle}" Height="194">
-                            <Image x:Name="image" Source="Assets/AppBar/appbar.edit.png" Height="72" />
-                        </Button>
-                    </Border>
-                    
-                    <ItemsControl x:Name="NotesList" ItemsSource="{Binding Notes}" MinHeight="424">
+                    <ItemsControl x:Name="NotesList" ItemsSource="{Binding Notes}" MinHeight="534">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Border Background="{StaticResource PhoneAccentBrush}">
@@ -80,7 +76,7 @@
                                                 <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuDelete, Source={StaticResource LocalizedStrings}}" Command="{Binding DeleteCommand}" />
                                             </toolkit:ContextMenu>
                                         </toolkit:ContextMenuService.ContextMenu>
-                                        <Grid Width="440" MinHeight="100" Margin="0,4,0,4">
+                                        <Grid Width="460" MinHeight="100" Margin="-10,4,-10,4">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="*" />
@@ -104,20 +100,24 @@
                     </ItemsControl>
                     <Border Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
                         <StackPanel>
-                            <Button x:Name="AboutButton"
+                            <Button x:Name="ArchiveButton"
                                 Style="{StaticResource CustomButtonStyle}">
-                                <Image Source="Assets/AppBar/appbar.information.png" Height="52" />
+                                <Image Source="Assets/AppBar/appbar.archive.png" Height="52" />
                             </Button>
                             <Button Command="{Binding LockScreenCommand}"
                                 Visibility="{Binding HasLockScreenAccess, Converter={StaticResource boolToVis}, ConverterParameter=!}"
                                 Style="{StaticResource CustomButtonStyle}">
                                 <Image Source="Assets/AppBar/appbar.lock.png" Height="52" />
                             </Button>
+                            <Button x:Name="AboutButton"
+                                Style="{StaticResource CustomButtonStyle}">
+                                <Image Source="Assets/AppBar/appbar.information.png" Height="52" />
+                            </Button>
                         </StackPanel>
                     </Border>
                 </StackPanel>
             </ScrollViewer>
-        </Grid>
+        </StackPanel>
 
         <!-- Feedback dialog -->
         <local:LocalizedFeedbackDialogControl Grid.RowSpan="2" EnableAnimation="True" />

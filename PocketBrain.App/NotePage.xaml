@@ -189,7 +189,7 @@
                     <ColumnDefinition Width="290" />
                     <ColumnDefinition Width="190" />
                 </Grid.ColumnDefinitions>
-                <Polygon Grid.Row="0" Grid.Column="1" Width="190" Points="0,92 42,1 190,1 190,92" Fill="{StaticResource PhoneChromeBrush}" Tap="Polygon_Tap"/>
+                <Polygon Grid.Row="0" Grid.Column="1" Width="190" Points="0,92 46,1 190,1 190,92" Fill="{StaticResource PhoneChromeBrush}" Tap="Polygon_Tap"/>
                 <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                     <Button Style="{StaticResource CustomKeyboardButtonStyle}" Height="84" Width="48" VerticalAlignment="Top" Click="KeyboardExtensionLeftClick">
                         <Image Source="{Binding LeftButtonImagePath}" Height="24"  />

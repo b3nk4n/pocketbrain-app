@@ -19,6 +19,14 @@ namespace PocketBrain.App
     /// </summary>
     public partial class MainPage : PhoneApplicationPage
     {
+        /// <summary>
+        /// Indicates whether the scroller is navigated to the top on the next NavigatedTo event.
+        /// </summary>
+        /// <remarks>
+        /// Used when a new item is created to ensure the new item is visible.
+        /// </remarks>
+        private static bool _scrollToTopOnNextNavigationTo = false;
+
         // Konstruktor
         public MainPage()
         {
@@ -50,6 +58,11 @@ namespace PocketBrain.App
                 {
                     NavigationService.Navigate(new Uri("/AboutPage.xaml", UriKind.Relative));
                 };
+
+            ArchiveButton.Click += (s, e) =>
+            {
+                NavigationService.Navigate(new Uri("/ArchivePage.xaml", UriKind.Relative));
+            };
 
             DataContext = NoteListViewModel.Instance;
         }
@@ -92,6 +105,14 @@ namespace PocketBrain.App
                     NavigationService.RemoveBackEntry();
             }
 
+            // check for scroller reset.
+            if (ScrollToTopOnNextNavigationTo)
+            {
+                Scroller.ScrollToVerticalOffset(0);
+
+                ScrollToTopOnNextNavigationTo = false;
+            }
+
             StartupActionManager.Instance.Fire();
         }
 
@@ -123,5 +144,24 @@ namespace PocketBrain.App
             if (!string.IsNullOrEmpty(noteId))
                 NavigationService.Navigate(new Uri("/NotePage.xaml?id=" + noteId, UriKind.Relative));
         }
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or the the scroll to top flag.
+        /// </summary>
+        public static bool ScrollToTopOnNextNavigationTo
+        {
+            get
+            {
+                return _scrollToTopOnNextNavigationTo;
+            }
+            set
+            {
+                _scrollToTopOnNextNavigationTo = value;
+            }
+        }
+
+        #endregion
     }
 }

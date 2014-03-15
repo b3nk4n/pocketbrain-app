@@ -106,6 +106,15 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die archive ähnelt.
+        /// </summary>
+        public static string ArchiveTitle {
+            get {
+                return ResourceManager.GetString("ArchiveTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die delete ähnelt.
         /// </summary>
         public static string ContextMenuDelete {

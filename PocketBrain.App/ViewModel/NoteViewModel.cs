@@ -120,6 +120,7 @@ namespace PocketBrain.App.ViewModel
                     // delte the item in the list if it was saved before
                     if (NoteListViewModel.Instance.Notes.Contains(this))
                     {
+                        ArchiveListViewModel.Instance.AddNote(this);
                         NoteListViewModel.Instance.Notes.Remove(this);
                     }
 
