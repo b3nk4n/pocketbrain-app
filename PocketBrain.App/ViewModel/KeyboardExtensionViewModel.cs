@@ -36,12 +36,22 @@ namespace PocketBrain.App.ViewModel
         /// </summary>
         private const string RIGHT_IMAGE_DARK = "/Assets/AppBar/appbar.next.cropped.png";
 
+        /// <summary>
+        /// The total right image for the light theme.
+        /// </summary>
+        private const string TOTAL_RIGHT_IMAGE_LIGHT = "/Assets/AppBar/appbar.next.total.cropped.dark.png";
+
+        /// <summary>
+        /// The total right image for the dark theme.
+        /// </summary>
+        private const string TOTAL_RIGHT_IMAGE_DARK = "/Assets/AppBar/appbar.next.total.cropped.png";
+
         #endregion
 
         #region Properties
 
         /// <summary>
-        /// Getst he left button image path.
+        /// Gets the left button image path.
         /// </summary>
         public string LeftButtonImagePath
         {
@@ -55,7 +65,7 @@ namespace PocketBrain.App.ViewModel
         }
 
         /// <summary>
-        /// Getst he right button image path.
+        /// Gets the right button image path.
         /// </summary>
         public string RightButtonImagePath
         {
@@ -65,6 +75,20 @@ namespace PocketBrain.App.ViewModel
                     return RIGHT_IMAGE_LIGHT;
                 else
                     return RIGHT_IMAGE_DARK;
+            }
+        }
+
+        /// <summary>
+        /// Gets the total right button image path.
+        /// </summary>
+        public string TotalRightButtonImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return TOTAL_RIGHT_IMAGE_LIGHT;
+                else
+                    return TOTAL_RIGHT_IMAGE_DARK;
             }
         }
 

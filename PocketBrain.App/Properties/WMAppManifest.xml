@@ -6,7 +6,7 @@
     <Language code="fr" />
     <Language code="pt" />
   </Languages>
-  <App xmlns="" ProductID="{ab482544-c92e-478e-b1f5-f5c6661d7693}" Title="pocketBRAIN" RuntimeType="Silverlight" Version="1.1.0.0" Genre="apps.normal" Author="PocketBrain.App author" Description="This application is your quick and easy helper to relieve your brain." Publisher="PocketBrain.App" PublisherID="{47e5a50a-aca2-469e-be1a-a4ac16765a5f}">
+  <App xmlns="" ProductID="{ab482544-c92e-478e-b1f5-f5c6661d7693}" Title="pocketBRAIN" RuntimeType="Silverlight" Version="1.2.0.0" Genre="apps.normal" Author="PocketBrain.App author" Description="This application is your quick and easy helper to relieve your brain." Publisher="PocketBrain.App" PublisherID="{47e5a50a-aca2-469e-be1a-a4ac16765a5f}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_MEDIALIB_AUDIO" />

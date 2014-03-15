@@ -412,7 +412,7 @@ namespace PocketBrain.App
         }
 
         /// <summary>
-        /// The left button event handerl.
+        /// The left button event handler.
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The event args.</param>
@@ -425,7 +425,7 @@ namespace PocketBrain.App
         }
 
         /// <summary>
-        /// The right button event handerl.
+        /// The total right button event handler.
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The event args.</param>
@@ -435,6 +435,19 @@ namespace PocketBrain.App
                 _lastFocusedInputElement.Focus();
 
             MoveCursor(_lastFocusedInputElement as TextBox, 1);
+        }
+
+        /// <summary>
+        /// The right button event handler.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The event args.</param>
+        private void KeyboardExtensionTotalRightClick(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (_lastFocusedInputElement != null)
+                _lastFocusedInputElement.Focus();
+
+            MoveCursor(_lastFocusedInputElement as TextBox, 99999);
         }
 
         /// <summary>

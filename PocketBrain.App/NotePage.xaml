@@ -46,20 +46,14 @@
         <Storyboard x:Name="ShowKeyboardExtension">
             <DoubleAnimation Storyboard.TargetName="KeyboardExtensionTransfrom" 
                                 Storyboard.TargetProperty="Y"
-                                Duration="0:0:0.4" To="380" >
-                <DoubleAnimation.EasingFunction>
-                    <ExponentialEase EasingMode="EaseOut"  />
-                </DoubleAnimation.EasingFunction>
+                                Duration="0" To="304" >
             </DoubleAnimation>
         </Storyboard>
 
         <Storyboard x:Name="HideKeyboardExtension">
             <DoubleAnimation Storyboard.TargetName="KeyboardExtensionTransfrom" 
                                 Storyboard.TargetProperty="Y"
-                                Duration="0:0:0.35" To="1000" >
-                <DoubleAnimation.EasingFunction>
-                    <ExponentialEase EasingMode="EaseOut"  />
-                </DoubleAnimation.EasingFunction>
+                                Duration="0" To="1000" >
             </DoubleAnimation>
         </Storyboard>
     </phone:PhoneApplicationPage.Resources>
@@ -72,7 +66,10 @@
                     <TextBlock Text="{Binding DateCreated, Converter={StaticResource shortTime}}" Style="{StaticResource PhoneTextSmallStyle}" Foreground="Gray" HorizontalAlignment="Left" />
                     <TextBlock Text="{Binding DateCreated, Converter={StaticResource shortDate}}" Style="{StaticResource PhoneTextSmallStyle}" Foreground="Gray" HorizontalAlignment="Right" />
                 </Grid>
-                <toolkit:PhoneTextBox x:Name="TitleTextBox"  Hint="{Binding Path=LocalizedResources.DefaultTitle, Source={StaticResource LocalizedStrings}}" Text="{Binding Title, Mode=TwoWay}" FontSize="32" Foreground="{StaticResource PhoneAccentBrush}" Style="{StaticResource CustomPhoneTextBoxStyle}" />
+                <toolkit:PhoneTextBox x:Name="TitleTextBox"  Hint="{Binding Path=LocalizedResources.DefaultTitle, Source={StaticResource LocalizedStrings}}"
+                                      Text="{Binding Title, Mode=TwoWay}" FontSize="32" Foreground="{StaticResource PhoneAccentBrush}"
+                                      Style="{StaticResource CustomPhoneTextBoxStyle}"
+                                      InputScope="Text" />
                 <Border Padding="0,4,0,0"
                         Background="{StaticResource PhoneAccentBrush}">
                     <Grid Background="{StaticResource MyPhoneChromeBrush}">
@@ -82,7 +79,8 @@
                         </Grid.ColumnDefinitions>
                         <toolkit:PhoneTextBox x:Name="ContentTextBox" Grid.Column="0" Text="{Binding Content, Mode=TwoWay}"
                                 Height="Auto" MinHeight="450" TextWrapping="Wrap" AcceptsReturn="True"
-                                Style="{StaticResource CustomPhoneTextBoxStyle}"/>
+                                Style="{StaticResource CustomPhoneTextBoxStyle}"
+                                InputScope="Text" />
                         <StackPanel Grid.Column="1" Margin="0,8,0,0">
                             <Button x:Name="SpeakButton" Padding="0"
                                 Style="{StaticResource CustomButtonStyle}">
@@ -181,16 +179,28 @@
             <Border.RenderTransform>
                 <TranslateTransform x:Name="KeyboardExtensionTransfrom" Y="1000" />
             </Border.RenderTransform>
-            <Grid Height="92" Width="140" DataContext="{StaticResource keyboardExViewModel}">
-                <Polygon Width="140" Points="0,92 42,1 140,1 140,92" Fill="{StaticResource PhoneChromeBrush}" Tap="Polygon_Tap"/>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <Grid  DataContext="{StaticResource keyboardExViewModel}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="92" />
+                    <RowDefinition Height="400" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="290" />
+                    <ColumnDefinition Width="190" />
+                </Grid.ColumnDefinitions>
+                <Polygon Grid.Row="0" Grid.Column="1" Width="190" Points="0,92 42,1 190,1 190,92" Fill="{StaticResource PhoneChromeBrush}" Tap="Polygon_Tap"/>
+                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                     <Button Style="{StaticResource CustomKeyboardButtonStyle}" Height="84" Width="48" VerticalAlignment="Top" Click="KeyboardExtensionLeftClick">
                         <Image Source="{Binding LeftButtonImagePath}" Height="24"  />
                     </Button>
                     <Button Style="{StaticResource CustomKeyboardButtonStyle}" Height="84" Width="48" VerticalAlignment="Top" Click="KeyboardExtensionRightClick">
                         <Image Source="{Binding RightButtonImagePath}" Height="24" />
                     </Button>
+                    <Button Style="{StaticResource CustomKeyboardButtonStyle}" Height="84" Width="48" VerticalAlignment="Top" Click="KeyboardExtensionTotalRightClick">
+                        <Image Source="{Binding TotalRightButtonImagePath}" Height="24" />
+                    </Button>
                 </StackPanel>
+                <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Fill="{StaticResource PhoneChromeBrush}" />
             </Grid>
         </Border>
     </Grid>

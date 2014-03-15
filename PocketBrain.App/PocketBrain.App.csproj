@@ -193,6 +193,8 @@
     <Content Include="Assets\AppBar\appbar.next.cropped.dark.png" />
     <Content Include="Assets\AppBar\appbar.next.cropped.png" />
     <Content Include="Assets\AppBar\appbar.next.png" />
+    <Content Include="Assets\AppBar\appbar.next.total.cropped.dark.png" />
+    <Content Include="Assets\AppBar\appbar.next.total.cropped.png" />
     <Content Include="Assets\AppBar\appbar.paperclip.png" />
     <Content Include="Assets\AppBar\appbar.paperclip.remove.png" />
     <Content Include="Assets\AppBar\appbar.pin.png" />

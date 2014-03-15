@@ -15,7 +15,6 @@
         <SolidColorBrush x:Key="MyPhoneChromeBrush" Color="{StaticResource MyPhoneChromeColor}" />
         
         <Style x:Key="CustomButtonStyle" TargetType="Button">
-        	<!--<Setter Property="Background" Value="{StaticResource PhoneAccentBrush}"/>-->
         	<Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
         	<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
         	<Setter Property="BorderThickness" Value="0"/>
