@@ -112,7 +112,6 @@
                             Background="{StaticResource PhoneAccentBrush}">
                         <Image x:Name="AttachementImage"
                             Stretch="UniformToFill" Height="480" Width="480"
-                            ManipulationDelta="AttachementImage_ManipulationDelta"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center">
                             <Image.RenderTransform>

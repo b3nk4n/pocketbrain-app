@@ -108,6 +108,14 @@ namespace PocketBrain.App
                     }
                 }
             };
+
+            AttachementImage.Tap += (s, e) =>
+                {
+                    var note = DataContext as NoteViewModel;
+
+                    if (note != null)
+                        NavigationService.Navigate(new Uri("/AttachmentPage.xaml?imagePath=" + note.AttachedImagePath, UriKind.Relative));
+                };
         }
 
         /// <summary>
@@ -265,32 +273,6 @@ namespace PocketBrain.App
         {
             SpeakButton.Visibility = System.Windows.Visibility.Visible;
             SpeakContainer.Visibility = System.Windows.Visibility.Collapsed;
-        }
-
-        /// <summary>
-        /// The manipulation delta event for pinch zoom of the attachement image.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The event args.</param>
-        private void AttachementImage_ManipulationDelta(object sender, System.Windows.Input.ManipulationDeltaEventArgs e)
-        {
-            if (e.PinchManipulation != null)
-            {
-                var transform = (CompositeTransform)AttachementImage.RenderTransform;
-
-                // Scale Manipulation
-                transform.ScaleX = e.PinchManipulation.CumulativeScale;
-                transform.ScaleY = e.PinchManipulation.CumulativeScale;
-
-                // Translate manipulation
-                var originalCenter = e.PinchManipulation.Original.Center;
-                var newCenter = e.PinchManipulation.Current.Center;
-                transform.TranslateX = newCenter.X - originalCenter.X;
-                transform.TranslateY = newCenter.Y - originalCenter.Y;
-
-                // end 
-                e.Handled = true;
-            }
         }
 
         /// <summary>
