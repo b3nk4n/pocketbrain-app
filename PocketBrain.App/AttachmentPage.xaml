@@ -42,7 +42,7 @@
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center">
             <Image.RenderTransform>
-                <CompositeTransform x:Name="Transform" CenterX="240" CenterY="400" />
+                <CompositeTransform CenterX="240" CenterY="400" />
             </Image.RenderTransform>
         </Image>
     </Grid>
