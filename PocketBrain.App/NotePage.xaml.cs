@@ -412,6 +412,50 @@ namespace PocketBrain.App
         }
 
         /// <summary>
+        /// Moves the cursor to the end of the given textbox and scrolls it into view.
+        /// </summary>
+        /// <param name="tbx">The textbox.</param>
+        private void MoveCursorToEnd(TextBox tbx)
+        {
+            if (tbx == null)
+                return;
+
+            if (tbx.SelectionLength > 0)
+            {
+                // move selection end
+                int position = tbx.SelectionStart;
+                int newLength = tbx.Text.Length - tbx.SelectionLength;
+
+                tbx.Select(position, newLength);
+            }
+            else if (tbx.SelectionLength == 0)
+            {
+                tbx.Select(tbx.Text.Length, 0);
+            }
+
+            // guess textbox heigth and move view position
+            if (GuestTextHeightInLines(tbx) > 8)
+                Scroller.ScrollToVerticalOffset(tbx.ActualHeight + 100);
+        }
+
+        /// <summary>
+        /// Try to guess the text height in lines.
+        /// </summary>
+        /// <param name="tbx">The textbox.</param>
+        private int GuestTextHeightInLines(TextBox tbx)
+        {
+            var lines = tbx.Text.Split('\r', '\n');
+            int counter = 0;
+
+            foreach (var line in lines)
+            {
+                counter += 1 + (int)(line.Length / 32);
+            }
+
+            return counter;
+        }
+
+        /// <summary>
         /// The left button event handler.
         /// </summary>
         /// <param name="sender">The sender.</param>
@@ -447,7 +491,7 @@ namespace PocketBrain.App
             if (_lastFocusedInputElement != null)
                 _lastFocusedInputElement.Focus();
 
-            MoveCursor(_lastFocusedInputElement as TextBox, 99999);
+            MoveCursorToEnd(_lastFocusedInputElement as TextBox);
         }
 
         /// <summary>

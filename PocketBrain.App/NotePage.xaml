@@ -60,7 +60,7 @@
 
     <!--LayoutRoot ist das Stammraster, in dem alle anderen Seiteninhalte platziert werden-->
     <Grid x:Name="LayoutRoot" Background="{StaticResource MyPhoneChromeBrush}">
-        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+        <ScrollViewer x:Name="Scroller" VerticalScrollBarVisibility="Hidden">
             <StackPanel Margin="0,-124,0,0">
                 <Grid Margin="0,0,0,92">
                     <TextBlock Text="{Binding DateCreated, Converter={StaticResource shortTime}}" Style="{StaticResource PhoneTextSmallStyle}" Foreground="Gray" HorizontalAlignment="Left" />
@@ -171,6 +171,7 @@
                             Style="{StaticResource CustomButtonStyle}">
                             <Image Source="Assets/AppBar/appbar.delete.png" Height="52" />
                         </Button>
+                        <Rectangle Height="52" Fill="{StaticResource MyPhoneChromeBrush}"/>
                     </StackPanel>
                 </Border>
             </StackPanel>
