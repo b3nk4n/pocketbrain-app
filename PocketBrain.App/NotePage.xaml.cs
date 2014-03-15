@@ -430,7 +430,7 @@ namespace PocketBrain.App
             {
                 // move selection end
                 int position = tbx.SelectionStart;
-                int newLength = tbx.Text.Length - tbx.SelectionLength;
+                int newLength = tbx.Text.Length - position;
 
                 tbx.Select(position, newLength);
             }
