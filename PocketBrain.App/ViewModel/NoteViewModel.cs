@@ -36,6 +36,11 @@ namespace PocketBrain.App.ViewModel
         private DelegateCommand _deleteCommand;
 
         /// <summary>
+        /// The restore from archive command.
+        /// </summary>
+        private DelegateCommand _restoreCommand;
+
+        /// <summary>
         /// The removes the attachement command.
         /// </summary>
         private DelegateCommand _removeAttachementCommand;
@@ -114,7 +119,6 @@ namespace PocketBrain.App.ViewModel
 
             _deleteCommand = new DelegateCommand(() =>
                 {
-                    RemoveAttachement();
                     UnpinTile();
 
                     // delte the item in the list if it was saved before
@@ -126,6 +130,12 @@ namespace PocketBrain.App.ViewModel
 
                     // clear the current note
                     NoteListViewModel.Instance.CurrentNote = null;
+                });
+
+            _restoreCommand = new DelegateCommand(() =>
+                {
+                    NoteListViewModel.Instance.Restore(this);
+                    ArchiveListViewModel.Instance.Notes.Remove(this);
                 });
 
             _removeAttachementCommand = new DelegateCommand(() =>
@@ -296,23 +306,23 @@ namespace PocketBrain.App.ViewModel
         }
 
         /// <summary>
-        /// Sets the new attachement image and notifies the UI and command manager.
+        /// Remvoes the attached image and notifies the UI and command manager.
         /// </summary>
-        /// <param name="filePath">The file path of the attachement.</param>
-        private void SetAttachement(string filePath)
+        public void RemoveAttachement()
         {
-            _note.AttachedImagePath = filePath;
+            _note.RemoveAttachement();
             NotifyPropertyChanged("HasAttachement");
 
             UpdateCanExecuteChanged();
         }
 
         /// <summary>
-        /// Remvoes the attached image and notifies the UI and command manager.
+        /// Sets the new attachement image and notifies the UI and command manager.
         /// </summary>
-        private void RemoveAttachement()
+        /// <param name="filePath">The file path of the attachement.</param>
+        private void SetAttachement(string filePath)
         {
-            _note.RemoveAttachement();
+            _note.AttachedImagePath = filePath;
             NotifyPropertyChanged("HasAttachement");
 
             UpdateCanExecuteChanged();
@@ -512,6 +522,29 @@ namespace PocketBrain.App.ViewModel
             {
                 return _note.DateCreated;
             }
+            set
+            {
+                _note.DateCreated = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets the deletion date.
+        /// </summary>
+        public DateTime DateDeleted
+        {
+            get
+            {
+                return _note.DateDeleted;
+            }
+            set
+            {
+                if (_note.DateDeleted != value)
+                {
+                    _note.DateDeleted = value;
+                    NotifyPropertyChanged("DateDeleted");
+                }             
+            }
         }
 
         /// <summary>
@@ -577,6 +610,17 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return _deleteCommand;
+            }
+        }
+
+        /// <summary>
+        /// Gets restore note command.
+        /// </summary>
+        public ICommand RestoreCommand
+        {
+            get
+            {
+                return _restoreCommand;
             }
         }
 

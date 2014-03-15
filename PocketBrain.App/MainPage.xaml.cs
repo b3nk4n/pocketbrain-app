@@ -11,6 +11,7 @@ using PhoneKit.Framework.Core.LockScreen;
 using PhoneKit.Framework.Core.Graphics;
 using System.Windows;
 using System.Windows.Media;
+using PhoneKit.Framework.OS.ShakeGestures;
 
 namespace PocketBrain.App
 {
@@ -26,6 +27,11 @@ namespace PocketBrain.App
         /// Used when a new item is created to ensure the new item is visible.
         /// </remarks>
         private static bool _scrollToTopOnNextNavigationTo = false;
+
+        /// <summary>
+        /// The last shake event time.
+        /// </summary>
+        private DateTime _lastShakeEventTime = DateTime.MinValue;
 
         // Konstruktor
         public MainPage()
@@ -64,6 +70,24 @@ namespace PocketBrain.App
                 NavigationService.Navigate(new Uri("/ArchivePage.xaml", UriKind.Relative));
             };
 
+            ShakeGesturesHelper.Instance.ShakeGesture += (s, e) =>
+                {
+                    if (DateTime.Now - _lastShakeEventTime < TimeSpan.FromSeconds(1))
+                        return;
+
+                    Dispatcher.BeginInvoke(() =>
+                        {
+                            // swap data template
+                            var minimized = (DataTemplate)this.Resources["MinimizedNoteTemplate"];
+                            var maximized = (DataTemplate)this.Resources["MaximizedNoteTemplate"];
+                            NotesList.ItemTemplate = (NotesList.ItemTemplate == minimized) ? maximized : minimized;
+
+                            _lastShakeEventTime = DateTime.Now;
+                        });
+                    
+                };
+            ShakeGesturesHelper.Instance.MinimumRequiredMovesForShake = 8;
+            ShakeGesturesHelper.Instance.WeakMagnitudeWithoutGravitationThreshold = 0.75;
             DataContext = NoteListViewModel.Instance;
         }
 
@@ -80,11 +104,6 @@ namespace PocketBrain.App
                 return;
 
             string noteId = ((NoteViewModel)listBox.SelectedItem).Id;
-
-            // unselect the item
-            /*NotesList.SelectionChanged -= NotesList_SelectionChanged;
-            NotesList.SelectedItem = null;
-            NotesList.SelectionChanged += NotesList_SelectionChanged;*/
 
             NavigationService.Navigate(new Uri("/NotePage.xaml?id=" + noteId, UriKind.Relative));
         }
@@ -114,6 +133,9 @@ namespace PocketBrain.App
             }
 
             StartupActionManager.Instance.Fire();
+
+            // activate shake listener
+            ShakeGesturesHelper.Instance.Active = true;
         }
 
         /// <summary>
@@ -130,6 +152,9 @@ namespace PocketBrain.App
             {
                 NoteListViewModel.Instance.UpdateLockScreen();
             }
+
+            // deaktivate shake listener
+            ShakeGesturesHelper.Instance.Active = false;
         }
 
         /// <summary>

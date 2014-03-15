@@ -1,5 +1,6 @@
 ﻿using PhoneKit.Framework.Core.MVVM;
 using PhoneKit.Framework.Core.Storage;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
@@ -76,7 +77,8 @@ namespace PocketBrain.App.ViewModel
         /// <param name="note">The note to archive.</param>
         public void AddNote(NoteViewModel note)
         {
-            _notes.Add(note);
+            note.DateDeleted = DateTime.Now;
+            _notes.Insert(0, note);
             _hasDataChanged = true;
         }
 
@@ -85,7 +87,15 @@ namespace PocketBrain.App.ViewModel
         /// </summary>
         public void Clear()
         {
+            // remove attachements
+            foreach (var note in _notes)
+            {
+                note.RemoveAttachement();
+            }
+
+            // clear all notes
             _notes.Clear();
+
             _hasDataChanged = true;
         }
 

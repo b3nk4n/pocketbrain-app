@@ -49,6 +49,67 @@
         		</EasingDoubleKeyFrame>
         	</DoubleAnimationUsingKeyFrames>
         </Storyboard>
+
+        <DataTemplate x:Key="MaximizedNoteTemplate">
+            <Border Background="{StaticResource PhoneAccentBrush}">
+                <Button Style="{StaticResource CustomButtonStyle}" Margin="-1" Tag="{Binding Id}" Click="NoteClicked">
+                    <toolkit:ContextMenuService.ContextMenu>
+                        <toolkit:ContextMenu>
+                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuPinToStart, Source={StaticResource LocalizedStrings}}" Command="{Binding PinToStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}}" />
+                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuUnpinFromStart, Source={StaticResource LocalizedStrings}}" Command="{Binding UnpinFromStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}, ConverterParameter=!}" />
+                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuDelete, Source={StaticResource LocalizedStrings}}" Command="{Binding DeleteCommand}" />
+                        </toolkit:ContextMenu>
+                    </toolkit:ContextMenuService.ContextMenu>
+                    <Grid Width="460" MinHeight="100" Margin="-10,4,-10,4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="48" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding DisplayedTitle}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
+                            <Image Grid.Column="1" Source="Assets/AppBar/appbar.paperclip.png" Width="48" Height="48" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
+                        </Grid>
+                        <TextBlock Grid.Row="1" Text="{Binding Content}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="White"
+                                            TextTrimming="WordEllipsis" TextWrapping="Wrap" />
+                    </Grid>
+                </Button>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="MinimizedNoteTemplate">
+            <Border Background="{StaticResource PhoneAccentBrush}">
+                <Button Style="{StaticResource CustomButtonStyle}" Margin="-1" Tag="{Binding Id}" Click="NoteClicked">
+                    <toolkit:ContextMenuService.ContextMenu>
+                        <toolkit:ContextMenu>
+                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuPinToStart, Source={StaticResource LocalizedStrings}}" Command="{Binding PinToStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}}" />
+                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuUnpinFromStart, Source={StaticResource LocalizedStrings}}" Command="{Binding UnpinFromStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}, ConverterParameter=!}" />
+                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuDelete, Source={StaticResource LocalizedStrings}}" Command="{Binding DeleteCommand}" />
+                        </toolkit:ContextMenu>
+                    </toolkit:ContextMenuService.ContextMenu>
+                    <Grid Width="460" Height="76" Margin="-10,4,-10,4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="48" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding DisplayedTitle}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
+                            <Image Grid.Column="1" Source="Assets/AppBar/appbar.paperclip.png" Width="48" Height="48" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
+                        </Grid>
+                        <TextBlock Grid.Row="1" Text="{Binding Content}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="White"
+                                            TextTrimming="WordEllipsis" TextWrapping="NoWrap" />
+                    </Grid>
+                </Button>
+            </Border>
+        </DataTemplate>
+
     </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot ist das Stammraster, in dem alle anderen Seiteninhalte platziert werden-->
@@ -62,42 +123,10 @@
                     <Image x:Name="image" Source="Assets/AppBar/appbar.memo.add.png" Height="52" />
                 </Button>
             </Border>
-            <ScrollViewer x:Name="Scroller" VerticalScrollBarVisibility="Hidden" Height="700">
+            <ScrollViewer x:Name="Scroller" VerticalScrollBarVisibility="Hidden" Height="708">
                 <StackPanel>
-                    <ItemsControl x:Name="NotesList" ItemsSource="{Binding Notes}" MinHeight="534">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Border Background="{StaticResource PhoneAccentBrush}">
-                                    <Button Style="{StaticResource CustomButtonStyle}" Margin="-1" Tag="{Binding Id}" Click="NoteClicked">
-                                        <toolkit:ContextMenuService.ContextMenu>
-                                            <toolkit:ContextMenu>
-                                                <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuPinToStart, Source={StaticResource LocalizedStrings}}" Command="{Binding PinToStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}}" />
-                                                <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuUnpinFromStart, Source={StaticResource LocalizedStrings}}" Command="{Binding UnpinFromStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}, ConverterParameter=!}" />
-                                                <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuDelete, Source={StaticResource LocalizedStrings}}" Command="{Binding DeleteCommand}" />
-                                            </toolkit:ContextMenu>
-                                        </toolkit:ContextMenuService.ContextMenu>
-                                        <Grid Width="460" MinHeight="100" Margin="-10,4,-10,4">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="*" />
-                                            </Grid.RowDefinitions>
-                                            <Grid Grid.Row="0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="48" />
-                                                </Grid.ColumnDefinitions>
-                                                <TextBlock Grid.Column="0" Text="{Binding DisplayedTitle}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
-                                                <Image Grid.Column="1" Source="Assets/AppBar/appbar.paperclip.png" Width="48" Height="48" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
-                                            </Grid>
-                                            
-                                            <TextBlock Grid.Row="1" Text="{Binding Content}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="White"
-                                            TextTrimming="WordEllipsis" TextWrapping="Wrap" />
-                                        </Grid>
-                                    </Button>
-                                </Border>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                    <ItemsControl x:Name="NotesList" ItemsSource="{Binding Notes}" MinHeight="534"
+                                  ItemTemplate="{StaticResource MaximizedNoteTemplate}"/>
                     <Border Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
                         <StackPanel>
                             <Button x:Name="ArchiveButton"

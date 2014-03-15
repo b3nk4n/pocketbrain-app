@@ -45,7 +45,12 @@ namespace PocketBrain.App.Model
         /// <summary>
         /// The creation date.
         /// </summary>
-        public DateTime DateCreated { get; private set; }
+        public DateTime DateCreated { get; set; }
+
+        /// <summary>
+        /// The deletion date.
+        /// </summary>
+        public DateTime DateDeleted { get; set; }
  
         #endregion
 

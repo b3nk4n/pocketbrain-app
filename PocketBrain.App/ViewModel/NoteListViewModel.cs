@@ -103,6 +103,16 @@ namespace PocketBrain.App.ViewModel
         }
 
         /// <summary>
+        /// Restores a note at the right position by checking the creation date.
+        /// </summary>
+        /// <param name="note">The note to restore.</param>
+        public void Restore(NoteViewModel note)
+        {
+            Notes.Add(note);
+            Notes = new ObservableCollection<NoteViewModel>(Notes.OrderByDescending(i => i.DateCreated));
+        }
+
+        /// <summary>
         /// Loads the notes data.
         /// </summary>
         private void Load()
