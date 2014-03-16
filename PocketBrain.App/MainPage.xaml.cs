@@ -92,7 +92,7 @@ namespace PocketBrain.App
                         });
                     
                 };
-            ShakeGesturesHelper.Instance.MinimumRequiredMovesForShake = 8;
+            ShakeGesturesHelper.Instance.MinimumRequiredMovesForShake = 7;
             ShakeGesturesHelper.Instance.WeakMagnitudeWithoutGravitationThreshold = 0.75;
 
             ExpansionButton.Click += (s, e) =>
