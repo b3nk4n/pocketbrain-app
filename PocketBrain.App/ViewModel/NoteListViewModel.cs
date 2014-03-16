@@ -286,6 +286,17 @@ namespace PocketBrain.App.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets whether the expansion button is visible.
+        /// </summary>
+        public bool IsExtensionButtonVisible
+        {
+            get
+            {
+                return Settings.ExpandListsMethod.Value == "1" || Settings.ExpandListsMethod.Value == "2";
+            }
+        }
+
         #endregion
     }
 }

@@ -147,6 +147,14 @@
             </ScrollViewer>
         </StackPanel>
 
+
+        <Button x:Name="ExpansionButton" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="-1,-1,-1,32"
+                Style="{StaticResource CustomCornerButtonStyle}"
+                Visibility="{Binding IsExtensionButtonVisible, Converter={StaticResource boolToVis}}">
+            <Image x:Name="ExpansionButtonImage" Source="Assets/AppBar/appbar.arrow.expand.png" Height="36" HorizontalAlignment="Right" Margin="0,0,-12,0" />
+        </Button>
+
+
         <!-- Feedback dialog -->
         <local:LocalizedFeedbackDialogControl Grid.RowSpan="2" EnableAnimation="True" />
 

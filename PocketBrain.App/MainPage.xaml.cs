@@ -12,6 +12,7 @@ using PhoneKit.Framework.Core.Graphics;
 using System.Windows;
 using System.Windows.Media;
 using PhoneKit.Framework.OS.ShakeGestures;
+using System.Windows.Media.Imaging;
 
 namespace PocketBrain.App
 {
@@ -82,10 +83,7 @@ namespace PocketBrain.App
 
                     Dispatcher.BeginInvoke(() =>
                         {
-                            // swap data template
-                            var minimized = (DataTemplate)this.Resources["MinimizedNoteTemplate"];
-                            var maximized = (DataTemplate)this.Resources["MaximizedNoteTemplate"];
-                            NotesList.ItemTemplate = (NotesList.ItemTemplate == minimized) ? maximized : minimized;
+                            ToggleNoteTemplate();
 
                             _lastShakeEventTime = DateTime.Now;
                         });
@@ -93,6 +91,11 @@ namespace PocketBrain.App
                 };
             ShakeGesturesHelper.Instance.MinimumRequiredMovesForShake = 8;
             ShakeGesturesHelper.Instance.WeakMagnitudeWithoutGravitationThreshold = 0.75;
+
+            ExpansionButton.Click += (s, e) =>
+                {
+                    ToggleNoteTemplate();
+                };
 
             DataContext = NoteListViewModel.Instance;
         }
@@ -143,6 +146,9 @@ namespace PocketBrain.App
             // activate shake listener
             if (Settings.ExpandListsMethod.Value == "0" || Settings.ExpandListsMethod.Value == "2")
                 ShakeGesturesHelper.Instance.Active = true;
+
+            UpdateExpansionButtonViewState();
+            UpdateExpansionButtonVisibility();
         }
 
         /// <summary>
@@ -175,6 +181,44 @@ namespace PocketBrain.App
 
             if (!string.IsNullOrEmpty(noteId))
                 NavigationService.Navigate(new Uri("/NotePage.xaml?id=" + noteId, UriKind.Relative));
+        }
+
+        /// <summary>
+        /// Toggles the note template.
+        /// </summary>
+        private void ToggleNoteTemplate()
+        {
+            var minimized = (DataTemplate)this.Resources["MinimizedNoteTemplate"];
+            var maximized = (DataTemplate)this.Resources["MaximizedNoteTemplate"];
+            NotesList.ItemTemplate = (NotesList.ItemTemplate == minimized) ? maximized : minimized;
+
+            UpdateExpansionButtonViewState();
+        }
+
+        /// <summary>
+        /// Updates the expansion button visibility.
+        /// </summary>
+        private void UpdateExpansionButtonVisibility()
+        {
+            ExpansionButton.Visibility = NoteListViewModel.Instance.IsExtensionButtonVisible ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        /// <summary>
+        /// Updates the expansion button view state.
+        /// </summary>
+        private void UpdateExpansionButtonViewState()
+        {
+            if (!NoteListViewModel.Instance.IsExtensionButtonVisible)
+                return;
+
+            var maximized = (DataTemplate)this.Resources["MaximizedNoteTemplate"];
+            Uri uri;
+            if (NotesList.ItemTemplate == maximized)
+                uri = new Uri("/Assets/AppBar/appbar.arrow.collapsed.png", UriKind.Relative);
+            else
+                uri = new Uri("/Assets/AppBar/appbar.arrow.expand.png", UriKind.Relative);
+
+            ExpansionButtonImage.Source = new BitmapImage(uri);
         }
 
         #region Properties

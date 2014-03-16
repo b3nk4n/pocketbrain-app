@@ -59,7 +59,7 @@
                             <toolkit:ListPickerItem Content="by shake gesture" Tag="0" Style="{StaticResource ListPickerItemStyle}" />
                             <toolkit:ListPickerItem Content="display a button" Tag="1" Style="{StaticResource ListPickerItemStyle}" />
                             <toolkit:ListPickerItem Content="by shake geasture and button" Tag="2" Style="{StaticResource ListPickerItemStyle}" />
-                            <toolkit:ListPickerItem Content="disabled" Tag="2" Style="{StaticResource ListPickerItemStyle}" />
+                            <toolkit:ListPickerItem Content="disabled" Tag="3" Style="{StaticResource ListPickerItemStyle}" />
                         </toolkit:ListPicker>
                     </StackPanel>
                     <StackPanel Margin="0, 12">
