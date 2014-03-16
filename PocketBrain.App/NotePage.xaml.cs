@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework;
 using System.Windows;
 using System.Windows.Data;
 using Microsoft.Xna.Framework.GamerServices;
+using PhoneKit.Framework.OS;
 
 namespace PocketBrain.App
 {
@@ -48,7 +49,10 @@ namespace PocketBrain.App
                 {
                     ResetSpeakExpandButtonsVisibility();
 
-                    ShowKeyboardExtension.Begin();
+                    if (DisplayHelper.GetScaleFactor() == ScaleFactor.WVGA || DisplayHelper.GetScaleFactor() == ScaleFactor.WXGA)
+                        ShowKeyboardExtension.Begin();
+                    else
+                        ShowKeyboardExtension16to9.Begin();
                 };
 
             TitleTextBox.LostFocus += (s, e) =>
@@ -61,7 +65,10 @@ namespace PocketBrain.App
                 {
                     ResetSpeakExpandButtonsVisibility();
 
-                    ShowKeyboardExtension.Begin();
+                    if (DisplayHelper.GetScaleFactor() == ScaleFactor.WVGA || DisplayHelper.GetScaleFactor() == ScaleFactor.WXGA)
+                        ShowKeyboardExtension.Begin();
+                    else
+                        ShowKeyboardExtension16to9.Begin();
                 };
 
             ContentTextBox.LostFocus += (s, e) =>

@@ -186,21 +186,28 @@ namespace PocketBrain.App.ViewModel
             else
             {
                 if (_notes.Count == 1)
+                {
                     lockGfx = GraphicsHelper.Create(new NoteLockScreen(_notes[0].DisplayedTitle, _notes[0].Content, Settings.LockScreenBackgroundImagePath.Value));
+                }
+
                 else if (_notes.Count == 2)
+                {
                     lockGfx = GraphicsHelper.Create(
                         new NoteLockScreenDual(
                             _notes[0].DisplayedTitle, _notes[0].Content,
                             _notes[1].DisplayedTitle, _notes[1].Content,
                             Settings.LockScreenBackgroundImagePath.Value));
+                }
                 else
+                {
                     lockGfx = GraphicsHelper.Create(
                         new NoteLockScreenQuad(
                             _notes[0].DisplayedTitle, _notes[0].Content,
                             _notes[1].DisplayedTitle, _notes[1].Content,
                             _notes[2].DisplayedTitle, _notes[2].Content,
-                            (_notes[3].DisplayedTitle == null) ? string.Empty : _notes[3].DisplayedTitle, (_notes[3].Content == null) ? string.Empty : _notes[3].Content,
+                            (_notes.Count == 3) ? string.Empty : _notes[3].DisplayedTitle, (_notes.Count == 3) ? string.Empty : _notes[3].Content,
                             Settings.LockScreenBackgroundImagePath.Value));
+                }
 
                 // render lock image
                 var nextExtension = _nextLockScreenExtension.Value;
@@ -287,13 +294,21 @@ namespace PocketBrain.App.ViewModel
         }
 
         /// <summary>
+        /// Notifies the UI to update the view state.
+        /// </summary>
+        public void NotifyIsExtensionButtonVisible()
+        {
+            NotifyPropertyChanged("IsExtensionButtonVisible");
+        }
+
+        /// <summary>
         /// Gets whether the expansion button is visible.
         /// </summary>
         public bool IsExtensionButtonVisible
         {
             get
             {
-                return Settings.ExpandListsMethod.Value == "1" || Settings.ExpandListsMethod.Value == "2";
+                return (Settings.ExpandListsMethod.Value == "1" || Settings.ExpandListsMethod.Value == "2") && _notes.Count > 0;
             }
         }
 

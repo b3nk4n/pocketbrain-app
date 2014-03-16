@@ -13,6 +13,7 @@ using System.Windows;
 using System.Windows.Media;
 using PhoneKit.Framework.OS.ShakeGestures;
 using System.Windows.Media.Imaging;
+using PhoneKit.Framework.OS;
 
 namespace PocketBrain.App
 {
@@ -83,6 +84,8 @@ namespace PocketBrain.App
 
                     Dispatcher.BeginInvoke(() =>
                         {
+                            VibrationHelper.Vibrate(0.1f);
+
                             ToggleNoteTemplate();
 
                             _lastShakeEventTime = DateTime.Now;
@@ -200,7 +203,7 @@ namespace PocketBrain.App
         /// </summary>
         private void UpdateExpansionButtonVisibility()
         {
-            ExpansionButton.Visibility = NoteListViewModel.Instance.IsExtensionButtonVisible ? Visibility.Visible : Visibility.Collapsed;
+            NoteListViewModel.Instance.NotifyIsExtensionButtonVisible();
         }
 
         /// <summary>

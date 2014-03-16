@@ -130,12 +130,20 @@ namespace PocketBrain.App.ViewModel
 
                     // clear the current note
                     NoteListViewModel.Instance.CurrentNote = null;
+
+                    NoteListViewModel.Instance.NotifyIsExtensionButtonVisible();
+
+                    if (NoteListViewModel.Instance.Notes.Count == 1)
+                    {
+                        MainPage.ScrollToTopOnNextNavigationTo = true;
+                    }
                 });
 
             _restoreCommand = new DelegateCommand(() =>
                 {
                     NoteListViewModel.Instance.Restore(this);
                     ArchiveListViewModel.Instance.Notes.Remove(this);
+                    ArchiveListViewModel.Instance.NotifyIsExtensionButtonVisible();
                 });
 
             _removeAttachementCommand = new DelegateCommand(() =>
@@ -731,6 +739,17 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return _speakAppendTextCommand;
+            }
+        }
+
+        /// <summary>
+        /// Gets whether the date is visible in the list.
+        /// </summary>
+        public bool IsDateVisible
+        {
+            get
+            {
+                return Settings.ShowCreationDateOnList.Value == "1";
             }
         }
 

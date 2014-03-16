@@ -1,8 +1,10 @@
 ﻿using Microsoft.Phone.Controls;
+using PhoneKit.Framework.OS;
 using PhoneKit.Framework.OS.ShakeGestures;
 using PocketBrain.App.ViewModel;
 using System;
 using System.Windows;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 
 namespace PocketBrain.App
@@ -30,18 +32,25 @@ namespace PocketBrain.App
                     return;
 
                 Dispatcher.BeginInvoke(() =>
-                {
-                    // swap data template
-                    var minimized = (DataTemplate)this.Resources["MinimizedNoteTemplate"];
-                    var maximized = (DataTemplate)this.Resources["MaximizedNoteTemplate"];
-                    NotesList.ItemTemplate = (NotesList.ItemTemplate == minimized) ? maximized : minimized;
+                    {
+                        VibrationHelper.Vibrate(0.1f);
 
-                    _lastShakeEventTime = DateTime.Now;
-                });
+                        // swap data template
+                        var minimized = (DataTemplate)this.Resources["MinimizedNoteTemplate"];
+                        var maximized = (DataTemplate)this.Resources["MaximizedNoteTemplate"];
+                        NotesList.ItemTemplate = (NotesList.ItemTemplate == minimized) ? maximized : minimized;
+
+                        _lastShakeEventTime = DateTime.Now;
+                    });
 
             };
             ShakeGesturesHelper.Instance.MinimumRequiredMovesForShake = 8;
             ShakeGesturesHelper.Instance.WeakMagnitudeWithoutGravitationThreshold = 0.75;
+
+            ExpansionButton.Click += (s, e) =>
+                {
+                    ToggleNoteTemplate();
+                };
 
             DataContext = ArchiveListViewModel.Instance;
         }
@@ -57,6 +66,9 @@ namespace PocketBrain.App
             // activate shake listener
             if (Settings.ExpandListsMethod.Value == "0" || Settings.ExpandListsMethod.Value == "2")
                 ShakeGesturesHelper.Instance.Active = true;
+
+            UpdateExpansionButtonViewState();
+            UpdateExpansionButtonVisibility();
         }
 
         /// <summary>
@@ -69,6 +81,44 @@ namespace PocketBrain.App
 
             // deaktivate shake listener
             ShakeGesturesHelper.Instance.Active = false;
+        }
+
+        /// <summary>
+        /// Toggles the note template.
+        /// </summary>
+        private void ToggleNoteTemplate()
+        {
+            var minimized = (DataTemplate)this.Resources["MinimizedNoteTemplate"];
+            var maximized = (DataTemplate)this.Resources["MaximizedNoteTemplate"];
+            NotesList.ItemTemplate = (NotesList.ItemTemplate == minimized) ? maximized : minimized;
+
+            UpdateExpansionButtonViewState();
+        }
+
+        /// <summary>
+        /// Updates the expansion button visibility.
+        /// </summary>
+        private void UpdateExpansionButtonVisibility()
+        {
+            ArchiveListViewModel.Instance.NotifyIsExtensionButtonVisible();
+        }
+
+        /// <summary>
+        /// Updates the expansion button view state.
+        /// </summary>
+        private void UpdateExpansionButtonViewState()
+        {
+            if (!ArchiveListViewModel.Instance.IsExtensionButtonVisible)
+                return;
+
+            var maximized = (DataTemplate)this.Resources["MaximizedNoteTemplate"];
+            Uri uri;
+            if (NotesList.ItemTemplate == maximized)
+                uri = new Uri("/Assets/AppBar/appbar.arrow.collapsed.png", UriKind.Relative);
+            else
+                uri = new Uri("/Assets/AppBar/appbar.arrow.expand.png", UriKind.Relative);
+
+            ExpansionButtonImage.Source = new BitmapImage(uri);
         }
     }
 }

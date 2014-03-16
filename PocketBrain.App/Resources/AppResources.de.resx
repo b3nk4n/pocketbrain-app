@@ -196,6 +196,10 @@ Erzählen Sie uns von Ihren Erfahrungen oder teilen Sie uns Vorschläge mit, dam
     <value>feedback</value>
     <comment>FeedbackDialogControl</comment>
   </data>
+  <data name="MessageBoxClearCheck" xml:space="preserve">
+    <value>Wollen Sie wirklich das Archiv leeren?</value>
+    <comment>MessageBox</comment>
+  </data>
   <data name="MessageBoxInfoClipboard" xml:space="preserve">
     <value>Der Inhalt wird in die Zwischenablage kopiert.</value>
     <comment>MessageBox</comment>
@@ -255,6 +259,70 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
   <data name="ResourceLanguage" xml:space="preserve">
     <value>de</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
+  </data>
+  <data name="Settings1Item" xml:space="preserve">
+    <value>1 element</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="Settings2Items" xml:space="preserve">
+    <value>2 elemente</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="Settings4Items" xml:space="preserve">
+    <value>4 elemente</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsBackgroundImageTitle" xml:space="preserve">
+    <value>hintergrundbild</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsDisabled" xml:space="preserve">
+    <value>deaktiviert</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsEnabled" xml:space="preserve">
+    <value>aktiviert</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsExpandButton" xml:space="preserve">
+    <value>zeige eine schaltfläche</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsExpandByGesture" xml:space="preserve">
+    <value>durch schüttel-geste</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsExpandByGestureAndButton" xml:space="preserve">
+    <value>durch schüttel-geste und schalftfläche</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsExpandTitle" xml:space="preserve">
+    <value>minimieren / maximieren</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsShowCreationDate" xml:space="preserve">
+    <value>erstellungsdatum anzeigen</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsTitle" xml:space="preserve">
+    <value>Listen</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsLockScreenTitle" xml:space="preserve">
+    <value>Sperrbildschirm</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsMinimiumItemsTitle" xml:space="preserve">
+    <value>minimale anzahl elemente</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsPreview" xml:space="preserve">
+    <value>vorschau</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsTapToSelect" xml:space="preserve">
+    <value>hier tippen um bild zu wählen</value>
+    <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
     <value>einstellungen</value>

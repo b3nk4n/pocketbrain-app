@@ -194,6 +194,10 @@ Application Version: {4}
     <value>d'accord</value>
     <comment>FeedbackDialogControl</comment>
   </data>
+  <data name="MessageBoxClearCheck" xml:space="preserve">
+    <value>Voulez-vous vraiment effacer l'archive?</value>
+    <comment>MessageBox</comment>
+  </data>
   <data name="MessageBoxInfoClipboard" xml:space="preserve">
     <value>Le contenu est copié dans le presse-papiers.</value>
     <comment>MessageBox</comment>
@@ -253,6 +257,70 @@ De nous montrer un peu d'amour dans le Windows Store nous aide à continuer à t
   <data name="ResourceLanguage" xml:space="preserve">
     <value>fr</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
+  </data>
+  <data name="Settings1Item" xml:space="preserve">
+    <value>1 note</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="Settings2Items" xml:space="preserve">
+    <value>2 notes</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="Settings4Items" xml:space="preserve">
+    <value>4 notes</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsBackgroundImageTitle" xml:space="preserve">
+    <value>Arrièr-plan</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsDisabled" xml:space="preserve">
+    <value>désactié</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsEnabled" xml:space="preserve">
+    <value>activée</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsExpandButton" xml:space="preserve">
+    <value>afficer bouton</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsExpandByGesture" xml:space="preserve">
+    <value>par le secouer geste</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsExpandByGestureAndButton" xml:space="preserve">
+    <value>par le secouer geste et bouton</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsExpandTitle" xml:space="preserve">
+    <value>minimiser / maximiser</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsShowCreationDate" xml:space="preserve">
+    <value>afficher la date de création</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsTitle" xml:space="preserve">
+    <value>Listes</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsLockScreenTitle" xml:space="preserve">
+    <value>Écran de verrouillage</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsMinimiumItemsTitle" xml:space="preserve">
+    <value>minimum nombre de notes</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsPreview" xml:space="preserve">
+    <value>impression</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsTapToSelect" xml:space="preserve">
+    <value>appuyez-à-sélectionnez</value>
+    <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
     <value>paramètres</value>

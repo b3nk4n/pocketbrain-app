@@ -225,6 +225,15 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Do you really want to clear the archive? ähnelt.
+        /// </summary>
+        public static string MessageBoxClearCheck {
+            get {
+                return ResourceManager.GetString("MessageBoxClearCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die The content is copied to the clipboard. ähnelt.
         /// </summary>
         public static string MessageBoxInfoClipboard {
@@ -351,6 +360,150 @@ namespace PocketBrain.App.Resources {
         public static string ResourceLanguage {
             get {
                 return ResourceManager.GetString("ResourceLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die 1 item ähnelt.
+        /// </summary>
+        public static string Settings1Item {
+            get {
+                return ResourceManager.GetString("Settings1Item", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die 2 items ähnelt.
+        /// </summary>
+        public static string Settings2Items {
+            get {
+                return ResourceManager.GetString("Settings2Items", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die 4 items ähnelt.
+        /// </summary>
+        public static string Settings4Items {
+            get {
+                return ResourceManager.GetString("Settings4Items", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die background image ähnelt.
+        /// </summary>
+        public static string SettingsBackgroundImageTitle {
+            get {
+                return ResourceManager.GetString("SettingsBackgroundImageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die disabled ähnelt.
+        /// </summary>
+        public static string SettingsDisabled {
+            get {
+                return ResourceManager.GetString("SettingsDisabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die enabled ähnelt.
+        /// </summary>
+        public static string SettingsEnabled {
+            get {
+                return ResourceManager.GetString("SettingsEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die show a button ähnelt.
+        /// </summary>
+        public static string SettingsListsExpandButton {
+            get {
+                return ResourceManager.GetString("SettingsListsExpandButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die by shake geasture ähnelt.
+        /// </summary>
+        public static string SettingsListsExpandByGesture {
+            get {
+                return ResourceManager.GetString("SettingsListsExpandByGesture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die by shake geasture and button ähnelt.
+        /// </summary>
+        public static string SettingsListsExpandByGestureAndButton {
+            get {
+                return ResourceManager.GetString("SettingsListsExpandByGestureAndButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die minimize / maximize ähnelt.
+        /// </summary>
+        public static string SettingsListsExpandTitle {
+            get {
+                return ResourceManager.GetString("SettingsListsExpandTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die show creation date ähnelt.
+        /// </summary>
+        public static string SettingsListsShowCreationDate {
+            get {
+                return ResourceManager.GetString("SettingsListsShowCreationDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Lists ähnelt.
+        /// </summary>
+        public static string SettingsListsTitle {
+            get {
+                return ResourceManager.GetString("SettingsListsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Lock screen ähnelt.
+        /// </summary>
+        public static string SettingsLockScreenTitle {
+            get {
+                return ResourceManager.GetString("SettingsLockScreenTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die minimum items count ähnelt.
+        /// </summary>
+        public static string SettingsMinimiumItemsTitle {
+            get {
+                return ResourceManager.GetString("SettingsMinimiumItemsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die preview ähnelt.
+        /// </summary>
+        public static string SettingsPreview {
+            get {
+                return ResourceManager.GetString("SettingsPreview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die tap to select from library ähnelt.
+        /// </summary>
+        public static string SettingsTapToSelect {
+            get {
+                return ResourceManager.GetString("SettingsTapToSelect", resourceCulture);
             }
         }
         

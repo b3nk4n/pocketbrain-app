@@ -11,10 +11,10 @@
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:PocketBrain.App" x:Key="LocalizedStrings"/>
 
-        <Color x:Key="MyPhoneChromeColor">#FF2F2F2F</Color>
+        <Color x:Key="MyPhoneChromeColor">#FF262626</Color>
         <SolidColorBrush x:Key="MyPhoneChromeBrush" Color="{StaticResource MyPhoneChromeColor}" />
 
-        <Color x:Key="MyPhoneChromeLightColor">#FF393939</Color>
+        <Color x:Key="MyPhoneChromeLightColor">#FF2F2F2F</Color>
         <SolidColorBrush x:Key="MyPhoneChromeLightBrush" Color="{StaticResource MyPhoneChromeLightColor}" />
 
         <Style x:Key="CustomButtonStyle" TargetType="Button">
@@ -97,9 +97,7 @@
                                     </VisualState>
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
-                            <!--<Polygon Width="60" Height="80" Points="0,40 60,0 60,80" VerticalAlignment="Center" HorizontalAlignment="Right" Fill="{StaticResource PhoneAccentBrush}"/>
-                            <Polygon x:Name="BorderBackground" Width="60" Height="80" Points="4,40 60,4 60,76" VerticalAlignment="Center" HorizontalAlignment="Right" Fill="{StaticResource PhoneChromeBrush}"/>-->
-                            <Polygon Width="40" Height="90" Points="0,62 0,28 40,0 40,90" VerticalAlignment="Center" HorizontalAlignment="Right" Fill="{StaticResource PhoneAccentBrush}"/>
+                            <!--<Polygon Width="40" Height="90" Points="0,62 0,28 40,0 40,90" VerticalAlignment="Center" HorizontalAlignment="Right" Fill="{StaticResource PhoneAccentBrush}"/>-->
                             <Polygon x:Name="BorderBackground" Width="40" Height="90" Points="3,61 3,29 40,4 40,86" VerticalAlignment="Center" HorizontalAlignment="Right" Fill="{StaticResource PhoneChromeBrush}"
                                      toolkit:TiltEffect.IsTiltEnabled="True"/>
                             <ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>

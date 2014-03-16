@@ -38,6 +38,7 @@
 
     <phone:PhoneApplicationPage.Resources>
         <converter:BooleanToVisibilityConverter x:Key="boolToVis" />
+        <converter:ShortDateConverter x:Key="dateConverter" />
 
         <DataTemplate x:Key="MaximizedNoteTemplate">
             <Border Background="{StaticResource PhoneAccentBrush}">
@@ -47,12 +48,15 @@
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuRestore, Source={StaticResource LocalizedStrings}}" Command="{Binding RestoreCommand}" />
                         </toolkit:ContextMenu>
                     </toolkit:ContextMenuService.ContextMenu>
-                    <Grid Width="460" MinHeight="100" Margin="-10,4,-10,4">
+                    <Grid Width="460" MinHeight="76" Margin="-10,4,-10,4">
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
+                        <TextBlock Grid.Row="0" Text="{Binding DateDeleted, Converter={StaticResource dateConverter}}" Style="{StaticResource PhoneTextNormalStyle}" FontSize="16" Foreground="Gray"
+                                   Visibility="{Binding IsDateVisible, Converter={StaticResource boolToVis}}"/>
+                        <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="48" />
@@ -60,7 +64,7 @@
                             <TextBlock Grid.Column="0" Text="{Binding DisplayedTitle}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
                             <Image Grid.Column="1" Source="Assets/AppBar/appbar.paperclip.png" Width="48" Height="48" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
                         </Grid>
-                        <TextBlock Grid.Row="1" Text="{Binding Content}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="White"
+                        <TextBlock Grid.Row="2" Text="{Binding Content}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="White"
                                             TextTrimming="WordEllipsis" TextWrapping="Wrap" />
                     </Grid>
                 </Button>
@@ -120,6 +124,12 @@
                 </Grid>
             </StackPanel>
         </ScrollViewer>
+
+        <Button x:Name="ExpansionButton" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="-1,-1,-1,32"
+                Style="{StaticResource CustomCornerButtonStyle}"
+                Visibility="{Binding IsExtensionButtonVisible, Converter={StaticResource boolToVis}}">
+            <Image x:Name="ExpansionButtonImage" Source="Assets/AppBar/appbar.arrow.expand.png" Height="36" HorizontalAlignment="Right" Margin="0,0,-12,0" />
+        </Button>
     </Grid>
 
 </phone:PhoneApplicationPage>

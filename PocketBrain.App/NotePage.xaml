@@ -50,6 +50,13 @@
             </DoubleAnimation>
         </Storyboard>
 
+        <Storyboard x:Name="ShowKeyboardExtension16to9">
+            <DoubleAnimation Storyboard.TargetName="KeyboardExtensionTransfrom" 
+                                Storyboard.TargetProperty="Y"
+                                Duration="0" To="350" >
+            </DoubleAnimation>
+        </Storyboard>
+
         <Storyboard x:Name="HideKeyboardExtension">
             <DoubleAnimation Storyboard.TargetName="KeyboardExtensionTransfrom" 
                                 Storyboard.TargetProperty="Y"

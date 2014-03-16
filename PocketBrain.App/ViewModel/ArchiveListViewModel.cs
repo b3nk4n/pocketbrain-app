@@ -1,5 +1,6 @@
 ﻿using PhoneKit.Framework.Core.MVVM;
 using PhoneKit.Framework.Core.Storage;
+using PocketBrain.App.Resources;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -56,10 +57,11 @@ namespace PocketBrain.App.ViewModel
 
             _clearCommand = new DelegateCommand(() =>
                 {
-                    if (MessageBox.Show("Do you really want to clear the archive?", "Warning", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                    if (MessageBox.Show(AppResources.MessageBoxClearCheck, AppResources.MessageBoxWarningTitle, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                     {
                         Clear();
                         UpdateCanExecuteChanged();
+                        NotifyIsExtensionButtonVisible();
                     }
                 }, () =>
                 {
@@ -193,6 +195,25 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return _clearCommand;
+            }
+        }
+
+        /// <summary>
+        /// Notifies the UI to update the view state.
+        /// </summary>
+        public void NotifyIsExtensionButtonVisible()
+        {
+            NotifyPropertyChanged("IsExtensionButtonVisible");
+        }
+
+        /// <summary>
+        /// Gets whether the expansion button is visible.
+        /// </summary>
+        public bool IsExtensionButtonVisible
+        {
+            get
+            {
+                return (Settings.ExpandListsMethod.Value == "1" || Settings.ExpandListsMethod.Value == "2") && _notes.Count > 0;
             }
         }
 
