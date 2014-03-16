@@ -172,15 +172,35 @@ namespace PocketBrain.App.ViewModel
             // select the template to render
             if (_notes.Count == 0)
             {
-                lockUri = new Uri("/Assets/LockScreenPlaceholder.png", UriKind.Relative);
-                isLocal = false;
+                if (Settings.LockScreenBackgroundImagePath.Value == null)
+                {
+                    lockUri = new Uri("/Assets/LockScreenPlaceholder.png", UriKind.Relative);
+                    isLocal = false;
+                }
+                else
+                {
+                    lockUri = new Uri("/" + Settings.LockScreenBackgroundImagePath.Value, UriKind.Relative);
+                    isLocal = true;
+                }
             }
             else
             {
                 if (_notes.Count == 1)
-                    lockGfx = GraphicsHelper.Create(new NoteLockScreen(_notes[0].DisplayedTitle, _notes[0].Content));
+                    lockGfx = GraphicsHelper.Create(new NoteLockScreen(_notes[0].DisplayedTitle, _notes[0].Content, Settings.LockScreenBackgroundImagePath.Value));
+                else if (_notes.Count == 2)
+                    lockGfx = GraphicsHelper.Create(
+                        new NoteLockScreenDual(
+                            _notes[0].DisplayedTitle, _notes[0].Content,
+                            _notes[1].DisplayedTitle, _notes[1].Content,
+                            Settings.LockScreenBackgroundImagePath.Value));
                 else
-                    lockGfx = GraphicsHelper.Create(new NoteLockScreenDual(_notes[0].DisplayedTitle, _notes[0].Content, _notes[1].DisplayedTitle, _notes[1].Content));
+                    lockGfx = GraphicsHelper.Create(
+                        new NoteLockScreenQuad(
+                            _notes[0].DisplayedTitle, _notes[0].Content,
+                            _notes[1].DisplayedTitle, _notes[1].Content,
+                            _notes[2].DisplayedTitle, _notes[2].Content,
+                            (_notes[3].DisplayedTitle == null) ? string.Empty : _notes[3].DisplayedTitle, (_notes[3].Content == null) ? string.Empty : _notes[3].Content,
+                            Settings.LockScreenBackgroundImagePath.Value));
 
                 // render lock image
                 var nextExtension = _nextLockScreenExtension.Value;

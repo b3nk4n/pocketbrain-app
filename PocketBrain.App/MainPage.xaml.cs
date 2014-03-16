@@ -65,6 +65,11 @@ namespace PocketBrain.App
                     NavigationService.Navigate(new Uri("/AboutPage.xaml", UriKind.Relative));
                 };
 
+            SettingsButton.Click += (s, e) =>
+            {
+                NavigationService.Navigate(new Uri("/SettingsPage.xaml", UriKind.Relative));
+            };
+
             ArchiveButton.Click += (s, e) =>
             {
                 NavigationService.Navigate(new Uri("/ArchivePage.xaml", UriKind.Relative));
@@ -88,6 +93,7 @@ namespace PocketBrain.App
                 };
             ShakeGesturesHelper.Instance.MinimumRequiredMovesForShake = 8;
             ShakeGesturesHelper.Instance.WeakMagnitudeWithoutGravitationThreshold = 0.75;
+
             DataContext = NoteListViewModel.Instance;
         }
 
@@ -135,7 +141,8 @@ namespace PocketBrain.App
             StartupActionManager.Instance.Fire();
 
             // activate shake listener
-            ShakeGesturesHelper.Instance.Active = true;
+            if (Settings.ExpandListsMethod.Value == "0" || Settings.ExpandListsMethod.Value == "2")
+                ShakeGesturesHelper.Instance.Active = true;
         }
 
         /// <summary>

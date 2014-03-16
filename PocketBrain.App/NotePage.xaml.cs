@@ -235,28 +235,28 @@ namespace PocketBrain.App
 
                     img.SetSource(imageStream);
                     AttachementImage.Source = img;
-
-                    // transform
-                    var transform = (CompositeTransform)AttachementImage.RenderTransform;
-
-                    double imageRatio = (double)img.PixelHeight / img.PixelWidth;
-
-                    if (imageRatio != 1)
-                    {
-                        // portrait
-                        if (imageRatio > 1)
-                        {
-                            transform.TranslateY = ((imageRatio - 1) * AttachementImage.Height) / -2;
-                        }
-                        // landscape
-                        else 
-                        {
-                            transform.TranslateX = ((imageRatio - 1) * AttachementImage.Width) / 2;
-                        }
-                    }
-
-                    AttachementImageContainer.Visibility = System.Windows.Visibility.Visible;
                 }
+
+                // transform
+                var transform = (CompositeTransform)AttachementImage.RenderTransform;
+
+                double imageRatio = (double)img.PixelHeight / img.PixelWidth;
+
+                if (imageRatio != 1)
+                {
+                    // portrait
+                    if (imageRatio > 1)
+                    {
+                        transform.TranslateY = ((imageRatio - 1) * AttachementImage.Height) / -2;
+                    }
+                    // landscape
+                    else 
+                    {
+                        transform.TranslateX = ((imageRatio - 1) * AttachementImage.Width) / 2;
+                    }
+                }
+
+                AttachementImageContainer.Visibility = System.Windows.Visibility.Visible;
             }
             else
             {

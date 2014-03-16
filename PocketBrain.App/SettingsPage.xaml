@@ -1,0 +1,132 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="PocketBrain.App.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:PocketBrain.App.Controls"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:converter="clr-namespace:PhoneKit.Framework.Conversion;assembly=PhoneKit.Framework"
+    xmlns:vm="clr-namespace:PocketBrain.App.ViewModel"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideDownFadeIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideDownFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideUpFadeOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideUpFadeOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <phone:PhoneApplicationPage.Resources>
+        <converter:BooleanToVisibilityConverter x:Key="boolToVis" />
+        <converter:ShortDateConverter x:Key="dateConverter" />
+        <converter:ShortTimeConverter x:Key="timeConverter" />
+        <vm:LockScreenPreviewViewModel x:Key="lockScreenViewModel" />
+    </phone:PhoneApplicationPage.Resources>
+
+        <!--LayoutRoot ist das Stammraster, in dem alle anderen Seiteninhalte platziert werden-->
+    <Grid x:Name="LayoutRoot" Background="{StaticResource MyPhoneChromeBrush}">
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <!--TitlePanel enthält den Namen der Anwendung und den Seitentitel-->
+            <StackPanel>
+                <TextBlock Text="{Binding Path=LocalizedResources.SettingsTitle, Source={StaticResource LocalizedStrings}}" Margin="24,10,0,32" Style="{StaticResource PhoneTextTitle1Style}"/>
+                <!--ContentPanel - zusätzliche Inhalte hier platzieren-->
+                <StackPanel x:Name="ContentPanel">
+                    <TextBlock Text="Lists" Style="{StaticResource PhoneTextGroupHeaderStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
+                    <StackPanel Margin="0,12">
+                        <TextBlock Text="minimize / maximize" Style="{StaticResource PhoneTextNormalStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
+                        <toolkit:ListPicker x:Name="ExpandListPicker" Template="{StaticResource CustomListPickerStyle}" Margin="0">
+                            <toolkit:ListPickerItem Content="by shake gesture" Tag="0" Style="{StaticResource ListPickerItemStyle}" />
+                            <toolkit:ListPickerItem Content="display a button" Tag="1" Style="{StaticResource ListPickerItemStyle}" />
+                            <toolkit:ListPickerItem Content="by shake geasture and button" Tag="2" Style="{StaticResource ListPickerItemStyle}" />
+                            <toolkit:ListPickerItem Content="disabled" Tag="2" Style="{StaticResource ListPickerItemStyle}" />
+                        </toolkit:ListPicker>
+                    </StackPanel>
+                    <StackPanel Margin="0, 12">
+                        <TextBlock Text="show creation date" Style="{StaticResource PhoneTextNormalStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
+                        <toolkit:ListPicker x:Name="CreationDatePicker" Template="{StaticResource CustomListPickerStyle}" Margin="0">
+                            <toolkit:ListPickerItem Content="disabled" Tag="0" Style="{StaticResource ListPickerItemStyle}" />
+                            <toolkit:ListPickerItem Content="enabled" Tag="1" Style="{StaticResource ListPickerItemStyle}" />
+                        </toolkit:ListPicker>
+                    </StackPanel>
+                    <StackPanel Visibility="{Binding HasLockScreenAccess, Converter={StaticResource boolToVis}}">
+                        <TextBlock Text="Lock screen" Style="{StaticResource PhoneTextGroupHeaderStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
+                        <StackPanel Margin="0, 12">
+                            <TextBlock Text="maximum items" Style="{StaticResource PhoneTextNormalStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
+                            <toolkit:ListPicker x:Name="MaxLockItemsPicker" Template="{StaticResource CustomListPickerStyle}" Margin="0">
+                                <toolkit:ListPickerItem Content="1 item" Tag="1" Style="{StaticResource ListPickerItemStyle}" />
+                                <toolkit:ListPickerItem Content="2 items" Tag="2" Style="{StaticResource ListPickerItemStyle}" />
+                                <toolkit:ListPickerItem Content="4 items" Tag="4" Style="{StaticResource ListPickerItemStyle}" />
+                            </toolkit:ListPicker>
+                        </StackPanel>
+                        <StackPanel Margin="0, 12">
+                            <TextBlock Text="background image" Style="{StaticResource PhoneTextNormalStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
+                            <Button x:Name="SelectBackgroundImageButton"
+                                Style="{StaticResource CustomButtonStyle}">
+                                <TextBlock Text="tap to select from library" Width="432" FontSize="26" />
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,12" DataContext="{StaticResource lockScreenViewModel}">
+                            <TextBlock Text="preview" Style="{StaticResource PhoneTextNormalStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}" TextAlignment="Center"/>
+                            <Border Padding="1" Background="#555555" Width="136">
+                                <Border Padding="6,6,6,24" Width="134" Background="Black">
+                                    <Border Padding="1" Background="#555555" Width="122">
+                                        <Grid Height="200" Width="120" Background="Black">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="18*" />
+                                                <RowDefinition Height="12*" />
+                                                <RowDefinition Height="1*" />
+                                            </Grid.RowDefinitions>
+                                            <Image x:Name="PreviewImageBackground" Grid.RowSpan="5" Source="/Assets/LockScreenPlaceholder.png"
+                                                   Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="0.66" />
+                                            <Image x:Name="PreviewImageForeground" Grid.RowSpan="5"
+                                               Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                            <StackPanel Grid.Row="1" Margin="6,0,0,0">
+                                                <TextBlock  Text="{Binding Time}" />
+                                                <TextBlock Text="{Binding Day}" />
+                                                <TextBlock Text="{Binding Date}" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </Border>
+                            </Border>
+                            
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,24" Visibility="{Binding HasLockScreenAccess, Converter={StaticResource boolToVis}, ConverterParameter=!}">
+                        <Border Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0" Margin="0,344,0,0">
+                            <Button Command="{Binding LockScreenCommand}"
+                                Style="{StaticResource CustomButtonStyle}">
+                                <Image Source="Assets/AppBar/appbar.lock.png" Height="52" />
+                            </Button>
+                        </Border>
+                        
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+
+    </Grid>
+
+</phone:PhoneApplicationPage>

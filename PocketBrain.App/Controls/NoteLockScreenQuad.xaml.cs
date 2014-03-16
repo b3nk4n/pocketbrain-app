@@ -1,34 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using System.Windows.Media.Imaging;
+﻿using System.Windows.Controls;
 using PhoneKit.Framework.Core.Storage;
+using System.Windows.Media.Imaging;
 
 namespace PocketBrain.App.Controls
 {
     /// <summary>
-    /// The note lock screen template.
+    /// The note gual lock screen template.
     /// </summary>
-    public partial class NoteLockScreen : UserControl
+    public partial class NoteLockScreenQuad : UserControl
     {
         /// <summary>
-        /// Creates a NoteLockScreen instance.
+        /// Creates a NoteLockScreenDual instance.
         /// </summary>
-        /// <param name="title">The title.</param>
-        /// <param name="text">The content text.</param>
-        /// <param name="backgroundPath">The background image path.</param>
-        public NoteLockScreen(string title, string text, string backgroundPath)
+        /// <param name="title1">The title of note1.</param>
+        /// <param name="text1">The content text of note1.</param>
+        /// <param name="title2">The title of note2.</param>
+        /// <param name="text2">The content text of note2.</param>
+        /// /// <param name="title3">The title of note3.</param>
+        /// <param name="text3">The content text of note3.</param>
+        /// <param name="title4">The title of note4.</param>
+        /// <param name="text4">The content text of note4.</param>
+        /// /// <param name="backgroundPath">The background image path.</param>
+        public NoteLockScreenQuad(string title1, string text1, string title2, string text2,
+            string title3, string text3, string title4, string text4, string backgroundPath)
         {
             InitializeComponent();
 
-            this.Title.Text = title;
-            this.Text.Text = text;
+            this.Title1.Text = title1;
+            this.Text1.Text = text1;
+            this.Title2.Text = title2;
+            this.Text2.Text = text2;
+            this.Title3.Text = title3;
+            this.Text3.Text = text3;
+            this.Title4.Text = title4;
+            this.Text4.Text = text4;
+
             SetBackgroundImage(backgroundPath);
         }
 

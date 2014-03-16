@@ -254,6 +254,10 @@ De nous montrer un peu d'amour dans le Windows Store nous aide à continuer à t
     <value>fr</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>paramètres</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SupportAndFeedback" xml:space="preserve">
     <value>retour d'expérience</value>
     <comment>About Page</comment>

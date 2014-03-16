@@ -256,6 +256,10 @@ Mostre o seu interesse na loja e ajude-nos a continuar trabalhando para tornar e
     <value>pt</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>configurações</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SupportAndFeedback" xml:space="preserve">
     <value>suporte e feedback</value>
     <comment>About Page</comment>
