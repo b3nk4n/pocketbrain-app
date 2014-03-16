@@ -253,7 +253,6 @@ namespace PocketBrain.App
                         {
                             transform.TranslateX = ((imageRatio - 1) * AttachementImage.Width) / 2;
                         }
-                        
                     }
 
                     AttachementImageContainer.Visibility = System.Windows.Visibility.Visible;

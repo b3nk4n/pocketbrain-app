@@ -10,6 +10,7 @@ using Microsoft.Phone.Shell;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using PhoneKit.Framework.Core.Storage;
+using Microsoft.Xna.Framework;
 
 namespace PocketBrain.App
 {
@@ -18,6 +19,11 @@ namespace PocketBrain.App
     /// </summary>
     public partial class AttachmentPage : PhoneApplicationPage
     {
+        /// <summary>
+        /// The displayed image.
+        /// </summary>
+        private BitmapImage _image;
+
         /// <summary>
         /// Creates a AttachmentPage instance.
         /// </summary>
@@ -46,6 +52,8 @@ namespace PocketBrain.App
             transform.ScaleY = 1;
             transform.TranslateX = 1;
             transform.TranslateY = 1;
+
+            UpdateImageScaleCenter();
         }
 
         /// <summary>
@@ -60,20 +68,17 @@ namespace PocketBrain.App
             if (e.PinchManipulation != null)
             {
                 // Scale Manipulation
-                transform.ScaleX += e.PinchManipulation.CumulativeScale - transform.ScaleX;
-                transform.ScaleX = Math.Max(1, transform.ScaleX);
-                System.Diagnostics.Debug.WriteLine(e.PinchManipulation.CumulativeScale);
-                transform.ScaleY += e.PinchManipulation.CumulativeScale - transform.ScaleY;
-                transform.ScaleY = Math.Max(1, transform.ScaleY);
-
-                // end 
-                e.Handled = true;
+                transform.ScaleX = MathHelper.Clamp((float)e.PinchManipulation.CumulativeScale, 1.0f, 2.25f);
+                transform.ScaleY = MathHelper.Clamp((float)e.PinchManipulation.CumulativeScale, 1.0f, 2.25f);
             }
             else
             {
                 transform.TranslateX += e.DeltaManipulation.Translation.X;
                 transform.TranslateY += e.DeltaManipulation.Translation.Y;
             }
+
+            // end 
+            e.Handled = true;
         }
 
         /// <summary>
@@ -102,7 +107,7 @@ namespace PocketBrain.App
         /// <param name="note">The current note view model.</param>
         private void UpdateAttachedImageSource(string imagePath)
         {
-            BitmapImage img = new BitmapImage();
+            _image = new BitmapImage();
             using (var imageStream = StorageHelper.GetFileStream(imagePath))
             {
                 // in case of a not successfully saved image
@@ -112,8 +117,63 @@ namespace PocketBrain.App
                     return;
                 }
 
-                img.SetSource(imageStream);
-                AttachementImage.Source = img;
+                _image.SetSource(imageStream);
+                AttachementImage.Source = _image;
+
+                UpdateImageScaleCenter();
+            }
+        }
+
+        /// <summary>
+        /// Updates the image scale center.
+        /// </summary>
+        private void UpdateImageScaleCenter()
+        {
+            // ensure there is an image
+            if (_image == null || _image.PixelWidth == 0)
+                return;
+
+            var transform = (CompositeTransform)AttachementImage.RenderTransform;
+            double imageRatio = (double)_image.PixelHeight / _image.PixelWidth;
+
+            // portrait mode
+            if (Orientation == PageOrientation.Portrait ||
+                Orientation == PageOrientation.PortraitUp ||
+                Orientation == PageOrientation.PortraitDown)
+            {
+                double w;
+                double h;
+                if (imageRatio >= 1.66)
+                {
+                    h = 800;
+                    w = h / imageRatio;
+                }
+                else
+                {
+                    w = 480;
+                    h = w * imageRatio;
+                }
+
+                transform.CenterX = w / 2;
+                transform.CenterY = h / 2;
+            }
+            else // landscape mode
+            {
+                double w;
+                double h;
+                if (imageRatio <= 0.6)
+                {
+                    w = 800;
+                    h = w * imageRatio;  
+                }
+                else
+                {
+                    h = 480;
+                    w = h / imageRatio;
+                }
+
+                transform.CenterX = w / 2;
+                transform.CenterY = h / 2;
             }
         }
     }
