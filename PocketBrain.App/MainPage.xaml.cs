@@ -217,9 +217,9 @@ namespace PocketBrain.App
             var maximized = (DataTemplate)this.Resources["MaximizedNoteTemplate"];
             Uri uri;
             if (NotesList.ItemTemplate == maximized)
-                uri = new Uri("/Assets/AppBar/appbar.arrow.collapsed.png", UriKind.Relative);
+                uri = new Uri(screenOverlayViewModel.CollapsedImagePath, UriKind.Relative);
             else
-                uri = new Uri("/Assets/AppBar/appbar.arrow.expand.png", UriKind.Relative);
+                uri = new Uri(screenOverlayViewModel.ExpandImagePath, UriKind.Relative);
 
             ExpansionButtonImage.Source = new BitmapImage(uri);
         }

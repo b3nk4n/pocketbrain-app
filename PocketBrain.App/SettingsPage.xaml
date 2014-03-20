@@ -49,7 +49,8 @@
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <!--TitlePanel enthält den Namen der Anwendung und den Seitentitel-->
             <StackPanel>
-                <TextBlock Text="{Binding Path=LocalizedResources.SettingsTitle, Source={StaticResource LocalizedStrings}}" Margin="24,10,0,32" Style="{StaticResource PhoneTextTitle1Style}"/>
+                <TextBlock Text="{Binding Path=LocalizedResources.SettingsTitle, Source={StaticResource LocalizedStrings}}" Margin="24,10,0,32" Style="{StaticResource PhoneTextTitle1Style}"
+                           Foreground="White"/>
                 <!--ContentPanel - zusätzliche Inhalte hier platzieren-->
                 <StackPanel x:Name="ContentPanel">
                     <TextBlock Text="{Binding Path=LocalizedResources.SettingsListsTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextGroupHeaderStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>

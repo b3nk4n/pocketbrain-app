@@ -9,6 +9,7 @@
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:local="clr-namespace:PocketBrain.App.Controls"
     xmlns:converter="clr-namespace:PhoneKit.Framework.Conversion;assembly=PhoneKit.Framework"
+    xmlns:vm="clr-namespace:PocketBrain.App.ViewModel"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -39,6 +40,8 @@
     <phone:PhoneApplicationPage.Resources>
         <converter:BooleanToVisibilityConverter x:Key="boolToVis" />
         <converter:ShortDateConverter x:Key="dateConverter" />
+
+        <vm:ScreenOverlayViewModel x:Key="screenOverlayViewModel" x:Name="screenOverlayViewModel" />
 
         <Storyboard x:Name="WelcomeAnimation" RepeatBehavior="Forever">
         	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Opacity)" Storyboard.TargetName="image">
@@ -154,12 +157,15 @@
                 </StackPanel>
             </ScrollViewer>
         </Grid>
-
-        <Button x:Name="ExpansionButton" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="-1,-1,-1,32"
-                Style="{StaticResource CustomCornerButtonStyle}"
-                Visibility="{Binding IsExtensionButtonVisible, Converter={StaticResource boolToVis}}">
-            <Image x:Name="ExpansionButtonImage" Source="Assets/AppBar/appbar.arrow.expand.png" Height="36" HorizontalAlignment="Right" Margin="0,0,-12,0" />
-        </Button>
+        
+        <Border VerticalAlignment="Center" HorizontalAlignment="Right"
+                DataContext="{StaticResource screenOverlayViewModel}">
+            <Button x:Name="ExpansionButton" Margin="-1,-1,-1,32"
+                    Style="{StaticResource CustomCornerButtonStyle}"
+                    Visibility="{Binding IsExtensionButtonVisible, Converter={StaticResource boolToVis}}">
+                <Image x:Name="ExpansionButtonImage" Source="{Binding ExpandImagePath}" Height="36" HorizontalAlignment="Right" Margin="0,0,-12,0" />
+            </Button>
+        </Border>
 
         <!-- Feedback dialog -->
         <local:LocalizedFeedbackDialogControl Grid.RowSpan="2" EnableAnimation="True" />

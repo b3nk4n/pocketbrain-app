@@ -144,6 +144,7 @@
     <Compile Include="ViewModel\LockScreenPreviewViewModel.cs" />
     <Compile Include="ViewModel\NoteListViewModel.cs" />
     <Compile Include="ViewModel\NoteViewModel.cs" />
+    <Compile Include="ViewModel\ScreenOverlayViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -212,7 +213,9 @@
     <Content Include="Assets\AppBar\appbar.append.png" />
     <Content Include="Assets\AppBar\appbar.archive.clear.png" />
     <Content Include="Assets\AppBar\appbar.archive.png" />
+    <Content Include="Assets\AppBar\appbar.arrow.collapsed.dark.png" />
     <Content Include="Assets\AppBar\appbar.arrow.collapsed.png" />
+    <Content Include="Assets\AppBar\appbar.arrow.expand.dark.png" />
     <Content Include="Assets\AppBar\appbar.arrow.expand.png" />
     <Content Include="Assets\AppBar\appbar.back.cropped.dark.png" />
     <Content Include="Assets\AppBar\appbar.back.cropped.png" />

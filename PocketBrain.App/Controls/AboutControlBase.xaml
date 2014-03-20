@@ -18,16 +18,19 @@
                 </Border>
                 <StackPanel VerticalAlignment="Center">
                     <TextBlock x:Name="ApplicationTitleElement" Text="App Name"
-                           FontWeight="Bold" Style="{StaticResource PhoneTextTitle2Style}"/>
+                           FontWeight="Bold" Style="{StaticResource PhoneTextTitle2Style}"
+                           Foreground="White"/>
                     <TextBlock x:Name="ApplicationAuthorElement" Text="by Firstname Lastname"
-                           Style="{StaticResource PhoneTextSmallStyle}"/>
+                           Style="{StaticResource PhoneTextSmallStyle}"
+                           Foreground="White" />
                     <TextBlock x:Name="ApplicationVersionElement" Text="v1.0"
-                           Style="{StaticResource PhoneTextTitle3Style}"/>
+                           Style="{StaticResource PhoneTextTitle3Style}"
+                           Foreground="White"/>
                 </StackPanel>
             </StackPanel>
             <TextBlock x:Name="ApplicationDescriptionElement" Text="A short localized description text about the application goes here."
                            Style="{StaticResource PhoneTextSubtleStyle}" TextWrapping="Wrap" Margin="24,32"
-                           HorizontalAlignment="Center" MinHeight="72"/>
+                           HorizontalAlignment="Center" MinHeight="72" Foreground="DarkGray"/>
             <Border Background="{StaticResource PhoneAccentBrush}">
                 <StackPanel Margin="0,4,0,4">
                     <Button x:Name="SupportAndFeedbackElement" Height="72" Content="feedback" Style="{StaticResource CustomButtonStyle}" />
@@ -45,14 +48,16 @@
                             <StackPanel Orientation="Horizontal" Margin="4">
                                 <Image Height="50" Width="50" Source="{Binding IconPath}" />
                                 <TextBlock Text="{Binding Name}" Margin="20, 0, 0, 0" VerticalAlignment="Center" 
-                                               Style="{StaticResource PhoneTextNormalStyle}" />
+                                               Style="{StaticResource PhoneTextNormalStyle}"
+                                               Foreground="White"/>
                             </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </StackPanel>
             <TextBlock x:Name="BrandingElement" Style="{StaticResource PhoneTextSubtleStyle}" Margin="12"
-                           HorizontalAlignment="Center" Text="powered by PhoneKit Framework 1.1"/>
+                           HorizontalAlignment="Center" Text="powered by PhoneKit Framework 1.1"
+                           Foreground="White"/>
         </StackPanel>
     </Grid>
 </UserControl>
