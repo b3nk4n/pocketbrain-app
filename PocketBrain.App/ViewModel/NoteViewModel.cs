@@ -2,6 +2,7 @@
 using Microsoft.Phone.Tasks;
 using PhoneKit.Framework.Core.Graphics;
 using PhoneKit.Framework.Core.MVVM;
+using PhoneKit.Framework.Core.OS;
 using PhoneKit.Framework.Core.Storage;
 using PhoneKit.Framework.Core.Tile;
 using PhoneKit.Framework.Tile;
@@ -95,6 +96,46 @@ namespace PocketBrain.App.ViewModel
         /// </summary>
         /// <remarks>Must be defined at class level to work properly in tombstoning.</remarks>
         private PhotoChooserTask _photoTask = new PhotoChooserTask();
+
+        /// <summary>
+        /// The speak image for the light theme.
+        /// </summary>
+        private const string SPEAK_LIGHT = "Assets/AppBar/appbar.microphone.png";
+
+        /// <summary>
+        /// The speak image for the dark theme.
+        /// </summary>
+        private const string SPEAK_DARK = "Assets/AppBar/appbar.microphone.dark.png";
+
+        /// <summary>
+        /// The speak prepend image for the light theme.
+        /// </summary>
+        private const string SPEAK_PREPEND_LIGHT = "Assets/AppBar/appbar.prepend.png";
+
+        /// <summary>
+        /// The speak prepend image for the dark theme.
+        /// </summary>
+        private const string SPEAK_PREPEND_DARK = "Assets/AppBar/appbar.prepend.dark.png";
+
+        /// <summary>
+        /// The speak replace image for the light theme.
+        /// </summary>
+        private const string SPEAK_REPLACE_LIGHT = "Assets/AppBar/appbar.replace.png";
+
+        /// <summary>
+        /// The speak replace image for the dark theme.
+        /// </summary>
+        private const string SPEAK_REPLACE_DARK = "Assets/AppBar/appbar.replace.dark.png";
+
+        /// <summary>
+        /// The speak append image for the light theme.
+        /// </summary>
+        private const string SPEAK_APPEND_LIGHT = "Assets/AppBar/appbar.append.png";
+
+        /// <summary>
+        /// The speak append image for the dark theme.
+        /// </summary>
+        private const string SPEAK_APPEND_DARK = "Assets/AppBar/appbar.append.dark.png";
  
         #endregion
 
@@ -749,6 +790,62 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return Settings.ShowCreationDateOnList.Value == "1";
+            }
+        }
+
+        /// <summary>
+        /// Gets the speak button image path.
+        /// </summary>
+        public string SpeakImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return SPEAK_DARK;
+                else
+                    return SPEAK_LIGHT;
+            }
+        }
+
+        /// <summary>
+        /// Gets the speak prepend button image path.
+        /// </summary>
+        public string SpeakPrependImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return SPEAK_PREPEND_DARK;
+                else
+                    return SPEAK_PREPEND_LIGHT;
+            }
+        }
+
+        /// <summary>
+        /// Gets the speak replace button image path.
+        /// </summary>
+        public string SpeakReplaceImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return SPEAK_REPLACE_DARK;
+                else
+                    return SPEAK_REPLACE_LIGHT;
+            }
+        }
+
+        /// <summary>
+        /// Gets the speak append button image path.
+        /// </summary>
+        public string SpeakAppendImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return SPEAK_APPEND_DARK;
+                else
+                    return SPEAK_APPEND_LIGHT;
             }
         }
 

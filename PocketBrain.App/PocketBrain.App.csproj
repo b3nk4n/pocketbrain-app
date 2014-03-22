@@ -210,7 +210,7 @@
     <Content Include="Assets\AddNoteIcon.png" />
     <Content Include="Assets\AppBar\appbar.add.note.png" />
     <Content Include="Assets\AppBar\appbar.add.png" />
-    <Content Include="Assets\AppBar\appbar.append.cropped.png" />
+    <Content Include="Assets\AppBar\appbar.append.dark.png" />
     <Content Include="Assets\AppBar\appbar.append.png" />
     <Content Include="Assets\AppBar\appbar.archive.clear.png" />
     <Content Include="Assets\AppBar\appbar.archive.png" />
@@ -228,6 +228,7 @@
     <Content Include="Assets\AppBar\appbar.memo.add.png" />
     <Content Include="Assets\AppBar\appbar.message.png" />
     <Content Include="Assets\AppBar\appbar.microphone.cropped.png" />
+    <Content Include="Assets\AppBar\appbar.microphone.dark.png" />
     <Content Include="Assets\AppBar\appbar.microphone.png" />
     <Content Include="Assets\AppBar\appbar.next.cropped.dark.png" />
     <Content Include="Assets\AppBar\appbar.next.cropped.png" />
@@ -238,11 +239,12 @@
     <Content Include="Assets\AppBar\appbar.paperclip.remove.png" />
     <Content Include="Assets\AppBar\appbar.pin.png" />
     <Content Include="Assets\AppBar\appbar.pin.remove.png" />
-    <Content Include="Assets\AppBar\appbar.prepend.cropped.png" />
+    <Content Include="Assets\AppBar\appbar.prepend.dark.png" />
     <Content Include="Assets\AppBar\appbar.prepend.png" />
-    <Content Include="Assets\AppBar\appbar.replace.cropped.png" />
+    <Content Include="Assets\AppBar\appbar.replace.dark.png" />
     <Content Include="Assets\AppBar\appbar.replace.png" />
     <Content Include="Assets\AppBar\appbar.settings.png" />
+    <Content Include="Assets\AppBar\appbar.share.open.png" />
     <Content Include="Assets\AppBar\appbar.share.png" />
     <Content Include="Assets\AppBar\appbar.whatsapp.png" />
     <Content Include="Assets\ApplicationIcon.png">

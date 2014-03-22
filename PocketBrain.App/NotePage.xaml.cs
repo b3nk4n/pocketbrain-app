@@ -94,8 +94,7 @@ namespace PocketBrain.App
 
             ShareButton.Click += (s, e) =>
                 {
-                    ShareButton.Visibility = System.Windows.Visibility.Collapsed;
-                    SharingContainer.Visibility = System.Windows.Visibility.Visible;
+                    ToggleSharingViewState();
                 };
 
             SpeakButton.Click += (s, e) =>
@@ -269,6 +268,25 @@ namespace PocketBrain.App
             {
                 AttachementImage.Source = null;
                 AttachementImageContainer.Visibility = System.Windows.Visibility.Collapsed;
+            }
+        }
+
+        /// <summary>
+        /// Toggles the share button view state
+        /// </summary>
+        private void ToggleSharingViewState()
+        {
+            if (SharingContainer.Visibility == System.Windows.Visibility.Collapsed)
+            {
+                SharingContainer.Visibility = System.Windows.Visibility.Visible;
+                ShareButtonImage.Source = new BitmapImage(new Uri("Assets/AppBar/appbar.share.open.png", UriKind.Relative));
+                ShareButton.Opacity = 0.95f;
+            }
+            else
+            {
+                SharingContainer.Visibility = System.Windows.Visibility.Collapsed;
+                ShareButtonImage.Source = new BitmapImage(new Uri("Assets/AppBar/appbar.share.png", UriKind.Relative));
+                ShareButton.Opacity = 1f;
             }
         }
 

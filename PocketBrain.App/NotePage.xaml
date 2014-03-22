@@ -67,121 +67,119 @@
 
     <!--LayoutRoot ist das Stammraster, in dem alle anderen Seiteninhalte platziert werden-->
     <Grid x:Name="LayoutRoot" Background="{StaticResource MyPhoneChromeBrush}">
-        <ScrollViewer x:Name="Scroller" VerticalScrollBarVisibility="Hidden">
-            <StackPanel Margin="0,-124,0,0">
-                <Grid Margin="0,0,0,92">
-                    <TextBlock Text="{Binding DateCreated, Converter={StaticResource shortTime}}" Style="{StaticResource PhoneTextSmallStyle}" Foreground="Gray" HorizontalAlignment="Left" />
-                    <TextBlock Text="{Binding DateCreated, Converter={StaticResource shortDate}}" Style="{StaticResource PhoneTextSmallStyle}" Foreground="Gray" HorizontalAlignment="Right" />
-                </Grid>
+        <Grid x:Name="ContentPanel">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Border  Padding="0,0,0,4"
+                        Background="{StaticResource PhoneAccentBrush}">
                 <toolkit:PhoneTextBox x:Name="TitleTextBox"  Hint="{Binding Path=LocalizedResources.DefaultTitle, Source={StaticResource LocalizedStrings}}"
                                       Text="{Binding Title, Mode=TwoWay}" FontSize="32" Foreground="{StaticResource PhoneAccentBrush}"
                                       Style="{StaticResource CustomPhoneTextBoxStyle}"
-                                      InputScope="Text" />
-                <Border Padding="0,4,0,0"
-                        Background="{StaticResource PhoneAccentBrush}">
-                    <Grid Background="{StaticResource MyPhoneChromeBrush}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="58" />
-                        </Grid.ColumnDefinitions>
-                        <toolkit:PhoneTextBox x:Name="ContentTextBox" Grid.Column="0" Text="{Binding Content, Mode=TwoWay}"
-                                Height="Auto" MinHeight="450" TextWrapping="Wrap" AcceptsReturn="True"
+                                      InputScope="Formula">
+                </toolkit:PhoneTextBox>
+            </Border>
+            <Border Grid.Row="1">
+                
+                <ScrollViewer x:Name="Scroller"  VerticalScrollBarVisibility="Hidden">
+                    <StackPanel Margin="0,-124,0,0">
+                        <Grid Margin="0,0,0,92">
+                            <TextBlock Text="{Binding DateCreated, Converter={StaticResource shortTime}}" Style="{StaticResource PhoneTextSmallStyle}" Foreground="Gray" HorizontalAlignment="Left" />
+                            <TextBlock Text="{Binding DateCreated, Converter={StaticResource shortDate}}" Style="{StaticResource PhoneTextSmallStyle}" Foreground="Gray" HorizontalAlignment="Right" />
+                        </Grid>
+                        <Border Background="{StaticResource MyPhoneChromeBrush}" Margin="0,10,42,0">
+                            <toolkit:PhoneTextBox x:Name="ContentTextBox" Text="{Binding Content, Mode=TwoWay}"
+                                Height="Auto" MinHeight="460" TextWrapping="Wrap" AcceptsReturn="True"
                                 Style="{StaticResource CustomPhoneTextBoxStyle}"
-                                InputScope="Text" />
-                        <StackPanel Grid.Column="1" Margin="0,8,0,0">
-                            <Button x:Name="SpeakButton" Padding="0"
-                                Style="{StaticResource CustomButtonStyle}">
-                                <Image Source="Assets/AppBar/appbar.microphone.cropped.png" Height="34" Opacity="0.75" />
-                            </Button>
-                        </StackPanel>
-                        <StackPanel x:Name="SpeakContainer" Grid.Column="1" Visibility="Collapsed"  Margin="0,8,0,0">
-                            <Button Command="{Binding SpeakPrependTextCommand}" Padding="0"
-                                Style="{StaticResource CustomButtonStyle}" Click="SpeakButtonClicked">
-                                <Image Source="Assets/AppBar/appbar.prepend.cropped.png" Height="34" Opacity="0.75" />
-                            </Button>
-                            <Button Command="{Binding SpeakReplaceTextCommand}" Padding="0"
-                                Style="{StaticResource CustomButtonStyle}" Click="SpeakButtonClicked">
-                                <Image Source="Assets/AppBar/appbar.replace.cropped.png" Height="34" Opacity="0.75" />
-                            </Button>
-                            <Button Command="{Binding SpeakAppendTextCommand}" Padding="0"
-                                Style="{StaticResource CustomButtonStyle}" Click="SpeakButtonClicked">
-                                <Image Source="Assets/AppBar/appbar.append.cropped.png" Height="34" Opacity="0.75" />
-                            </Button>
-                        </StackPanel>
-                    </Grid>
+                                InputScope="Formula" />             
+                        </Border>
                         
-                </Border>
-                <Grid Height="480" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}">
-                    <Grid.Clip>
-                        <RectangleGeometry Rect="0,0,480,480" />
-                    </Grid.Clip>
-                    <Border x:Name="AttachementImageContainer" Padding="0,4,0,0"
+                        <!-- keyboard bottom spacer -->
+                        <Rectangle Fill="{StaticResource MyPhoneChromeBrush}" Height="210"
+                                   Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}, ConverterParameter=!}"/>
+                        
+                        <Grid Height="480"  Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}">
+                            <Grid.Clip>
+                                <RectangleGeometry Rect="0,0,480,480" />
+                            </Grid.Clip>
+                            <Border x:Name="AttachementImageContainer" Padding="0,4,0,0"
                             Background="{StaticResource PhoneAccentBrush}">
-                        <Image x:Name="AttachementImage"
+                                <Image x:Name="AttachementImage"
                             Stretch="UniformToFill"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center">
-                            <Image.RenderTransform>
-                                <CompositeTransform />
-                            </Image.RenderTransform>
-                        </Image>
-                    </Border>
-                </Grid>
-
-                <Border Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
-                    <StackPanel>
-                        <Button x:Name="ImageFromAblumButton" Command="{Binding AddAttachementCommand}"
+                                    <Image.RenderTransform>
+                                        <CompositeTransform />
+                                    </Image.RenderTransform>
+                                </Image>
+                            </Border>
+                        </Grid>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+            
+            <Border Grid.Row="2"  Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
+                <StackPanel>
+                    <Grid x:Name="SharingContainer" Visibility="Visible">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Command="{Binding ShareEmailCommand}"
+                                Style="{StaticResource CustomButtonStyle}" Click="SharingButtonClicked">
+                            <Image Source="Assets/AppBar/appbar.email.png" Height="52" />
+                        </Button>
+                        <Button Grid.Column="1" Command="{Binding ShareMessageCommand}"
+                                Style="{StaticResource CustomButtonStyle}" Click="SharingButtonClicked">
+                            <Image Source="Assets/AppBar/appbar.message.png" Height="52" />
+                        </Button>
+                        <Button Grid.Column="2" Command="{Binding ShareWhatsappCommand}"
+                                Style="{StaticResource CustomButtonStyle}" Click="SharingButtonClicked">
+                            <Image Source="Assets/AppBar/appbar.whatsapp.png" Height="52" />
+                        </Button>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="ImageFromAblumButton" Grid.Column="0" Command="{Binding AddAttachementCommand}"
                                 Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}, ConverterParameter=!}"
                                 Style="{StaticResource CustomButtonStyle}">
                             <Image Source="Assets/AppBar/appbar.paperclip.png" Height="52" />
                         </Button>
-                        <Button x:Name="RemoveAttachementButton" Command="{Binding RemoveAttachementCommand}"
+                        <Button x:Name="RemoveAttachementButton" Grid.Column="0" Command="{Binding RemoveAttachementCommand}"
                             Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}"
                             Style="{StaticResource CustomButtonStyle}">
                             <Image Source="Assets/AppBar/appbar.paperclip.remove.png" Height="52" />
                         </Button>
-                        <Button Command="{Binding PinToStartCommand}"
+                        <Button x:Name="ShareButton" Grid.Column="1"
+                            Style="{StaticResource CustomButtonStyle}">
+                            <Image x:Name="ShareButtonImage" Source="Assets/AppBar/appbar.share.png" Height="52" />
+                        </Button>
+                        <Button Grid.Column="2" Command="{Binding PinToStartCommand}"
                             Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}}"
                             Style="{StaticResource CustomButtonStyle}">
                             <Image Source="Assets/AppBar/appbar.pin.png" Height="52" />
                         </Button>
-                        <Button Command="{Binding UnpinFromStartCommand}"
+                        <Button Grid.Column="2" Command="{Binding UnpinFromStartCommand}"
                             Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}, ConverterParameter=!}"
                             Style="{StaticResource CustomButtonStyle}">
                             <Image Source="Assets/AppBar/appbar.pin.remove.png" Height="52" />
                         </Button>
-                        <Button x:Name="ShareButton"
+                    </Grid>
+               
+                    <Button x:Name="DeleteNoteButton" Command="{Binding DeleteCommand}"
                             Style="{StaticResource CustomButtonStyle}">
-                            <Image Source="Assets/AppBar/appbar.share.png" Height="52" />
-                        </Button>
-                        <Grid x:Name="SharingContainer" Visibility="Collapsed">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Button Grid.Column="0" Command="{Binding ShareEmailCommand}"
-                                Style="{StaticResource CustomButtonStyle}" Click="SharingButtonClicked">
-                                <Image Source="Assets/AppBar/appbar.email.png" Height="52" />
-                            </Button>
-                            <Button Grid.Column="1" Command="{Binding ShareMessageCommand}"
-                                Style="{StaticResource CustomButtonStyle}" Click="SharingButtonClicked">
-                                <Image Source="Assets/AppBar/appbar.message.png" Height="52" />
-                            </Button>
-                            <Button Grid.Column="2" Command="{Binding ShareWhatsappCommand}"
-                                Style="{StaticResource CustomButtonStyle}" Click="SharingButtonClicked">
-                                <Image Source="Assets/AppBar/appbar.whatsapp.png" Height="52" />
-                            </Button>
-                        </Grid>
-                        <Button x:Name="DeleteNoteButton" Command="{Binding DeleteCommand}"
-                            Style="{StaticResource CustomButtonStyle}">
-                            <Image Source="Assets/AppBar/appbar.delete.png" Height="52" />
-                        </Button>
-                        <Rectangle Height="52" Fill="{StaticResource MyPhoneChromeBrush}"/>
-                    </StackPanel>
-                </Border>
-            </StackPanel>
-        </ScrollViewer>
+                        <Image Source="Assets/AppBar/appbar.delete.png" Height="52" />
+                    </Button>
+                </StackPanel>
+            </Border>
+        </Grid>
         <Border x:Name="KeyboardExtensionContainer" VerticalAlignment="Top" HorizontalAlignment="Right">
             <Border.RenderTransform>
                 <TranslateTransform x:Name="KeyboardExtensionTransfrom" Y="1000" />
@@ -210,6 +208,41 @@
                 <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Fill="{StaticResource PhoneChromeBrush}" />
             </Grid>
         </Border>
+        <Border VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,112,0,0">
+            <Button x:Name="SpeakButton"
+                    Style="{StaticResource CustomCornerButtonStyle}"
+                    Visibility="{Binding IsExtensionButtonVisible, Converter={StaticResource boolToVis}}">
+                <Image x:Name="ExpansionButtonImage" Source="{Binding SpeakImagePath}" Height="38" HorizontalAlignment="Right" Margin="0,0,-12,0" />
+            </Button>
+        </Border>
+
+
+        <StackPanel x:Name="SpeakContainer" Grid.Column="1" Visibility="Collapsed"
+                    VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,112,0,0">
+            <Border VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Button Command="{Binding SpeakPrependTextCommand}" Click="SpeakButtonClicked"
+                    Style="{StaticResource CustomCornerButtonStyle}"
+                    Visibility="{Binding IsExtensionButtonVisible, Converter={StaticResource boolToVis}}">
+                    <Image Source="{Binding SpeakPrependImagePath}" Height="40" HorizontalAlignment="Right" Margin="0,0,-12,0" />
+                </Button>
+            </Border>
+            <Border VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Button Command="{Binding SpeakReplaceTextCommand}" Click="SpeakButtonClicked"
+                    Style="{StaticResource CustomCornerButtonStyle}"
+                    Visibility="{Binding IsExtensionButtonVisible, Converter={StaticResource boolToVis}}">
+                    <Image Source="{Binding SpeakReplaceImagePath}" Height="40" HorizontalAlignment="Right" Margin="0,0,-12,0" />
+                </Button>
+            </Border>
+            <Border VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Button Command="{Binding SpeakAppendTextCommand}" Click="SpeakButtonClicked"
+                    Style="{StaticResource CustomCornerButtonStyle}"
+                    Visibility="{Binding IsExtensionButtonVisible, Converter={StaticResource boolToVis}}">
+                    <Image Source="{Binding SpeakAppendImagePath}" Height="40" HorizontalAlignment="Right" Margin="0,0,-12,0" />
+                </Button>
+            </Border>
+        </StackPanel>
+
+
     </Grid>
 
 </phone:PhoneApplicationPage>

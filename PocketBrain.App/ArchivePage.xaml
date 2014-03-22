@@ -128,7 +128,7 @@
         </Grid>
 
         <Border VerticalAlignment="Center" HorizontalAlignment="Right">
-            <Button x:Name="ExpansionButton" Margin="-1,-1,-1,32"
+            <Button x:Name="ExpansionButton"
                     Style="{StaticResource CustomCornerButtonStyle}"
                     Visibility="{Binding IsExtensionButtonVisible, Converter={StaticResource boolToVis}}">
                 <Image x:Name="ExpansionButtonImage" Source="{Binding ExpandImagePath}" Height="36" HorizontalAlignment="Right" Margin="0,0,-12,0" />
