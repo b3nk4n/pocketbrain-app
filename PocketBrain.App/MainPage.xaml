@@ -124,6 +124,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Border Grid.Row="0" Background="{StaticResource PhoneAccentBrush}" Padding="0,0,0,5">
                 <Button x:Name="NewNoteButton"
@@ -139,26 +140,32 @@
             </Border>
             <ScrollViewer x:Name="Scroller" Grid.Row="1" VerticalScrollBarVisibility="Hidden">
                 <StackPanel>
-                    <ItemsControl x:Name="NotesList" ItemsSource="{Binding Notes}" MinHeight="534"
+                    <ItemsControl x:Name="NotesList" ItemsSource="{Binding Notes}"
                                   ItemTemplate="{StaticResource MaximizedNoteTemplate}"/>
-                    <Border Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
-                        <StackPanel>
-                            <Button x:Name="ArchiveButton"
-                                Style="{StaticResource CustomButtonStyle}">
-                                <Image Source="Assets/AppBar/appbar.archive.png" Height="52" />
-                            </Button>
-                            <Button x:Name="SettingsButton"
-                                Style="{StaticResource CustomButtonStyle}">
-                                <Image Source="Assets/AppBar/appbar.settings.png" Height="52" />
-                            </Button>
-                            <Button x:Name="AboutButton"
-                                Style="{StaticResource CustomButtonStyle}">
-                                <Image Source="Assets/AppBar/appbar.information.png" Height="52" />
-                            </Button>
-                        </StackPanel>
-                    </Border>
+                    
                 </StackPanel>
             </ScrollViewer>
+            <Border Grid.Row="2" Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="ArchiveButton" Grid.Column="0"
+                                Style="{StaticResource CustomButtonStyle}">
+                        <Image Source="Assets/AppBar/appbar.archive.png" Height="52" />
+                    </Button>
+                    <Button x:Name="SettingsButton" Grid.Column="1"
+                                Style="{StaticResource CustomButtonStyle}">
+                        <Image Source="Assets/AppBar/appbar.settings.png" Height="52" />
+                    </Button>
+                    <Button x:Name="AboutButton" Grid.Column="2"
+                                Style="{StaticResource CustomButtonStyle}">
+                        <Image Source="Assets/AppBar/appbar.information.png" Height="52" />
+                    </Button>
+                </Grid>
+            </Border>
         </Grid>
         
         <Border VerticalAlignment="Center" HorizontalAlignment="Right">

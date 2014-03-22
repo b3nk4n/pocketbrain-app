@@ -46,7 +46,11 @@
 
         <!--LayoutRoot ist das Stammraster, in dem alle anderen Seiteninhalte platziert werden-->
     <Grid x:Name="LayoutRoot" Background="{StaticResource MyPhoneChromeBrush}">
-        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Row="0"  VerticalScrollBarVisibility="Hidden">
             <!--TitlePanel enthält den Namen der Anwendung und den Seitentitel-->
             <StackPanel>
                 <TextBlock Text="{Binding Path=LocalizedResources.SettingsTitle, Source={StaticResource LocalizedStrings}}" Margin="24,10,0,32" Style="{StaticResource PhoneTextTitle1Style}"
@@ -103,9 +107,9 @@
                                             <Image x:Name="PreviewImageForeground" Grid.RowSpan="5"
                                                Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                             <StackPanel Grid.Row="1" Margin="6,0,0,0">
-                                                <TextBlock  Text="{Binding Time}" />
-                                                <TextBlock Text="{Binding Day}" />
-                                                <TextBlock Text="{Binding Date}" />
+                                                <TextBlock  Text="{Binding Time}" Foreground="White" />
+                                                <TextBlock Text="{Binding Day}" Foreground="White"/>
+                                                <TextBlock Text="{Binding Date}" Foreground="White"/>
                                             </StackPanel>
                                         </Grid>
                                     </Border>
@@ -114,19 +118,18 @@
                             
                         </StackPanel>
                     </StackPanel>
-                    <StackPanel Margin="0,0,0,24" Visibility="{Binding HasLockScreenAccess, Converter={StaticResource boolToVis}, ConverterParameter=!}">
-                        <Border Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0" Margin="0,324,0,0">
-                            <Button Command="{Binding LockScreenCommand}"
-                                Style="{StaticResource CustomButtonStyle}">
-                                <Image Source="Assets/AppBar/appbar.lock.png" Height="52" />
-                            </Button>
-                        </Border>
-                        
-                    </StackPanel>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
+        <StackPanel Grid.Row="1"  Visibility="{Binding HasLockScreenAccess, Converter={StaticResource boolToVis}, ConverterParameter=!}">
+            <Border Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
+                <Button Command="{Binding LockScreenCommand}"
+                                Style="{StaticResource CustomButtonStyle}">
+                    <Image Source="Assets/AppBar/appbar.lock.png" Height="52" />
+                </Button>
+            </Border>
 
+        </StackPanel>
 
     </Grid>
 

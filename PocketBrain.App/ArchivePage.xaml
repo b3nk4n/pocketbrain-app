@@ -103,28 +103,29 @@
 
         <!--LayoutRoot ist das Stammraster, in dem alle anderen Seiteninhalte platziert werden-->
     <Grid x:Name="LayoutRoot" Background="{StaticResource MyPhoneChromeBrush}">
-        <ScrollViewer VerticalScrollBarVisibility="Hidden">
-            <StackPanel>
-                <!-- Title -->
-                <TextBlock Text="{Binding Path=LocalizedResources.ArchiveTitle, Source={StaticResource LocalizedStrings}}" Margin="24,10,0,32" Style="{StaticResource PhoneTextTitle1Style}"
-                           Foreground="White"/>
-                
-                <!-- Content -->
                 <Grid x:Name="ContentPanel">
-                    <StackPanel>
-                        <ItemsControl x:Name="NotesList" ItemsSource="{Binding Notes}"
-                                      MinHeight="582" ItemTemplate="{StaticResource MaximizedNoteTemplate}" />
-                        <Border Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
-                            <StackPanel>
-                                <Button Style="{StaticResource CustomButtonStyle}" Command="{Binding ClearCommand}">
-                                    <Image Source="Assets/AppBar/appbar.archive.clear.png" Height="52" />
-                                </Button>
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                </Grid>
-            </StackPanel>
-        </ScrollViewer>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+            <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden">
+                <StackPanel >
+                    <!-- Title -->
+                    <TextBlock Text="{Binding Path=LocalizedResources.ArchiveTitle, Source={StaticResource LocalizedStrings}}" Margin="24,10,0,32" Style="{StaticResource PhoneTextTitle1Style}"
+                           Foreground="White"/>
+                    
+                    <ItemsControl x:Name="NotesList" ItemsSource="{Binding Notes}"
+                                    ItemTemplate="{StaticResource MaximizedNoteTemplate}" />
+                </StackPanel>
+            </ScrollViewer>
+            <Border Grid.Row="1" Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
+                <StackPanel>
+                    <Button Style="{StaticResource CustomButtonStyle}" Command="{Binding ClearCommand}">
+                        <Image Source="Assets/AppBar/appbar.archive.clear.png" Height="52" />
+                    </Button>
+                </StackPanel>
+            </Border>
+        </Grid>
 
         <Border VerticalAlignment="Center" HorizontalAlignment="Right">
             <Button x:Name="ExpansionButton" Margin="-1,-1,-1,32"
