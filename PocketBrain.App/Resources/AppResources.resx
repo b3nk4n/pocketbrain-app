@@ -149,6 +149,10 @@
     <value>pin to start</value>
     <comment>ContextMenu</comment>
   </data>
+  <data name="ContextMenuRestore" xml:space="preserve">
+    <value>restore</value>
+    <comment>ArchivePage</comment>
+  </data>
   <data name="ContextMenuUnpinFromStart" xml:space="preserve">
     <value>unpin from start</value>
     <comment>ContextMenu</comment>

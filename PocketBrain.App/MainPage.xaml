@@ -9,7 +9,6 @@
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:local="clr-namespace:PocketBrain.App.Controls"
     xmlns:converter="clr-namespace:PhoneKit.Framework.Conversion;assembly=PhoneKit.Framework"
-    xmlns:vm="clr-namespace:PocketBrain.App.ViewModel"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -40,8 +39,6 @@
     <phone:PhoneApplicationPage.Resources>
         <converter:BooleanToVisibilityConverter x:Key="boolToVis" />
         <converter:ShortDateConverter x:Key="dateConverter" />
-
-        <vm:ScreenOverlayViewModel x:Key="screenOverlayViewModel" x:Name="screenOverlayViewModel" />
 
         <Storyboard x:Name="WelcomeAnimation" RepeatBehavior="Forever">
         	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Opacity)" Storyboard.TargetName="image">
@@ -97,7 +94,7 @@
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuDelete, Source={StaticResource LocalizedStrings}}" Command="{Binding DeleteCommand}" />
                         </toolkit:ContextMenu>
                     </toolkit:ContextMenuService.ContextMenu>
-                    <Grid Width="460" Height="76" Margin="-10,4,-10,4">
+                    <Grid Width="460" Height="76" Margin="-10,-6,-10,-6">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
@@ -131,7 +128,7 @@
             <Border Grid.Row="0" Background="{StaticResource PhoneAccentBrush}" Padding="0,0,0,5">
                 <Button x:Name="NewNoteButton"
                         Style="{StaticResource CustomButtonStyle}">
-                    <Image x:Name="image" Source="Assets/AppBar/appbar.memo.add.png" Height="52" />
+                    <Image x:Name="image" Source="Assets/AppBar/appbar.add.note.png" Height="52" />
                 </Button>
             </Border>
             <ScrollViewer x:Name="Scroller" Grid.Row="1" VerticalScrollBarVisibility="Hidden">
@@ -158,8 +155,7 @@
             </ScrollViewer>
         </Grid>
         
-        <Border VerticalAlignment="Center" HorizontalAlignment="Right"
-                DataContext="{StaticResource screenOverlayViewModel}">
+        <Border VerticalAlignment="Center" HorizontalAlignment="Right">
             <Button x:Name="ExpansionButton" Margin="-1,-1,-1,32"
                     Style="{StaticResource CustomCornerButtonStyle}"
                     Visibility="{Binding IsExtensionButtonVisible, Converter={StaticResource boolToVis}}">

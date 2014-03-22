@@ -149,6 +149,10 @@
     <value>auf startseite</value>
     <comment>ContextMenu</comment>
   </data>
+  <data name="ContextMenuRestore" xml:space="preserve">
+    <value>restore</value>
+    <comment>ArchivePage</comment>
+  </data>
   <data name="ContextMenuUnpinFromStart" xml:space="preserve">
     <value>von startseite entfernen</value>
     <comment>ContextMenu</comment>

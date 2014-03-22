@@ -144,7 +144,7 @@
     <Compile Include="ViewModel\LockScreenPreviewViewModel.cs" />
     <Compile Include="ViewModel\NoteListViewModel.cs" />
     <Compile Include="ViewModel\NoteViewModel.cs" />
-    <Compile Include="ViewModel\ScreenOverlayViewModel.cs" />
+    <Compile Include="ViewModel\ExpandableListViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -207,7 +207,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\AlignmentGrid.png" />
+    <Content Include="Assets\AppBar\appbar.add.note.png" />
     <Content Include="Assets\AppBar\appbar.add.png" />
     <Content Include="Assets\AppBar\appbar.append.cropped.png" />
     <Content Include="Assets\AppBar\appbar.append.png" />
@@ -221,7 +221,6 @@
     <Content Include="Assets\AppBar\appbar.back.cropped.png" />
     <Content Include="Assets\AppBar\appbar.back.png" />
     <Content Include="Assets\AppBar\appbar.delete.png" />
-    <Content Include="Assets\AppBar\appbar.edit.png" />
     <Content Include="Assets\AppBar\appbar.email.png" />
     <Content Include="Assets\AppBar\appbar.information.png" />
     <Content Include="Assets\AppBar\appbar.lock.png" />

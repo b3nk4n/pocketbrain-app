@@ -12,7 +12,7 @@ namespace PocketBrain.App.ViewModel
     /// <summary>
     /// The archived notes view model.
     /// </summary>
-    class ArchiveListViewModel : ViewModelBase
+    class ArchiveListViewModel : ExpandableListViewModelBase
     {
         #region Members
 
@@ -20,11 +20,6 @@ namespace PocketBrain.App.ViewModel
         /// The singleton instance.
         /// </summary>
         private static ArchiveListViewModel _instance;
-
-        /// <summary>
-        /// The note collection.
-        /// </summary>
-        private ObservableCollection<NoteViewModel> _notes = new ObservableCollection<NoteViewModel>();
 
         /// <summary>
         /// Indicates whether the data has been loaded.
@@ -112,7 +107,7 @@ namespace PocketBrain.App.ViewModel
         /// <summary>
         /// Loads the achived notes data.
         /// </summary>
-        private void Load()
+        protected override void Load()
         {
             if (_isDataLoaded)
                 return;
@@ -128,7 +123,7 @@ namespace PocketBrain.App.ViewModel
         /// <summary>
         /// Saves the notes archive data.
         /// </summary>
-        public bool Save()
+        public override bool Save()
         {
             if (!_hasDataChanged)
                 return true;
@@ -169,25 +164,6 @@ namespace PocketBrain.App.ViewModel
         }
 
         /// <summary>
-        /// Gets the notes list.
-        /// </summary>
-        public ObservableCollection<NoteViewModel> Notes
-        {
-            private set
-            {
-                if (_notes != value)
-                {
-                    _notes = value;
-                    NotifyPropertyChanged("Notes");
-                }
-            }
-            get
-            {
-                return _notes;
-            }
-        }
-
-        /// <summary>
         /// Gets the clear archive command.
         /// </summary>
         public ICommand ClearCommand
@@ -204,17 +180,6 @@ namespace PocketBrain.App.ViewModel
         public void NotifyIsExtensionButtonVisible()
         {
             NotifyPropertyChanged("IsExtensionButtonVisible");
-        }
-
-        /// <summary>
-        /// Gets whether the expansion button is visible.
-        /// </summary>
-        public bool IsExtensionButtonVisible
-        {
-            get
-            {
-                return (Settings.ExpandListsMethod.Value == "1" || Settings.ExpandListsMethod.Value == "2") && _notes.Count > 0;
-            }
         }
 
         #endregion

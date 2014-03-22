@@ -133,6 +133,15 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die restore ähnelt.
+        /// </summary>
+        public static string ContextMenuRestore {
+            get {
+                return ResourceManager.GetString("ContextMenuRestore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die unpin from start ähnelt.
         /// </summary>
         public static string ContextMenuUnpinFromStart {

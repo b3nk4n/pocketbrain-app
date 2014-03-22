@@ -24,7 +24,7 @@ namespace PocketBrain.App.ViewModel
     /// <summary>
     /// Represents note list view model.
     /// </summary>
-    public class NoteListViewModel : ViewModelBase
+    public class NoteListViewModel : ExpandableListViewModelBase
     {
         #region Members
 
@@ -34,19 +34,14 @@ namespace PocketBrain.App.ViewModel
         private static NoteListViewModel _instance;
 
         /// <summary>
-        /// The note collection.
+        /// The current note.
         /// </summary>
-        private ObservableCollection<NoteViewModel> _notes = new ObservableCollection<NoteViewModel>();
+        private NoteViewModel _currentNote;
 
         /// <summary>
         /// Indicates whether the data has been loaded.
         /// </summary>
-        private bool _isDataLoaded;
-
-        /// <summary>
-        /// The current note.
-        /// </summary>
-        private NoteViewModel _currentNote;
+        private static bool _isDataLoaded;
 
         /// <summary>
         /// The persistent name of the next lockscreen image to toggle from A to B,
@@ -115,7 +110,7 @@ namespace PocketBrain.App.ViewModel
         /// <summary>
         /// Loads the notes data.
         /// </summary>
-        private void Load()
+        protected override void Load()
         {
             if (_isDataLoaded)
                 return;
@@ -131,7 +126,7 @@ namespace PocketBrain.App.ViewModel
         /// <summary>
         /// Saves the notes data.
         /// </summary>
-        public bool Save()
+        public override bool Save()
         {
             var res = StorageHelper.SaveAsSerializedFile<ObservableCollection<NoteViewModel>>("notes.data", _notes);
             return res;
@@ -238,25 +233,6 @@ namespace PocketBrain.App.ViewModel
         }
 
         /// <summary>
-        /// Gets the notes list.
-        /// </summary>
-        public ObservableCollection<NoteViewModel> Notes
-        {
-            private set
-            {
-                if (_notes != value)
-                {
-                    _notes = value;
-                    NotifyPropertyChanged("Notes");
-                }
-            }
-            get
-            {
-                return _notes;
-            }
-        }
-
-        /// <summary>
         /// Gets the current active note.
         /// </summary>
         public NoteViewModel CurrentNote
@@ -299,17 +275,6 @@ namespace PocketBrain.App.ViewModel
         public void NotifyIsExtensionButtonVisible()
         {
             NotifyPropertyChanged("IsExtensionButtonVisible");
-        }
-
-        /// <summary>
-        /// Gets whether the expansion button is visible.
-        /// </summary>
-        public bool IsExtensionButtonVisible
-        {
-            get
-            {
-                return (Settings.ExpandListsMethod.Value == "1" || Settings.ExpandListsMethod.Value == "2") && _notes.Count > 0;
-            }
         }
 
         #endregion

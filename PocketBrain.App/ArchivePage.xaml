@@ -9,7 +9,6 @@
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:local="clr-namespace:PocketBrain.App.Controls"
     xmlns:converter="clr-namespace:PhoneKit.Framework.Conversion;assembly=PhoneKit.Framework"
-    xmlns:vm="clr-namespace:PocketBrain.App.ViewModel"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -40,8 +39,6 @@
     <phone:PhoneApplicationPage.Resources>
         <converter:BooleanToVisibilityConverter x:Key="boolToVis" />
         <converter:ShortDateConverter x:Key="dateConverter" />
-
-        <vm:ScreenOverlayViewModel x:Key="screenOverlayViewModel" x:Name="screenOverlayViewModel" />
 
         <DataTemplate x:Key="MaximizedNoteTemplate">
             <Border Background="{StaticResource PhoneAccentBrush}">
@@ -82,7 +79,7 @@
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuRestore, Source={StaticResource LocalizedStrings}}" Command="{Binding RestoreCommand}" />
                         </toolkit:ContextMenu>
                     </toolkit:ContextMenuService.ContextMenu>
-                    <Grid Width="460" Height="76" Margin="-10,4,-10,4">
+                    <Grid Width="460" Height="76" Margin="-10,-6,-10,-6">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
@@ -109,7 +106,8 @@
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <StackPanel>
                 <!-- Title -->
-                <TextBlock Text="{Binding Path=LocalizedResources.ArchiveTitle, Source={StaticResource LocalizedStrings}}" Margin="24,10,0,32" Style="{StaticResource PhoneTextTitle1Style}"/>
+                <TextBlock Text="{Binding Path=LocalizedResources.ArchiveTitle, Source={StaticResource LocalizedStrings}}" Margin="24,10,0,32" Style="{StaticResource PhoneTextTitle1Style}"
+                           Foreground="White"/>
                 
                 <!-- Content -->
                 <Grid x:Name="ContentPanel">
@@ -128,8 +126,7 @@
             </StackPanel>
         </ScrollViewer>
 
-        <Border VerticalAlignment="Center" HorizontalAlignment="Right"
-                DataContext="{StaticResource screenOverlayViewModel}">
+        <Border VerticalAlignment="Center" HorizontalAlignment="Right">
             <Button x:Name="ExpansionButton" Margin="-1,-1,-1,32"
                     Style="{StaticResource CustomCornerButtonStyle}"
                     Visibility="{Binding IsExtensionButtonVisible, Converter={StaticResource boolToVis}}">

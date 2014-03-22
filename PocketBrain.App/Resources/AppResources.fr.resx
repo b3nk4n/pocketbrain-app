@@ -149,6 +149,10 @@
     <value>épingler sur l'écran d'accueil</value>
     <comment>ContextMenu</comment>
   </data>
+  <data name="ContextMenuRestore" xml:space="preserve">
+    <value>restaurer</value>
+    <comment>ArchivePage</comment>
+  </data>
   <data name="ContextMenuUnpinFromStart" xml:space="preserve">
     <value>détacher de l'écran d'accueil</value>
     <comment>ContextMenu</comment>
