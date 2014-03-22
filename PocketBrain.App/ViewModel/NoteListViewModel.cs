@@ -18,6 +18,7 @@ using PhoneKit.Framework.Core.Graphics;
 using System.Windows.Media.Imaging;
 using PhoneKit.Framework.Core.LockScreen;
 using System.Windows.Media;
+using PhoneKit.Framework.Tile;
 
 namespace PocketBrain.App.ViewModel
 {
@@ -54,6 +55,21 @@ namespace PocketBrain.App.ViewModel
         /// </summary>
         private DelegateCommand _lockScreenCommand;
 
+        /// <summary>
+        /// The pin to start command for a single note.
+        /// </summary>
+        private DelegateCommand _pinAddNoteToStartCommand;
+
+        /// <summary>
+        /// The unpin from start command for a single note.
+        /// </summary>
+        private DelegateCommand _unpinAddNoteFromStartCommand;
+
+        /// <summary>
+        /// The add note URI.
+        /// </summary>
+        private readonly Uri ADD_NOTE_URI = new Uri("/NotePage.xaml", UriKind.Relative);
+
         #endregion
 
         #region Constructors
@@ -75,6 +91,26 @@ namespace PocketBrain.App.ViewModel
             {
                 return !HasLockScreenAccess;
             });
+
+            _pinAddNoteToStartCommand = new DelegateCommand(() =>
+            {
+                PinOrUpdateAddNoteTile();
+                UpdateCanExecuteChanged();
+            },
+                () =>
+                {
+                    return CanAddNotePinToStart;
+                });
+
+            _unpinAddNoteFromStartCommand = new DelegateCommand(() =>
+            {
+                UnpinAddNoteTile();
+                UpdateCanExecuteChanged();
+            },
+                () =>
+                {
+                    return !CanAddNotePinToStart;
+                });
         }
 
         #endregion
@@ -133,6 +169,15 @@ namespace PocketBrain.App.ViewModel
         }
 
         /// <summary>
+        /// Updates the command manager to test the canExecute predicates.
+        /// </summary>
+        private void UpdateCanExecuteChanged()
+        {
+            _pinAddNoteToStartCommand.RaiseCanExecuteChanged();
+            _unpinAddNoteFromStartCommand.RaiseCanExecuteChanged();
+        }
+
+        /// <summary>
         /// Updates the primary tile.
         /// </summary>
         public void UpdatePrimaryTile()
@@ -150,6 +195,30 @@ namespace PocketBrain.App.ViewModel
             tileData.WideContent3 = (count > 2) ? _notes[2].DisplayedTitle : string.Empty;
 
             LiveTileHelper.UpdateDefaultTile(tileData);
+        }
+
+        /// <summary>
+        /// Pins or updates a single note to the start page.
+        /// </summary>
+        private void PinOrUpdateAddNoteTile()
+        {
+            var tile = new StandardTileData
+            {
+                BackgroundImage = new Uri("/Assets/AddNoteIcon.png", UriKind.Relative)
+            };
+
+            LiveTilePinningHelper.PinOrUpdateTile(ADD_NOTE_URI, tile);
+
+            NotifyPropertyChanged("CanAddNotePinToStart");
+        }
+
+        /// <summary>
+        /// Unpins the secondary tile from start if one exists.
+        /// </summary>
+        public void UnpinAddNoteTile()
+        {
+            LiveTileHelper.RemoveTile(ADD_NOTE_URI);
+            NotifyPropertyChanged("CanAddNotePinToStart");
         }
 
         /// <summary>
@@ -248,6 +317,17 @@ namespace PocketBrain.App.ViewModel
         }
 
         /// <summary>
+        /// Indicates whether the tile can be pinned to start or whether the note is already pinned
+        /// </summary>
+        public bool CanAddNotePinToStart
+        {
+            get
+            {
+                return !LiveTileHelper.TileExists(ADD_NOTE_URI);
+            }
+        }
+
+        /// <summary>
         /// Gets the lock screen command.
         /// </summary>
         public ICommand LockScreenCommand
@@ -255,6 +335,28 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return _lockScreenCommand;
+            }
+        }
+
+        /// <summary>
+        /// Gets the pin to start command.
+        /// </summary>
+        public ICommand PinAddNoteToStartCommand
+        {
+            get
+            {
+                return _pinAddNoteToStartCommand;
+            }
+        }
+
+        /// <summary>
+        /// Gets the unpin from start command.
+        /// </summary>
+        public ICommand UnpinAddNoteFromStartCommand
+        {
+            get
+            {
+                return _unpinAddNoteFromStartCommand;
             }
         }
 

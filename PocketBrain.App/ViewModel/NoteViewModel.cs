@@ -170,7 +170,6 @@ namespace PocketBrain.App.ViewModel
                 {
                     PinOrUpdateTile();
                     UpdateCanExecuteChanged();
-                    NotifyPropertyChanged("CanPinToStart");
                 },
                 () =>
                 {
@@ -181,7 +180,6 @@ namespace PocketBrain.App.ViewModel
                 {
                     UnpinTile();
                     UpdateCanExecuteChanged();
-                    NotifyPropertyChanged("CanPinToStart");
                 },
                 () =>
                 {
@@ -405,6 +403,7 @@ namespace PocketBrain.App.ViewModel
         {
             ClearTileImages();
             LiveTileHelper.RemoveTile(NavigationUri);
+            NotifyPropertyChanged("CanPinToStart");
         }
 
         /// <summary>

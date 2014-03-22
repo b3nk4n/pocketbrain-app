@@ -207,6 +207,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\AddNoteIcon.png" />
     <Content Include="Assets\AppBar\appbar.add.note.png" />
     <Content Include="Assets\AppBar\appbar.add.png" />
     <Content Include="Assets\AppBar\appbar.append.cropped.png" />
