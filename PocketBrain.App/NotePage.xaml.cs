@@ -37,6 +37,8 @@ namespace PocketBrain.App
                 {
                     BindToKeyboardFocus();
 
+                    OverrideCreationDateMargin();
+
                     if (ContentTextBox.Text.Length == 0)
                     {
                         // select the text end of the notes content text field
@@ -122,6 +124,22 @@ namespace PocketBrain.App
                     if (note != null)
                         NavigationService.Navigate(new Uri("/AttachmentPage.xaml?imagePath=" + note.AttachedImagePath, UriKind.Relative));
                 };
+        }
+
+        /// <summary>
+        /// Overrides the creation date container margin depending on the screen resolution.
+        /// </summary>
+        /// <remarks>
+        /// WXGA is default and is not overritten (12,-124,12,0).
+        /// </remarks>
+        private void OverrideCreationDateMargin()
+        {
+            var scaleFactor = DisplayHelper.GetResolution();
+
+            if (scaleFactor == ScreenResolution.WXGA || scaleFactor == ScreenResolution.P720)
+                CreationDateContainer.Margin = new Thickness(12, -200, 12, 0);
+            else if (scaleFactor == ScreenResolution.P1080)
+                CreationDateContainer.Margin = new Thickness(12, -308, 12, 0);
         }
 
         /// <summary>

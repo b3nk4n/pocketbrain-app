@@ -84,12 +84,12 @@
             <Border Grid.Row="1">
                 
                 <ScrollViewer x:Name="Scroller"  VerticalScrollBarVisibility="Hidden">
-                    <StackPanel Margin="0,-124,0,0">
-                        <Grid Margin="0,0,0,92">
-                            <TextBlock Text="{Binding DateCreated, Converter={StaticResource shortTime}}" Style="{StaticResource PhoneTextSmallStyle}" Foreground="Gray" HorizontalAlignment="Left" />
+                    <StackPanel Margin="0,0,0,0">
+                        <Grid x:Name="CreationDateContainer" Margin="12,-124,12,0"><!-- Default setting for WVGA -> overwritten in code --> 
+                            <TextBlock Text="{Binding DateCreated, Converter={StaticResource shortTime}}" Style="{StaticResource PhoneTextSmallStyle}" Foreground="Gray" HorizontalAlignment="Left"  />
                             <TextBlock Text="{Binding DateCreated, Converter={StaticResource shortDate}}" Style="{StaticResource PhoneTextSmallStyle}" Foreground="Gray" HorizontalAlignment="Right" />
                         </Grid>
-                        <Border Background="{StaticResource MyPhoneChromeBrush}" Margin="0,10,42,0">
+                        <Border Background="{StaticResource MyPhoneChromeBrush}" Margin="0,0,42,0">
                             <toolkit:PhoneTextBox x:Name="ContentTextBox" Text="{Binding Content, Mode=TwoWay}"
                                 Height="Auto" MinHeight="460" TextWrapping="Wrap" AcceptsReturn="True"
                                 Style="{StaticResource CustomPhoneTextBoxStyle}"
