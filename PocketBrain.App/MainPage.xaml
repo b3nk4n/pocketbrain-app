@@ -131,8 +131,8 @@
                         Style="{StaticResource CustomButtonStyle}">
                     <toolkit:ContextMenuService.ContextMenu>
                         <toolkit:ContextMenu>
-                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuPinToStart, Source={StaticResource LocalizedStrings}}" Command="{Binding PinAddNoteToStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}}" />
-                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuUnpinFromStart, Source={StaticResource LocalizedStrings}}" Command="{Binding UnpinAddNoteFromStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}, ConverterParameter=!}" />
+                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuPinToStart, Source={StaticResource LocalizedStrings}}" Command="{Binding PinAddNoteToStartCommand}" Visibility="{Binding CanAddNotePinToStart, Converter={StaticResource boolToVis}}" />
+                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuUnpinFromStart, Source={StaticResource LocalizedStrings}}" Command="{Binding UnpinAddNoteFromStartCommand}" Visibility="{Binding CanAddNotePinToStart, Converter={StaticResource boolToVis}, ConverterParameter=!}" />
                         </toolkit:ContextMenu>
                     </toolkit:ContextMenuService.ContextMenu>
                     <Image x:Name="image" Source="Assets/AppBar/appbar.add.note.png" Height="52" />
