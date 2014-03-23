@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutTitle" xml:space="preserve">
-    <value>informations</value>
+    <value>info</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationAuthor" xml:space="preserve">
-    <value>par Benjamin Sautermeister</value>
+    <value>di Benjamin Sautermeister</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationDescription" xml:space="preserve">
-    <value>Cette application vous aide à mémoriser tous vos trucs de tous les jours. Sans fioritures.</value>
+    <value>Questa applicazione ti aiuta a ricordare tutti i tuoi impegni, senza fronzoli.</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
@@ -138,39 +138,39 @@
     <comment>General</comment>
   </data>
   <data name="ArchiveTitle" xml:space="preserve">
-    <value>archive</value>
+    <value>archivia</value>
     <comment>ArchivePage</comment>
   </data>
   <data name="ContextMenuDelete" xml:space="preserve">
-    <value>supprimer</value>
+    <value>cancella</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuPinToStart" xml:space="preserve">
-    <value>épingler sur l'écran d'accueil</value>
+    <value>visual. su start</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuRestore" xml:space="preserve">
-    <value>restaurer</value>
+    <value>ripristina</value>
     <comment>ArchivePage</comment>
   </data>
   <data name="ContextMenuUnpinFromStart" xml:space="preserve">
-    <value>détacher de l'écran d'accueil</value>
+    <value>rimuovi da start</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="DefaultTitle" xml:space="preserve">
-    <value>Sans titre</value>
+    <value>Senza titolo</value>
     <comment>General</comment>
   </data>
   <data name="FeedbackBodyText" xml:space="preserve">
-    <value>[Votre évaluation]
+    <value>[Spazio per il tuo feedback]
 
 
 ---------------------------------
-Device Name: {0}
-Device Manufacturer: {1}
-Device Firmware Version: {2}
-Device Hardware Version: {3}
-Application Version: {4}
+Modello dispositivo: {0}
+Produttore dispositivo: {1}
+Firmware del dispositivo: {2}
+Versione dell'Hardware del dispositivo: {3}
+Versione dell'applicazione: {4}
 ---------------------------------</value>
     <comment>FeedbackDialogControl</comment>
   </data>
@@ -179,79 +179,81 @@ Application Version: {4}
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackMessageText" xml:space="preserve">
-    <value>Desole que vous ne vouliez pas évaluer pocketBRAIN. Veuillez expliquer votre expérience ou proposez comment on peut l'améliorer.</value>
+    <value>Peccato tu non voglia giudicare pocketBRAIN
+
+Raccontaci la tua esperienza d'uso o suggeriscici come possiamo migliorare la nostra applicazione.</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackNoText" xml:space="preserve">
-    <value>non merci</value>
+    <value>no grazie</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackSubject" xml:space="preserve">
-    <value>pocketBRAIN - Retour d'expérience</value>
+    <value>Feedback del cliente di PoketBRAIN</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackTitleText" xml:space="preserve">
-    <value>Est-ce qu'on peut l'améliorer?</value>
+    <value>Possiamo migliorarlo?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackYesText" xml:space="preserve">
-    <value>d'accord</value>
+    <value>esprimi un feedback</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="MessageBoxClearCheck" xml:space="preserve">
-    <value>Voulez-vous vraiment effacer l'archive?</value>
+    <value>Desideri ripulire l'archivio?</value>
     <comment>MessageBox</comment>
   </data>
   <data name="MessageBoxInfoClipboard" xml:space="preserve">
-    <value>Le contenu est copié dans le presse-papiers.</value>
+    <value>Elemento copiato negli appunti</value>
     <comment>MessageBox</comment>
   </data>
   <data name="MessageBoxInfoTitle" xml:space="preserve">
-    <value>Information</value>
+    <value>Informazione</value>
     <comment>MessageBox</comment>
   </data>
   <data name="MessageBoxNoRecUI" xml:space="preserve">
-    <value>Reconnaissance vocale n'est pas activée. S'il vous plaît se référer aux paramètres de votre téléphone.</value>
+    <value>Il riconoscimento vocale non è attivato. Per favore, controlla le impostazioni del telefono.</value>
     <comment>MessageBox</comment>
   </data>
   <data name="MessageBoxWarningTitle" xml:space="preserve">
-    <value>Alerte</value>
+    <value>Attenzione</value>
     <comment>MessageBox</comment>
   </data>
   <data name="MoreApps" xml:space="preserve">
-    <value>plus d'applications</value>
+    <value>altre app</value>
     <comment>AboutPage</comment>
   </data>
   <data name="PrivacyInfo" xml:space="preserve">
-    <value>politique de confidentialité</value>
+    <value>info privacy</value>
     <comment>About Page</comment>
   </data>
   <data name="RateAndReview" xml:space="preserve">
-    <value>évaluation</value>
+    <value>dai un voto ed una opinione</value>
     <comment>AboutPage</comment>
   </data>
   <data name="RatingMessage10Text" xml:space="preserve">
-    <value>Il parait que vous trouvez notre application utile!
+    <value>Pare tu stia usando parecchio la nostra app!
 
-Pourquoi ne pas donner un 5 étoile avis pour montrer votre appréciation?</value>
+Perché non votarla dando le 5 stelle, per mostrare che l'apprezzi?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingMessage5Text" xml:space="preserve">
-    <value>On aimeriais que vous avis notre application 5 étoiles.
+    <value>Grazie per aver concesso un giudizio a 5 stelle!
 
-De nous montrer un peu d'amour dans le Windows Store nous aide à continuer à travailler sur l'application et d'améliorer les choses!</value>
+Dimostraci che ami questa app votandola sullo store, così da spingerci a migliorarla ancora e renderla sempre migliore!</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingNoText" xml:space="preserve">
-    <value>non merci</value>
+    <value>no grazie</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingTitleText" xml:space="preserve">
-    <value>Vous aimez pocketBRAIN?</value>
+    <value>Ti piace pocketBRAIN?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingYesText" xml:space="preserve">
-    <value>évaluer 5 étoiles</value>
+    <value>votalo con 5 stelle</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="ResourceFlowDirection" xml:space="preserve">
@@ -259,87 +261,87 @@ De nous montrer un peu d'amour dans le Windows Store nous aide à continuer à t
     <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
   </data>
   <data name="ResourceLanguage" xml:space="preserve">
-    <value>fr</value>
+    <value>it</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="Settings1Item" xml:space="preserve">
-    <value>1 note</value>
+    <value>1 elemento</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="Settings2Items" xml:space="preserve">
-    <value>2 notes</value>
+    <value>2 elementi</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="Settings4Items" xml:space="preserve">
-    <value>4 notes</value>
+    <value>4 elementi</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsBackgroundImageTitle" xml:space="preserve">
-    <value>Arrièr-plan</value>
+    <value>immagine di sfondo</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsDisabled" xml:space="preserve">
-    <value>désactié</value>
+    <value>disabilitato</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsEnabled" xml:space="preserve">
-    <value>activée</value>
+    <value>abilitato</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandButton" xml:space="preserve">
-    <value>afficer bouton</value>
+    <value>mostrando un tasto apposito</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandByGesture" xml:space="preserve">
-    <value>par le secouer geste</value>
+    <value>agitando il telefono</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandByGestureAndButton" xml:space="preserve">
-    <value>par le secouer geste et bouton</value>
+    <value>agitando il telefono e mostrando un tasto apposito</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandTitle" xml:space="preserve">
-    <value>minimiser / maximiser</value>
+    <value>minimizza / espandi</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsShowCreationDate" xml:space="preserve">
-    <value>afficher la date de création</value>
+    <value>mostra data di creazione</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsTitle" xml:space="preserve">
-    <value>Listes</value>
+    <value>Elenchi</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsLiveTileTitle" xml:space="preserve">
-    <value>Vignettes dynamiques</value>
+    <value>Live Tile</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsLockScreenTitle" xml:space="preserve">
-    <value>Écran de verrouillage</value>
+    <value>Schermata di blocco</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsMinimiumItemsTitle" xml:space="preserve">
-    <value>minimum nombre de notes</value>
+    <value>numero minimo degli elementi</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsPreview" xml:space="preserve">
-    <value>impression</value>
+    <value>anteprima</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTapToSelect" xml:space="preserve">
-    <value>appuyez-à-sélectionnez</value>
+    <value>selezionare dalla libreria</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTileNoteCountTitle" xml:space="preserve">
-    <value>montrer le nombre de notes sur la vignette principal</value>
+    <value>mostra il numero delle annotazioni sulla tile principale</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>paramètres</value>
+    <value>impostazioni</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SupportAndFeedback" xml:space="preserve">
-    <value>retour d'expérience</value>
+    <value>supporto e feedback</value>
     <comment>About Page</comment>
   </data>
 </root>
