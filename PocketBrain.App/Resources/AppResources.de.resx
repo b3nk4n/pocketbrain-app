@@ -312,6 +312,10 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <value>Listen</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsLiveTileTitle" xml:space="preserve">
+    <value>Live-Kacheln</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsLockScreenTitle" xml:space="preserve">
     <value>Sperrbildschirm</value>
     <comment>SettingsPage</comment>
@@ -326,6 +330,10 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
   </data>
   <data name="SettingsTapToSelect" xml:space="preserve">
     <value>hier tippen um bild zu wählen</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsTileNoteCountTitle" xml:space="preserve">
+    <value>anzahl notizen auf haupt-kachel anzeigen</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTitle" xml:space="preserve">

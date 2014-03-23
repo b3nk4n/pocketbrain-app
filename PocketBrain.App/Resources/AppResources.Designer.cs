@@ -481,6 +481,15 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Live Tile ähnelt.
+        /// </summary>
+        public static string SettingsLiveTileTitle {
+            get {
+                return ResourceManager.GetString("SettingsLiveTileTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Lock screen ähnelt.
         /// </summary>
         public static string SettingsLockScreenTitle {
@@ -513,6 +522,15 @@ namespace PocketBrain.App.Resources {
         public static string SettingsTapToSelect {
             get {
                 return ResourceManager.GetString("SettingsTapToSelect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die show number of notes on main tile ähnelt.
+        /// </summary>
+        public static string SettingsTileNoteCountTitle {
+            get {
+                return ResourceManager.GetString("SettingsTileNoteCountTitle", resourceCulture);
             }
         }
         

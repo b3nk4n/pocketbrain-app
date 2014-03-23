@@ -208,7 +208,7 @@
                 <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Fill="{StaticResource PhoneChromeBrush}" />
             </Grid>
         </Border>
-        <Border VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,112,0,0">
+        <Border VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,124,0,0">
             <Button x:Name="SpeakButton"
                     Style="{StaticResource CustomCornerButtonStyle}"
                     Visibility="{Binding IsExtensionButtonVisible, Converter={StaticResource boolToVis}}">
@@ -218,7 +218,7 @@
 
 
         <StackPanel x:Name="SpeakContainer" Grid.Column="1" Visibility="Collapsed"
-                    VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,112,0,0">
+                    VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,124,0,0">
             <Border VerticalAlignment="Center" HorizontalAlignment="Right">
                 <Button Command="{Binding SpeakPrependTextCommand}" Click="SpeakButtonClicked"
                     Style="{StaticResource CustomCornerButtonStyle}"

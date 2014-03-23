@@ -312,6 +312,10 @@ Showing us some love on the store helps us to continue to work on the app and ma
     <value>Lists</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsLiveTileTitle" xml:space="preserve">
+    <value>Live Tile</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsLockScreenTitle" xml:space="preserve">
     <value>Lock screen</value>
     <comment>SettingsPage</comment>
@@ -326,6 +330,10 @@ Showing us some love on the store helps us to continue to work on the app and ma
   </data>
   <data name="SettingsTapToSelect" xml:space="preserve">
     <value>tap to select from library</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsTileNoteCountTitle" xml:space="preserve">
+    <value>show number of notes on main tile</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTitle" xml:space="preserve">

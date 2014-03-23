@@ -131,6 +131,7 @@ namespace PocketBrain.App
             SelectByTag(CreationDatePicker, Settings.ShowCreationDateOnList.Value);
             SelectByTag(ExpandListPicker, Settings.ExpandListsMethod.Value);
             SelectByTag(MaxLockItemsPicker, Settings.MaximumLockItems.Value);
+            SelectByTag(TileNoteCountListPicker, Settings.ShowNoteCountOnLiveTile.Value);
         }
 
         /// <summary>
@@ -145,6 +146,7 @@ namespace PocketBrain.App
             Settings.ShowCreationDateOnList.Value = (string)(CreationDatePicker.SelectedItem as ListPickerItem).Tag;
             Settings.ExpandListsMethod.Value = (string)(ExpandListPicker.SelectedItem as ListPickerItem).Tag;
             Settings.MaximumLockItems.Value = (string)(MaxLockItemsPicker.SelectedItem as ListPickerItem).Tag;
+            Settings.ShowNoteCountOnLiveTile.Value = (string)(TileNoteCountListPicker.SelectedItem as ListPickerItem).Tag;
         }
 
         /// <summary>

@@ -310,6 +310,10 @@ De nous montrer un peu d'amour dans le Windows Store nous aide à continuer à t
     <value>Listes</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsLiveTileTitle" xml:space="preserve">
+    <value>Vignettes dynamiques</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsLockScreenTitle" xml:space="preserve">
     <value>Écran de verrouillage</value>
     <comment>SettingsPage</comment>
@@ -324,6 +328,10 @@ De nous montrer un peu d'amour dans le Windows Store nous aide à continuer à t
   </data>
   <data name="SettingsTapToSelect" xml:space="preserve">
     <value>appuyez-à-sélectionnez</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsTileNoteCountTitle" xml:space="preserve">
+    <value>montrer le nombre de notes sur la vignette principal</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTitle" xml:space="preserve">

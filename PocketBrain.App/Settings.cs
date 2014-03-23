@@ -34,5 +34,10 @@ namespace PocketBrain.App
         /// NULL means to load the DEFAULT image.
         /// </remarks>
         public static readonly StoredObject<string> LockScreenBackgroundImagePath = new StoredObject<string>("lockBackgroundImagePath", null);
+
+        /// <summary>
+        /// Setting for whether the note count is visible in the main tile.
+        /// </summary>
+        public static readonly StoredObject<string> ShowNoteCountOnLiveTile = new StoredObject<string>("showNoteCountOnTile", "1");
     }
 }

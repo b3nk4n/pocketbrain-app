@@ -182,7 +182,10 @@ namespace PocketBrain.App.ViewModel
         /// </summary>
         public void UpdatePrimaryTile()
         {
-            var count = _notes.Count;
+            int count = 0;
+            
+            if (Settings.ShowNoteCountOnLiveTile.Value == "1")
+                count = _notes.Count;
 
             var tileData = new IconicTileData
             {
