@@ -97,7 +97,7 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die 1.3.1 ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die 1.4 ähnelt.
         /// </summary>
         public static string ApplicationVersion {
             get {
@@ -261,7 +261,7 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Voice recognizer is not activated. Plese refer to your phone settings. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Voice recognizer is not activated. Please refer to your phone settings. ähnelt.
         /// </summary>
         public static string MessageBoxNoRecUI {
             get {

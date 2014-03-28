@@ -46,6 +46,7 @@
                     <toolkit:ContextMenuService.ContextMenu>
                         <toolkit:ContextMenu>
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuRestore, Source={StaticResource LocalizedStrings}}" Command="{Binding RestoreCommand}" />
+                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuDelete, Source={StaticResource LocalizedStrings}}" Command="{Binding DeleteFromArchiveCommand}" />
                         </toolkit:ContextMenu>
                     </toolkit:ContextMenuService.ContextMenu>
                     <Grid Width="460" MinHeight="76" Margin="-10,4,-10,4">

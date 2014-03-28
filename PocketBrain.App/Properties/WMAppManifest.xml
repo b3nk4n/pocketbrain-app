@@ -7,7 +7,7 @@
     <Language code="pt" />
     <Language code="it" />
   </Languages>
-  <App xmlns="" ProductID="{ab482544-c92e-478e-b1f5-f5c6661d7693}" Title="pocketBRAIN" RuntimeType="Silverlight" Version="1.3.1.0" Genre="apps.normal" Author="PocketBrain.App author" Description="This application is your quick and easy helper to relieve your brain." Publisher="PocketBrain.App" PublisherID="{47e5a50a-aca2-469e-be1a-a4ac16765a5f}">
+  <App xmlns="" ProductID="{ab482544-c92e-478e-b1f5-f5c6661d7693}" Title="pocketBRAIN" RuntimeType="Silverlight" Version="1.4.0.0" Genre="apps.normal" Author="PocketBrain.App author" Description="This application is your quick and easy helper to relieve your brain." Publisher="PocketBrain.App" PublisherID="{47e5a50a-aca2-469e-be1a-a4ac16765a5f}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
@@ -15,6 +15,7 @@
       <Capability Name="ID_CAP_SPEECH_RECOGNITION" />
       <Capability Name="ID_CAP_MICROPHONE" />
       <Capability Name="ID_CAP_SENSORS" />
+      <Capability Name="ID_CAP_NETWORKING" />
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />
@@ -22,17 +23,24 @@
     <Tokens>
       <PrimaryToken TokenID="PocketBrain.AppToken" TaskName="_default">
         <TemplateIconic>
-          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
+          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\IconicTileSmall.png</SmallImageURI>
           <Count>0</Count>
-          <IconImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</IconImageURI>
-          <Title></Title>
-          <Message></Message>
-          <BackgroundColor></BackgroundColor>
+          <IconImageURI IsRelative="true" IsResource="false">Assets\Tiles\IconicTileMediumLarge.png</IconImageURI>
+          <Title>
+          </Title>
+          <Message>
+          </Message>
+          <BackgroundColor>
+          </BackgroundColor>
           <HasLarge>True</HasLarge>
-          <LargeContent1></LargeContent1>
-          <LargeContent2></LargeContent2>
-          <LargeContent3></LargeContent3>
-          <DeviceLockImageURI IsRelative="true" IsResource="false"></DeviceLockImageURI>
+          <LargeContent1>
+          </LargeContent1>
+          <LargeContent2>
+          </LargeContent2>
+          <LargeContent3>
+          </LargeContent3>
+          <DeviceLockImageURI IsRelative="true" IsResource="false">
+          </DeviceLockImageURI>
         </TemplateIconic>
       </PrimaryToken>
     </Tokens>

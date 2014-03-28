@@ -78,6 +78,7 @@ namespace PocketBrain.App.ViewModel
         /// Creates a note list view model instance.
         /// </summary>
         public NoteListViewModel()
+            : base("notes")
         {
             Load();
 

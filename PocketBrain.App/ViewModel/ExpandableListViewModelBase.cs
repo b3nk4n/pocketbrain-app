@@ -1,5 +1,6 @@
 ﻿using PhoneKit.Framework.Core.MVVM;
 using PhoneKit.Framework.Core.OS;
+using PhoneKit.Framework.Core.Storage;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -35,9 +36,26 @@ namespace PocketBrain.App.ViewModel
         private const string COLLAPSED_DARK = "Assets/AppBar/appbar.arrow.collapsed.dark.png";
 
         /// <summary>
+        /// The persistent key
+        /// </summary>
+        private readonly string _key;
+
+        private StoredObject<bool> _isExpanded;
+
+        /// <summary>
         /// The note collection.
         /// </summary>
         protected ObservableCollection<NoteViewModel> _notes = new ObservableCollection<NoteViewModel>();
+
+        /// <summary>
+        /// Creates a new ExpandableListViewModelBase instance.
+        /// </summary>
+        /// <param name="key">The key required for the stored expander state.</param>
+        public ExpandableListViewModelBase(string key)
+        {
+            _key = "expanderState_" + key;
+            _isExpanded = new StoredObject<bool>(_key, true);
+        }
 
         /// <summary>
         /// Loads the data.
@@ -65,6 +83,25 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return _notes;
+            }
+        }
+
+        /// <summary>
+        /// Toggles the expander state.
+        /// </summary>
+        public void ToggleExpanderState()
+        {
+            _isExpanded.Value = !_isExpanded.Value;
+        }
+
+        /// <summary>
+        /// Gets wheter the persistent expander state is expanded.
+        /// </summary>
+        public bool IsExpanded
+        {
+            get
+            {
+                return _isExpanded.Value;
             }
         }
 

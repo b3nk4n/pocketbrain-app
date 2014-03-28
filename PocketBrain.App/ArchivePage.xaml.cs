@@ -52,6 +52,8 @@ namespace PocketBrain.App
                     ToggleNoteTemplate();
                 };
 
+            UpdateExpansionButtonViewState();
+
             DataContext = ArchiveListViewModel.Instance;
         }
 
@@ -88,9 +90,7 @@ namespace PocketBrain.App
         /// </summary>
         private void ToggleNoteTemplate()
         {
-            var minimized = (DataTemplate)this.Resources["MinimizedNoteTemplate"];
-            var maximized = (DataTemplate)this.Resources["MaximizedNoteTemplate"];
-            NotesList.ItemTemplate = (NotesList.ItemTemplate == minimized) ? maximized : minimized;
+            ArchiveListViewModel.Instance.ToggleExpanderState();
 
             UpdateExpansionButtonViewState();
         }
@@ -111,12 +111,17 @@ namespace PocketBrain.App
             if (!ArchiveListViewModel.Instance.IsExtensionButtonVisible)
                 return;
 
-            var maximized = (DataTemplate)this.Resources["MaximizedNoteTemplate"];
             Uri uri;
-            if (NotesList.ItemTemplate == maximized)
+            if (ArchiveListViewModel.Instance.IsExpanded)
+            {
                 uri = new Uri(ArchiveListViewModel.Instance.CollapsedImagePath, UriKind.Relative);
+                NotesList.ItemTemplate = (DataTemplate)this.Resources["MaximizedNoteTemplate"];
+            }
             else
+            {
                 uri = new Uri(ArchiveListViewModel.Instance.ExpandImagePath, UriKind.Relative);
+                NotesList.ItemTemplate = (DataTemplate)this.Resources["MinimizedNoteTemplate"];
+            }
 
             ExpansionButtonImage.Source = new BitmapImage(uri);
         }

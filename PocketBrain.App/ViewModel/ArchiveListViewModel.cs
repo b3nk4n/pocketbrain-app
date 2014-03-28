@@ -47,6 +47,7 @@ namespace PocketBrain.App.ViewModel
         #region Constructors
 
         public ArchiveListViewModel()
+            : base("archive")
         {
             Load();
 
@@ -84,15 +85,21 @@ namespace PocketBrain.App.ViewModel
         /// </summary>
         public void Clear()
         {
-            // remove attachements
-            foreach (var note in _notes)
+            for (int i = _notes.Count - 1; i >= 0; --i)
             {
-                note.RemoveAttachement();
+                _notes[i].RemoveAttachement();
+                _notes.RemoveAt(i);
             }
+            _hasDataChanged = true;
+        }
 
-            // clear all notes
-            _notes.Clear();
-
+        /// <summary>
+        /// Clears all archived notes.
+        /// </summary>
+        public void ClearNote(NoteViewModel note)
+        {
+            note.RemoveAttachement();
+            _notes.Remove(note);
             _hasDataChanged = true;
         }
 

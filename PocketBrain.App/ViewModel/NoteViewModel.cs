@@ -32,9 +32,14 @@ namespace PocketBrain.App.ViewModel
         private Note _note;
 
         /// <summary>
-        /// The delete command.
+        /// The delete command (moves it to the archive page).
         /// </summary>
         private DelegateCommand _deleteCommand;
+
+        /// <summary>
+        /// Clears the note (from archive page incl. delete the attachment)
+        /// </summary>
+        private DelegateCommand _deleteFromArchiveCommand;
 
         /// <summary>
         /// The restore from archive command.
@@ -162,7 +167,7 @@ namespace PocketBrain.App.ViewModel
                 {
                     UnpinTile();
 
-                    // delte the item in the list if it was saved before
+                    // delete the item in the list if it was saved before
                     if (NoteListViewModel.Instance.Notes.Contains(this))
                     {
                         ArchiveListViewModel.Instance.AddNote(this);
@@ -179,6 +184,19 @@ namespace PocketBrain.App.ViewModel
                         MainPage.ScrollToTopOnNextNavigationTo = true;
                     }
                 });
+
+            _deleteFromArchiveCommand = new DelegateCommand(() =>
+            {
+                UnpinTile();
+
+                // delete the item in the list if it was saved before
+                if (ArchiveListViewModel.Instance.Notes.Contains(this))
+                {
+                    ArchiveListViewModel.Instance.ClearNote(this);
+                }
+
+                ArchiveListViewModel.Instance.NotifyIsExtensionButtonVisible();
+            });
 
             _restoreCommand = new DelegateCommand(() =>
                 {
@@ -658,6 +676,17 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return _deleteCommand;
+            }
+        }
+
+        /// <summary>
+        /// Gets the delete from archive note command.
+        /// </summary>
+        public ICommand DeleteFromArchiveCommand
+        {
+            get
+            {
+                return _deleteFromArchiveCommand;
             }
         }
 

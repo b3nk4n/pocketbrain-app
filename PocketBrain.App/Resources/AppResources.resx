@@ -134,7 +134,7 @@
     <comment>General</comment>
   </data>
   <data name="ApplicationVersion" xml:space="preserve">
-    <value>1.3.1</value>
+    <value>1.4</value>
     <comment>General</comment>
   </data>
   <data name="ArchiveTitle" xml:space="preserve">
@@ -213,7 +213,7 @@ Tell us about your experience or suggest how we can make it even better.</value>
     <comment>MessageBox</comment>
   </data>
   <data name="MessageBoxNoRecUI" xml:space="preserve">
-    <value>Voice recognizer is not activated. Plese refer to your phone settings.</value>
+    <value>Voice recognizer is not activated. Please refer to your phone settings.</value>
     <comment>MessageBox</comment>
   </data>
   <data name="MessageBoxWarningTitle" xml:space="preserve">
