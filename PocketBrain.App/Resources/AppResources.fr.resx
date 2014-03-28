@@ -157,6 +157,10 @@
     <value>détacher de l'écran d'accueil</value>
     <comment>ContextMenu</comment>
   </data>
+  <data name="Contributors" xml:space="preserve">
+    <value>Bénévole</value>
+    <comment>AboutPage</comment>
+  </data>
   <data name="DefaultTitle" xml:space="preserve">
     <value>Sans titre</value>
     <comment>General</comment>

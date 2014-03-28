@@ -157,6 +157,10 @@
     <value>unpin from start</value>
     <comment>ContextMenu</comment>
   </data>
+  <data name="Contributors" xml:space="preserve">
+    <value>Contributors</value>
+    <comment>AboutPage</comment>
+  </data>
   <data name="DefaultTitle" xml:space="preserve">
     <value>Untitled</value>
     <comment>General</comment>

@@ -151,6 +151,15 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Contributors ähnelt.
+        /// </summary>
+        public static string Contributors {
+            get {
+                return ResourceManager.GetString("Contributors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Untitled ähnelt.
         /// </summary>
         public static string DefaultTitle {

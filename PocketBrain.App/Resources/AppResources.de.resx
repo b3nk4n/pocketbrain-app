@@ -157,6 +157,10 @@
     <value>von startseite entfernen</value>
     <comment>ContextMenu</comment>
   </data>
+  <data name="Contributors" xml:space="preserve">
+    <value>Unterstützt von</value>
+    <comment>AboutPage</comment>
+  </data>
   <data name="DefaultTitle" xml:space="preserve">
     <value>Unbenannt</value>
     <comment>General</comment>

@@ -15,7 +15,7 @@ namespace PocketBrain.App
         /// <summary>
         /// Setting for list expandation.
         /// </summary>
-        public static readonly StoredObject<string> ExpandListsMethod = new StoredObject<string>("explandLists", "0");
+        public static readonly StoredObject<string> ExpandListsMethod = new StoredObject<string>("explandLists", "2");
 
         /// <summary>
         /// Setting for whether the vibration is enabled.

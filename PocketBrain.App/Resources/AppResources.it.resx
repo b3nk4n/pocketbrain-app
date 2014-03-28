@@ -157,8 +157,12 @@
     <value>rimuovi da start</value>
     <comment>ContextMenu</comment>
   </data>
+  <data name="Contributors" xml:space="preserve">
+    <value>Contributori</value>
+    <comment>AboutPage</comment>
+  </data>
   <data name="DefaultTitle" xml:space="preserve">
-    <value>Senza titolo</value>
+    <value>Inserire titolo qui</value>
     <comment>General</comment>
   </data>
   <data name="FeedbackBodyText" xml:space="preserve">
@@ -189,7 +193,7 @@ Raccontaci la tua esperienza d'uso o suggeriscici come possiamo migliorare la no
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackSubject" xml:space="preserve">
-    <value>Feedback del cliente di PoketBRAIN</value>
+    <value>Feedback del cliente di poketBRAIN</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackTitleText" xml:space="preserve">
@@ -289,15 +293,15 @@ Dimostraci che ami questa app votandola sullo store, così da spingerci a miglio
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandButton" xml:space="preserve">
-    <value>mostrando un tasto apposito</value>
+    <value>mostra un tasto</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandByGesture" xml:space="preserve">
-    <value>agitando il telefono</value>
+    <value>agita il telefono</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandByGestureAndButton" xml:space="preserve">
-    <value>agitando il telefono e mostrando un tasto apposito</value>
+    <value>agita + tasto</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandTitle" xml:space="preserve">
@@ -309,7 +313,7 @@ Dimostraci che ami questa app votandola sullo store, così da spingerci a miglio
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsTitle" xml:space="preserve">
-    <value>Elenchi</value>
+    <value>Elementi in lista</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsLiveTileTitle" xml:space="preserve">
@@ -333,7 +337,7 @@ Dimostraci che ami questa app votandola sullo store, così da spingerci a miglio
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTileNoteCountTitle" xml:space="preserve">
-    <value>mostra il numero delle annotazioni sulla tile principale</value>
+    <value>Mostra num. di note sulla tile</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
