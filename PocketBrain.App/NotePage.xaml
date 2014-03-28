@@ -46,14 +46,14 @@
         <Storyboard x:Name="ShowKeyboardExtension">
             <DoubleAnimation Storyboard.TargetName="KeyboardExtensionTransfrom" 
                                 Storyboard.TargetProperty="Y"
-                                Duration="0" To="304" >
+                                Duration="0" To="220" >
             </DoubleAnimation>
         </Storyboard>
 
         <Storyboard x:Name="ShowKeyboardExtension16to9">
             <DoubleAnimation Storyboard.TargetName="KeyboardExtensionTransfrom" 
                                 Storyboard.TargetProperty="Y"
-                                Duration="0" To="350" >
+                                Duration="0" To="274" >
             </DoubleAnimation>
         </Storyboard>
 
@@ -186,29 +186,32 @@
             </Border.RenderTransform>
             <Grid  DataContext="{StaticResource keyboardExViewModel}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="92" />
+                    <RowDefinition Height="86" />
+                    <RowDefinition Height="86" />
                     <RowDefinition Height="400" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="290" />
-                    <ColumnDefinition Width="190" />
+                    <ColumnDefinition Width="380" />
+                    <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-                <Polygon Grid.Row="0" Grid.Column="1" Width="190" Points="0,92 46,1 190,1 190,92" Fill="{StaticResource PhoneChromeBrush}" Tap="Polygon_Tap"/>
-                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                    <Button Style="{StaticResource CustomKeyboardButtonStyle}" Height="84" Width="48" VerticalAlignment="Top" Click="KeyboardExtensionLeftClick">
-                        <Image Source="{Binding LeftButtonImagePath}" Height="24"  />
-                    </Button>
-                    <Button Style="{StaticResource CustomKeyboardButtonStyle}" Height="84" Width="48" VerticalAlignment="Top" Click="KeyboardExtensionRightClick">
-                        <Image Source="{Binding RightButtonImagePath}" Height="24" />
-                    </Button>
-                    <Button Style="{StaticResource CustomKeyboardButtonStyle}" Height="84" Width="48" VerticalAlignment="Top" Click="KeyboardExtensionTotalRightClick">
+                <Polygon Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Width="100" Points="0,173 0,86, 50,0 100,0 100,173" Fill="{StaticResource PhoneChromeBrush}" Tap="Polygon_Tap" Margin="0,0,0,-1"/>
+                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                    <Button Style="{StaticResource CustomKeyboardButtonStyle}" Height="84" Width="48" Click="KeyboardExtensionTotalRightClick">
                         <Image Source="{Binding TotalRightButtonImagePath}" Height="24" />
                     </Button>
                 </StackPanel>
-                <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Fill="{StaticResource PhoneChromeBrush}" />
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button Style="{StaticResource CustomKeyboardButtonStyle}" Height="84" Width="48" Click="KeyboardExtensionLeftClick">
+                        <Image Source="{Binding LeftButtonImagePath}" Height="24"  />
+                    </Button>
+                    <Button Style="{StaticResource CustomKeyboardButtonStyle}" Height="84" Width="48" Click="KeyboardExtensionRightClick">
+                        <Image Source="{Binding RightButtonImagePath}" Height="24" />
+                    </Button>
+                </StackPanel>
+                <Rectangle Grid.Row="2" Grid.ColumnSpan="2" Fill="{StaticResource PhoneChromeBrush}" />
             </Grid>
         </Border>
-        <Border VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,124,0,0">
+        <Border VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,110,0,0">
             <Button x:Name="SpeakButton"
                     Style="{StaticResource CustomCornerButtonStyle}"
                     Visibility="{Binding IsExtensionButtonVisible, Converter={StaticResource boolToVis}}">
