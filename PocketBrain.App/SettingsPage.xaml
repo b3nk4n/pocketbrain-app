@@ -90,6 +90,7 @@
                                 <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.Settings1Item, Source={StaticResource LocalizedStrings}}" Tag="1" Style="{StaticResource ListPickerItemStyle}" />
                                 <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.Settings2Items, Source={StaticResource LocalizedStrings}}" Tag="2" Style="{StaticResource ListPickerItemStyle}" />
                                 <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.Settings4Items, Source={StaticResource LocalizedStrings}}" Tag="4" Style="{StaticResource ListPickerItemStyle}" />
+                                <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.Settings6Items, Source={StaticResource LocalizedStrings}}" Tag="6" Style="{StaticResource ListPickerItemStyle}" />
                             </toolkit:ListPicker>
                         </StackPanel>
                         <StackPanel Margin="0, 12">

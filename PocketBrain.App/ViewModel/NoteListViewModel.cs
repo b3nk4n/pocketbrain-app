@@ -202,7 +202,7 @@ namespace PocketBrain.App.ViewModel
                     tileList.Add(note);
             }
 
-            string[] contentLines = {tileData.WideContent1, tileData.WideContent2, tileData.WideContent3};
+            string[] contentLines = {"", "", ""};
             int currentIndex = 0;
 
             for (int i = 0; i < tileList.Count; ++i)
@@ -212,6 +212,10 @@ namespace PocketBrain.App.ViewModel
 
                 contentLines[currentIndex++] = (string.IsNullOrWhiteSpace(tileList[i].Title)) ? tileList[i].Content : tileList[i].Title;
             }
+
+            tileData.WideContent1 = contentLines[0];
+            tileData.WideContent2 = contentLines[1];
+            tileData.WideContent3 = contentLines[2];
 
             LiveTileHelper.UpdateDefaultTile(tileData);
         }
@@ -289,7 +293,7 @@ namespace PocketBrain.App.ViewModel
                             lockList[1].Title, lockList[1].Content,
                             Settings.LockScreenBackgroundImagePath.Value));
                 }
-                else
+                else if (lockList.Count == 3 || lockList.Count == 4)
                 {
                     lockGfx = GraphicsHelper.Create(
                         new NoteLockScreenQuad(
@@ -297,6 +301,18 @@ namespace PocketBrain.App.ViewModel
                             lockList[1].Title, lockList[1].Content,
                             lockList[2].Title, lockList[2].Content,
                             (lockList.Count == 3) ? string.Empty : lockList[3].Title, (lockList.Count == 3) ? string.Empty : lockList[3].Content,
+                            Settings.LockScreenBackgroundImagePath.Value));
+                }
+                else
+                {
+                    lockGfx = GraphicsHelper.Create(
+                        new NoteLockScreenSix(
+                            lockList[0].Title, lockList[0].Content,
+                            lockList[1].Title, lockList[1].Content,
+                            lockList[2].Title, lockList[2].Content,
+                            lockList[3].Title, lockList[3].Content,
+                            lockList[4].Title, lockList[4].Content,
+                            (lockList.Count == 5) ? string.Empty : lockList[5].Title, (lockList.Count == 5) ? string.Empty : lockList[5].Content,
                             Settings.LockScreenBackgroundImagePath.Value));
                 }
 

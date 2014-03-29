@@ -96,6 +96,9 @@ namespace PocketBrain.App
                 case 2:
                     foregroundImagePath = "/Assets/quad.png";
                     break;
+                case 3:
+                    foregroundImagePath = "/Assets/six.png";
+                    break;
                 default:
                     foregroundImagePath = "/Assets/single.png";
                     break;
