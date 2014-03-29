@@ -164,12 +164,12 @@
                         <Button Grid.Column="2" Command="{Binding PinToStartCommand}"
                             Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}}"
                             Style="{StaticResource CustomButtonStyle}">
-                            <Image Source="Assets/AppBar/appbar.pin.png" Height="52" Opacity="0.25" />
+                            <Image Source="Assets/AppBar/appbar.pin.png" Height="52" />
                         </Button>
                         <Button Grid.Column="2" Command="{Binding UnpinFromStartCommand}"
                             Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}, ConverterParameter=!}"
                             Style="{StaticResource CustomButtonStyle}">
-                            <Image Source="Assets/AppBar/appbar.pin.png" Height="52" />
+                            <Image Source="Assets/AppBar/appbar.pin.remove.png" Height="52" />
                         </Button>
                     </Grid>
                     <Grid>
@@ -179,7 +179,7 @@
                         </Grid.ColumnDefinitions>
                         <Button x:Name="ShowNoteButton" Grid.Column="0" Command="{Binding ShowCommand}" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}"
                             Style="{StaticResource CustomButtonStyle}">
-                            <Image Source="Assets/AppBar/appbar.eye.png" Height="52" Opacity="0.25" />
+                            <Image Source="Assets/AppBar/appbar.eye.hide.png" Height="52" Opacity="0.33" />
                         </Button>
                         <Button x:Name="HideNoteButton" Grid.Column="0" Command="{Binding HideCommand}"  Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}, ConverterParameter=!}"
                             Style="{StaticResource CustomButtonStyle}">
