@@ -124,7 +124,7 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die mark as invisible ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die hide on lock screen ähnelt.
         /// </summary>
         public static string ContextMenuHide {
             get {
@@ -151,7 +151,7 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die mark as visible ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die show on lock screen ähnelt.
         /// </summary>
         public static string ContextMenuShow {
             get {

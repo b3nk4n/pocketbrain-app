@@ -146,7 +146,7 @@
     <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuHide" xml:space="preserve">
-    <value>als unsichtbar markieren</value>
+    <value>am Sperrbildschirm verstecken</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuPinToStart" xml:space="preserve">
@@ -158,7 +158,7 @@
     <comment>ArchivePage</comment>
   </data>
   <data name="ContextMenuShow" xml:space="preserve">
-    <value>als sichtbar markieren</value>
+    <value>am Sperrbildschirm anzeigen</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuUnpinFromStart" xml:space="preserve">
