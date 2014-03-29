@@ -24,6 +24,9 @@ namespace PocketBrain.App.Controls
             : this()
         {
             this.Title.Text = title;
+            if (string.IsNullOrWhiteSpace(title))
+                this.Title.Visibility = System.Windows.Visibility.Collapsed;
+
             this.Text.Text = content;
         }
     }

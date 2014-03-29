@@ -409,23 +409,40 @@ namespace PocketBrain.App.ViewModel
         /// </summary>
         private void PinOrUpdateTile()
         {
-            var noteWideGfx = GraphicsHelper.Create(new NoteWideTile(DisplayedTitle, Content));
+            var noteWideGfx = GraphicsHelper.Create(new NoteWideTile(Title, Content));
             var noteWideUri = StorageHelper.SaveJpeg(TileWidePath, noteWideGfx);
-            var noteNormalGfx = GraphicsHelper.Create(new NoteNormalTile(DisplayedTitle, Content));
+            var noteNormalGfx = GraphicsHelper.Create(new NoteNormalTile(Title, Content));
             var noteNormalUri = StorageHelper.SaveJpeg(TileNormalPath, noteNormalGfx);
 
             if (HasAttachement)
             {
                 var imageUri = new Uri(StorageHelper.ISTORAGE_SCHEME + AttachedImagePath, UriKind.Absolute);
 
-                var tile = new FlipTileData
+                FlipTileData tile = new FlipTileData();
+
+
+                if (IsValidText)
                 {
-                    BackBackgroundImage = imageUri,
-                    WideBackBackgroundImage = imageUri,
-                    SmallBackgroundImage = imageUri,
-                    WideBackgroundImage = noteWideUri,
-                    BackgroundImage = noteNormalUri,
-                };
+                    tile = new FlipTileData()
+                    {
+                        BackBackgroundImage = imageUri,
+                        WideBackBackgroundImage = imageUri,
+                        SmallBackgroundImage = imageUri,
+                        WideBackgroundImage = noteWideUri,
+                        BackgroundImage = noteNormalUri,
+                        BackTitle = AppResources.ApplicationTitle
+                    };
+                }
+                else // without text, just an image
+                {
+                    tile = new FlipTileData()
+                    {
+                        BackgroundImage = imageUri,
+                        WideBackgroundImage = imageUri,
+                        SmallBackgroundImage = imageUri,
+                        Title = AppResources.ApplicationTitle
+                    };
+                }
 
                 LiveTilePinningHelper.PinOrUpdateTile(NavigationUri, tile);
             }
@@ -658,13 +675,24 @@ namespace PocketBrain.App.ViewModel
         }
 
         /// <summary>
-        /// Gets whether the note is valid.
+        /// Gets whether the note is valid by checking text, title and attachement.
         /// </summary>
         public bool IsValid
         {
             get
             {
                 return !string.IsNullOrEmpty(Title) || !string.IsNullOrEmpty(Content) || HasAttachement;
+            }
+        }
+
+        /// <summary>
+        /// Gets whether the note is valid by checking text and title.
+        /// </summary>
+        public bool IsValidText
+        {
+            get
+            {
+                return !string.IsNullOrEmpty(Title) || !string.IsNullOrEmpty(Content);
             }
         }
 

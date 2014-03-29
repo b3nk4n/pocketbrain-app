@@ -27,13 +27,24 @@ namespace PocketBrain.App.Controls
             InitializeComponent();
 
             this.Title1.Text = title1;
+            if (string.IsNullOrWhiteSpace(title1))
+                this.Title1.Visibility = System.Windows.Visibility.Collapsed;
             this.Text1.Text = text1;
+
             this.Title2.Text = title2;
+            if (string.IsNullOrWhiteSpace(title2))
+                this.Title2.Visibility = System.Windows.Visibility.Collapsed;
             this.Text2.Text = text2;
+
             this.Title3.Text = title3;
+            if (string.IsNullOrWhiteSpace(title3))
+                this.Title3.Visibility = System.Windows.Visibility.Collapsed;
             this.Text3.Text = text3;
+
             this.Title4.Text = title4;
             this.Text4.Text = text4;
+            if (string.IsNullOrWhiteSpace(title4))
+                this.Title4.Visibility = System.Windows.Visibility.Collapsed;
 
             SetBackgroundImage(backgroundPath);
         }

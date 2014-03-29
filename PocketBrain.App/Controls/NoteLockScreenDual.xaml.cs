@@ -22,8 +22,13 @@ namespace PocketBrain.App.Controls
             InitializeComponent();
 
             this.Title1.Text = title1;
+            if (string.IsNullOrWhiteSpace(title1))
+                this.Title1.Visibility = System.Windows.Visibility.Collapsed;
             this.Text1.Text = text1;
+
             this.Title2.Text = title2;
+            if (string.IsNullOrWhiteSpace(title2))
+                this.Title2.Visibility = System.Windows.Visibility.Collapsed;
             this.Text2.Text = text2;
 
             SetBackgroundImage(backgroundPath);

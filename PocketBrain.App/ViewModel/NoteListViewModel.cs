@@ -186,7 +186,7 @@ namespace PocketBrain.App.ViewModel
             int count = 0;
             
             if (Settings.ShowNoteCountOnLiveTile.Value == "1")
-                count = _notes.Count;
+                count = _notes.Count; // the real total count here
 
             var tileData = new IconicTileData
             {
@@ -194,9 +194,24 @@ namespace PocketBrain.App.ViewModel
                 Title = AppResources.ApplicationTitle,
             };
 
-            tileData.WideContent1 = (count > 0) ? _notes[0].DisplayedTitle : string.Empty;
-            tileData.WideContent2 = (count > 1) ? _notes[1].DisplayedTitle : string.Empty;
-            tileData.WideContent3 = (count > 2) ? _notes[2].DisplayedTitle : string.Empty;
+            // filter
+            IList<NoteViewModel> tileList = new List<NoteViewModel>(8);
+            foreach (var note in _notes)
+            {
+                if (note.IsValidText)
+                    tileList.Add(note);
+            }
+
+            string[] contentLines = {tileData.WideContent1, tileData.WideContent2, tileData.WideContent3};
+            int currentIndex = 0;
+
+            for (int i = 0; i < tileList.Count; ++i)
+            {
+                if (currentIndex >= contentLines.Length)
+                    break;
+
+                contentLines[currentIndex++] = (string.IsNullOrWhiteSpace(tileList[i].Title)) ? tileList[i].Content : tileList[i].Title;
+            }
 
             LiveTileHelper.UpdateDefaultTile(tileData);
         }
@@ -237,8 +252,16 @@ namespace PocketBrain.App.ViewModel
             Uri lockUri;
             bool isLocal;
 
+            // filter
+            IList<NoteViewModel> lockList = new List<NoteViewModel>(8);
+            foreach (var note in _notes)
+            {
+                if (note.IsValidText)
+                    lockList.Add(note);
+            }
+
             // select the template to render
-            if (_notes.Count == 0)
+            if (lockList.Count == 0)
             {
                 if (Settings.LockScreenBackgroundImagePath.Value == null)
                 {
@@ -253,27 +276,27 @@ namespace PocketBrain.App.ViewModel
             }
             else
             {
-                if (_notes.Count == 1)
+                if (lockList.Count == 1)
                 {
-                    lockGfx = GraphicsHelper.Create(new NoteLockScreen(_notes[0].DisplayedTitle, _notes[0].Content, Settings.LockScreenBackgroundImagePath.Value));
+                    lockGfx = GraphicsHelper.Create(new NoteLockScreen(lockList[0].Title, lockList[0].Content, Settings.LockScreenBackgroundImagePath.Value));
                 }
 
-                else if (_notes.Count == 2)
+                else if (lockList.Count == 2)
                 {
                     lockGfx = GraphicsHelper.Create(
                         new NoteLockScreenDual(
-                            _notes[0].DisplayedTitle, _notes[0].Content,
-                            _notes[1].DisplayedTitle, _notes[1].Content,
+                            lockList[0].Title, lockList[0].Content,
+                            lockList[1].Title, lockList[1].Content,
                             Settings.LockScreenBackgroundImagePath.Value));
                 }
                 else
                 {
                     lockGfx = GraphicsHelper.Create(
                         new NoteLockScreenQuad(
-                            _notes[0].DisplayedTitle, _notes[0].Content,
-                            _notes[1].DisplayedTitle, _notes[1].Content,
-                            _notes[2].DisplayedTitle, _notes[2].Content,
-                            (_notes.Count == 3) ? string.Empty : _notes[3].DisplayedTitle, (_notes.Count == 3) ? string.Empty : _notes[3].Content,
+                            lockList[0].Title, lockList[0].Content,
+                            lockList[1].Title, lockList[1].Content,
+                            lockList[2].Title, lockList[2].Content,
+                            (lockList.Count == 3) ? string.Empty : lockList[3].Title, (lockList.Count == 3) ? string.Empty : lockList[3].Content,
                             Settings.LockScreenBackgroundImagePath.Value));
                 }
 
