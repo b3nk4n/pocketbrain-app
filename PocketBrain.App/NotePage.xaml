@@ -234,7 +234,7 @@
 
 
         <StackPanel x:Name="SpeakContainer" Grid.Column="1" Visibility="Collapsed"
-                    VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,124,0,0">
+                    VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,110,0,0">
             <Border VerticalAlignment="Center" HorizontalAlignment="Right">
                 <Button Command="{Binding SpeakPrependTextCommand}" Click="SpeakButtonClicked"
                     Style="{StaticResource CustomCornerButtonStyle}"

@@ -63,6 +63,7 @@
         </Style>
 
         <Style x:Key="CustomCornerButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#48FFFFFF"/>
             <Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
             <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -84,7 +85,7 @@
                                                 <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneButtonBasePressedForegroundBrush}"/>
                                             </ObjectAnimationUsingKeyFrames>
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="BorderBackground">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource MyPhoneChromeLightBrush}"/>
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneAccentBrush}"/>
                                             </ObjectAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
@@ -97,15 +98,13 @@
                                     </VisualState>
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
-                            <!--<Polygon Width="40" Height="90" Points="0,62 0,28 40,0 40,90" VerticalAlignment="Center" HorizontalAlignment="Right" Fill="{StaticResource PhoneAccentBrush}"/>-->
-                            <Polygon x:Name="BorderBackground" Width="40" Height="90" Points="3,61 3,29 40,4 40,86" VerticalAlignment="Center" HorizontalAlignment="Right" Fill="{StaticResource PhoneChromeBrush}"
+                            <Polygon x:Name="BorderOuterBackground" Width="40" Height="90" Points="0,64 0,26 40,0 40,90" VerticalAlignment="Center" HorizontalAlignment="Right" Fill="{StaticResource PhoneChromeBrush}"
+                                     toolkit:TiltEffect.IsTiltEnabled="True"/>
+                            <Polygon x:Name="BorderBackground2" Width="40" Height="90" Points="5,61 5,29 40,5 40,85" VerticalAlignment="Center" HorizontalAlignment="Right" Fill="{StaticResource PhoneBackgroundBrush}"
+                                     toolkit:TiltEffect.IsTiltEnabled="True"/>
+                            <Polygon x:Name="BorderBackground" Width="40" Height="90" Points="5,61 5,29 40,5 40,85" VerticalAlignment="Center" HorizontalAlignment="Right" Fill="{TemplateBinding Background}"
                                      toolkit:TiltEffect.IsTiltEnabled="True"/>
                             <ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
-
-                            <!--<Border x:Name="ButtonBackground" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{StaticResource MyPhoneChromeBrush}" CornerRadius="0" Padding="{StaticResource PhoneTouchTargetOverhang}"
-							        toolkit:TiltEffect.IsTiltEnabled="True">
-                                
-                            </Border>-->
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
