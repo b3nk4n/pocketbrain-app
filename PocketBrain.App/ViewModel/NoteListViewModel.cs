@@ -264,8 +264,10 @@ namespace PocketBrain.App.ViewModel
                     lockList.Add(note);
             }
 
+            int displayItemsCount = Math.Min(lockList.Count, int.Parse(Settings.MaximumLockItems.Value));
+
             // select the template to render
-            if (lockList.Count == 0)
+            if (displayItemsCount == 0)
             {
                 if (Settings.LockScreenBackgroundImagePath.Value == null)
                 {
@@ -280,12 +282,12 @@ namespace PocketBrain.App.ViewModel
             }
             else
             {
-                if (lockList.Count == 1)
+                if (displayItemsCount == 1)
                 {
                     lockGfx = GraphicsHelper.Create(new NoteLockScreen(lockList[0].Title, lockList[0].Content, Settings.LockScreenBackgroundImagePath.Value));
                 }
 
-                else if (lockList.Count == 2)
+                else if (displayItemsCount == 2)
                 {
                     lockGfx = GraphicsHelper.Create(
                         new NoteLockScreenDual(
@@ -293,7 +295,7 @@ namespace PocketBrain.App.ViewModel
                             lockList[1].Title, lockList[1].Content,
                             Settings.LockScreenBackgroundImagePath.Value));
                 }
-                else if (lockList.Count == 3 || lockList.Count == 4)
+                else if (displayItemsCount == 3 || displayItemsCount == 4)
                 {
                     lockGfx = GraphicsHelper.Create(
                         new NoteLockScreenQuad(

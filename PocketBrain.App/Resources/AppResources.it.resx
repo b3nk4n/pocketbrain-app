@@ -280,6 +280,10 @@ Dimostraci che ami questa app votandola sullo store, così da spingerci a miglio
     <value>4 elementi</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="Settings6Items" xml:space="preserve">
+    <value>6 elementi</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsBackgroundImageTitle" xml:space="preserve">
     <value>immagine di sfondo</value>
     <comment>SettingsPage</comment>

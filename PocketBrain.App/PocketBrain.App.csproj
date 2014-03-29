@@ -230,6 +230,8 @@
     <Content Include="Assets\AppBar\appbar.back.png" />
     <Content Include="Assets\AppBar\appbar.delete.png" />
     <Content Include="Assets\AppBar\appbar.email.png" />
+    <Content Include="Assets\AppBar\appbar.eye.hide.png" />
+    <Content Include="Assets\AppBar\appbar.eye.png" />
     <Content Include="Assets\AppBar\appbar.information.png" />
     <Content Include="Assets\AppBar\appbar.lock.png" />
     <Content Include="Assets\AppBar\appbar.memo.add.png" />

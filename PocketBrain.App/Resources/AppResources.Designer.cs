@@ -409,6 +409,15 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die 6 items ähnelt.
+        /// </summary>
+        public static string Settings6Items {
+            get {
+                return ResourceManager.GetString("Settings6Items", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die background image ähnelt.
         /// </summary>
         public static string SettingsBackgroundImageTitle {

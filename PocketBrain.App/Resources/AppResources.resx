@@ -280,6 +280,10 @@ Showing us some love on the store helps us to continue to work on the app and ma
     <value>4 items</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="Settings6Items" xml:space="preserve">
+    <value>6 items</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsBackgroundImageTitle" xml:space="preserve">
     <value>background image</value>
     <comment>SettingsPage</comment>
