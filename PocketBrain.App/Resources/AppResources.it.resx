@@ -145,6 +145,10 @@
     <value>cancella</value>
     <comment>ContextMenu</comment>
   </data>
+  <data name="ContextMenuHide" xml:space="preserve">
+    <value>segna come invisibile</value>
+    <comment>ContextMenu</comment>
+  </data>
   <data name="ContextMenuPinToStart" xml:space="preserve">
     <value>visual. su start</value>
     <comment>ContextMenu</comment>
@@ -152,6 +156,10 @@
   <data name="ContextMenuRestore" xml:space="preserve">
     <value>ripristina</value>
     <comment>ArchivePage</comment>
+  </data>
+  <data name="ContextMenuShow" xml:space="preserve">
+    <value>segna come visibile</value>
+    <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuUnpinFromStart" xml:space="preserve">
     <value>rimuovi da start</value>

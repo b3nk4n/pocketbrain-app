@@ -172,11 +172,24 @@
                             <Image Source="Assets/AppBar/appbar.pin.remove.png" Height="52" />
                         </Button>
                     </Grid>
-               
-                    <Button x:Name="DeleteNoteButton" Command="{Binding DeleteCommand}"
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="ShowNoteButton" Grid.Column="0" Command="{Binding ShowCommand}" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}"
                             Style="{StaticResource CustomButtonStyle}">
-                        <Image Source="Assets/AppBar/appbar.delete.png" Height="52" />
-                    </Button>
+                            <Image Source="Assets/AppBar/appbar.eye.png" Height="52" />
+                        </Button>
+                        <Button x:Name="HideNoteButton" Grid.Column="0" Command="{Binding HideCommand}"  Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}, ConverterParameter=!}"
+                            Style="{StaticResource CustomButtonStyle}">
+                            <Image Source="Assets/AppBar/appbar.eye.hide.png" Height="52" />
+                        </Button>
+                        <Button x:Name="DeleteNoteButton" Grid.Column="1" Command="{Binding DeleteCommand}"
+                            Style="{StaticResource CustomButtonStyle}">
+                            <Image Source="Assets/AppBar/appbar.delete.png" Height="52" />
+                        </Button>
+                    </Grid>
                 </StackPanel>
             </Border>
         </Grid>

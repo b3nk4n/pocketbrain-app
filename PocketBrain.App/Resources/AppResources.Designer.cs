@@ -124,6 +124,15 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die mark as invisible ähnelt.
+        /// </summary>
+        public static string ContextMenuHide {
+            get {
+                return ResourceManager.GetString("ContextMenuHide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die pin to start ähnelt.
         /// </summary>
         public static string ContextMenuPinToStart {
@@ -138,6 +147,15 @@ namespace PocketBrain.App.Resources {
         public static string ContextMenuRestore {
             get {
                 return ResourceManager.GetString("ContextMenuRestore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die mark as visible ähnelt.
+        /// </summary>
+        public static string ContextMenuShow {
+            get {
+                return ResourceManager.GetString("ContextMenuShow", resourceCulture);
             }
         }
         

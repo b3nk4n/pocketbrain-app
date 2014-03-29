@@ -51,6 +51,11 @@ namespace PocketBrain.App.Model
         /// The deletion date.
         /// </summary>
         public DateTime DateDeleted { get; set; }
+
+        /// <summary>
+        /// Indicates whether the note is hidden.
+        /// </summary>
+        public bool IsHidden { get; set; }
  
         #endregion
 
@@ -86,6 +91,7 @@ namespace PocketBrain.App.Model
             Title = title;
             Content = content;
             AttachedImagePath = attachedImagePath;
+            IsHidden = false;
 
             DateCreated = DateTime.Now;
         }

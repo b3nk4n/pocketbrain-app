@@ -97,6 +97,16 @@ namespace PocketBrain.App.ViewModel
         private DelegateCommand _speakAppendTextCommand;
 
         /// <summary>
+        /// The hide note command.
+        /// </summary>
+        private DelegateCommand _hideCommand;
+
+        /// <summary>
+        /// The show note command.
+        /// </summary>
+        private DelegateCommand _showCommand;
+
+        /// <summary>
         /// The photo chooser task.
         /// </summary>
         /// <remarks>Must be defined at class level to work properly in tombstoning.</remarks>
@@ -355,6 +365,26 @@ namespace PocketBrain.App.ViewModel
                     }
                     catch (Exception) { }
                 });
+
+            _showCommand = new DelegateCommand(() =>
+                {
+                    IsHidden = false;
+                    UpdateCanExecuteChanged();
+                },
+                () =>
+                {
+                    return IsHidden;
+                });
+
+            _hideCommand = new DelegateCommand(() =>
+            {
+                IsHidden = true;
+                UpdateCanExecuteChanged();
+            },
+                () =>
+                {
+                    return !IsHidden;
+                });
         }
 
         #endregion
@@ -402,6 +432,8 @@ namespace PocketBrain.App.ViewModel
             _addAttachementCommand.RaiseCanExecuteChanged();
             _pinToStartCommand.RaiseCanExecuteChanged();
             _unpinFromStartCommand.RaiseCanExecuteChanged();
+            _showCommand.RaiseCanExecuteChanged();
+            _hideCommand.RaiseCanExecuteChanged();
         }
 
         /// <summary>
@@ -421,7 +453,7 @@ namespace PocketBrain.App.ViewModel
                 FlipTileData tile = new FlipTileData();
 
 
-                if (IsValidText)
+                if (IsValidTextAndVisible)
                 {
                     tile = new FlipTileData()
                     {
@@ -631,6 +663,25 @@ namespace PocketBrain.App.ViewModel
         }
 
         /// <summary>
+        /// Gets whether the note is visible.
+        /// </summary>
+        public bool IsHidden
+        {
+            get
+            {
+                return _note.IsHidden;
+            }
+            set
+            {
+                if (_note.IsHidden != value)
+                {
+                    _note.IsHidden = value;
+                    NotifyPropertyChanged("IsHidden");
+                } 
+            }
+        }
+
+        /// <summary>
         /// Gets the navigation URI.
         /// </summary>
         public Uri NavigationUri
@@ -688,11 +739,11 @@ namespace PocketBrain.App.ViewModel
         /// <summary>
         /// Gets whether the note is valid by checking text and title.
         /// </summary>
-        public bool IsValidText
+        public bool IsValidTextAndVisible
         {
             get
             {
-                return !string.IsNullOrEmpty(Title) || !string.IsNullOrEmpty(Content);
+                return (!string.IsNullOrEmpty(Title) || !string.IsNullOrEmpty(Content)) && !IsHidden;
             }
         }
 
@@ -836,6 +887,28 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return _speakAppendTextCommand;
+            }
+        }
+
+        /// <summary>
+        /// Gets the show note command.
+        /// </summary>
+        public ICommand ShowCommand
+        {
+            get
+            {
+                return _showCommand;
+            }
+        }
+
+        /// <summary>
+        /// Gets the hide note command.
+        /// </summary>
+        public ICommand HideCommand
+        {
+            get
+            {
+                return _hideCommand;
             }
         }
 

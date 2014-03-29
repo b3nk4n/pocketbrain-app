@@ -58,6 +58,8 @@
                         <toolkit:ContextMenu>
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuPinToStart, Source={StaticResource LocalizedStrings}}" Command="{Binding PinToStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}}" />
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuUnpinFromStart, Source={StaticResource LocalizedStrings}}" Command="{Binding UnpinFromStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}, ConverterParameter=!}" />
+                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuShow, Source={StaticResource LocalizedStrings}}" Command="{Binding ShowCommand}" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}" />
+                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuHide, Source={StaticResource LocalizedStrings}}" Command="{Binding HideCommand}" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}, ConverterParameter=!}" />
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuDelete, Source={StaticResource LocalizedStrings}}" Command="{Binding DeleteCommand}" />
                         </toolkit:ContextMenu>
                     </toolkit:ContextMenuService.ContextMenu>
@@ -72,10 +74,12 @@
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="48" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="{Binding DisplayedTitle}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
-                            <Image Grid.Column="1" Source="Assets/AppBar/appbar.paperclip.png" Width="48" Height="48" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
+                            <Image Grid.Column="1" Source="Assets/AppBar/appbar.eye.hide.png" Width="48" Height="48" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}" />
+                            <Image Grid.Column="2" Source="Assets/AppBar/appbar.paperclip.png" Width="48" Height="48" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
                         </Grid>
                         <TextBlock Grid.Row="2" Text="{Binding Content}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="White"
                                             TextTrimming="WordEllipsis" TextWrapping="Wrap" />
@@ -91,6 +95,8 @@
                         <toolkit:ContextMenu>
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuPinToStart, Source={StaticResource LocalizedStrings}}" Command="{Binding PinToStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}}" />
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuUnpinFromStart, Source={StaticResource LocalizedStrings}}" Command="{Binding UnpinFromStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}, ConverterParameter=!}" />
+                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuShow, Source={StaticResource LocalizedStrings}}" Command="{Binding ShowCommand}" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}" />
+                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuHide, Source={StaticResource LocalizedStrings}}" Command="{Binding HideCommand}" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}, ConverterParameter=!}" />
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuDelete, Source={StaticResource LocalizedStrings}}" Command="{Binding DeleteCommand}" />
                         </toolkit:ContextMenu>
                     </toolkit:ContextMenuService.ContextMenu>
@@ -102,10 +108,12 @@
                         <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="48" />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding DisplayedTitle}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
-                            <Image Grid.Column="1" Source="Assets/AppBar/appbar.paperclip.png" Width="48" Height="48" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding DisplayedTitle}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
+                                <Image Grid.Column="1" Source="Assets/AppBar/appbar.eye.hide.png" Width="48" Height="48" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}" />
+                                <Image Grid.Column="2" Source="Assets/AppBar/appbar.paperclip.png" Width="48" Height="48" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
                         </Grid>
                         <TextBlock Grid.Row="1" Text="{Binding Content}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="White"
                                             TextTrimming="WordEllipsis" TextWrapping="NoWrap" />

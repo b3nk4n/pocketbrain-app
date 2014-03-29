@@ -145,6 +145,10 @@
     <value>löschen</value>
     <comment>ContextMenu</comment>
   </data>
+  <data name="ContextMenuHide" xml:space="preserve">
+    <value>als unsichtbar markieren</value>
+    <comment>ContextMenu</comment>
+  </data>
   <data name="ContextMenuPinToStart" xml:space="preserve">
     <value>auf startseite</value>
     <comment>ContextMenu</comment>
@@ -152,6 +156,10 @@
   <data name="ContextMenuRestore" xml:space="preserve">
     <value>wiederherstellen</value>
     <comment>ArchivePage</comment>
+  </data>
+  <data name="ContextMenuShow" xml:space="preserve">
+    <value>als sichtbar markieren</value>
+    <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuUnpinFromStart" xml:space="preserve">
     <value>von startseite entfernen</value>

@@ -198,7 +198,7 @@ namespace PocketBrain.App.ViewModel
             IList<NoteViewModel> tileList = new List<NoteViewModel>(8);
             foreach (var note in _notes)
             {
-                if (note.IsValidText)
+                if (note.IsValidTextAndVisible)
                     tileList.Add(note);
             }
 
@@ -260,7 +260,7 @@ namespace PocketBrain.App.ViewModel
             IList<NoteViewModel> lockList = new List<NoteViewModel>(8);
             foreach (var note in _notes)
             {
-                if (note.IsValidText)
+                if (note.IsValidTextAndVisible)
                     lockList.Add(note);
             }
 
