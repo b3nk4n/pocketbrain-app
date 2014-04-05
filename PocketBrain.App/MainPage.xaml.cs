@@ -266,6 +266,22 @@ namespace PocketBrain.App
             ExpansionButtonImage.Source = new BitmapImage(uri);
         }
 
+        /// <summary>
+        /// The swipe gesture listener event.
+        /// </summary>
+        /// <remarks>
+        /// Workaround because toolkit:GestureListener caused errors in combination with ListPicker control of the settings page.
+        /// </remarks>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The event args.</param>
+        private void SwipeManipulationCompleted(object sender, System.Windows.Input.ManipulationCompletedEventArgs e)
+        {
+            double flickX = e.FinalVelocities.LinearVelocity.X;
+
+            if (Math.Abs(flickX) > 2500)
+                NewNote();
+        }
+
         #region Properties
 
         /// <summary>
@@ -284,18 +300,5 @@ namespace PocketBrain.App
         }
 
         #endregion
-
-        /// <summary>
-        /// The flick gesture on the note list.
-        /// </summary>
-        /// <param name="sender">The grid container.</param>
-        /// <param name="e">The event args.</param>
-        private void FlickList(object sender, FlickGestureEventArgs e)
-        {
-            if (e.Direction == System.Windows.Controls.Orientation.Vertical || Math.Abs(e.HorizontalVelocity) < 2500)
-                return;
-
-            NewNote();
-        }
     }
 }
