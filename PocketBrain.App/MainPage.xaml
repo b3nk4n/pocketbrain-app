@@ -9,6 +9,7 @@
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:local="clr-namespace:PocketBrain.App.Controls"
     xmlns:converter="clr-namespace:PhoneKit.Framework.Conversion;assembly=PhoneKit.Framework"
+    xmlns:rlb="clr-namespace:ReorderListBox;assembly=ReorderListBox"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -63,7 +64,7 @@
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuDelete, Source={StaticResource LocalizedStrings}}" Command="{Binding DeleteCommand}" />
                         </toolkit:ContextMenu>
                     </toolkit:ContextMenuService.ContextMenu>
-                    <Grid Width="460" MinHeight="76" Margin="-10,4,-10,4">
+                    <Grid Width="440" MinHeight="76" Margin="-10,4,-10,4" HorizontalAlignment="Left">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
@@ -100,7 +101,7 @@
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuDelete, Source={StaticResource LocalizedStrings}}" Command="{Binding DeleteCommand}" />
                         </toolkit:ContextMenu>
                     </toolkit:ContextMenuService.ContextMenu>
-                    <Grid Width="460" Height="76" Margin="-10,-6,-10,-6">
+                    <Grid Width="410" Height="76" Margin="-10,-6,-10,-6" HorizontalAlignment="Left">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
@@ -146,13 +147,15 @@
                     <Image x:Name="image" Source="Assets/AppBar/appbar.add.note.png" Height="52" />
                 </Button>
             </Border>
-            <ScrollViewer x:Name="Scroller" Grid.Row="1" VerticalScrollBarVisibility="Hidden">
-                <StackPanel>
-                    <ItemsControl x:Name="NotesList" ItemsSource="{Binding Notes}"
-                                  ItemTemplate="{StaticResource MaximizedNoteTemplate}"/>
-                    
-                </StackPanel>
-            </ScrollViewer>
+            <Grid x:Name="NotesListContainer" Grid.Row="1"
+                          Visibility="Collapsed">
+                <ListBox x:Name="NotesList" ItemTemplate="{StaticResource MaximizedNoteTemplate}" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+            </Grid>
+            <Grid x:Name="NotesListMinimizedContainer" Grid.Row="1"
+                        Visibility="Collapsed">
+                <rlb:ReorderListBox x:Name="NotesListMinimized" IsReorderEnabled="True"
+                                  ItemTemplate="{StaticResource MinimizedNoteTemplate}" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+            </Grid>
             <Border Grid.Row="2" Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
                 <Grid>
                     <Grid.ColumnDefinitions>

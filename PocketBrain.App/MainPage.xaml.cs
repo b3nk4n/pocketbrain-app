@@ -139,7 +139,7 @@ namespace PocketBrain.App
             // check for scroller reset.
             if (ScrollToTopOnNextNavigationTo)
             {
-                Scroller.ScrollToVerticalOffset(0);
+                //Scroller.ScrollToVerticalOffset(0);
 
                 ScrollToTopOnNextNavigationTo = false;
             }
@@ -216,12 +216,18 @@ namespace PocketBrain.App
             if (NoteListViewModel.Instance.IsExpanded)
             {
                 uri = new Uri(NoteListViewModel.Instance.CollapsedImagePath, UriKind.Relative);
-                NotesList.ItemTemplate = (DataTemplate)this.Resources["MaximizedNoteTemplate"];
+                NotesListMinimized.ItemsSource = null;
+                NotesListMinimizedContainer.Visibility = System.Windows.Visibility.Collapsed;
+                NotesListContainer.Visibility = System.Windows.Visibility.Visible;
+                NotesList.ItemsSource = NoteListViewModel.Instance.Notes;
             }
             else
             {
                 uri = new Uri(NoteListViewModel.Instance.ExpandImagePath, UriKind.Relative);
-                NotesList.ItemTemplate = (DataTemplate)this.Resources["MinimizedNoteTemplate"];
+                NotesList.ItemsSource = null;
+                NotesListContainer.Visibility = System.Windows.Visibility.Collapsed;
+                NotesListMinimizedContainer.Visibility = System.Windows.Visibility.Visible;
+                NotesListMinimized.ItemsSource = NoteListViewModel.Instance.Notes;
             }
 
             ExpansionButtonImage.Source = new BitmapImage(uri);
