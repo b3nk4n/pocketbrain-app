@@ -73,10 +73,10 @@ namespace PocketBrain.App.ViewModel
         /// Adds a note to the archive.
         /// </summary>
         /// <param name="note">The note to archive.</param>
-        public void AddNote(NoteViewModel note)
+        public void AddNoteToArchive(NoteViewModel note)
         {
             note.DateDeleted = DateTime.Now;
-            _notes.Insert(0, note);
+            InsertNote(note);
             _hasDataChanged = true;
         }
 
@@ -88,7 +88,7 @@ namespace PocketBrain.App.ViewModel
             for (int i = _notes.Count - 1; i >= 0; --i)
             {
                 _notes[i].RemoveAttachement();
-                _notes.RemoveAt(i);
+                RemoveNote(_notes[i]);
             }
             _hasDataChanged = true;
         }
@@ -99,7 +99,7 @@ namespace PocketBrain.App.ViewModel
         public void ClearNote(NoteViewModel note)
         {
             note.RemoveAttachement();
-            _notes.Remove(note);
+            RemoveNote(note);
             _hasDataChanged = true;
         }
 

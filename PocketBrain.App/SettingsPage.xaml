@@ -67,6 +67,13 @@
                             <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.SettingsDisabled, Source={StaticResource LocalizedStrings}}" Tag="3" Style="{StaticResource ListPickerItemStyle}" />
                         </toolkit:ListPicker>
                     </StackPanel>
+                    <StackPanel Margin="0,12">
+                        <TextBlock Text="{Binding Path=LocalizedResources.SettingsListsAddNoteTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
+                        <toolkit:ListPicker x:Name="AddNoteButtonPicker" Template="{StaticResource CustomListPickerStyle}" Margin="0">
+                            <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.SettingsListsShowAddButton, Source={StaticResource LocalizedStrings}}" Tag="1" Style="{StaticResource ListPickerItemStyle}" />
+                            <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.SettingsListsHideAddButton, Source={StaticResource LocalizedStrings}}" Tag="0" Style="{StaticResource ListPickerItemStyle}" />
+                        </toolkit:ListPicker>
+                    </StackPanel>
                     <StackPanel Margin="0, 12">
                         <TextBlock Text="{Binding Path=LocalizedResources.SettingsListsShowCreationDate, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
                         <toolkit:ListPicker x:Name="CreationDatePicker" Template="{StaticResource CustomListPickerStyle}" Margin="0">

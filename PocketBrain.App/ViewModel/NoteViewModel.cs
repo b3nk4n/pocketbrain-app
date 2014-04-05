@@ -180,8 +180,8 @@ namespace PocketBrain.App.ViewModel
                     // delete the item in the list if it was saved before
                     if (NoteListViewModel.Instance.Notes.Contains(this))
                     {
-                        ArchiveListViewModel.Instance.AddNote(this);
-                        NoteListViewModel.Instance.Notes.Remove(this);
+                        ArchiveListViewModel.Instance.AddNoteToArchive(this);
+                        NoteListViewModel.Instance.RemoveNote(this);
                     }
 
                     // clear the current note
@@ -211,7 +211,7 @@ namespace PocketBrain.App.ViewModel
             _restoreCommand = new DelegateCommand(() =>
                 {
                     NoteListViewModel.Instance.Restore(this);
-                    ArchiveListViewModel.Instance.Notes.Remove(this);
+                    ArchiveListViewModel.Instance.RemoveNote(this);
                     ArchiveListViewModel.Instance.NotifyIsExtensionButtonVisible();
                 });
 

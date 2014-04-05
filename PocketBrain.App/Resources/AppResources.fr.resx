@@ -302,6 +302,10 @@ De nous montrer un peu d'amour dans le Windows Store nous aide à continuer à t
     <value>activée</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsListsAddNoteTitle" xml:space="preserve">
+    <value>ajouter-note bouton</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsListsExpandButton" xml:space="preserve">
     <value>afficer bouton</value>
     <comment>SettingsPage</comment>
@@ -316,6 +320,14 @@ De nous montrer un peu d'amour dans le Windows Store nous aide à continuer à t
   </data>
   <data name="SettingsListsExpandTitle" xml:space="preserve">
     <value>minimiser / maximiser</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsHideAddButton" xml:space="preserve">
+    <value>caché (seulement horiz. geste de balayage)</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsShowAddButton" xml:space="preserve">
+    <value>visible</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsShowCreationDate" xml:space="preserve">

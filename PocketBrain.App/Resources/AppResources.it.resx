@@ -304,6 +304,10 @@ Dimostraci che ami questa app votandola sullo store, così da spingerci a miglio
     <value>abilitato</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsListsAddNoteTitle" xml:space="preserve">
+    <value>aggiungere tasto</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsListsExpandButton" xml:space="preserve">
     <value>mostra un tasto</value>
     <comment>SettingsPage</comment>
@@ -318,6 +322,14 @@ Dimostraci che ami questa app votandola sullo store, così da spingerci a miglio
   </data>
   <data name="SettingsListsExpandTitle" xml:space="preserve">
     <value>minimizza / espandi</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsHideAddButton" xml:space="preserve">
+    <value>nascosto (solo orizzontale colpo gestoe)</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsShowAddButton" xml:space="preserve">
+    <value>visile</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsShowCreationDate" xml:space="preserve">

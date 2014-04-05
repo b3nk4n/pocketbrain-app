@@ -211,7 +211,7 @@ namespace PocketBrain.App
                 // add the note to the list, if it wasn't already stored before
                 if (!NoteListViewModel.Instance.Notes.Contains(NoteListViewModel.Instance.CurrentNote))
                 {
-                    NoteListViewModel.Instance.Notes.Insert(0, NoteListViewModel.Instance.CurrentNote);
+                    NoteListViewModel.Instance.InsertNote(NoteListViewModel.Instance.CurrentNote);
                     MainPage.ScrollToTopOnNextNavigationTo = true;
                 }
                 return;
@@ -223,7 +223,7 @@ namespace PocketBrain.App
                 // add the note to the list, if it wasn't already stored before
                 if (!NoteListViewModel.Instance.Notes.Contains(NoteListViewModel.Instance.CurrentNote))
                 {
-                    NoteListViewModel.Instance.Notes.Insert(0, NoteListViewModel.Instance.CurrentNote);
+                    NoteListViewModel.Instance.InsertNote(NoteListViewModel.Instance.CurrentNote);
                     MainPage.ScrollToTopOnNextNavigationTo = true;
                 }
             }

@@ -304,6 +304,10 @@ Showing us some love on the store helps us to continue to work on the app and ma
     <value>enabled</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsListsAddNoteTitle" xml:space="preserve">
+    <value>add note button</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsListsExpandButton" xml:space="preserve">
     <value>show a button</value>
     <comment>SettingsPage</comment>
@@ -318,6 +322,14 @@ Showing us some love on the store helps us to continue to work on the app and ma
   </data>
   <data name="SettingsListsExpandTitle" xml:space="preserve">
     <value>minimize / maximize</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsHideAddButton" xml:space="preserve">
+    <value>hidden (horizontal swipe only)</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsShowAddButton" xml:space="preserve">
+    <value>visible</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsShowCreationDate" xml:space="preserve">

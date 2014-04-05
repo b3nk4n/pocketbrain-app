@@ -261,6 +261,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\dual.png" />
+    <Content Include="Assets\finger_swipe.png" />
     <Content Include="Assets\Languages\italiano.png" />
     <Content Include="Assets\LockScreenPlaceholder.png" />
     <Content Include="Assets\quad.png" />

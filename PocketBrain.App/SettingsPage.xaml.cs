@@ -135,6 +135,7 @@ namespace PocketBrain.App
             SelectByTag(ExpandListPicker, Settings.ExpandListsMethod.Value);
             SelectByTag(MaxLockItemsPicker, Settings.MaximumLockItems.Value);
             SelectByTag(TileNoteCountListPicker, Settings.ShowNoteCountOnLiveTile.Value);
+            SelectByTag(AddNoteButtonPicker, Settings.ShowAddNoteButton.Value);
         }
 
         /// <summary>
@@ -150,6 +151,7 @@ namespace PocketBrain.App
             Settings.ExpandListsMethod.Value = (string)(ExpandListPicker.SelectedItem as ListPickerItem).Tag;
             Settings.MaximumLockItems.Value = (string)(MaxLockItemsPicker.SelectedItem as ListPickerItem).Tag;
             Settings.ShowNoteCountOnLiveTile.Value = (string)(TileNoteCountListPicker.SelectedItem as ListPickerItem).Tag;
+            Settings.ShowAddNoteButton.Value = (string)(AddNoteButtonPicker.SelectedItem as ListPickerItem).Tag;
         }
 
         /// <summary>

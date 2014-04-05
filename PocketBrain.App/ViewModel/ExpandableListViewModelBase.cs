@@ -87,6 +87,26 @@ namespace PocketBrain.App.ViewModel
         }
 
         /// <summary>
+        /// Inserts a note at the beginning.
+        /// </summary>
+        /// <param name="note">The new note to add.</param>
+        public void InsertNote(NoteViewModel note)
+        {
+            _notes.Insert(0, note);
+            NotifyPropertyChanged("IsNoteListEmpty");
+        }
+
+        /// <summary>
+        /// Inserts a note at the beginning.
+        /// </summary>
+        /// <param name="note">The new note to add.</param>
+        public void RemoveNote(NoteViewModel note)
+        {
+            _notes.Remove(note);
+            NotifyPropertyChanged("IsNoteListEmpty");
+        }
+
+        /// <summary>
         /// Toggles the expander state.
         /// </summary>
         public void ToggleExpanderState()
@@ -141,6 +161,17 @@ namespace PocketBrain.App.ViewModel
                     return COLLAPSED_DARK;
                 else
                     return COLLAPSED_LIGHT;
+            }
+        }
+
+        /// <summary>
+        /// Gets whether the notes list is empty.
+        /// </summary>
+        public bool IsNoteListEmpty
+        {
+            get
+            {
+                return _notes.Count == 0;
             }
         }
     }

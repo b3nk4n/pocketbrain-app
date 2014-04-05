@@ -304,8 +304,12 @@ Mostre o seu interesse na loja e ajude-nos a continuar trabalhando para tornar e
     <value>ativada</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsListsAddNoteTitle" xml:space="preserve">
+    <value>adicionar botão</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsListsExpandButton" xml:space="preserve">
-    <value>denotar crachá</value>
+    <value>denotar botão</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandByGesture" xml:space="preserve">
@@ -313,11 +317,19 @@ Mostre o seu interesse na loja e ajude-nos a continuar trabalhando para tornar e
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandByGestureAndButton" xml:space="preserve">
-    <value>balançar gesto e crachá</value>
+    <value>balançar gesto e botão</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandTitle" xml:space="preserve">
     <value>minimizar / maximizar</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsHideAddButton" xml:space="preserve">
+    <value>escondido (só furto gesto horizontal)</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsShowAddButton" xml:space="preserve">
+    <value>visível</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsShowCreationDate" xml:space="preserve">

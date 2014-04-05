@@ -463,6 +463,15 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die add note button ähnelt.
+        /// </summary>
+        public static string SettingsListsAddNoteTitle {
+            get {
+                return ResourceManager.GetString("SettingsListsAddNoteTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die show a button ähnelt.
         /// </summary>
         public static string SettingsListsExpandButton {
@@ -495,6 +504,24 @@ namespace PocketBrain.App.Resources {
         public static string SettingsListsExpandTitle {
             get {
                 return ResourceManager.GetString("SettingsListsExpandTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die hidden (horizontal swipe only) ähnelt.
+        /// </summary>
+        public static string SettingsListsHideAddButton {
+            get {
+                return ResourceManager.GetString("SettingsListsHideAddButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die visible ähnelt.
+        /// </summary>
+        public static string SettingsListsShowAddButton {
+            get {
+                return ResourceManager.GetString("SettingsListsShowAddButton", resourceCulture);
             }
         }
         

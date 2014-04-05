@@ -54,7 +54,7 @@
 
         <DataTemplate x:Key="MaximizedNoteTemplate">
             <Border Background="{StaticResource PhoneAccentBrush}">
-                <Button Style="{StaticResource CustomButtonStyle}" Margin="-1" Tag="{Binding Id}" Click="NoteClicked">
+                <Button Style="{StaticResource CustomButtonStyle}" Margin="-1" Tag="{Binding Id}" Tap="NoteTapped">
                     <toolkit:ContextMenuService.ContextMenu>
                         <toolkit:ContextMenu>
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuPinToStart, Source={StaticResource LocalizedStrings}}" Command="{Binding PinToStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}}" />
@@ -91,7 +91,7 @@
 
         <DataTemplate x:Key="MinimizedNoteTemplate">
             <Border Background="{StaticResource PhoneAccentBrush}">
-                <Button Style="{StaticResource CustomButtonStyle}" Margin="-1" Tag="{Binding Id}" Click="NoteClicked">
+                <Button Style="{StaticResource CustomButtonStyle}" Margin="-1" Tag="{Binding Id}" Tap="NoteTapped" >
                     <toolkit:ContextMenuService.ContextMenu>
                         <toolkit:ContextMenu>
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuPinToStart, Source={StaticResource LocalizedStrings}}" Command="{Binding PinToStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}}" />
@@ -135,7 +135,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Border Grid.Row="0" Background="{StaticResource PhoneAccentBrush}" Padding="0,0,0,5">
+            <Border x:Name="AddNoteButtonContainer" Grid.Row="0" Background="{StaticResource PhoneAccentBrush}" Padding="0,0,0,5">
                 <Button x:Name="NewNoteButton"
                         Style="{StaticResource CustomButtonStyle}">
                     <toolkit:ContextMenuService.ContextMenu>
@@ -147,15 +147,20 @@
                     <Image x:Name="image" Source="Assets/AppBar/appbar.add.note.png" Height="52" />
                 </Button>
             </Border>
-            <Grid x:Name="NotesListContainer" Grid.Row="1"
-                          Visibility="Collapsed">
+            <Grid Grid.Row="1" Background="{StaticResource MyPhoneChromeBrush}">
+                <toolkit:GestureService.GestureListener>
+                    <toolkit:GestureListener Flick="FlickList" />
+                </toolkit:GestureService.GestureListener>
+                <Image Source="Assets/finger_swipe.png" Width="240" Opacity="0.4" Visibility="{Binding IsNoteListEmpty, Converter={StaticResource boolToVis}}" />
+                <Grid x:Name="NotesListContainer" Visibility="Collapsed">
                 <ListBox x:Name="NotesList" ItemTemplate="{StaticResource MaximizedNoteTemplate}" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+                </Grid>
+                <Grid x:Name="NotesListMinimizedContainer" Visibility="Collapsed">
+                    <rlb:ReorderListBox x:Name="NotesListMinimized" IsReorderEnabled="True"
+                                      ItemTemplate="{StaticResource MinimizedNoteTemplate}" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+                </Grid>
             </Grid>
-            <Grid x:Name="NotesListMinimizedContainer" Grid.Row="1"
-                        Visibility="Collapsed">
-                <rlb:ReorderListBox x:Name="NotesListMinimized" IsReorderEnabled="True"
-                                  ItemTemplate="{StaticResource MinimizedNoteTemplate}" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
-            </Grid>
+            
             <Border Grid.Row="2" Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
                 <Grid>
                     <Grid.ColumnDefinitions>

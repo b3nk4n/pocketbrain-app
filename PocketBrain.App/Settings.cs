@@ -39,5 +39,10 @@ namespace PocketBrain.App
         /// Setting for whether the note count is visible in the main tile.
         /// </summary>
         public static readonly StoredObject<string> ShowNoteCountOnLiveTile = new StoredObject<string>("showNoteCountOnTile", "1");
+
+        /// <summary>
+        /// Setting for whether the add note button is visible.
+        /// </summary>
+        public static readonly StoredObject<string> ShowAddNoteButton = new StoredObject<string>("showAddNoteButton", "1");
     }
 }

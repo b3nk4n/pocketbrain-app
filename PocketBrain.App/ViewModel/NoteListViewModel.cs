@@ -140,8 +140,7 @@ namespace PocketBrain.App.ViewModel
         /// <param name="note">The note to restore.</param>
         public void Restore(NoteViewModel note)
         {
-            Notes.Add(note);
-            Notes = new ObservableCollection<NoteViewModel>(Notes.OrderByDescending(i => i.DateCreated));
+            InsertNote(note);
         }
 
         /// <summary>

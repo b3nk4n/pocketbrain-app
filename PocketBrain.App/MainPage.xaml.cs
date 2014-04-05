@@ -59,7 +59,7 @@ namespace PocketBrain.App
 
             NewNoteButton.Click += (s, e) =>
                 {
-                    NavigationService.Navigate(new Uri("/NotePage.xaml", UriKind.Relative));
+                    NewNote();
                 };
 
             AboutButton.Click += (s, e) =>
@@ -152,6 +152,22 @@ namespace PocketBrain.App
 
             UpdateExpansionButtonViewState();
             UpdateExpansionButtonVisibility();
+            UpdateAddNoteButtonViewState();
+        }
+
+        /// <summary>
+        /// Updates the add-note button view state.
+        /// </summary>
+        private void UpdateAddNoteButtonViewState()
+        {
+            if (Settings.ShowAddNoteButton.Value == "1")
+            {
+                AddNoteButtonContainer.Visibility = System.Windows.Visibility.Visible;
+            }
+            else
+            {
+                AddNoteButtonContainer.Visibility = System.Windows.Visibility.Collapsed;
+            }
         }
 
         /// <summary>
@@ -174,14 +190,31 @@ namespace PocketBrain.App
         }
 
         /// <summary>
-        /// Event handler when a note is clicked.
+        /// Event handler when a note is clicked/tapped.
         /// </summary>
         /// <param name="sender">The clicked note.</param>
         /// <param name="e">The event args.</param>
-        private void NoteClicked(object sender, RoutedEventArgs e)
+        private void NoteTapped(object sender, System.Windows.Input.GestureEventArgs e)
         {
             var noteId = ((Button)sender).Tag as string;
 
+            OpenNote(noteId);
+        }
+
+        /// <summary>
+        /// Navigates to the note page containing a new note.
+        /// </summary>
+        private void NewNote()
+        {
+            NavigationService.Navigate(new Uri("/NotePage.xaml", UriKind.Relative));
+        }
+
+        /// <summary>
+        /// Opens the note with the given ID.
+        /// </summary>
+        /// <param name="noteId">The note ID.</param>
+        private void OpenNote(string noteId)
+        {
             if (!string.IsNullOrEmpty(noteId))
                 NavigationService.Navigate(new Uri("/NotePage.xaml?id=" + noteId, UriKind.Relative));
         }
@@ -251,5 +284,18 @@ namespace PocketBrain.App
         }
 
         #endregion
+
+        /// <summary>
+        /// The flick gesture on the note list.
+        /// </summary>
+        /// <param name="sender">The grid container.</param>
+        /// <param name="e">The event args.</param>
+        private void FlickList(object sender, FlickGestureEventArgs e)
+        {
+            if (e.Direction == System.Windows.Controls.Orientation.Vertical || Math.Abs(e.HorizontalVelocity) < 2500)
+                return;
+
+            NewNote();
+        }
     }
 }

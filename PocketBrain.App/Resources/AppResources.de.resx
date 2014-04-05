@@ -304,6 +304,10 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <value>aktiviert</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsListsAddNoteTitle" xml:space="preserve">
+    <value>notiz-hinzufügen schaltfläche</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsListsExpandButton" xml:space="preserve">
     <value>zeige eine schaltfläche</value>
     <comment>SettingsPage</comment>
@@ -318,6 +322,14 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
   </data>
   <data name="SettingsListsExpandTitle" xml:space="preserve">
     <value>minimieren / maximieren</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsHideAddButton" xml:space="preserve">
+    <value>verbergen (nur horizontales wischen)</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsListsShowAddButton" xml:space="preserve">
+    <value>sichtbar</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsShowCreationDate" xml:space="preserve">
