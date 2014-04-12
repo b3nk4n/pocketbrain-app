@@ -304,6 +304,18 @@ Showing us some love on the store helps us to continue to work on the app and ma
     <value>enabled</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsExtraLarge" xml:space="preserve">
+    <value>extra large</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsFontSize" xml:space="preserve">
+    <value>font size</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsLarge" xml:space="preserve">
+    <value>large</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsListsAddNoteTitle" xml:space="preserve">
     <value>add note button</value>
     <comment>SettingsPage</comment>
@@ -348,12 +360,20 @@ Showing us some love on the store helps us to continue to work on the app and ma
     <value>Lock screen</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsMedium" xml:space="preserve">
+    <value>medium</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsMinimiumItemsTitle" xml:space="preserve">
     <value>minimum items count</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsPreview" xml:space="preserve">
     <value>preview</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsSmall" xml:space="preserve">
+    <value>small</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTapToSelect" xml:space="preserve">

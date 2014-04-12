@@ -56,7 +56,8 @@
                 <TextBlock Text="{Binding Path=LocalizedResources.SettingsTitle, Source={StaticResource LocalizedStrings}}" Margin="24,10,0,32" Style="{StaticResource PhoneTextTitle1Style}"
                            Foreground="White"/>
                 <!--ContentPanel - zusätzliche Inhalte hier platzieren-->
-                <StackPanel x:Name="ContentPanel">
+                <StackPanel x:Name="ContentPanel" Margin="0,0,0,140"> <!-- the bottom-margin is required to access the listpickers items -->
+                    
                     <TextBlock Text="{Binding Path=LocalizedResources.SettingsListsTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextGroupHeaderStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
                     <StackPanel Margin="0,12">
                         <TextBlock Text="{Binding Path=LocalizedResources.SettingsListsExpandTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
@@ -89,6 +90,15 @@
                             <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.SettingsEnabled, Source={StaticResource LocalizedStrings}}" Tag="1" Style="{StaticResource ListPickerItemStyle}" />
                         </toolkit:ListPicker>
                     </StackPanel>
+                    <StackPanel Margin="0,12">
+                        <TextBlock Text="{Binding Path=LocalizedResources.SettingsFontSize, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
+                        <toolkit:ListPicker x:Name="LiveTileFontSizePicker" Template="{StaticResource CustomListPickerStyle}" Margin="0">
+                            <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.SettingsSmall, Source={StaticResource LocalizedStrings}}" Tag="small" Style="{StaticResource ListPickerItemStyle}" />
+                            <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.SettingsMedium, Source={StaticResource LocalizedStrings}}" Tag="medium" Style="{StaticResource ListPickerItemStyle}" />
+                            <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.SettingsLarge, Source={StaticResource LocalizedStrings}}" Tag="large" Style="{StaticResource ListPickerItemStyle}" />
+                            <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.SettingsExtraLarge, Source={StaticResource LocalizedStrings}}" Tag="extralarge" Style="{StaticResource ListPickerItemStyle}" />
+                        </toolkit:ListPicker>
+                    </StackPanel>
                     <StackPanel Visibility="{Binding HasLockScreenAccess, Converter={StaticResource boolToVis}}">
                         <TextBlock Text="{Binding Path=LocalizedResources.SettingsLockScreenTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextGroupHeaderStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
                         <StackPanel Margin="0, 12">
@@ -98,6 +108,15 @@
                                 <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.Settings2Items, Source={StaticResource LocalizedStrings}}" Tag="2" Style="{StaticResource ListPickerItemStyle}" />
                                 <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.Settings4Items, Source={StaticResource LocalizedStrings}}" Tag="4" Style="{StaticResource ListPickerItemStyle}" />
                                 <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.Settings6Items, Source={StaticResource LocalizedStrings}}" Tag="6" Style="{StaticResource ListPickerItemStyle}" />
+                            </toolkit:ListPicker>
+                        </StackPanel>
+                        <StackPanel Margin="0,12">
+                            <TextBlock Text="{Binding Path=LocalizedResources.SettingsFontSize, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
+                            <toolkit:ListPicker x:Name="LockScreenFontSizePicker" Template="{StaticResource CustomListPickerStyle}" Margin="0">
+                                <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.SettingsSmall, Source={StaticResource LocalizedStrings}}" Tag="small" Style="{StaticResource ListPickerItemStyle}" />
+                                <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.SettingsMedium, Source={StaticResource LocalizedStrings}}" Tag="medium" Style="{StaticResource ListPickerItemStyle}" />
+                                <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.SettingsLarge, Source={StaticResource LocalizedStrings}}" Tag="large" Style="{StaticResource ListPickerItemStyle}" />
+                                <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.SettingsExtraLarge, Source={StaticResource LocalizedStrings}}" Tag="extralarge" Style="{StaticResource ListPickerItemStyle}" />
                             </toolkit:ListPicker>
                         </StackPanel>
                         <StackPanel Margin="0, 12">
@@ -131,7 +150,6 @@
                                     </Border>
                                 </Border>
                             </Border>
-                            
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>

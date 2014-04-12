@@ -44,5 +44,15 @@ namespace PocketBrain.App
         /// Setting for whether the add note button is visible.
         /// </summary>
         public static readonly StoredObject<string> ShowAddNoteButton = new StoredObject<string>("showAddNoteButton", "1");
+
+        /// <summary>
+        /// The lock screen font size (small, medium, large, extralarge).
+        /// </summary>
+        public static readonly StoredObject<string> LockScreenFontSize = new StoredObject<string>("lockscreenFontSize", "large");
+
+        /// <summary>
+        /// The live tile font size (small, medium, large, extralarge).
+        /// </summary>
+        public static readonly StoredObject<string> LiveTileFontSize = new StoredObject<string>("livetileFontSize", "large");
     }
 }

@@ -302,6 +302,18 @@ De nous montrer un peu d'amour dans le Windows Store nous aide à continuer à t
     <value>activée</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsExtraLarge" xml:space="preserve">
+    <value>très grand</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsFontSize" xml:space="preserve">
+    <value>taille des caractères</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsLarge" xml:space="preserve">
+    <value>grand</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsListsAddNoteTitle" xml:space="preserve">
     <value>ajouter-note bouton</value>
     <comment>SettingsPage</comment>
@@ -346,12 +358,20 @@ De nous montrer un peu d'amour dans le Windows Store nous aide à continuer à t
     <value>Écran de verrouillage</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsMedium" xml:space="preserve">
+    <value>moyen</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsMinimiumItemsTitle" xml:space="preserve">
     <value>minimum nombre de notes</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsPreview" xml:space="preserve">
     <value>impression</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsSmall" xml:space="preserve">
+    <value>petit</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTapToSelect" xml:space="preserve">

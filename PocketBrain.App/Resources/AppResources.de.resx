@@ -304,6 +304,18 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <value>aktiviert</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsExtraLarge" xml:space="preserve">
+    <value>sehr groß</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsFontSize" xml:space="preserve">
+    <value>schriftgröße</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsLarge" xml:space="preserve">
+    <value>groß</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsListsAddNoteTitle" xml:space="preserve">
     <value>notiz-hinzufügen schaltfläche</value>
     <comment>SettingsPage</comment>
@@ -348,12 +360,20 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <value>Sperrbildschirm</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsMedium" xml:space="preserve">
+    <value>medium</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsMinimiumItemsTitle" xml:space="preserve">
     <value>minimale anzahl elemente</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsPreview" xml:space="preserve">
     <value>vorschau</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsSmall" xml:space="preserve">
+    <value>klein</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTapToSelect" xml:space="preserve">

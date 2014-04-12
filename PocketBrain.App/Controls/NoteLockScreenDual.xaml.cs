@@ -31,7 +31,34 @@ namespace PocketBrain.App.Controls
                 this.Title2.Visibility = System.Windows.Visibility.Collapsed;
             this.Text2.Text = text2;
 
+            SetupFontSizeFromSettings();
             SetBackgroundImage(backgroundPath);
+        }
+
+        /// <summary>
+        /// Sets up the font sized which are logically defined in the settings page.
+        /// </summary>
+        private void SetupFontSizeFromSettings()
+        {
+            switch (Settings.LockScreenFontSize.Value)
+            {
+                case "small":
+                    this.Title1.FontSize = this.Title2.FontSize = 40;
+                    this.Text1.FontSize = this.Text2.FontSize = 28;
+                    break;
+                case "normal":
+                    this.Title1.FontSize = this.Title2.FontSize = 44;
+                    this.Text1.FontSize = this.Text2.FontSize = 32;
+                    break;
+                case "large":
+                    this.Title1.FontSize = this.Title2.FontSize = 50;
+                    this.Text1.FontSize = this.Text2.FontSize = 36;
+                    break;
+                case "extralarge":
+                    this.Title1.FontSize = this.Title2.FontSize = 56;
+                    this.Text1.FontSize = this.Text2.FontSize = 40;
+                    break;
+            }
         }
 
         /// <summary>

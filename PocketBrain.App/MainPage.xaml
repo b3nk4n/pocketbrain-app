@@ -148,7 +148,7 @@
                 </Button>
             </Border>
             <Grid Grid.Row="1" Background="{StaticResource MyPhoneChromeBrush}" ManipulationCompleted="SwipeManipulationCompleted">
-                <Image Source="Assets/finger_swipe.png" Width="240" Opacity="0.4" Visibility="{Binding IsNoteListEmpty, Converter={StaticResource boolToVis}}" />
+                <Image Source="Assets/finger_swipe.png" Width="240" Opacity="0.1" Visibility="{Binding IsNoteListEmpty, Converter={StaticResource boolToVis}}" />
                 <Grid x:Name="NotesListContainer" Visibility="Collapsed">
                 <ListBox x:Name="NotesList" ItemTemplate="{StaticResource MaximizedNoteTemplate}" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
                 </Grid>

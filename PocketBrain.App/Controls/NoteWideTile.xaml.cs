@@ -28,6 +28,34 @@ namespace PocketBrain.App.Controls
                 this.Title.Visibility = System.Windows.Visibility.Collapsed;
 
             this.Text.Text = content;
+
+            SetupFontSizeFromSettings();
+        }
+
+        /// <summary>
+        /// Sets up the font sized which are logically defined in the settings page.
+        /// </summary>
+        private void SetupFontSizeFromSettings()
+        {
+            switch (Settings.LiveTileFontSize.Value)
+            {
+                case "small":
+                    this.Title.FontSize = 38;
+                    this.Text.FontSize = 22;
+                    break;
+                case "normal":
+                    this.Title.FontSize = 40;
+                    this.Text.FontSize = 24;
+                    break;
+                case "large":
+                    this.Title.FontSize = 42;
+                    this.Text.FontSize = 27;
+                    break;
+                case "extralarge":
+                    this.Title.FontSize = 44;
+                    this.Text.FontSize = 30;
+                    break;
+            }
         }
     }
 }

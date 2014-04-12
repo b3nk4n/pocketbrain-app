@@ -62,7 +62,34 @@ namespace PocketBrain.App.Controls
             if (string.IsNullOrWhiteSpace(title6))
                 this.Title6.Visibility = System.Windows.Visibility.Collapsed;
 
+            SetupFontSizeFromSettings();
             SetBackgroundImage(backgroundPath);
+        }
+
+        /// <summary>
+        /// Sets up the font sized which are logically defined in the settings page.
+        /// </summary>
+        private void SetupFontSizeFromSettings()
+        {
+            switch (Settings.LockScreenFontSize.Value)
+            {
+                case "small":
+                    this.Title1.FontSize = this.Title2.FontSize = this.Title3.FontSize = this.Title4.FontSize = this.Title5.FontSize = this.Title6.FontSize = 32;
+                    this.Text1.FontSize = this.Text2.FontSize = this.Text3.FontSize = this.Text4.FontSize = this.Text5.FontSize = this.Text6.FontSize = 26;
+                    break;
+                case "normal":
+                    this.Title1.FontSize = this.Title2.FontSize = this.Title3.FontSize = this.Title4.FontSize = this.Title5.FontSize = this.Title6.FontSize = 36;
+                    this.Text1.FontSize = this.Text2.FontSize = this.Text3.FontSize = this.Text4.FontSize = this.Text5.FontSize = this.Text6.FontSize = 28;
+                    break;
+                case "large":
+                    this.Title1.FontSize = this.Title2.FontSize = this.Title3.FontSize = this.Title4.FontSize = this.Title5.FontSize = this.Title6.FontSize = 42;
+                    this.Text1.FontSize = this.Text2.FontSize = this.Text3.FontSize = this.Text4.FontSize = this.Text5.FontSize = this.Text6.FontSize = 30;
+                    break;
+                case "extralarge":
+                    this.Title1.FontSize = this.Title2.FontSize = this.Title3.FontSize = this.Title4.FontSize = this.Title5.FontSize = this.Title6.FontSize = 48;
+                    this.Text1.FontSize = this.Text2.FontSize = this.Text3.FontSize = this.Text4.FontSize = this.Text5.FontSize = this.Text6.FontSize = 32;
+                    break;
+            }
         }
 
         /// <summary>

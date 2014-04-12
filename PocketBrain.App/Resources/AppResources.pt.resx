@@ -304,6 +304,18 @@ Mostre o seu interesse na loja e ajude-nos a continuar trabalhando para tornar e
     <value>ativada</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsExtraLarge" xml:space="preserve">
+    <value>muito grande</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsFontSize" xml:space="preserve">
+    <value>tamanho da fonte</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsLarge" xml:space="preserve">
+    <value>grande</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsListsAddNoteTitle" xml:space="preserve">
     <value>adicionar botão</value>
     <comment>SettingsPage</comment>
@@ -348,12 +360,20 @@ Mostre o seu interesse na loja e ajude-nos a continuar trabalhando para tornar e
     <value>Ecrã de bloqueio</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsMedium" xml:space="preserve">
+    <value>médio</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsMinimiumItemsTitle" xml:space="preserve">
     <value>notas mínimo</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsPreview" xml:space="preserve">
     <value>visualização</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsSmall" xml:space="preserve">
+    <value>pequeno</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTapToSelect" xml:space="preserve">

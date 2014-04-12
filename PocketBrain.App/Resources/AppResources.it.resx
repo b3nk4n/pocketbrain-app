@@ -304,8 +304,20 @@ Dimostraci che ami questa app votandola sullo store, così da spingerci a miglio
     <value>abilitato</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsExtraLarge" xml:space="preserve">
+    <value>molto grande</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsFontSize" xml:space="preserve">
+    <value>dimensione del carattere</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsLarge" xml:space="preserve">
+    <value>grande</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsListsAddNoteTitle" xml:space="preserve">
-    <value>aggiungere tasto</value>
+    <value>aggiungi tasto nota</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandButton" xml:space="preserve">
@@ -325,11 +337,11 @@ Dimostraci che ami questa app votandola sullo store, così da spingerci a miglio
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsHideAddButton" xml:space="preserve">
-    <value>nascosto (solo orizzontale colpo gestoe)</value>
+    <value>nascosto (solo swipe orizz.)</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsShowAddButton" xml:space="preserve">
-    <value>visile</value>
+    <value>visibile</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsShowCreationDate" xml:space="preserve">
@@ -348,12 +360,20 @@ Dimostraci che ami questa app votandola sullo store, così da spingerci a miglio
     <value>Schermata di blocco</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsMedium" xml:space="preserve">
+    <value>medio</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsMinimiumItemsTitle" xml:space="preserve">
     <value>numero minimo degli elementi</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsPreview" xml:space="preserve">
     <value>anteprima</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsSmall" xml:space="preserve">
+    <value>piccolo</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTapToSelect" xml:space="preserve">
