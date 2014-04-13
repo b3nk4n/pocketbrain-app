@@ -84,10 +84,14 @@ namespace PocketBrain.App.ViewModel
 
             _lockScreenCommand = new DelegateCommand(async () =>
             {
-                if (await LockScreenHelper.VerifyAccessAsync())
+                try // jsut to make sure, because idk if the verify access method could fail
                 {
-                    NotifyPropertyChanged("HasLockScreenAccess");
+                    if (await LockScreenHelper.VerifyAccessAsync())
+                    {
+                        NotifyPropertyChanged("HasLockScreenAccess");
+                    }
                 }
+                catch (Exception) { }
             }, () =>
             {
                 return !HasLockScreenAccess;

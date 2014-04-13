@@ -154,7 +154,23 @@
                 </Grid>
                 <Grid x:Name="NotesListMinimizedContainer" Visibility="Collapsed">
                     <rlb:ReorderListBox x:Name="NotesListMinimized" IsReorderEnabled="True"
-                                      ItemTemplate="{StaticResource MinimizedNoteTemplate}" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+                                      ItemTemplate="{StaticResource MinimizedNoteTemplate}" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                        <rlb:ReorderListBox.ItemContainerStyle>
+                            <Style TargetType="rlb:ReorderListBoxItem">
+                                <Setter Property="DragHandleTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <StackPanel Width="36" Height="48" Background="Transparent" Opacity="0.4" Margin="4,8,0,0">
+                                                <Ellipse Width="6" Height="6" Margin="3" Fill="Gray"/>
+                                                <Ellipse Width="6" Height="6" Margin="3" Fill="Gray"/>
+                                                <Ellipse Width="6" Height="6" Margin="3" Fill="Gray"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </rlb:ReorderListBox.ItemContainerStyle>
+                    </rlb:ReorderListBox>
                 </Grid>
             </Grid>
             
