@@ -82,6 +82,14 @@
                             <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.SettingsEnabled, Source={StaticResource LocalizedStrings}}" Tag="1" Style="{StaticResource ListPickerItemStyle}" />
                         </toolkit:ListPicker>
                     </StackPanel>
+                    <TextBlock Text="{Binding Path=LocalizedResources.SettingsKeyboardTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextGroupHeaderStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
+                    <StackPanel Margin="0,12">
+                        <TextBlock Text="{Binding Path=LocalizedResources.SettingsKeyboardExtendedAutoCorrectTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
+                        <toolkit:ListPicker x:Name="KeyboardExtendedAutoCorrectPicker" Template="{StaticResource CustomListPickerStyle}" Margin="0">
+                            <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.SettingsDisabled, Source={StaticResource LocalizedStrings}}" Tag="0" Style="{StaticResource ListPickerItemStyle}" />
+                            <toolkit:ListPickerItem Content="{Binding Path=LocalizedResources.SettingsEnabled, Source={StaticResource LocalizedStrings}}" Tag="1" Style="{StaticResource ListPickerItemStyle}" />
+                        </toolkit:ListPicker>
+                    </StackPanel>
                     <TextBlock Text="{Binding Path=LocalizedResources.SettingsLiveTileTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextGroupHeaderStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
                     <StackPanel Margin="0,12">
                         <TextBlock Text="{Binding Path=LocalizedResources.SettingsTileNoteCountTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>

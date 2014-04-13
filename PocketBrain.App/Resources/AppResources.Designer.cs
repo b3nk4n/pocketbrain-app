@@ -481,6 +481,24 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die automatic word correction ähnelt.
+        /// </summary>
+        public static string SettingsKeyboardExtendedAutoCorrectTitle {
+            get {
+                return ResourceManager.GetString("SettingsKeyboardExtendedAutoCorrectTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Keyboard ähnelt.
+        /// </summary>
+        public static string SettingsKeyboardTitle {
+            get {
+                return ResourceManager.GetString("SettingsKeyboardTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die large ähnelt.
         /// </summary>
         public static string SettingsLarge {

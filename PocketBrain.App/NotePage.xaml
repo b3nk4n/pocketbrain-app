@@ -92,8 +92,7 @@
                         <Border Background="{StaticResource MyPhoneChromeBrush}" Margin="0,0,42,0">
                             <toolkit:PhoneTextBox x:Name="ContentTextBox" Text="{Binding Content, Mode=TwoWay}"
                                 Height="Auto" MinHeight="460" TextWrapping="Wrap" AcceptsReturn="True"
-                                Style="{StaticResource CustomPhoneTextBoxStyle}"
-                                InputScope="Formula" />             
+                                Style="{StaticResource CustomPhoneTextBoxStyle}" />             
                         </Border>
                         
                         <!-- keyboard bottom spacer -->

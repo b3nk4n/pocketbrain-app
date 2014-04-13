@@ -175,10 +175,30 @@ namespace PocketBrain.App
                 NoteListViewModel.Instance.CurrentNote = new NoteViewModel();
             }
 
+            // set content text's input scope
+            SetupInputScope();
+
             // set the current note as binding context
             DataContext = NoteListViewModel.Instance.CurrentNote;
 
             UpdateAttachedImageSource(NoteListViewModel.Instance.CurrentNote);
+        }
+
+        /// <summary>
+        /// Sets up the input scope of the content textbox.
+        /// </summary>
+        private void SetupInputScope()
+        {
+            var scope = new InputScope();
+            var scopeName = new InputScopeName();
+
+            if (Settings.KeyboardWordAutocorrection.Value == "0")
+                scopeName.NameValue = InputScopeNameValue.Formula;
+            else
+                scopeName.NameValue = InputScopeNameValue.Text;
+            
+            scope.Names.Add(scopeName);
+            ContentTextBox.InputScope = scope;
         }
 
         /// <summary>

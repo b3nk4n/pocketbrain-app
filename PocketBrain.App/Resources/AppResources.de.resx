@@ -312,6 +312,14 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <value>schriftgröße</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsKeyboardExtendedAutoCorrectTitle" xml:space="preserve">
+    <value>automatische wortkorrektur</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsKeyboardTitle" xml:space="preserve">
+    <value>Tastatur</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsLarge" xml:space="preserve">
     <value>groß</value>
     <comment>SettingsPage</comment>

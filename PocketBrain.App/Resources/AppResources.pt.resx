@@ -312,6 +312,14 @@ Mostre o seu interesse na loja e ajude-nos a continuar trabalhando para tornar e
     <value>tamanho da fonte</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsKeyboardExtendedAutoCorrectTitle" xml:space="preserve">
+    <value>correção automática de palavras</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsKeyboardTitle" xml:space="preserve">
+    <value>Teclado</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsLarge" xml:space="preserve">
     <value>grande</value>
     <comment>SettingsPage</comment>

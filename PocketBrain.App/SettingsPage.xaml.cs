@@ -138,6 +138,7 @@ namespace PocketBrain.App
             SelectByTag(AddNoteButtonPicker, Settings.ShowAddNoteButton.Value);
             SelectByTag(LiveTileFontSizePicker, Settings.LiveTileFontSize.Value);
             SelectByTag(LockScreenFontSizePicker, Settings.LockScreenFontSize.Value);
+            SelectByTag(KeyboardExtendedAutoCorrectPicker, Settings.KeyboardWordAutocorrection.Value);
         }
 
         /// <summary>
@@ -156,6 +157,7 @@ namespace PocketBrain.App
             Settings.ShowAddNoteButton.Value = (string)(AddNoteButtonPicker.SelectedItem as ListPickerItem).Tag;
             Settings.LiveTileFontSize.Value = (string)(LiveTileFontSizePicker.SelectedItem as ListPickerItem).Tag;
             Settings.LockScreenFontSize.Value = (string)(LockScreenFontSizePicker.SelectedItem as ListPickerItem).Tag;
+            Settings.KeyboardWordAutocorrection.Value = (string)(KeyboardExtendedAutoCorrectPicker.SelectedItem as ListPickerItem).Tag;
         }
 
         /// <summary>

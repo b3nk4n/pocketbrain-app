@@ -310,6 +310,14 @@ De nous montrer un peu d'amour dans le Windows Store nous aide à continuer à t
     <value>taille des caractères</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsKeyboardExtendedAutoCorrectTitle" xml:space="preserve">
+    <value>correction automatique de mots</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsKeyboardTitle" xml:space="preserve">
+    <value>Clavier</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsLarge" xml:space="preserve">
     <value>grand</value>
     <comment>SettingsPage</comment>

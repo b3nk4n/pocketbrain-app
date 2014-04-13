@@ -312,6 +312,14 @@ Showing us some love on the store helps us to continue to work on the app and ma
     <value>font size</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsKeyboardExtendedAutoCorrectTitle" xml:space="preserve">
+    <value>automatic word correction</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsKeyboardTitle" xml:space="preserve">
+    <value>Keyboard</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsLarge" xml:space="preserve">
     <value>large</value>
     <comment>SettingsPage</comment>

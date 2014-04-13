@@ -312,6 +312,14 @@ Dimostraci che ami questa app votandola sullo store, così da spingerci a miglio
     <value>dimensione del carattere</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsKeyboardExtendedAutoCorrectTitle" xml:space="preserve">
+    <value>correzione automatico delle parole</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SettingsKeyboardTitle" xml:space="preserve">
+    <value>Tastiera</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsLarge" xml:space="preserve">
     <value>grande</value>
     <comment>SettingsPage</comment>

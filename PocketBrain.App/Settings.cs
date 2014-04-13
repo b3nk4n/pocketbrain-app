@@ -54,5 +54,10 @@ namespace PocketBrain.App
         /// The live tile font size (small, medium, large, extralarge).
         /// </summary>
         public static readonly StoredObject<string> LiveTileFontSize = new StoredObject<string>("livetileFontSize", "large");
+
+        /// <summary>
+        /// Setting for auto correction of the keyboard/content-textboxe
+        /// </summary>
+        public static readonly StoredObject<string> KeyboardWordAutocorrection = new StoredObject<string>("keyboardAutoCorrect", "0");
     }
 }
