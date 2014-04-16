@@ -1,19 +1,15 @@
 ﻿using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using PocketBrain.App.Resources;
 using PhoneKit.Framework.Support;
 using PocketBrain.App.ViewModel;
 using System;
 using System.Windows.Controls;
-using PhoneKit.Framework.Voice;
-using PhoneKit.Framework.Core.LockScreen;
-using PhoneKit.Framework.Core.Graphics;
 using System.Windows;
-using System.Windows.Media;
 using PhoneKit.Framework.OS.ShakeGestures;
 using System.Windows.Media.Imaging;
 using PhoneKit.Framework.OS;
+using Microsoft.Phone.Info;
+using Windows.Graphics.Display;
 
 namespace PocketBrain.App
 {
