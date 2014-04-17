@@ -313,7 +313,7 @@ Dimostraci che ami questa app votandola sullo store, così da spingerci a miglio
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsKeyboardExtendedAutoCorrectTitle" xml:space="preserve">
-    <value>correzione automatico delle parole</value>
+    <value>correzione automatica parole</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsKeyboardTitle" xml:space="preserve">
