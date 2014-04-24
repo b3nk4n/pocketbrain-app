@@ -255,21 +255,6 @@ namespace PocketBrain.App.ViewModel
                     return !CanPinToStart;
                 });
 
-            // init photo chooser task
-            _photoTask.ShowCamera = true;
-            _photoTask.Completed += (se, pr) =>
-            {
-                if (pr.Error != null || pr.TaskResult != TaskResult.OK)
-                    return;
-
-                // save a copy in local storage
-                string filePath = GetUniqueLocalFilePathOfFile(pr.OriginalFileName);
-                if (StorageHelper.SaveFileFromStream(filePath, pr.ChosenPhoto))
-                {
-                    SetAttachement(filePath);
-                }
-            };
-
             _shareEmailCommand = new DelegateCommand(() =>
                 {
                     EmailComposeTask emailTask = new EmailComposeTask();
@@ -303,7 +288,7 @@ namespace PocketBrain.App.ViewModel
                             Speech.Instance.RecognizerUI.Settings.ReadoutEnabled = false;
                             Speech.Instance.RecognizerUI.Settings.ShowConfirmation = false;
                             var result = await Speech.Instance.RecognizerUI.RecognizeWithUIAsync();
-                        
+
                             if (result.ResultStatus == Windows.Phone.Speech.Recognition.SpeechRecognitionUIStatus.Succeeded)
                             {
                                 Content = string.Format("{0}\r{1}", result.RecognitionResult.Text, Content);
@@ -345,7 +330,7 @@ namespace PocketBrain.App.ViewModel
             _speakAppendTextCommand = new DelegateCommand(async () =>
                 {
                     try
-                    { 
+                    {
                         if (Speech.Instance.HasRecognizerUI)
                         {
                             Speech.Instance.RecognizerUI.Settings.ReadoutEnabled = false;
@@ -377,14 +362,29 @@ namespace PocketBrain.App.ViewModel
                 });
 
             _hideCommand = new DelegateCommand(() =>
-            {
-                IsHidden = true;
-                UpdateCanExecuteChanged();
-            },
+                {
+                    IsHidden = true;
+                    UpdateCanExecuteChanged();
+                },
                 () =>
                 {
                     return !IsHidden;
                 });
+
+            // init photo chooser task
+            _photoTask.ShowCamera = true;
+            _photoTask.Completed += (se, pr) =>
+                {
+                    if (pr.Error != null || pr.TaskResult != TaskResult.OK)
+                        return;
+
+                    // save a copy in local storage
+                    string filePath = GetUniqueLocalFilePathOfFile(pr.OriginalFileName);
+                    if (StorageHelper.SaveFileFromStream(filePath, pr.ChosenPhoto))
+                    {
+                        SetAttachement(filePath);
+                    }
+                };      
         }
 
         #endregion

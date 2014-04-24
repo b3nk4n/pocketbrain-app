@@ -150,14 +150,22 @@ namespace PocketBrain.App
             base.OnNavigatedFrom(e);
 
             // save settings
-            Settings.ShowCreationDateOnList.Value = (string)(CreationDatePicker.SelectedItem as ListPickerItem).Tag;
-            Settings.ExpandListsMethod.Value = (string)(ExpandListPicker.SelectedItem as ListPickerItem).Tag;
-            Settings.MaximumLockItems.Value = (string)(MaxLockItemsPicker.SelectedItem as ListPickerItem).Tag;
-            Settings.ShowNoteCountOnLiveTile.Value = (string)(TileNoteCountListPicker.SelectedItem as ListPickerItem).Tag;
-            Settings.ShowAddNoteButton.Value = (string)(AddNoteButtonPicker.SelectedItem as ListPickerItem).Tag;
-            Settings.LiveTileFontSize.Value = (string)(LiveTileFontSizePicker.SelectedItem as ListPickerItem).Tag;
-            Settings.LockScreenFontSize.Value = (string)(LockScreenFontSizePicker.SelectedItem as ListPickerItem).Tag;
-            Settings.KeyboardWordAutocorrection.Value = (string)(KeyboardExtendedAutoCorrectPicker.SelectedItem as ListPickerItem).Tag;
+            try
+            {
+                Settings.ShowCreationDateOnList.Value = (string)(CreationDatePicker.SelectedItem as ListPickerItem).Tag;
+                Settings.ExpandListsMethod.Value = (string)(ExpandListPicker.SelectedItem as ListPickerItem).Tag;
+                Settings.MaximumLockItems.Value = (string)(MaxLockItemsPicker.SelectedItem as ListPickerItem).Tag;
+                Settings.ShowNoteCountOnLiveTile.Value = (string)(TileNoteCountListPicker.SelectedItem as ListPickerItem).Tag;
+                Settings.ShowAddNoteButton.Value = (string)(AddNoteButtonPicker.SelectedItem as ListPickerItem).Tag;
+                Settings.LiveTileFontSize.Value = (string)(LiveTileFontSizePicker.SelectedItem as ListPickerItem).Tag;
+                Settings.LockScreenFontSize.Value = (string)(LockScreenFontSizePicker.SelectedItem as ListPickerItem).Tag;
+                Settings.KeyboardWordAutocorrection.Value = (string)(KeyboardExtendedAutoCorrectPicker.SelectedItem as ListPickerItem).Tag;
+            }
+            catch(Exception)
+            {
+                // try catch block because there was an error once in the app that the app crashes inside the app without a known reason.
+                // TODO: add bugsense here...
+            }
         }
 
         /// <summary>

@@ -185,23 +185,6 @@ namespace PocketBrain.App
         }
 
         /// <summary>
-        /// Sets up the input scope of the content textbox.
-        /// </summary>
-        private void SetupInputScope()
-        {
-            var scope = new InputScope();
-            var scopeName = new InputScopeName();
-
-            if (Settings.KeyboardWordAutocorrection.Value == "0")
-                scopeName.NameValue = InputScopeNameValue.Formula;
-            else
-                scopeName.NameValue = InputScopeNameValue.Text;
-            
-            scope.Names.Add(scopeName);
-            ContentTextBox.InputScope = scope;
-        }
-
-        /// <summary>
         /// Saves the live tile, when the user leaves the notes page.
         /// </summary>
         /// <param name="e">The navigation event args.</param>
@@ -250,6 +233,23 @@ namespace PocketBrain.App
 
             NoteListViewModel.Instance.CurrentNote.UpdateTile();
             NoteListViewModel.Instance.CurrentNote = null;
+        }
+
+        /// <summary>
+        /// Sets up the input scope of the content textbox.
+        /// </summary>
+        private void SetupInputScope()
+        {
+            var scope = new InputScope();
+            var scopeName = new InputScopeName();
+
+            if (Settings.KeyboardWordAutocorrection.Value == "0")
+                scopeName.NameValue = InputScopeNameValue.Formula;
+            else
+                scopeName.NameValue = InputScopeNameValue.Text;
+
+            scope.Names.Add(scopeName);
+            ContentTextBox.InputScope = scope;
         }
 
         /// <summary>

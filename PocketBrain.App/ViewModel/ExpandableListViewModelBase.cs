@@ -125,7 +125,7 @@ namespace PocketBrain.App.ViewModel
             }
         }
 
-        /// <summary>
+        /// <summary
         /// Gets whether the expansion button is visible.
         /// </summary>
         public bool IsExtensionButtonVisible
