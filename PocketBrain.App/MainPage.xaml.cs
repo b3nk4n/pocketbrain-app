@@ -281,7 +281,7 @@ namespace PocketBrain.App
         {
             double flickX = e.FinalVelocities.LinearVelocity.X;
 
-            if (Math.Abs(flickX) > 2500)
+            if (Math.Abs(flickX) > 1750)
                 NewNote();
         }
 

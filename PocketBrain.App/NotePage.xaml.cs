@@ -192,12 +192,6 @@ namespace PocketBrain.App
         {
             base.OnNavigatedFrom(e);
 
-            // verify it was a BACK button or a WINDOWS button
-            if (e.Uri.OriginalString == "app://external/")
-            {
-                NoteListViewModel.Instance.UpdateLockScreen();
-            }
-
             // ensure there is an active note
             if (NoteListViewModel.Instance.CurrentNote == null)
                 return;
@@ -217,11 +211,9 @@ namespace PocketBrain.App
                     NoteListViewModel.Instance.InsertNote(NoteListViewModel.Instance.CurrentNote);
                     MainPage.ScrollToTopOnNextNavigationTo = true;
                 }
-                return;
             }
-
             // save the current note
-            if (NoteListViewModel.Instance.CurrentNote.IsValid)
+            else if (NoteListViewModel.Instance.CurrentNote.IsValid)
             {
                 // add the note to the list, if it wasn't already stored before
                 if (!NoteListViewModel.Instance.Notes.Contains(NoteListViewModel.Instance.CurrentNote))
@@ -229,6 +221,12 @@ namespace PocketBrain.App
                     NoteListViewModel.Instance.InsertNote(NoteListViewModel.Instance.CurrentNote);
                     MainPage.ScrollToTopOnNextNavigationTo = true;
                 }
+            }
+
+            // verify it was a BACK button or a WINDOWS button
+            if (e.Uri.OriginalString == "app://external/")
+            {
+                NoteListViewModel.Instance.UpdateLockScreen();
             }
 
             NoteListViewModel.Instance.CurrentNote.UpdateTile();
