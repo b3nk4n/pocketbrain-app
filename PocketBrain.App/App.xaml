@@ -3,7 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
-	xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" xmlns:ReorderListBox="clr-namespace:ReorderListBox;assembly=ReorderListBox"
+	xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
+    xmlns:ReorderListBox="clr-namespace:ReorderListBox;assembly=ReorderListBox"
     x:Class="PocketBrain.App.App"
     >
 
@@ -12,11 +13,12 @@
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:PocketBrain.App" x:Key="LocalizedStrings"/>
 
-        <Color x:Key="MyPhoneChromeColor">#FF262626</Color>
+        <!-- use these key in DEBUG mode to have no warnings and see the dark theme in the designer -->
+        <!--<Color x:Key="MyPhoneChromeColor">#FF262626</Color>
         <SolidColorBrush x:Key="MyPhoneChromeBrush" Color="{StaticResource MyPhoneChromeColor}" />
 
         <Color x:Key="MyPhoneChromeLightColor">#FF2F2F2F</Color>
-        <SolidColorBrush x:Key="MyPhoneChromeLightBrush" Color="{StaticResource MyPhoneChromeLightColor}" />
+        <SolidColorBrush x:Key="MyPhoneChromeLightBrush" Color="{StaticResource MyPhoneChromeLightColor}" />-->
 
         <Style x:Key="CustomButtonStyle" TargetType="Button">
         	<Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
@@ -36,9 +38,9 @@
         							<VisualState x:Name="MouseOver"/>
         							<VisualState x:Name="Pressed">
         								<Storyboard>
-        									<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentContainer">
+        									<!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentContainer">
         										<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneButtonBasePressedForegroundBrush}"/>
-        									</ObjectAnimationUsingKeyFrames>
+        									</ObjectAnimationUsingKeyFrames>-->
         									<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ButtonBackground">
         										<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource MyPhoneChromeLightBrush}"/>
         									</ObjectAnimationUsingKeyFrames>
@@ -55,7 +57,7 @@
         					</VisualStateManager.VisualStateGroups>
         					<Border x:Name="ButtonBackground" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{StaticResource MyPhoneChromeBrush}" CornerRadius="0" Padding="{StaticResource PhoneTouchTargetOverhang}"
         						toolkit:TiltEffect.IsTiltEnabled="True">
-        						<ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Foreground="White" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+        						<ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
         					</Border>
         				</Grid>
         			</ControlTemplate>
@@ -165,13 +167,13 @@
         	<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
         	<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
         	<Setter Property="Background" Value="{StaticResource MyPhoneChromeBrush}"/>
-        	<Setter Property="Foreground" Value="White"/>
+        	<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
         	<Setter Property="BorderBrush" Value="{StaticResource PhoneTextBoxBrush}"/>
         	<Setter Property="SelectionBackground" Value="{StaticResource PhoneAccentBrush}"/>
         	<Setter Property="SelectionForeground" Value="White"/>
         	<Setter Property="BorderThickness" Value="0"/>
         	<Setter Property="Padding" Value="4"/>
-        	<Setter Property="CaretBrush" Value="White"/>
+        	<Setter Property="CaretBrush" Value="Gray"/>
         	<Setter Property="Template">
         		<Setter.Value>
         			<ControlTemplate TargetType="toolkit:PhoneTextBox">
@@ -352,9 +354,8 @@
         </ControlTemplate>
         
         <Style x:Key="ListPickerItemStyle" TargetType="toolkit:ListPickerItem">
-        	<Setter Property="Background" Value="Transparent"/>
-        	<Setter Property="Foreground" Value="White"/>
-        	<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         	<Setter Property="Padding" Value="8 10"/>
         	<Setter Property="Template">
         		<Setter.Value>

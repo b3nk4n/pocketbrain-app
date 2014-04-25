@@ -9,6 +9,8 @@ using Microsoft.Phone.Shell;
 using PocketBrain.App.Resources;
 using PhoneKit.Framework.Support;
 using PocketBrain.App.ViewModel;
+using PhoneKit.Framework.Core.OS;
+using System.Windows.Media;
 
 namespace PocketBrain.App
 {
@@ -27,6 +29,10 @@ namespace PocketBrain.App
         {
             // Globaler Handler für nicht abgefangene Ausnahmen.
             UnhandledException += Application_UnhandledException;
+
+#if !DEBUG
+            InitializeThemeColors();
+#endif
 
             // Standard-XAML-Initialisierung
             InitializeComponent();
@@ -57,6 +63,39 @@ namespace PocketBrain.App
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
+        }
+
+        /// <summary>
+        /// Initializes the theme colors used in the Application at runtime to support colors in both dark and light theme.
+        /// </summary>
+        private void InitializeThemeColors()
+        {
+            Color themeColor;
+            Color themeLightColor;
+            SolidColorBrush themeBrush;
+            SolidColorBrush themeLightBrush;
+
+            if (PhoneThemeHelper.IsDarkThemeActive)
+            {
+                themeColor = Color.FromArgb(0xFF, 0x26, 0x26, 0x26);
+                themeLightColor = Color.FromArgb(0xFF, 0x2F, 0x2F, 0x2F);
+            }
+            else
+            {
+                themeColor = Color.FromArgb(0xFF, 0xF9, 0xF9, 0xF9);
+                themeLightColor = Color.FromArgb(0xFF, 0xE0, 0xE0, 0xE0);
+            }
+
+            themeBrush = new SolidColorBrush(themeColor);
+            themeLightBrush = new SolidColorBrush(themeLightColor);
+            this.Resources.Remove("MyPhoneChromeColor");
+            this.Resources.Remove("MyPhoneChromeBrush");
+            this.Resources.Remove("MyPhoneChromeLightColor");
+            this.Resources.Remove("MyPhoneChromeLightBrush");
+            this.Resources.Add("MyPhoneChromeColor", themeColor);
+            this.Resources.Add("MyPhoneChromeBrush", themeBrush);
+            this.Resources.Add("MyPhoneChromeLightColor", themeLightColor);
+            this.Resources.Add("MyPhoneChromeLightBrush", themeLightBrush);
         }
 
         // Code, der beim Starten der Anwendung ausgeführt werden soll (z. B. über "Start")

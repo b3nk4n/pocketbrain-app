@@ -19,6 +19,7 @@ using System.Windows.Media.Imaging;
 using PhoneKit.Framework.Core.LockScreen;
 using System.Windows.Media;
 using PhoneKit.Framework.Tile;
+using PhoneKit.Framework.Core.OS;
 
 namespace PocketBrain.App.ViewModel
 {
@@ -425,6 +426,130 @@ namespace PocketBrain.App.ViewModel
         public void NotifyIsExtensionButtonVisible()
         {
             NotifyPropertyChanged("IsExtensionButtonVisible");
+        }
+
+        #endregion
+
+        #region Themed resources
+
+        /// <summary>
+        /// The lock image for the light theme.
+        /// </summary>
+        private const string LOCK_LIGHT = "/Assets/AppBar/appbar.lock.dark.png";
+
+        /// <summary>
+        /// The lock image for the dark theme.
+        /// </summary>
+        private const string LOCK_DARK = "/Assets/AppBar/appbar.lock.png";
+
+        /// <summary>
+        /// Gets the lock screen image path.
+        /// </summary>
+        public string LockImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return LOCK_LIGHT;
+                else
+                    return LOCK_DARK;
+            }
+        }
+
+        /// <summary>
+        /// The add note image for the light theme.
+        /// </summary>
+        private const string ADD_NOTE_LIGHT = "/Assets/AppBar/appbar.add.note.dark.png";
+
+        /// <summary>
+        /// The add note image for the dark theme.
+        /// </summary>
+        private const string ADD_NOTE_DARK = "/Assets/AppBar/appbar.add.note.png";
+
+        /// <summary>
+        /// Gets the add note image path.
+        /// </summary>
+        public string AddNoteImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return ADD_NOTE_LIGHT;
+                else
+                    return ADD_NOTE_DARK;
+            }
+        }
+
+        /// <summary>
+        /// The archive image for the light theme.
+        /// </summary>
+        private const string ARCHIVE_LIGHT = "/Assets/AppBar/appbar.archive.dark.png";
+
+        /// <summary>
+        /// The archive image for the dark theme.
+        /// </summary>
+        private const string ARCHIVE_DARK = "/Assets/AppBar/appbar.archive.png";
+
+        /// <summary>
+        /// Gets the archive image path.
+        /// </summary>
+        public string ArchiveImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return ARCHIVE_LIGHT;
+                else
+                    return ARCHIVE_DARK;
+            }
+        }
+
+        /// <summary>
+        /// The settings image for the light theme.
+        /// </summary>
+        private const string SETTINGS_LIGHT = "/Assets/AppBar/appbar.settings.dark.png";
+
+        /// <summary>
+        /// The settings image for the dark theme.
+        /// </summary>
+        private const string SETTINGS_DARK = "/Assets/AppBar/appbar.settings.png";
+
+        /// <summary>
+        /// Gets the settings image path.
+        /// </summary>
+        public string SettingsImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return SETTINGS_LIGHT;
+                else
+                    return SETTINGS_DARK;
+            }
+        }
+
+        /// <summary>
+        /// The info image for the light theme.
+        /// </summary>
+        private const string INFO_LIGHT = "/Assets/AppBar/appbar.information.dark.png";
+
+        /// <summary>
+        /// The info image for the dark theme.
+        /// </summary>
+        private const string INFO_DARK = "/Assets/AppBar/appbar.information.png";
+
+        /// <summary>
+        /// Gets the info image path.
+        /// </summary>
+        public string InfoImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return INFO_LIGHT;
+                else
+                    return INFO_DARK;
+            }
         }
 
         #endregion

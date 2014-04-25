@@ -111,46 +111,6 @@ namespace PocketBrain.App.ViewModel
         /// </summary>
         /// <remarks>Must be defined at class level to work properly in tombstoning.</remarks>
         private PhotoChooserTask _photoTask = new PhotoChooserTask();
-
-        /// <summary>
-        /// The speak image for the light theme.
-        /// </summary>
-        private const string SPEAK_LIGHT = "Assets/AppBar/appbar.microphone.png";
-
-        /// <summary>
-        /// The speak image for the dark theme.
-        /// </summary>
-        private const string SPEAK_DARK = "Assets/AppBar/appbar.microphone.dark.png";
-
-        /// <summary>
-        /// The speak prepend image for the light theme.
-        /// </summary>
-        private const string SPEAK_PREPEND_LIGHT = "Assets/AppBar/appbar.prepend.png";
-
-        /// <summary>
-        /// The speak prepend image for the dark theme.
-        /// </summary>
-        private const string SPEAK_PREPEND_DARK = "Assets/AppBar/appbar.prepend.dark.png";
-
-        /// <summary>
-        /// The speak replace image for the light theme.
-        /// </summary>
-        private const string SPEAK_REPLACE_LIGHT = "Assets/AppBar/appbar.replace.png";
-
-        /// <summary>
-        /// The speak replace image for the dark theme.
-        /// </summary>
-        private const string SPEAK_REPLACE_DARK = "Assets/AppBar/appbar.replace.dark.png";
-
-        /// <summary>
-        /// The speak append image for the light theme.
-        /// </summary>
-        private const string SPEAK_APPEND_LIGHT = "Assets/AppBar/appbar.append.png";
-
-        /// <summary>
-        /// The speak append image for the dark theme.
-        /// </summary>
-        private const string SPEAK_APPEND_DARK = "Assets/AppBar/appbar.append.dark.png";
  
         #endregion
 
@@ -923,6 +883,20 @@ namespace PocketBrain.App.ViewModel
             }
         }
 
+        #endregion
+
+        #region Themed resources
+
+        /// <summary>
+        /// The speak image for the light theme.
+        /// </summary>
+        private const string SPEAK_LIGHT = "Assets/AppBar/appbar.microphone.png";
+
+        /// <summary>
+        /// The speak image for the dark theme.
+        /// </summary>
+        private const string SPEAK_DARK = "Assets/AppBar/appbar.microphone.dark.png";
+
         /// <summary>
         /// Gets the speak button image path.
         /// </summary>
@@ -936,6 +910,16 @@ namespace PocketBrain.App.ViewModel
                     return SPEAK_LIGHT;
             }
         }
+
+        /// <summary>
+        /// The speak prepend image for the light theme.
+        /// </summary>
+        private const string SPEAK_PREPEND_LIGHT = "Assets/AppBar/appbar.prepend.png";
+
+        /// <summary>
+        /// The speak prepend image for the dark theme.
+        /// </summary>
+        private const string SPEAK_PREPEND_DARK = "Assets/AppBar/appbar.prepend.dark.png";
 
         /// <summary>
         /// Gets the speak prepend button image path.
@@ -952,6 +936,16 @@ namespace PocketBrain.App.ViewModel
         }
 
         /// <summary>
+        /// The speak replace image for the light theme.
+        /// </summary>
+        private const string SPEAK_REPLACE_LIGHT = "Assets/AppBar/appbar.replace.png";
+
+        /// <summary>
+        /// The speak replace image for the dark theme.
+        /// </summary>
+        private const string SPEAK_REPLACE_DARK = "Assets/AppBar/appbar.replace.dark.png";
+
+        /// <summary>
         /// Gets the speak replace button image path.
         /// </summary>
         public string SpeakReplaceImagePath
@@ -966,6 +960,16 @@ namespace PocketBrain.App.ViewModel
         }
 
         /// <summary>
+        /// The speak append image for the light theme.
+        /// </summary>
+        private const string SPEAK_APPEND_LIGHT = "Assets/AppBar/appbar.append.png";
+
+        /// <summary>
+        /// The speak append image for the dark theme.
+        /// </summary>
+        private const string SPEAK_APPEND_DARK = "Assets/AppBar/appbar.append.dark.png";
+
+        /// <summary>
         /// Gets the speak append button image path.
         /// </summary>
         public string SpeakAppendImagePath
@@ -976,6 +980,294 @@ namespace PocketBrain.App.ViewModel
                     return SPEAK_APPEND_DARK;
                 else
                     return SPEAK_APPEND_LIGHT;
+            }
+        }
+
+        /// <summary>
+        /// The email image for the light theme.
+        /// </summary>
+        private const string EMAIL_LIGHT = "Assets/AppBar/appbar.email.png";
+
+        /// <summary>
+        /// The email image for the dark theme.
+        /// </summary>
+        private const string EMAIL_DARK = "Assets/AppBar/appbar.email.dark.png";
+
+        /// <summary>
+        /// Gets the email button image path.
+        /// </summary>
+        public string EmailImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return EMAIL_DARK;
+                else
+                    return EMAIL_LIGHT;
+            }
+        }
+
+        /// <summary>
+        /// The message image for the light theme.
+        /// </summary>
+        private const string MESSAGE_LIGHT = "Assets/AppBar/appbar.message.png";
+
+        /// <summary>
+        /// The message image for the dark theme.
+        /// </summary>
+        private const string MESSAGE_DARK = "Assets/AppBar/appbar.message.dark.png";
+
+        /// <summary>
+        /// Gets the message button image path.
+        /// </summary>
+        public string MessageImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return MESSAGE_DARK;
+                else
+                    return MESSAGE_LIGHT;
+            }
+        }
+
+        /// <summary>
+        /// The whatsapp image for the light theme.
+        /// </summary>
+        private const string WHATSAPP_LIGHT = "Assets/AppBar/appbar.whatsapp.png";
+
+        /// <summary>
+        /// The whatsapp image for the dark theme.
+        /// </summary>
+        private const string WHATSAPP_DARK = "Assets/AppBar/appbar.whatsapp.dark.png";
+
+        /// <summary>
+        /// Gets the whatsapp button image path.
+        /// </summary>
+        public string WhatsappImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return WHATSAPP_DARK;
+                else
+                    return WHATSAPP_LIGHT;
+            }
+        }
+
+        /// <summary>
+        /// The paperclip image for the light theme.
+        /// </summary>
+        private const string PAPERCLIP_LIGHT = "Assets/AppBar/appbar.paperclip.png";
+
+        /// <summary>
+        /// The paperclip image for the dark theme.
+        /// </summary>
+        private const string PAPERCLIP_DARK = "Assets/AppBar/appbar.paperclip.dark.png";
+
+        /// <summary>
+        /// Gets the paperclip button image path.
+        /// </summary>
+        public string PaperclipImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return PAPERCLIP_DARK;
+                else
+                    return PAPERCLIP_LIGHT;
+            }
+        }
+
+        /// <summary>
+        /// The paperclip remove image for the light theme.
+        /// </summary>
+        private const string PAPERCLIP_REMOVE_LIGHT = "Assets/AppBar/appbar.paperclip.remove.png";
+
+        /// <summary>
+        /// The paperclip remove image for the dark theme.
+        /// </summary>
+        private const string PAPERCLIP_REMOVE_DARK = "Assets/AppBar/appbar.paperclip.remove.dark.png";
+
+        /// <summary>
+        /// Gets the paperclip remove button image path.
+        /// </summary>
+        public string PaperclipRemoveImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return PAPERCLIP_REMOVE_DARK;
+                else
+                    return PAPERCLIP_REMOVE_LIGHT;
+            }
+        }
+
+        /// <summary>
+        /// The share image for the light theme.
+        /// </summary>
+        private const string SHARE_LIGHT = "Assets/AppBar/appbar.share.png";
+
+        /// <summary>
+        /// The share image for the dark theme.
+        /// </summary>
+        private const string SHARE_DARK = "Assets/AppBar/appbar.share.dark.png";
+
+        /// <summary>
+        /// Gets the share button image path.
+        /// </summary>
+        public string ShareImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return SHARE_DARK;
+                else
+                    return SHARE_LIGHT;
+            }
+        }
+
+        /// <summary>
+        /// The share open image for the light theme.
+        /// </summary>
+        private const string SHARE_OPEN_LIGHT = "Assets/AppBar/appbar.share.open.png";
+
+        /// <summary>
+        /// The share open image for the dark theme.
+        /// </summary>
+        private const string SHARE_OPEN_DARK = "Assets/AppBar/appbar.share.open.dark.png";
+
+        /// <summary>
+        /// Gets the share open button image path.
+        /// </summary>
+        public string ShareOpenImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return SHARE_OPEN_DARK;
+                else
+                    return SHARE_OPEN_LIGHT;
+            }
+        }
+
+        /// <summary>
+        /// The pin image for the light theme.
+        /// </summary>
+        private const string PIN_LIGHT = "Assets/AppBar/appbar.pin.png";
+
+        /// <summary>
+        /// The pin image for the dark theme.
+        /// </summary>
+        private const string PIN_DARK = "Assets/AppBar/appbar.pin.dark.png";
+
+        /// <summary>
+        /// Gets the pin button image path.
+        /// </summary>
+        public string PinImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return PIN_DARK;
+                else
+                    return PIN_LIGHT;
+            }
+        }
+
+        /// <summary>
+        /// The pin remove image for the light theme.
+        /// </summary>
+        private const string PIN_REMOVE_LIGHT = "Assets/AppBar/appbar.pin.remove.png";
+
+        /// <summary>
+        /// The pin remove image for the dark theme.
+        /// </summary>
+        private const string PIN_REMOVE_DARK = "Assets/AppBar/appbar.pin.remove.dark.png";
+
+        /// <summary>
+        /// Gets the paperclip remove button image path.
+        /// </summary>
+        public string PinRemoveImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return PIN_REMOVE_DARK;
+                else
+                    return PIN_REMOVE_LIGHT;
+            }
+        }
+
+        /// <summary>
+        /// The eye image for the light theme.
+        /// </summary>
+        private const string EYE_LIGHT = "Assets/AppBar/appbar.eye.png";
+
+        /// <summary>
+        /// The eye image for the dark theme.
+        /// </summary>
+        private const string EYE_DARK = "Assets/AppBar/appbar.eye.dark.png";
+
+        /// <summary>
+        /// Gets the eye button image path.
+        /// </summary>
+        public string EyeImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return EYE_DARK;
+                else
+                    return EYE_LIGHT;
+            }
+        }
+
+        /// <summary>
+        /// The eye hide image for the light theme.
+        /// </summary>
+        private const string EYE_HIDE_LIGHT = "Assets/AppBar/appbar.eye.hide.png";
+
+        /// <summary>
+        /// The eye hide image for the dark theme.
+        /// </summary>
+        private const string EYE_HIDE_DARK = "Assets/AppBar/appbar.eye.hide.dark.png";
+
+        /// <summary>
+        /// Gets the eye hide button image path.
+        /// </summary>
+        public string EyeHideImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return EYE_HIDE_DARK;
+                else
+                    return EYE_HIDE_LIGHT;
+            }
+        }
+
+        /// <summary>
+        /// The delete image for the light theme.
+        /// </summary>
+        private const string DELETE_LIGHT = "Assets/AppBar/appbar.delete.png";
+
+        /// <summary>
+        /// The delete image for the dark theme.
+        /// </summary>
+        private const string DELETE_DARK = "Assets/AppBar/appbar.delete.dark.png";
+
+        /// <summary>
+        /// Gets the delete button image path.
+        /// </summary>
+        public string DeleteImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return DELETE_DARK;
+                else
+                    return DELETE_LIGHT;
             }
         }
 

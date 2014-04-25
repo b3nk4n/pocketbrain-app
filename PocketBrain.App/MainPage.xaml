@@ -79,10 +79,10 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="{Binding DisplayedTitle}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
-                            <Image Grid.Column="1" Source="Assets/AppBar/appbar.eye.hide.png" Width="48" Height="48" Opacity="0.5" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}" />
-                            <Image Grid.Column="2" Source="Assets/AppBar/appbar.paperclip.png" Width="48" Height="48" Opacity="0.5" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
+                            <Image Grid.Column="1" Source="{Binding EyeHideImagePath}" Width="48" Height="48" Opacity="0.5" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}" />
+                            <Image Grid.Column="2" Source="{Binding PaperclipImagePath}" Width="48" Height="48" Opacity="0.5" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
                         </Grid>
-                        <TextBlock Grid.Row="2" Text="{Binding Content}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="White"
+                        <TextBlock Grid.Row="2" Text="{Binding Content}" Style="{StaticResource PhoneTextNormalStyle}"
                                             TextTrimming="WordEllipsis" TextWrapping="Wrap" />
                     </Grid>
                 </Button>
@@ -113,10 +113,10 @@
                                 <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Text="{Binding DisplayedTitle}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
-                            <Image Grid.Column="1" Source="Assets/AppBar/appbar.eye.hide.png" Width="48" Height="48" Opacity="0.5" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}" />
-                            <Image Grid.Column="2" Source="Assets/AppBar/appbar.paperclip.png" Width="48" Height="48" Opacity="0.5" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
+                            <Image Grid.Column="1" Source="{Binding EyeHideImagePath}" Width="48" Height="48" Opacity="0.5" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}" />
+                            <Image Grid.Column="2" Source="{Binding PaperclipImagePath}" Width="48" Height="48" Opacity="0.5" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
                         </Grid>
-                        <TextBlock Grid.Row="1" Text="{Binding Content}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="White"
+                        <TextBlock Grid.Row="1" Text="{Binding Content}" Style="{StaticResource PhoneTextNormalStyle}"
                                             TextTrimming="WordEllipsis" TextWrapping="NoWrap" />
                     </Grid>
                 </Button>
@@ -144,11 +144,11 @@
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuUnpinFromStart, Source={StaticResource LocalizedStrings}}" Command="{Binding UnpinAddNoteFromStartCommand}" Visibility="{Binding CanAddNotePinToStart, Converter={StaticResource boolToVis}, ConverterParameter=!}" />
                         </toolkit:ContextMenu>
                     </toolkit:ContextMenuService.ContextMenu>
-                    <Image x:Name="image" Source="Assets/AppBar/appbar.add.note.png" Height="52" />
+                    <Image x:Name="image" Source="{Binding AddNoteImagePath}" Height="52" />
                 </Button>
             </Border>
             <Grid Grid.Row="1" Background="{StaticResource MyPhoneChromeBrush}" ManipulationCompleted="SwipeManipulationCompleted">
-                <Image Source="Assets/finger_swipe.png" Width="240" Opacity="0.1" Visibility="{Binding IsNoteListEmpty, Converter={StaticResource boolToVis}}" />
+                <Image Source="Assets/finger_swipe.png" Width="240" Opacity="0.33"  Visibility="{Binding IsNoteListEmpty, Converter={StaticResource boolToVis}}" />
                 <Grid x:Name="NotesListContainer" Visibility="Collapsed">
                     <ListBox x:Name="NotesList" ItemTemplate="{StaticResource MaximizedNoteTemplate}" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
                 </Grid>
@@ -183,15 +183,15 @@
                     </Grid.ColumnDefinitions>
                     <Button x:Name="ArchiveButton" Grid.Column="0"
                                 Style="{StaticResource CustomButtonStyle}">
-                        <Image Source="Assets/AppBar/appbar.archive.png" Height="52" />
+                        <Image Source="{Binding ArchiveImagePath}" Height="52" />
                     </Button>
                     <Button x:Name="SettingsButton" Grid.Column="1"
                                 Style="{StaticResource CustomButtonStyle}">
-                        <Image Source="Assets/AppBar/appbar.settings.png" Height="52" />
+                        <Image Source="{Binding SettingsImagePath}" Height="52" />
                     </Button>
                     <Button x:Name="AboutButton" Grid.Column="2"
                                 Style="{StaticResource CustomButtonStyle}">
-                        <Image Source="Assets/AppBar/appbar.information.png" Height="52" />
+                        <Image Source="{Binding InfoImagePath}" Height="52" />
                     </Button>
                 </Grid>
             </Border>

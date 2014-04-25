@@ -1,4 +1,5 @@
 ﻿using PhoneKit.Framework.Core.MVVM;
+using PhoneKit.Framework.Core.OS;
 using PhoneKit.Framework.Core.Storage;
 using PocketBrain.App.Resources;
 using System;
@@ -187,6 +188,34 @@ namespace PocketBrain.App.ViewModel
         public void NotifyIsExtensionButtonVisible()
         {
             NotifyPropertyChanged("IsExtensionButtonVisible");
+        }
+
+        #endregion
+
+        #region Themed resources
+
+        /// <summary>
+        /// The left image for the light theme.
+        /// </summary>
+        private const string ARCHIVE_CLEAR_LIGHT = "Assets/AppBar/appbar.archive.clear.dark.png";
+
+        /// <summary>
+        /// The left image for the dark theme.
+        /// </summary>
+        private const string ARCHIVE_CLEAR_DARK = "Assets/AppBar/appbar.archive.clear.png";
+
+        /// <summary>
+        /// Gets the archive clear image path.
+        /// </summary>
+        public string ArchiveClearImagePath
+        {
+            get
+            {
+                if (PhoneThemeHelper.IsLightThemeActive)
+                    return ARCHIVE_CLEAR_LIGHT;
+                else
+                    return ARCHIVE_CLEAR_DARK;
+            }
         }
 
         #endregion

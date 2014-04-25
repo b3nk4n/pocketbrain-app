@@ -63,9 +63,9 @@
                                 <ColumnDefinition Width="48" />
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="{Binding DisplayedTitle}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
-                            <Image Grid.Column="1" Source="Assets/AppBar/appbar.paperclip.png" Width="48" Height="48" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
+                            <Image Grid.Column="1" Source="{Binding PaperclipImagePath}" Width="48" Height="48" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
                         </Grid>
-                        <TextBlock Grid.Row="2" Text="{Binding Content}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="White"
+                        <TextBlock Grid.Row="2" Text="{Binding Content}" Style="{StaticResource PhoneTextNormalStyle}"
                                             TextTrimming="WordEllipsis" TextWrapping="Wrap" />
                     </Grid>
                 </Button>
@@ -91,9 +91,9 @@
                                 <ColumnDefinition Width="48" />
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="{Binding DisplayedTitle}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
-                            <Image Grid.Column="1" Source="Assets/AppBar/appbar.paperclip.png" Width="48" Height="48" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
+                            <Image Grid.Column="1" Source="{Binding PaperclipImagePath}" Width="48" Height="48" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
                         </Grid>
-                        <TextBlock Grid.Row="1" Text="{Binding Content}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="White"
+                        <TextBlock Grid.Row="1" Text="{Binding Content}" Style="{StaticResource PhoneTextNormalStyle}"
                                             TextTrimming="WordEllipsis" TextWrapping="NoWrap" />
                     </Grid>
                 </Button>
@@ -112,8 +112,7 @@
             <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden">
                 <StackPanel >
                     <!-- Title -->
-                    <TextBlock Text="{Binding Path=LocalizedResources.ArchiveTitle, Source={StaticResource LocalizedStrings}}" Margin="24,10,0,32" Style="{StaticResource PhoneTextTitle1Style}"
-                           Foreground="White"/>
+                    <TextBlock Text="{Binding Path=LocalizedResources.ArchiveTitle, Source={StaticResource LocalizedStrings}}" Margin="24,10,0,32" Style="{StaticResource PhoneTextTitle1Style}"/>
                     
                     <ItemsControl x:Name="NotesList" ItemsSource="{Binding Notes}"
                                     ItemTemplate="{StaticResource MaximizedNoteTemplate}" />
@@ -122,7 +121,7 @@
             <Border Grid.Row="1" Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
                 <StackPanel>
                     <Button Style="{StaticResource CustomButtonStyle}" Command="{Binding ClearCommand}">
-                        <Image Source="Assets/AppBar/appbar.archive.clear.png" Height="52" />
+                        <Image Source="{Binding ArchiveClearImagePath}" Height="52" />
                     </Button>
                 </StackPanel>
             </Border>

@@ -312,16 +312,21 @@ namespace PocketBrain.App
         /// </summary>
         private void ToggleSharingViewState()
         {
+            var currentNote = DataContext as NoteViewModel;
+
+            if (currentNote == null)
+                return;
+
             if (SharingContainer.Visibility == System.Windows.Visibility.Collapsed)
             {
                 SharingContainer.Visibility = System.Windows.Visibility.Visible;
-                ShareButtonImage.Source = new BitmapImage(new Uri("Assets/AppBar/appbar.share.open.png", UriKind.Relative));
+                ShareButtonImage.Source = new BitmapImage(new Uri(currentNote.ShareOpenImagePath, UriKind.Relative));
                 ShareButton.Opacity = 0.95f;
             }
             else
             {
                 SharingContainer.Visibility = System.Windows.Visibility.Collapsed;
-                ShareButtonImage.Source = new BitmapImage(new Uri("Assets/AppBar/appbar.share.png", UriKind.Relative));
+                ShareButtonImage.Source = new BitmapImage(new Uri(currentNote.ShareImagePath, UriKind.Relative));
                 ShareButton.Opacity = 1f;
             }
         }
