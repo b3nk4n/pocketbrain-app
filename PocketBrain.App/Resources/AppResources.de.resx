@@ -141,6 +141,10 @@
     <value>archiv</value>
     <comment>ArchivePage</comment>
   </data>
+  <data name="CalibrateKeyboardHint" xml:space="preserve">
+    <value>HIER tippen um die Tastatur zu kalibrieren.</value>
+    <comment>Keyboard</comment>
+  </data>
   <data name="ContextMenuDelete" xml:space="preserve">
     <value>löschen</value>
     <comment>ContextMenu</comment>

@@ -51,10 +51,7 @@ namespace PocketBrain.App
                 {
                     ResetSpeakExpandButtonsVisibility();
 
-                    if (DisplayHelper.GetScaleFactor() == ScaleFactor.WVGA || DisplayHelper.GetScaleFactor() == ScaleFactor.WXGA)
-                        ShowKeyboardExtension.Begin();
-                    else
-                        ShowKeyboardExtension16to9.Begin();
+                    ShowKeyboard();
                 };
 
             TitleTextBox.LostFocus += (s, e) =>
@@ -67,10 +64,7 @@ namespace PocketBrain.App
                 {
                     ResetSpeakExpandButtonsVisibility();
 
-                    if (DisplayHelper.GetScaleFactor() == ScaleFactor.WVGA || DisplayHelper.GetScaleFactor() == ScaleFactor.WXGA)
-                        ShowKeyboardExtension.Begin();
-                    else
-                        ShowKeyboardExtension16to9.Begin();
+                    ShowKeyboard();
                 };
 
             ContentTextBox.LostFocus += (s, e) =>
@@ -390,10 +384,30 @@ namespace PocketBrain.App
         private const double PortraitShift = -339d;
         private const double PortraitShiftWithBar = -408d;
 
+        private static StoredObject<bool> IsKeyboard6InchCalibrated = new StoredObject<bool>("keyboardCalibrated", false);
+
         /// <summary>
         /// The translation Y dependency property.
         /// </summary>
         public static readonly DependencyProperty TranslateYProperty = DependencyProperty.Register("TranslateY", typeof(double), typeof(NotePage), new PropertyMetadata(0d, OnRenderYPropertyChanged));
+
+        /// <summary>
+        /// Shows the keyboard
+        /// </summary>
+        private void ShowKeyboard()
+        {
+            if (IsKeyboard6InchCalibrated.Value == true)
+            {
+                ShowKeyboardExtension6inch.Begin();
+            }
+            else
+            {
+                if (DisplayHelper.GetScaleFactor() == ScaleFactor.WVGA || DisplayHelper.GetScaleFactor() == ScaleFactor.WXGA)
+                    ShowKeyboardExtension.Begin();
+                else
+                    ShowKeyboardExtension16to9.Begin();
+            }
+        }
 
         /// <summary>
         /// The on render changed event to update the margin.
@@ -579,8 +593,16 @@ namespace PocketBrain.App
                 _lastFocusedInputElement.Focus();
         }
 
-        #endregion
+        /// <summary>
+        /// Calibration click event handler for LUMIA 1520.
+        /// </summary>
+        /// <param name="sender">The event sender.</param>
+        /// <param name="e">The event args.</param>
+        private void KeyboardCalibrate_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            IsKeyboard6InchCalibrated.Value = true;
+        }
 
-        
+        #endregion     
     }
 }

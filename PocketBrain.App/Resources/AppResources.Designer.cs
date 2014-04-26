@@ -115,6 +115,15 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Tap HERE to calibrate the keyboard position. ähnelt.
+        /// </summary>
+        public static string CalibrateKeyboardHint {
+            get {
+                return ResourceManager.GetString("CalibrateKeyboardHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die delete ähnelt.
         /// </summary>
         public static string ContextMenuDelete {

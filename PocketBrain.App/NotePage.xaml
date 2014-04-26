@@ -48,6 +48,18 @@
                                 Storyboard.TargetProperty="Y"
                                 Duration="0" To="220" >
             </DoubleAnimation>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CalibrateHintText">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Collapsed</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="0:0:1">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
         </Storyboard>
 
         <Storyboard x:Name="ShowKeyboardExtension16to9">
@@ -55,6 +67,32 @@
                                 Storyboard.TargetProperty="Y"
                                 Duration="0" To="274" >
             </DoubleAnimation>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CalibrateHintText">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Collapsed</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="0:0:1">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Name="ShowKeyboardExtension6inch">
+            <DoubleAnimation Storyboard.TargetName="KeyboardExtensionTransfrom" 
+                                Storyboard.TargetProperty="Y"
+                                Duration="0" To="348" >
+            </DoubleAnimation>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CalibrateHintText">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Collapsed</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
         </Storyboard>
 
         <Storyboard x:Name="HideKeyboardExtension">
@@ -62,6 +100,13 @@
                                 Storyboard.TargetProperty="Y"
                                 Duration="0" To="1000" >
             </DoubleAnimation>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CalibrateHintText">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Collapsed</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
         </Storyboard>
     </phone:PhoneApplicationPage.Resources>
 
@@ -221,6 +266,7 @@
                     </Button>
                 </StackPanel>
                 <Rectangle Grid.Row="2" Grid.ColumnSpan="2" Fill="{StaticResource PhoneChromeBrush}" />
+                <TextBlock x:Name="CalibrateHintText" Grid.Row="2" Grid.ColumnSpan="2" Text="Tap here to calibrate the keyboard position" HorizontalAlignment="Center" Margin="0,32,0,0" Foreground="Gray" Tap="KeyboardCalibrate_Tap" />
             </Grid>
         </Border>
         <Border VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,110,0,0">

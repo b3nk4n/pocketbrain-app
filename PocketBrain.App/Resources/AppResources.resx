@@ -141,6 +141,10 @@
     <value>archive</value>
     <comment>ArchivePage</comment>
   </data>
+  <data name="CalibrateKeyboardHint" xml:space="preserve">
+    <value>Tap HERE to calibrate the keyboard position.</value>
+    <comment>Keyboard</comment>
+  </data>
   <data name="ContextMenuDelete" xml:space="preserve">
     <value>delete</value>
     <comment>ContextMenu</comment>
