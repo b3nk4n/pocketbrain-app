@@ -13,6 +13,8 @@ using System.IO;
 using PhoneKit.Framework.Core.Storage;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using BugSense.Core.Model;
+using BugSense;
 
 namespace PocketBrain.App
 {
@@ -148,23 +150,33 @@ namespace PocketBrain.App
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
+            int pos = 0;
 
             // save settings
             try
             {
                 Settings.ShowCreationDateOnList.Value = (string)(CreationDatePicker.SelectedItem as ListPickerItem).Tag;
+                pos++;
                 Settings.ExpandListsMethod.Value = (string)(ExpandListPicker.SelectedItem as ListPickerItem).Tag;
+                pos++;
                 Settings.MaximumLockItems.Value = (string)(MaxLockItemsPicker.SelectedItem as ListPickerItem).Tag;
+                pos++;
                 Settings.ShowNoteCountOnLiveTile.Value = (string)(TileNoteCountListPicker.SelectedItem as ListPickerItem).Tag;
+                pos++;
                 Settings.ShowAddNoteButton.Value = (string)(AddNoteButtonPicker.SelectedItem as ListPickerItem).Tag;
+                pos++;
                 Settings.LiveTileFontSize.Value = (string)(LiveTileFontSizePicker.SelectedItem as ListPickerItem).Tag;
+                pos++;
                 Settings.LockScreenFontSize.Value = (string)(LockScreenFontSizePicker.SelectedItem as ListPickerItem).Tag;
+                pos++;
                 Settings.KeyboardWordAutocorrection.Value = (string)(KeyboardExtendedAutoCorrectPicker.SelectedItem as ListPickerItem).Tag;
+                pos++;
             }
-            catch(Exception)
+            catch(Exception ex)
             {
                 // try catch block because there was an error once in the app that the app crashes inside the app without a known reason.
-                // TODO: add bugsense here...
+                // Invoke the LogException method with additional extra data that will be merged with the global extras in the request.
+                BugSenseLogResult logResult = BugSenseHandler.Instance.LogException(ex, "SettingsSave", "Saving the settings failed on position: " + pos);
             }
         }
 

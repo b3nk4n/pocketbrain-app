@@ -11,6 +11,8 @@ using PhoneKit.Framework.Support;
 using PocketBrain.App.ViewModel;
 using PhoneKit.Framework.Core.OS;
 using System.Windows.Media;
+using BugSense;
+using BugSense.Core.Model;
 
 namespace PocketBrain.App
 {
@@ -27,12 +29,10 @@ namespace PocketBrain.App
         /// </summary>
         public App()
         {
-            // Globaler Handler für nicht abgefangene Ausnahmen.
-            UnhandledException += Application_UnhandledException;
+            // Initialize BugSense
+            BugSenseHandler.Instance.InitAndStartSession(new ExceptionManager(Current), RootFrame, "b1b1e246");
 
-#if !DEBUG
             InitializeThemeColors();
-#endif
 
             // Standard-XAML-Initialisierung
             InitializeComponent();
@@ -143,18 +143,6 @@ namespace PocketBrain.App
             if (Debugger.IsAttached)
             {
                 // Navigationsfehler. Unterbrechen und Debugger öffnen
-                Debugger.Break();
-            }
-        }
-
-        // Code, der bei Ausnahmefehlern ausgeführt wird
-        private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
-        {
-            ErrorReportingManager.Instance.Save(e.ExceptionObject, AppResources.ApplicationVersion, AppResources.ResourceLanguage);
-
-            if (Debugger.IsAttached)
-            {
-                // Ein Ausnahmefehler ist aufgetreten. Unterbrechen und Debugger öffnen
                 Debugger.Break();
             }
         }
