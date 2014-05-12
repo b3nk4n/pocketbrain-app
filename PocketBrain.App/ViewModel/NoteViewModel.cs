@@ -428,9 +428,9 @@ namespace PocketBrain.App.ViewModel
         private void PinOrUpdateTile()
         {
             var noteWideGfx = GraphicsHelper.Create(new NoteWideTile(Title, Content));
-            var noteWideUri = StorageHelper.SaveJpeg(TileWidePath, noteWideGfx);
+            var noteWideUri = StorageHelper.SavePng(TileWidePath, noteWideGfx);
             var noteNormalGfx = GraphicsHelper.Create(new NoteNormalTile(Title, Content));
-            var noteNormalUri = StorageHelper.SaveJpeg(TileNormalPath, noteNormalGfx);
+            var noteNormalUri = StorageHelper.SavePng(TileNormalPath, noteNormalGfx);
 
             if (HasAttachement)
             {
@@ -438,8 +438,7 @@ namespace PocketBrain.App.ViewModel
 
                 FlipTileData tile = new FlipTileData();
 
-
-                if (IsValidTextAndVisible)
+                if (IsValid)
                 {
                     tile = new FlipTileData()
                     {

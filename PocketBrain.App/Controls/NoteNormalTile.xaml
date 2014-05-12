@@ -8,7 +8,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     d:DesignHeight="336" d:DesignWidth="336" Height="336" Width="336">
-    <Border Background="{StaticResource PhoneAccentBrush}">
+    <Border>
         <Grid x:Name="LayoutRoot" Margin="24">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
