@@ -16,26 +16,6 @@ namespace PocketBrain.App.ViewModel
     public abstract class ExpandableListViewModelBase : ViewModelBase
     {
         /// <summary>
-        /// The expand image for the light theme.
-        /// </summary>
-        private const string EXPAND_LIGHT = "Assets/AppBar/appbar.arrow.expand.png";
-
-        /// <summary>
-        /// The expand image for the dark theme.
-        /// </summary>
-        private const string EXPAND_DARK = "Assets/AppBar/appbar.arrow.expand.dark.png";
-
-        /// <summary>
-        /// The collapsed image for the light theme.
-        /// </summary>
-        private const string COLLAPSED_LIGHT = "Assets/AppBar/appbar.arrow.collapsed.png";
-
-        /// <summary>
-        /// The collapsed image for the dark theme.
-        /// </summary>
-        private const string COLLAPSED_DARK = "Assets/AppBar/appbar.arrow.collapsed.dark.png";
-
-        /// <summary>
         /// The persistent key
         /// </summary>
         private readonly string _key;
@@ -133,34 +113,6 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return (Settings.ExpandListsMethod.Value == "1" || Settings.ExpandListsMethod.Value == "2") && _notes.Count > 0;
-            }
-        }
-
-        /// <summary>
-        /// Gets the expand button image path.
-        /// </summary>
-        public string ExpandImagePath
-        {
-            get
-            {
-                if (PhoneThemeHelper.IsLightThemeActive)
-                    return EXPAND_DARK;
-                else
-                    return EXPAND_LIGHT;
-            }
-        }
-
-        /// <summary>
-        /// Gets the collapsed button image path.
-        /// </summary>
-        public string CollapsedImagePath
-        {
-            get
-            {
-                if (PhoneThemeHelper.IsLightThemeActive)
-                    return COLLAPSED_DARK;
-                else
-                    return COLLAPSED_LIGHT;
             }
         }
 

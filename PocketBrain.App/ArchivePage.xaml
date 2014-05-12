@@ -121,7 +121,7 @@
             <Border Grid.Row="1" Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
                 <StackPanel>
                     <Button Style="{StaticResource CustomButtonStyle}" Command="{Binding ClearCommand}">
-                        <Image Source="{Binding ArchiveClearImagePath}" Height="52" />
+                        <Image Source="{Binding Path=ArchiveClearImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                     </Button>
                 </StackPanel>
             </Border>
@@ -131,7 +131,7 @@
             <Button x:Name="ExpansionButton"
                     Style="{StaticResource CustomCornerButtonStyle}"
                     Visibility="{Binding IsExtensionButtonVisible, Converter={StaticResource boolToVis}}">
-                <Image x:Name="ExpansionButtonImage" Source="{Binding ExpandImagePath}" Height="36" HorizontalAlignment="Right" Margin="0,0,-12,0" />
+                <Image x:Name="ExpansionButtonImage" Source="{Binding Path=ExpandImagePath, Source={StaticResource ThemedImageSource}}" Height="36" HorizontalAlignment="Right" Margin="0,0,-12,0" />
             </Button>
         </Border>
     </Grid>

@@ -79,8 +79,8 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="{Binding DisplayedTitle}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
-                            <Image Grid.Column="1" Source="{Binding EyeHideImagePath}" Width="48" Height="48" Opacity="0.5" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}" />
-                            <Image Grid.Column="2" Source="{Binding PaperclipImagePath}" Width="48" Height="48" Opacity="0.5" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
+                            <Image Grid.Column="1" Source="{Binding Path=EyeHideImagePath, Source={StaticResource ThemedImageSource}}" Width="48" Height="48" Opacity="0.5" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}" />
+                            <Image Grid.Column="2" Source="{Binding Path=PaperclipImagePath, Source={StaticResource ThemedImageSource}}" Width="48" Height="48" Opacity="0.5" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
                         </Grid>
                         <TextBlock Grid.Row="2" Text="{Binding Content}" Style="{StaticResource PhoneTextNormalStyle}"
                                             TextTrimming="WordEllipsis" TextWrapping="Wrap" />
@@ -113,8 +113,8 @@
                                 <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Text="{Binding DisplayedTitle}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
-                            <Image Grid.Column="1" Source="{Binding EyeHideImagePath}" Width="48" Height="48" Opacity="0.5" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}" />
-                            <Image Grid.Column="2" Source="{Binding PaperclipImagePath}" Width="48" Height="48" Opacity="0.5" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
+                            <Image Grid.Column="1" Source="{Binding Path=EyeHideImagePath, Source={StaticResource ThemedImageSource}}" Width="48" Height="48" Opacity="0.5" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}" />
+                            <Image Grid.Column="2" Source="{Binding Path=PaperclipImagePath, Source={StaticResource ThemedImageSource}}" Width="48" Height="48" Opacity="0.5" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
                         </Grid>
                         <TextBlock Grid.Row="1" Text="{Binding Content}" Style="{StaticResource PhoneTextNormalStyle}"
                                             TextTrimming="WordEllipsis" TextWrapping="NoWrap" />
@@ -144,7 +144,7 @@
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuUnpinFromStart, Source={StaticResource LocalizedStrings}}" Command="{Binding UnpinAddNoteFromStartCommand}" Visibility="{Binding CanAddNotePinToStart, Converter={StaticResource boolToVis}, ConverterParameter=!}" />
                         </toolkit:ContextMenu>
                     </toolkit:ContextMenuService.ContextMenu>
-                    <Image x:Name="image" Source="{Binding AddNoteImagePath}" Height="52" />
+                    <Image x:Name="image" Source="{Binding Path=AddNoteImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                 </Button>
             </Border>
             <Grid Grid.Row="1" Background="{StaticResource MyPhoneChromeBrush}" ManipulationCompleted="SwipeManipulationCompleted">
@@ -183,15 +183,15 @@
                     </Grid.ColumnDefinitions>
                     <Button x:Name="ArchiveButton" Grid.Column="0"
                                 Style="{StaticResource CustomButtonStyle}">
-                        <Image Source="{Binding ArchiveImagePath}" Height="52" />
+                        <Image Source="{Binding Path=ArchiveImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                     </Button>
                     <Button x:Name="SettingsButton" Grid.Column="1"
                                 Style="{StaticResource CustomButtonStyle}">
-                        <Image Source="{Binding SettingsImagePath}" Height="52" />
+                        <Image Source="{Binding Path=SettingsImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                     </Button>
                     <Button x:Name="AboutButton" Grid.Column="2"
                                 Style="{StaticResource CustomButtonStyle}">
-                        <Image Source="{Binding InfoImagePath}" Height="52" />
+                        <Image Source="{Binding Path=InfoImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                     </Button>
                 </Grid>
             </Border>
@@ -201,7 +201,7 @@
             <Button x:Name="ExpansionButton"
                     Style="{StaticResource CustomCornerButtonStyle}"
                     Visibility="{Binding IsExtensionButtonVisible, Converter={StaticResource boolToVis}}">
-                <Image x:Name="ExpansionButtonImage" Source="{Binding ExpandImagePath}" Height="36" HorizontalAlignment="Right" Margin="0,0,-12,0" />
+                <Image x:Name="ExpansionButtonImage" Source="{Binding Path=ExpandImagePath, Source={StaticResource ThemedImageSource}}" Height="36" HorizontalAlignment="Right" Margin="0,0,-12,0" />
             </Button>
         </Border>
 

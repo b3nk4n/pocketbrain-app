@@ -5,19 +5,21 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
 	xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
     xmlns:ReorderListBox="clr-namespace:ReorderListBox;assembly=ReorderListBox"
+    xmlns:misc="clr-namespace:PocketBrain.App.Misc"
     x:Class="PocketBrain.App.App"
     >
-
 
     <!--Anwendungsressourcen-->
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:PocketBrain.App" x:Key="LocalizedStrings"/>
 
-        <Color x:Key="MyPhoneChromeColor">#FF262626</Color>
+        <!--<Color x:Key="MyPhoneChromeColor">#FF262626</Color>
         <SolidColorBrush x:Key="MyPhoneChromeBrush" Color="{StaticResource MyPhoneChromeColor}" />
 
         <Color x:Key="MyPhoneChromeLightColor">#FF2F2F2F</Color>
-        <SolidColorBrush x:Key="MyPhoneChromeLightBrush" Color="{StaticResource MyPhoneChromeLightColor}" />
+        <SolidColorBrush x:Key="MyPhoneChromeLightBrush" Color="{StaticResource MyPhoneChromeLightColor}" />-->
+
+        <misc:ThemedImageSource x:Key="ThemedImageSource" />
 
         <Style x:Key="CustomButtonStyle" TargetType="Button">
         	<Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>

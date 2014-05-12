@@ -13,6 +13,7 @@ using System.Windows;
 using System.Windows.Data;
 using Microsoft.Xna.Framework.GamerServices;
 using PhoneKit.Framework.OS;
+using PocketBrain.App.Misc;
 
 namespace PocketBrain.App
 {
@@ -311,16 +312,18 @@ namespace PocketBrain.App
             if (currentNote == null)
                 return;
 
+            var themedImageSource = (ThemedImageSource)App.Current.Resources["ThemedImageSource"];
+
             if (SharingContainer.Visibility == System.Windows.Visibility.Collapsed)
             {
                 SharingContainer.Visibility = System.Windows.Visibility.Visible;
-                ShareButtonImage.Source = new BitmapImage(new Uri(currentNote.ShareOpenImagePath, UriKind.Relative));
+                ShareButtonImage.Source = new BitmapImage(new Uri(themedImageSource.ShareOpenImagePath, UriKind.Relative));
                 ShareButton.Opacity = 0.95f;
             }
             else
             {
                 SharingContainer.Visibility = System.Windows.Visibility.Collapsed;
-                ShareButtonImage.Source = new BitmapImage(new Uri(currentNote.ShareImagePath, UriKind.Relative));
+                ShareButtonImage.Source = new BitmapImage(new Uri(themedImageSource.ShareImagePath, UriKind.Relative));
                 ShareButton.Opacity = 1f;
             }
         }

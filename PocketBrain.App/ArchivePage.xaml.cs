@@ -1,6 +1,7 @@
 ﻿using Microsoft.Phone.Controls;
 using PhoneKit.Framework.OS;
 using PhoneKit.Framework.OS.ShakeGestures;
+using PocketBrain.App.Misc;
 using PocketBrain.App.ViewModel;
 using System;
 using System.Windows;
@@ -111,15 +112,16 @@ namespace PocketBrain.App
             if (!ArchiveListViewModel.Instance.IsExtensionButtonVisible)
                 return;
 
+            var themedImageSource = (ThemedImageSource)App.Current.Resources["ThemedImageSource"];
             Uri uri;
             if (ArchiveListViewModel.Instance.IsExpanded)
             {
-                uri = new Uri(ArchiveListViewModel.Instance.CollapsedImagePath, UriKind.Relative);
+                uri = new Uri(themedImageSource.CollapsedImagePath, UriKind.Relative);
                 NotesList.ItemTemplate = (DataTemplate)this.Resources["MaximizedNoteTemplate"];
             }
             else
             {
-                uri = new Uri(ArchiveListViewModel.Instance.ExpandImagePath, UriKind.Relative);
+                uri = new Uri(themedImageSource.ExpandImagePath, UriKind.Relative);
                 NotesList.ItemTemplate = (DataTemplate)this.Resources["MinimizedNoteTemplate"];
             }
 

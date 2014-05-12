@@ -166,7 +166,7 @@
             <Border Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
                 <Button Command="{Binding LockScreenCommand}"
                                 Style="{StaticResource CustomButtonStyle}">
-                    <Image Source="{Binding LockImagePath}" Height="52" />
+                    <Image Source="{Binding Path=LockImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                 </Button>
             </Border>
 

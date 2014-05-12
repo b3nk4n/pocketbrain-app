@@ -32,14 +32,14 @@ namespace PocketBrain.App
             // Initialize BugSense
             BugSenseHandler.Instance.InitAndStartSession(new ExceptionManager(Current), RootFrame, "b1b1e246");
 
+            // Initialize themeing
+            InitializeThemeColors(); // must be before the InitializeComponent() call, because also nested styles etc. must be uddated
+
             // Standard-XAML-Initialisierung
             InitializeComponent();
 
             // Phone-spezifische Initialisierung
             InitializePhoneApplication();
-
-            // Initialize themeing
-            InitializeThemeColors();
 
             // Initialisierung der Sprachanzeige
             InitializeLanguage();

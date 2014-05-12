@@ -8,7 +8,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converter="clr-namespace:PhoneKit.Framework.Conversion;assembly=PhoneKit.Framework"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-    xmlns:mvvm="clr-namespace:PocketBrain.App.ViewModel"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -40,8 +39,6 @@
         <converter:BooleanToVisibilityConverter x:Key="boolToVis" />
         <converter:ShortDateConverter x:Key="shortDate" />
         <converter:ShortTimeConverter x:Key="shortTime" />
-        
-        <mvvm:KeyboardExtensionViewModel x:Key="keyboardExViewModel" />
 
         <Storyboard x:Name="ShowKeyboardExtension">
             <DoubleAnimation Storyboard.TargetName="KeyboardExtensionTransfrom" 
@@ -174,15 +171,15 @@
                         </Grid.ColumnDefinitions>
                         <Button Grid.Column="0" Command="{Binding ShareEmailCommand}"
                                 Style="{StaticResource CustomButtonStyle}" Click="SharingButtonClicked">
-                            <Image Source="{Binding EmailImagePath}" Height="52" />
+                            <Image Source="{Binding Path=EmailImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                         </Button>
                         <Button Grid.Column="1" Command="{Binding ShareMessageCommand}"
                                 Style="{StaticResource CustomButtonStyle}" Click="SharingButtonClicked">
-                            <Image Source="{Binding MessageImagePath}" Height="52" />
+                            <Image Source="{Binding Path=MessageImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                         </Button>
                         <Button Grid.Column="2" Command="{Binding ShareWhatsappCommand}"
                                 Style="{StaticResource CustomButtonStyle}" Click="SharingButtonClicked">
-                            <Image Source="{Binding WhatsappImagePath}" Height="52" />
+                            <Image Source="{Binding Path=WhatsappImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                         </Button>
                     </Grid>
                     <Grid>
@@ -194,26 +191,26 @@
                         <Button x:Name="ImageFromAblumButton" Grid.Column="0" Command="{Binding AddAttachementCommand}"
                                 Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}, ConverterParameter=!}"
                                 Style="{StaticResource CustomButtonStyle}">
-                            <Image Source="{Binding PaperclipImagePath}" Height="52" />
+                            <Image Source="{Binding Path=PaperclipImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                         </Button>
                         <Button x:Name="RemoveAttachementButton" Grid.Column="0" Command="{Binding RemoveAttachementCommand}"
                             Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}"
                             Style="{StaticResource CustomButtonStyle}">
-                            <Image Source="{Binding PaperclipRemoveImagePath}" Height="52" />
+                            <Image Source="{Binding Path=PaperclipRemoveImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                         </Button>
                         <Button x:Name="ShareButton" Grid.Column="1"
                             Style="{StaticResource CustomButtonStyle}">
-                            <Image x:Name="ShareButtonImage" Source="{Binding ShareImagePath}" Height="52" />
+                            <Image x:Name="ShareButtonImage" Source="{Binding Path=ShareImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                         </Button>
                         <Button Grid.Column="2" Command="{Binding PinToStartCommand}"
                             Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}}"
                             Style="{StaticResource CustomButtonStyle}">
-                            <Image Source="{Binding PinImagePath}" Height="52" />
+                            <Image Source="{Binding Path=PinImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                         </Button>
                         <Button Grid.Column="2" Command="{Binding UnpinFromStartCommand}"
                             Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}, ConverterParameter=!}"
                             Style="{StaticResource CustomButtonStyle}">
-                            <Image Source="{Binding PinRemoveImagePath}" Height="52" />
+                            <Image Source="{Binding Path=PinRemoveImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                         </Button>
                     </Grid>
                     <Grid>
@@ -223,15 +220,15 @@
                         </Grid.ColumnDefinitions>
                         <Button x:Name="ShowNoteButton" Grid.Column="0" Command="{Binding ShowCommand}" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}"
                             Style="{StaticResource CustomButtonStyle}">
-                            <Image Source="{Binding EyeHideImagePath}" Height="52" Opacity="0.33" />
+                            <Image Source="{Binding Path=EyeHideImagePath, Source={StaticResource ThemedImageSource}}" Height="52" Opacity="0.33" />
                         </Button>
                         <Button x:Name="HideNoteButton" Grid.Column="0" Command="{Binding HideCommand}"  Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}, ConverterParameter=!}"
                             Style="{StaticResource CustomButtonStyle}">
-                            <Image Source="{Binding EyeImagePath}" Height="52" />
+                            <Image Source="{Binding Path=EyeImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                         </Button>
                         <Button x:Name="DeleteNoteButton" Grid.Column="1" Command="{Binding DeleteCommand}"
                             Style="{StaticResource CustomButtonStyle}">
-                            <Image Source="{Binding DeleteImagePath}" Height="52" />
+                            <Image Source="{Binding Path=DeleteImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                         </Button>
                     </Grid>
                 </StackPanel>
@@ -241,7 +238,7 @@
             <Border.RenderTransform>
                 <TranslateTransform x:Name="KeyboardExtensionTransfrom" Y="1000" />
             </Border.RenderTransform>
-            <Grid  DataContext="{StaticResource keyboardExViewModel}">
+            <Grid DataContext="{StaticResource ThemedImageSource}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="86" />
                     <RowDefinition Height="86" />
@@ -271,9 +268,8 @@
         </Border>
         <Border VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,110,0,0">
             <Button x:Name="SpeakButton"
-                    Style="{StaticResource CustomCornerButtonStyle}"
-                    Visibility="{Binding IsExtensionButtonVisible, Converter={StaticResource boolToVis}}">
-                <Image x:Name="ExpansionButtonImage" Source="{Binding SpeakImagePath}" Height="38" HorizontalAlignment="Right" Margin="0,0,-12,0" />
+                    Style="{StaticResource CustomCornerButtonStyle}">
+                <Image x:Name="ExpansionButtonImage" Source="{Binding Path=SpeakImagePath, Source={StaticResource ThemedImageSource}}" Height="38" HorizontalAlignment="Right" Margin="0,0,-12,0" />
             </Button>
         </Border>
 
@@ -282,23 +278,20 @@
                     VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,110,0,0">
             <Border VerticalAlignment="Center" HorizontalAlignment="Right">
                 <Button Command="{Binding SpeakPrependTextCommand}" Click="SpeakButtonClicked"
-                    Style="{StaticResource CustomCornerButtonStyle}"
-                    Visibility="{Binding IsExtensionButtonVisible, Converter={StaticResource boolToVis}}">
-                    <Image Source="{Binding SpeakPrependImagePath}" Height="40" HorizontalAlignment="Right" Margin="0,0,-12,0" />
+                    Style="{StaticResource CustomCornerButtonStyle}">
+                    <Image Source="{Binding Path=SpeakPrependImagePath, Source={StaticResource ThemedImageSource}}" Height="40" HorizontalAlignment="Right" Margin="0,0,-12,0" />
                 </Button>
             </Border>
             <Border VerticalAlignment="Center" HorizontalAlignment="Right">
                 <Button Command="{Binding SpeakReplaceTextCommand}" Click="SpeakButtonClicked"
-                    Style="{StaticResource CustomCornerButtonStyle}"
-                    Visibility="{Binding IsExtensionButtonVisible, Converter={StaticResource boolToVis}}">
-                    <Image Source="{Binding SpeakReplaceImagePath}" Height="40" HorizontalAlignment="Right" Margin="0,0,-12,0" />
+                    Style="{StaticResource CustomCornerButtonStyle}">
+                    <Image Source="{Binding Path=SpeakReplaceImagePath, Source={StaticResource ThemedImageSource}}" Height="40" HorizontalAlignment="Right" Margin="0,0,-12,0" />
                 </Button>
             </Border>
             <Border VerticalAlignment="Center" HorizontalAlignment="Right">
                 <Button Command="{Binding SpeakAppendTextCommand}" Click="SpeakButtonClicked"
-                    Style="{StaticResource CustomCornerButtonStyle}"
-                    Visibility="{Binding IsExtensionButtonVisible, Converter={StaticResource boolToVis}}">
-                    <Image Source="{Binding SpeakAppendImagePath}" Height="40" HorizontalAlignment="Right" Margin="0,0,-12,0" />
+                    Style="{StaticResource CustomCornerButtonStyle}">
+                    <Image Source="{Binding Path=SpeakAppendImagePath, Source={StaticResource ThemedImageSource}}" Height="40" HorizontalAlignment="Right" Margin="0,0,-12,0" />
                 </Button>
             </Border>
         </StackPanel>

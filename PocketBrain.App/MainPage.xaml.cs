@@ -10,6 +10,7 @@ using System.Windows.Media.Imaging;
 using PhoneKit.Framework.OS;
 using Microsoft.Phone.Info;
 using Windows.Graphics.Display;
+using PocketBrain.App.Misc;
 
 namespace PocketBrain.App
 {
@@ -240,14 +241,16 @@ namespace PocketBrain.App
         {
             if (NoteListViewModel.Instance.IsExtensionButtonVisible)
             {
+                var themedImageSource = (ThemedImageSource)App.Current.Resources["ThemedImageSource"];
+
                 Uri uri;
                 if (NoteListViewModel.Instance.IsExpanded)
                 {
-                    uri = new Uri(NoteListViewModel.Instance.CollapsedImagePath, UriKind.Relative);
+                    uri = new Uri(themedImageSource.CollapsedImagePath, UriKind.Relative);
                 }
                 else
                 {
-                    uri = new Uri(NoteListViewModel.Instance.ExpandImagePath, UriKind.Relative);
+                    uri = new Uri(themedImageSource.ExpandImagePath, UriKind.Relative);
                 }
                 ExpansionButtonImage.Source = new BitmapImage(uri);
             }
