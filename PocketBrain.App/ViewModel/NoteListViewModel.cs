@@ -19,7 +19,7 @@ using System.Windows.Media.Imaging;
 using PhoneKit.Framework.Core.LockScreen;
 using System.Windows.Media;
 using PhoneKit.Framework.Tile;
-using PhoneKit.Framework.Core.OS;
+using PhoneKit.Framework.Core.Themeing;
 
 namespace PocketBrain.App.ViewModel
 {

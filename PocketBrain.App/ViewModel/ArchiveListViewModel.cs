@@ -1,5 +1,5 @@
 ﻿using PhoneKit.Framework.Core.MVVM;
-using PhoneKit.Framework.Core.OS;
+using PhoneKit.Framework.Core.Themeing;
 using PhoneKit.Framework.Core.Storage;
 using PocketBrain.App.Resources;
 using System;

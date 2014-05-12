@@ -13,12 +13,11 @@
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:PocketBrain.App" x:Key="LocalizedStrings"/>
 
-        <!-- use these key in DEBUG mode to have no warnings and see the dark theme in the designer -->
-        <!--<Color x:Key="MyPhoneChromeColor">#FF262626</Color>
+        <Color x:Key="MyPhoneChromeColor">#FF262626</Color>
         <SolidColorBrush x:Key="MyPhoneChromeBrush" Color="{StaticResource MyPhoneChromeColor}" />
 
         <Color x:Key="MyPhoneChromeLightColor">#FF2F2F2F</Color>
-        <SolidColorBrush x:Key="MyPhoneChromeLightBrush" Color="{StaticResource MyPhoneChromeLightColor}" />-->
+        <SolidColorBrush x:Key="MyPhoneChromeLightBrush" Color="{StaticResource MyPhoneChromeLightColor}" />
 
         <Style x:Key="CustomButtonStyle" TargetType="Button">
         	<Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
@@ -37,11 +36,8 @@
         							<VisualState x:Name="Normal"/>
         							<VisualState x:Name="MouseOver"/>
         							<VisualState x:Name="Pressed">
-        								<Storyboard>
-        									<!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentContainer">
-        										<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneButtonBasePressedForegroundBrush}"/>
-        									</ObjectAnimationUsingKeyFrames>-->
-        									<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ButtonBackground">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ButtonBackground">
         										<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource MyPhoneChromeLightBrush}"/>
         									</ObjectAnimationUsingKeyFrames>
         								</Storyboard>

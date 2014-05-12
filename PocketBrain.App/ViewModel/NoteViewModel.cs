@@ -2,7 +2,7 @@
 using Microsoft.Phone.Tasks;
 using PhoneKit.Framework.Core.Graphics;
 using PhoneKit.Framework.Core.MVVM;
-using PhoneKit.Framework.Core.OS;
+using PhoneKit.Framework.Core.Themeing;
 using PhoneKit.Framework.Core.Storage;
 using PhoneKit.Framework.Core.Tile;
 using PhoneKit.Framework.Tile;

@@ -1,5 +1,5 @@
 ﻿using PhoneKit.Framework.Core.MVVM;
-using PhoneKit.Framework.Core.OS;
+using PhoneKit.Framework.Core.Themeing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
