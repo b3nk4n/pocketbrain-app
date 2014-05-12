@@ -251,7 +251,12 @@ namespace PocketBrain.App.ViewModel
 
                             if (result.ResultStatus == Windows.Phone.Speech.Recognition.SpeechRecognitionUIStatus.Succeeded)
                             {
-                                Content = string.Format("{0}\r{1}", result.RecognitionResult.Text, Content);
+                                string text = result.RecognitionResult.Text;
+
+                                if (!string.IsNullOrEmpty(text))
+                                {
+                                    Content = string.Format("{0}\r{1}", AntiProfanityFilter(text), Content);
+                                }
                             }
                         }
                         else
@@ -275,7 +280,12 @@ namespace PocketBrain.App.ViewModel
 
                             if (result.ResultStatus == Windows.Phone.Speech.Recognition.SpeechRecognitionUIStatus.Succeeded)
                             {
-                                Content = result.RecognitionResult.Text;
+                                string text = result.RecognitionResult.Text;
+
+                                if (!string.IsNullOrEmpty(text))
+                                {
+                                    Content = AntiProfanityFilter(text);
+                                }
                             }
                         }
                         else
@@ -299,7 +309,12 @@ namespace PocketBrain.App.ViewModel
 
                             if (result.ResultStatus == Windows.Phone.Speech.Recognition.SpeechRecognitionUIStatus.Succeeded)
                             {
-                                Content += "\r" + result.RecognitionResult.Text;
+                                string text = result.RecognitionResult.Text;
+
+                                if (!string.IsNullOrEmpty(text))
+                                {
+                                    Content += "\r" + AntiProfanityFilter(text);
+                                }
                             }
                         }
                         else
@@ -348,6 +363,17 @@ namespace PocketBrain.App.ViewModel
         }
 
         #endregion
+
+        /// <summary>
+        /// Anti-Profanity-Filter.
+        /// </summary>
+        /// <param name="text">The text to un-filter.</param>
+        /// <returns>The pure text.</returns>
+        private string AntiProfanityFilter(string text)
+        {
+            return text.Replace("<profanity>", string.Empty)
+                .Replace("</profanity>", string.Empty);
+        }
 
         /// <summary>
         /// Gets the unique local file name for the given file to copy.
