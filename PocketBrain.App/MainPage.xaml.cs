@@ -213,7 +213,7 @@ namespace PocketBrain.App
         private void OpenNote(string noteId)
         {
             if (!string.IsNullOrEmpty(noteId))
-                NavigationService.Navigate(new Uri("/NotePage.xaml?id=" + noteId, UriKind.Relative));
+                NavigationService.Navigate(new Uri(string.Format("/NotePage.xaml?{0}={1}", AppConstants.PARAM_NOTE_ID, noteId), UriKind.Relative));
         }
 
         /// <summary>

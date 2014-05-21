@@ -10,12 +10,11 @@
   <App xmlns="" ProductID="{ab482544-c92e-478e-b1f5-f5c6661d7693}" Title="pocketBRAIN" RuntimeType="Silverlight" Version="1.8.1.0" Genre="apps.normal" Author="PocketBrain.App author" Description="This application is your quick and easy helper to relieve your brain." Publisher="PocketBrain.App" PublisherID="{47e5a50a-aca2-469e-be1a-a4ac16765a5f}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
-      <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
-      <Capability Name="ID_CAP_MEDIALIB_PLAYBACK" />
       <Capability Name="ID_CAP_SPEECH_RECOGNITION" />
       <Capability Name="ID_CAP_MICROPHONE" />
       <Capability Name="ID_CAP_SENSORS" />
       <Capability Name="ID_CAP_NETWORKING" />
+      <Capability Name="ID_CAP_MEDIALIB_PHOTO" />
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />
@@ -45,7 +44,10 @@
       </PrimaryToken>
     </Tokens>
     <Extensions>
+      <!-- Lockscreen background -->
       <Extension ExtensionName="LockScreen_Background" ConsumerID="{111DFF24-AA15-4A96-8006-2BFF8122084F}" TaskID="_default" />
+      <!-- URI schemes -->
+      <Protocol Name="pocketbrain" NavUriFragment="encodedLaunchUri=%s" TaskID="_default" />
     </Extensions>
     <ScreenResolutions>
       <ScreenResolution Name="ID_RESOLUTION_WVGA" />

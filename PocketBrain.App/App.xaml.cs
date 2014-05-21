@@ -151,6 +151,8 @@ namespace PocketBrain.App
             // Navigationsfehler behandeln
             RootFrame.NavigationFailed += RootFrame_NavigationFailed;
 
+            RootFrame.UriMapper = new CustomUriMapper();
+
             // Behandeln Sie Rücksetzanforderungen zum Löschen des Backstack
             RootFrame.Navigated += CheckForResetNavigation;
 

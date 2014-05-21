@@ -149,6 +149,32 @@ namespace PocketBrain.App
             ResetSharingExpandButtonsVisibility();
             ResetSpeakExpandButtonsVisibility();
 
+            // read navigation params
+            string id = string.Empty;
+            string title = string.Empty;
+            string text = string.Empty;
+            int mediaLibIndex = -1;
+            if (NavigationContext.QueryString != null)
+            {
+                if (NavigationContext.QueryString.ContainsKey(AppConstants.PARAM_NOTE_ID))
+                {
+                    id = NavigationContext.QueryString[AppConstants.PARAM_NOTE_ID];
+                }
+                if (NavigationContext.QueryString.ContainsKey(AppConstants.PARAM_TITLE))
+                {
+                    title = NavigationContext.QueryString[AppConstants.PARAM_TITLE];
+                }
+                if (NavigationContext.QueryString.ContainsKey(AppConstants.PARAM_TEXT))
+                {
+                    text = NavigationContext.QueryString[AppConstants.PARAM_TEXT];
+                }
+                if (NavigationContext.QueryString.ContainsKey(AppConstants.PARAM_MEDIA_LIB_INDEX))
+                {
+                    var mediaLibIndexString = NavigationContext.QueryString[AppConstants.PARAM_MEDIA_LIB_INDEX];
+                    int.TryParse(mediaLibIndexString, out mediaLibIndex);
+                }
+            }
+
             // load state
             if (PhoneStateHelper.ValueExists("currentNote"))
             {
@@ -156,10 +182,9 @@ namespace PocketBrain.App
                 PhoneStateHelper.DeleteValue("currentNote");
             }
 
-            if (NavigationContext.QueryString != null && 
-                NavigationContext.QueryString.ContainsKey("id"))
+            if (!string.IsNullOrEmpty(id))
             {
-                NoteListViewModel.Instance.CurrentNote = NoteListViewModel.Instance.GetNoteById(NavigationContext.QueryString["id"]);
+                NoteListViewModel.Instance.CurrentNote = NoteListViewModel.Instance.GetNoteById(id);
             }
             else if (NoteListViewModel.Instance.CurrentNote != null && !string.IsNullOrEmpty(NoteListViewModel.Instance.CurrentNote.Id))
             {
@@ -167,7 +192,14 @@ namespace PocketBrain.App
             }
             else
             {
-                NoteListViewModel.Instance.CurrentNote = new NoteViewModel();
+                var note = new NoteViewModel();
+                note.Title = title;
+                note.Content = text;
+                if (mediaLibIndex != -1)
+                    note.SetAttachementFromMediaLibraryIndex(mediaLibIndex);
+
+                NoteListViewModel.Instance.CurrentNote = note;
+
             }
 
             // set content text's input scope

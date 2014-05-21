@@ -16,6 +16,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace PocketBrain.App.ViewModel
 {
@@ -352,7 +353,6 @@ namespace PocketBrain.App.ViewModel
                 {
                     if (pr.Error != null || pr.TaskResult != TaskResult.OK)
                         return;
-
                     // save a copy in local storage
                     string filePath = GetUniqueLocalFilePathOfFile(pr.OriginalFileName);
                     if (StorageHelper.SaveFileFromStream(filePath, pr.ChosenPhoto))
@@ -363,6 +363,26 @@ namespace PocketBrain.App.ViewModel
         }
 
         #endregion
+
+        /// <summary>
+        /// Sets an attachement image from the library.
+        /// </summary>
+        /// <param name="medialLibIndex">The library image.</param>
+        public void SetAttachementFromMediaLibraryIndex(int medialLibIndex)
+        {
+            var mediaLibrary = new MediaLibrary();
+
+            // verify index in range
+            if (medialLibIndex >= 0 && medialLibIndex < mediaLibrary.Pictures.Count)
+            {
+                var pic = mediaLibrary.Pictures[medialLibIndex];
+                string filePath = GetUniqueLocalFilePathOfFile(pic.Name);
+                if (StorageHelper.SaveFileFromStream(filePath, pic.GetImage()))
+                {
+                    SetAttachement(filePath);
+                }
+            }
+        }
 
         /// <summary>
         /// Anti-Profanity-Filter.
