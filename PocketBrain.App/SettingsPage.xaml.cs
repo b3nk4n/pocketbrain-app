@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using BugSense.Core.Model;
 using BugSense;
+using System.Diagnostics;
 
 namespace PocketBrain.App
 {
@@ -116,10 +117,19 @@ namespace PocketBrain.App
             if (lockScreenPath != null)
             {
                 BitmapImage img = new BitmapImage();
-                using (var imageStream = StorageHelper.GetFileStream(lockScreenPath))
+                try
                 {
-                    img.SetSource(imageStream);
-                    PreviewImageBackground.Source = img;
+                    using (var imageStream = StorageHelper.GetFileStream(lockScreenPath))
+                    {
+                        img.SetSource(imageStream);
+                        PreviewImageBackground.Source = img;
+                    }
+                }
+                catch (Exception e)
+                {
+                    // BUGSENSE : Offset and length were out of bounds for the array or count is greater than the number of elements from index to the end of the source collection.
+                    // Occured 2 times (05.06.2014)
+                    Debug.WriteLine("Could not set the image source with error: " + e.Message);
                 }
             }
         }

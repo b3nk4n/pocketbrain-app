@@ -353,6 +353,7 @@
         
         <Style x:Key="ListPickerItemStyle" TargetType="toolkit:ListPickerItem">
             <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         	<Setter Property="Padding" Value="8 10"/>
         	<Setter Property="Template">
