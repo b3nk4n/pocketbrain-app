@@ -29,8 +29,13 @@ namespace PocketBrain.App
         /// </summary>
         public App()
         {
+#if !DEBUG
             // Initialize BugSense
             BugSenseHandler.Instance.InitAndStartSession(new ExceptionManager(Current), RootFrame, "b1b1e246");
+#else
+            // Globaler Handler für nicht abgefangene Ausnahmen.
+            UnhandledException += Application_UnhandledException;
+#endif
 
             // Initialize themeing
             InitializeThemeColors(); // must be before the InitializeComponent() call, because also nested styles etc. must be uddated
@@ -128,6 +133,17 @@ namespace PocketBrain.App
             if (Debugger.IsAttached)
             {
                 // Navigationsfehler. Unterbrechen und Debugger öffnen
+                Debugger.Break();
+            }
+        }
+
+        private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
+        {
+            ErrorReportingManager.Instance.Save(e.ExceptionObject, AppResources.ApplicationVersion, AppResources.ResourceLanguage);
+
+            if (Debugger.IsAttached)
+            {
+                // Ein Ausnahmefehler ist aufgetreten. Unterbrechen und Debugger öffnen
                 Debugger.Break();
             }
         }

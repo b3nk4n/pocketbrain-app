@@ -271,22 +271,20 @@ namespace PocketBrain.App.ViewModel
             int displayItemsCount = Math.Min(lockList.Count, int.Parse(Settings.MaximumLockItems.Value));
 
             // select the template to render
-            if (displayItemsCount == 0)
+            if (displayItemsCount == 0 && Settings.LockScreenBackgroundImagePath.Value == null)
             {
-                if (Settings.LockScreenBackgroundImagePath.Value == null)
-                {
-                    lockUri = new Uri("/Assets/LockScreenPlaceholder.png", UriKind.Relative);
-                    isLocal = false;
-                }
-                else
-                {
-                    lockUri = new Uri("/" + Settings.LockScreenBackgroundImagePath.Value, UriKind.Relative);
-                    isLocal = true;
-                }
+                lockUri = new Uri("/Assets/LockScreenPlaceholder.png", UriKind.Relative);
+                isLocal = false;
             }
             else
             {
-                if (displayItemsCount == 1)
+                // ugly workaround
+                if (displayItemsCount == 0)
+                {
+                    lockGfx = GraphicsHelper.Create(new NoteLockScreen(string.Empty, string.Empty, Settings.LockScreenBackgroundImagePath.Value));
+                }
+
+                else if (displayItemsCount == 1)
                 {
                     lockGfx = GraphicsHelper.Create(new NoteLockScreen(lockList[0].Title, lockList[0].Content, Settings.LockScreenBackgroundImagePath.Value));
                 }
