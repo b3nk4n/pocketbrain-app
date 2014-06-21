@@ -14,6 +14,8 @@ using System.Windows.Data;
 using Microsoft.Xna.Framework.GamerServices;
 using PhoneKit.Framework.OS;
 using PocketBrain.App.Misc;
+using BugSense.Core.Model;
+using BugSense;
 
 namespace PocketBrain.App
 {
@@ -112,12 +114,21 @@ namespace PocketBrain.App
                 }
             };
 
-            AttachementImage.Tap += (s, e) =>
+            AttachementImage.Tap += async (s, e) =>
                 {
                     var note = DataContext as NoteViewModel;
 
                     if (note != null)
-                        NavigationService.Navigate(new Uri("/AttachmentPage.xaml?imagePath=" + note.AttachedImagePath, UriKind.Relative));
+                    {
+                        try
+                        {
+                            var file = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri(StorageHelper.APPDATA_LOCAL_SCHEME + note.AttachedImagePath));
+                            await Windows.System.Launcher.LaunchFileAsync(file);
+                        } catch (Exception ex)
+                        {
+                            BugSenseLogResult logResult = BugSenseHandler.Instance.LogException(ex, "ShowAttachement", "Tried to show attachement file : " + (note.AttachedImagePath != null ? note.AttachedImagePath : "null"));
+                        }
+                    }
                 };
         }
 
@@ -419,8 +430,6 @@ namespace PocketBrain.App
         private const double PortraitShift = -339d;
         private const double PortraitShiftWithBar = -408d;
 
-        private static StoredObject<bool> IsKeyboard6InchCalibrated = new StoredObject<bool>("keyboardCalibrated", false);
-
         /// <summary>
         /// The translation Y dependency property.
         /// </summary>
@@ -431,8 +440,9 @@ namespace PocketBrain.App
         /// </summary>
         private void ShowKeyboard()
         {
-            if (IsKeyboard6InchCalibrated.Value == true)
+            if (DeviceHelper.IsLumia1520 && DisplayHelper.GetResolution() == ScreenResolution.P1080)
             {
+                // special animation for lumia1520, because there is a different view behaviour
                 ShowKeyboardExtension6inch.Begin();
             }
             else
@@ -626,16 +636,6 @@ namespace PocketBrain.App
         {
             if (_lastFocusedInputElement != null)
                 _lastFocusedInputElement.Focus();
-        }
-
-        /// <summary>
-        /// Calibration click event handler for LUMIA 1520.
-        /// </summary>
-        /// <param name="sender">The event sender.</param>
-        /// <param name="e">The event args.</param>
-        private void KeyboardCalibrate_Tap(object sender, System.Windows.Input.GestureEventArgs e)
-        {
-            IsKeyboard6InchCalibrated.Value = true;
         }
 
         #endregion     

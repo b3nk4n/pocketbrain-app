@@ -99,9 +99,6 @@
     <Compile Include="ArchivePage.xaml.cs">
       <DependentUpon>ArchivePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AttachmentPage.xaml.cs">
-      <DependentUpon>AttachmentPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\AboutControlBase.xaml.cs">
       <DependentUpon>AboutControlBase.xaml</DependentUpon>
     </Compile>
@@ -161,10 +158,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ArchivePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AttachmentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
