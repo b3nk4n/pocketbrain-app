@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutTitle" xml:space="preserve">
-    <value>hilfe</value>
+    <value>关于</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationAuthor" xml:space="preserve">
-    <value>von Benjamin Sautermeister</value>
+    <value>by Benjamin Sautermeister</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationDescription" xml:space="preserve">
-    <value>Diese Anwendung hilft dir dabei jegliche Dinge des Alltags zu merken. Ohne irgendwelchen Schnickschnack.</value>
+    <value>这款软件并没有华丽的界面但可以帮助您从容地处理日常事务。</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
@@ -138,43 +138,43 @@
     <comment>General</comment>
   </data>
   <data name="ArchiveTitle" xml:space="preserve">
-    <value>archiv</value>
+    <value>存档</value>
     <comment>ArchivePage</comment>
   </data>
   <data name="ContextMenuDelete" xml:space="preserve">
-    <value>löschen</value>
+    <value>删除</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuHide" xml:space="preserve">
-    <value>am Sperrbildschirm verstecken</value>
+    <value>从锁屏中隐藏</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuPinToStart" xml:space="preserve">
-    <value>auf startseite</value>
+    <value>固定到开始屏幕</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuRestore" xml:space="preserve">
-    <value>wiederherstellen</value>
+    <value>恢复</value>
     <comment>ArchivePage</comment>
   </data>
   <data name="ContextMenuShow" xml:space="preserve">
-    <value>am Sperrbildschirm anzeigen</value>
+    <value>在锁屏中显示</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuUnpinFromStart" xml:space="preserve">
-    <value>von startseite entfernen</value>
+    <value>从开始屏幕解除固定</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="Contributors" xml:space="preserve">
-    <value>Unterstützt von</value>
+    <value>支持者</value>
     <comment>AboutPage</comment>
   </data>
   <data name="DefaultTitle" xml:space="preserve">
-    <value>Unbenannt</value>
+    <value>无标题</value>
     <comment>General</comment>
   </data>
   <data name="FeedbackBodyText" xml:space="preserve">
-    <value>[Dein Feedback hier]
+    <value>写下您的反馈
 
 
 ---------------------------------
@@ -191,81 +191,81 @@ Application Version: {4}
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackMessageText" xml:space="preserve">
-    <value>Schade dass Sie pocketBRAIN nicht bewerten wollen.
+    <value>很遗憾未得到您的评分
 
-Erzählen Sie uns von Ihren Erfahrungen oder teilen Sie uns Vorschläge mit, damit wir pocketBRAIN noch besser machen können.</value>
+告诉我们您的体验与建议，我们会将其变得更好。</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackNoText" xml:space="preserve">
-    <value>nein danke</value>
+    <value>不，谢谢</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackSubject" xml:space="preserve">
-    <value>pocketBRAIN Feedback </value>
+    <value>pocketBRAIN用户反馈</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackTitleText" xml:space="preserve">
-    <value>Können wir es besser machen?</value>
+    <value>帮助我们将其变得更好？</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackYesText" xml:space="preserve">
-    <value>feedback</value>
+    <value>提交反馈</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="MessageBoxClearCheck" xml:space="preserve">
-    <value>Wollen Sie wirklich das Archiv leeren?</value>
+    <value>确定清除存档？</value>
     <comment>MessageBox</comment>
   </data>
   <data name="MessageBoxInfoClipboard" xml:space="preserve">
-    <value>Der Inhalt wird in die Zwischenablage kopiert.</value>
+    <value>内容已复制到剪贴板</value>
     <comment>MessageBox</comment>
   </data>
   <data name="MessageBoxInfoTitle" xml:space="preserve">
-    <value>Information</value>
+    <value>信息</value>
     <comment>MessageBox</comment>
   </data>
   <data name="MessageBoxNoRecUI" xml:space="preserve">
-    <value>Spracherkennung ist nicht aktiviert. Bitte beziehen Sie sich auf Ihre Telefoneinstellungen.</value>
+    <value>未激活语音识别器。请参阅您的手机设置。</value>
     <comment>MessageBox</comment>
   </data>
   <data name="MessageBoxWarningTitle" xml:space="preserve">
-    <value>Warnung</value>
+    <value>警告</value>
     <comment>MessageBox</comment>
   </data>
   <data name="MoreApps" xml:space="preserve">
-    <value>mehr apps</value>
+    <value>更多软件</value>
     <comment>AboutPage</comment>
   </data>
   <data name="PrivacyInfo" xml:space="preserve">
-    <value>datenschutz informationen</value>
+    <value>隐私政策</value>
     <comment>About Page</comment>
   </data>
   <data name="RateAndReview" xml:space="preserve">
-    <value>bewerten und kritik schreiben</value>
+    <value>给“口袋”评分</value>
     <comment>AboutPage</comment>
   </data>
   <data name="RatingMessage10Text" xml:space="preserve">
-    <value>Es scheint als ob pocketBRAIN Ihnen sehr gefällt!
+    <value>您似乎对我们的软件越来越得心应手！
 
-Warum geben Sie uns nicht eine 5 Sterne Bewertung um zu zeigen, dass Sie unsere Arbeit zu schätzen wissen?</value>
+为什么不给我们个5星好评来表达您的爱呢？</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingMessage5Text" xml:space="preserve">
-    <value>Wir würden uns freuen, wenn Sie unsere App mit 5 Sternen bewerten.
+    <value>我们会非常开心得到您的5星好评
 
-Das würde uns sehr motivieren um die App noch besser zu machen!</value>
+在市场写下您的热爱与支持会让我们更有动力让软件变得更好！</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingNoText" xml:space="preserve">
-    <value>nein danke</value>
+    <value>不，谢谢</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingTitleText" xml:space="preserve">
-    <value>Gefällt Ihnen pocketBRAIN?</value>
+    <value>喜欢pocketBRAIN ?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingYesText" xml:space="preserve">
-    <value>bewerten</value>
+    <value>赏个5星</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="ResourceFlowDirection" xml:space="preserve">
@@ -273,131 +273,131 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
   </data>
   <data name="ResourceLanguage" xml:space="preserve">
-    <value>de</value>
+    <value>zh</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="Settings1Item" xml:space="preserve">
-    <value>1 element</value>
+    <value>1项</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="Settings2Items" xml:space="preserve">
-    <value>2 elemente</value>
+    <value>2项</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="Settings4Items" xml:space="preserve">
-    <value>4 elemente</value>
+    <value>4项</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="Settings6Items" xml:space="preserve">
-    <value>6 elemente</value>
+    <value>6项</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsBackgroundImageTitle" xml:space="preserve">
-    <value>hintergrundbild</value>
+    <value>背景图片</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsDisabled" xml:space="preserve">
-    <value>deaktiviert</value>
+    <value>关闭</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsEnabled" xml:space="preserve">
-    <value>aktiviert</value>
+    <value>启用</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsExtraLarge" xml:space="preserve">
-    <value>sehr groß</value>
+    <value>极大</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsFontSize" xml:space="preserve">
-    <value>schriftgröße</value>
+    <value>文字大小</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsKeyboardExtendedAutoCorrectTitle" xml:space="preserve">
-    <value>automatische wortkorrektur</value>
+    <value>检查拼写错误（仅英文）</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsKeyboardTitle" xml:space="preserve">
-    <value>Tastatur</value>
+    <value>键盘输入</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsLarge" xml:space="preserve">
-    <value>groß</value>
+    <value>大</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsAddNoteTitle" xml:space="preserve">
-    <value>notiz-hinzufügen schaltfläche</value>
+    <value>新建按钮</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandButton" xml:space="preserve">
-    <value>zeige eine schaltfläche</value>
+    <value>显示按键</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandByGesture" xml:space="preserve">
-    <value>durch schüttel-geste</value>
+    <value>通过摇晃手机</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandByGestureAndButton" xml:space="preserve">
-    <value>durch schüttel-geste und schalftfläche</value>
+    <value>通过摇晃手机或按键</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandTitle" xml:space="preserve">
-    <value>minimieren / maximieren</value>
+    <value>最小化/最大化</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsHideAddButton" xml:space="preserve">
-    <value>verbergen (nur horizontales wischen)</value>
+    <value>隐藏（水平划动添加）</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsShowAddButton" xml:space="preserve">
-    <value>sichtbar</value>
+    <value>按钮可见</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsShowCreationDate" xml:space="preserve">
-    <value>erstellungsdatum anzeigen</value>
+    <value>显示创建日期</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsTitle" xml:space="preserve">
-    <value>Listen</value>
+    <value>列表</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsLiveTileTitle" xml:space="preserve">
-    <value>Live-Kacheln</value>
+    <value>动态磁贴</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsLockScreenTitle" xml:space="preserve">
-    <value>Sperrbildschirm</value>
+    <value>锁屏</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsMedium" xml:space="preserve">
-    <value>medium</value>
+    <value>中</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsMinimiumItemsTitle" xml:space="preserve">
-    <value>minimale anzahl elemente</value>
+    <value>最少项目数</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsPreview" xml:space="preserve">
-    <value>vorschau</value>
+    <value>预览</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsSmall" xml:space="preserve">
-    <value>klein</value>
+    <value>小</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTapToSelect" xml:space="preserve">
-    <value>hier tippen um bild zu wählen</value>
+    <value>从相册中选择</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTileNoteCountTitle" xml:space="preserve">
-    <value>anzahl notizen auf haupt-kachel anzeigen</value>
+    <value>在主磁贴上显示数目</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>einstellungen</value>
+    <value>设置</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SupportAndFeedback" xml:space="preserve">
-    <value>hilfe und feedback</value>
+    <value>建议与反馈</value>
     <comment>About Page</comment>
   </data>
 </root>

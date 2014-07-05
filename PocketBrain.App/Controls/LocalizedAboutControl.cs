@@ -37,7 +37,8 @@ namespace PocketBrain.App.Controls
             // contributors
             ContributorsListVisibility = System.Windows.Visibility.Visible;
             SetContributorsList(new List<ContributorModel>() {
-                new ContributorModel("/Assets/Languages/italiano.png","Roc Lat")});
+                new ContributorModel("/Assets/Languages/italiano.png","Roc Lat"),
+                new ContributorModel("/Assets/Languages/chinese.png","吕文志")});
         }
     }
 }

@@ -134,16 +134,12 @@
     <comment>General</comment>
   </data>
   <data name="ApplicationVersion" xml:space="preserve">
-    <value>1.10</value>
+    <value>1.10.1</value>
     <comment>General</comment>
   </data>
   <data name="ArchiveTitle" xml:space="preserve">
     <value>archive</value>
     <comment>ArchivePage</comment>
-  </data>
-  <data name="CalibrateKeyboardHint" xml:space="preserve">
-    <value>Tap HERE to calibrate the keyboard position.</value>
-    <comment>Keyboard</comment>
   </data>
   <data name="ContextMenuDelete" xml:space="preserve">
     <value>supprimer</value>
