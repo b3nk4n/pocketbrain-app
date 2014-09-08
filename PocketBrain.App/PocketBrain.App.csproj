@@ -274,6 +274,7 @@
     <Content Include="Assets\Images\light\share.png" />
     <Content Include="Assets\Images\light\whatsapp.png" />
     <Content Include="Assets\Languages\chinese.png" />
+    <Content Include="Assets\Languages\french.png" />
     <Content Include="Assets\Languages\italiano.png" />
     <Content Include="Assets\LockScreenPlaceholder.png" />
     <Content Include="Assets\quad.png" />

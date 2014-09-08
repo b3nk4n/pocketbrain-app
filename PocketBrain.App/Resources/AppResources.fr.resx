@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutTitle" xml:space="preserve">
-    <value>informations</value>
+    <value>à propos</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationAuthor" xml:space="preserve">
@@ -126,7 +126,7 @@
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationDescription" xml:space="preserve">
-    <value>Cette application vous aide à mémoriser tous vos trucs de tous les jours. Sans fioritures.</value>
+    <value>Cette application vous aide à retenir toutes les petites choses du quotidien. Sans chichis!</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
@@ -138,15 +138,15 @@
     <comment>General</comment>
   </data>
   <data name="ArchiveTitle" xml:space="preserve">
-    <value>archive</value>
+    <value>archiver</value>
     <comment>ArchivePage</comment>
   </data>
   <data name="ContextMenuDelete" xml:space="preserve">
-    <value>supprimer</value>
+    <value>effacer</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuHide" xml:space="preserve">
-    <value>marquer comme invisible</value>
+    <value>cacher sur l'écran de verrouillage</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuPinToStart" xml:space="preserve">
@@ -154,15 +154,15 @@
     <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuRestore" xml:space="preserve">
-    <value>restaurer</value>
+    <value>restorer</value>
     <comment>ArchivePage</comment>
   </data>
   <data name="ContextMenuShow" xml:space="preserve">
-    <value>marquer comme visible</value>
+    <value>afficher sur l'écran de verrouillage</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuUnpinFromStart" xml:space="preserve">
-    <value>détacher de l'écran d'accueil</value>
+    <value>Détacher de l'écran d'accueil</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="Contributors" xml:space="preserve">
@@ -174,7 +174,7 @@
     <comment>General</comment>
   </data>
   <data name="FeedbackBodyText" xml:space="preserve">
-    <value>[Votre évaluation]
+    <value>[Votre feedback ici]
 
 
 ---------------------------------
@@ -191,31 +191,33 @@ Application Version: {4}
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackMessageText" xml:space="preserve">
-    <value>Desole que vous ne vouliez pas évaluer pocketBRAIN. Veuillez expliquer votre expérience ou proposez comment on peut l'améliorer.</value>
+    <value>Désolé d'apprendre que vous ne voulez pas évaluer pocketBRAIN.
+
+Dites-nous ce que vous en pensez ou faites-nous des suggestions pour améliorer notre application</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackNoText" xml:space="preserve">
-    <value>non merci</value>
+    <value>non, merci</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackSubject" xml:space="preserve">
-    <value>pocketBRAIN - Retour d'expérience</value>
+    <value>Retour client pocketBRAIN</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackTitleText" xml:space="preserve">
-    <value>Est-ce qu'on peut l'améliorer?</value>
+    <value>Pouvons-nous faire mieux?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackYesText" xml:space="preserve">
-    <value>d'accord</value>
+    <value>donnez votre avis</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="MessageBoxClearCheck" xml:space="preserve">
-    <value>Voulez-vous vraiment effacer l'archive?</value>
+    <value>Voulez-vous vraiment effacer les archives?</value>
     <comment>MessageBox</comment>
   </data>
   <data name="MessageBoxInfoClipboard" xml:space="preserve">
-    <value>Le contenu est copié dans le presse-papiers.</value>
+    <value>Le contenu a été copié dans le presse-papier</value>
     <comment>MessageBox</comment>
   </data>
   <data name="MessageBoxInfoTitle" xml:space="preserve">
@@ -223,47 +225,47 @@ Application Version: {4}
     <comment>MessageBox</comment>
   </data>
   <data name="MessageBoxNoRecUI" xml:space="preserve">
-    <value>Reconnaissance vocale n'est pas activée. S'il vous plaît se référer aux paramètres de votre téléphone.</value>
+    <value>La reconnaissance vocale n'est pas active. Veuillez vérifier les paramètres de votre téléphone</value>
     <comment>MessageBox</comment>
   </data>
   <data name="MessageBoxWarningTitle" xml:space="preserve">
-    <value>Alerte</value>
+    <value>Avertissement</value>
     <comment>MessageBox</comment>
   </data>
   <data name="MoreApps" xml:space="preserve">
-    <value>plus d'applications</value>
+    <value>plus d'apps</value>
     <comment>AboutPage</comment>
   </data>
   <data name="PrivacyInfo" xml:space="preserve">
-    <value>politique de confidentialité</value>
+    <value>confidentialité</value>
     <comment>About Page</comment>
   </data>
   <data name="RateAndReview" xml:space="preserve">
-    <value>évaluation</value>
+    <value>évaluez et donnez votre avis</value>
     <comment>AboutPage</comment>
   </data>
   <data name="RatingMessage10Text" xml:space="preserve">
-    <value>Il parait que vous trouvez notre application utile!
+    <value>Il semble que vous utilisez beaucoup notre application!
 
-Pourquoi ne pas donner un 5 étoile avis pour montrer votre appréciation?</value>
+Pourquoi ne pas donner 5 étoiles pour exprimer votre satisfaction?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingMessage5Text" xml:space="preserve">
-    <value>On aimeriais que vous avis notre application 5 étoiles.
+    <value>Merci d'attribuer 5 étoiles à notre app.
 
-De nous montrer un peu d'amour dans le Windows Store nous aide à continuer à travailler sur l'application et d'améliorer les choses!</value>
+Votre soutien sur le Store nous aide à améliorer sans cesse notre app!</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingNoText" xml:space="preserve">
-    <value>non merci</value>
+    <value>non, merci</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingTitleText" xml:space="preserve">
-    <value>Vous aimez pocketBRAIN?</value>
+    <value>pocketBRAIN vous plaît?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingYesText" xml:space="preserve">
-    <value>évaluer 5 étoiles</value>
+    <value>attribuez-lui 5 étoiles</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="ResourceFlowDirection" xml:space="preserve">
@@ -275,43 +277,43 @@ De nous montrer un peu d'amour dans le Windows Store nous aide à continuer à t
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="Settings1Item" xml:space="preserve">
-    <value>1 note</value>
+    <value>1 élément</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="Settings2Items" xml:space="preserve">
-    <value>2 notes</value>
+    <value>2 éléments</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="Settings4Items" xml:space="preserve">
-    <value>4 notes</value>
+    <value>4 éléments</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="Settings6Items" xml:space="preserve">
-    <value>6 notes</value>
+    <value>6 éléments</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsBackgroundImageTitle" xml:space="preserve">
-    <value>Arrièr-plan</value>
+    <value>Fond d'écran</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsDisabled" xml:space="preserve">
-    <value>désactié</value>
+    <value>désactivé</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsEnabled" xml:space="preserve">
-    <value>activée</value>
+    <value>activé</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsExtraLarge" xml:space="preserve">
-    <value>très grand</value>
+    <value>très grande</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsFontSize" xml:space="preserve">
-    <value>taille des caractères</value>
+    <value>taille police</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsKeyboardExtendedAutoCorrectTitle" xml:space="preserve">
-    <value>correction automatique de mots</value>
+    <value>correction orthographe automatique</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsKeyboardTitle" xml:space="preserve">
@@ -319,31 +321,31 @@ De nous montrer un peu d'amour dans le Windows Store nous aide à continuer à t
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsLarge" xml:space="preserve">
-    <value>grand</value>
+    <value>grande</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsAddNoteTitle" xml:space="preserve">
-    <value>ajouter-note bouton</value>
+    <value>ajouter bouton note</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandButton" xml:space="preserve">
-    <value>afficer bouton</value>
+    <value>montrer le bouton</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandByGesture" xml:space="preserve">
-    <value>par le secouer geste</value>
+    <value>secouer le téléphone</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandByGestureAndButton" xml:space="preserve">
-    <value>par le secouer geste et bouton</value>
+    <value>secouer le téléphone et bouton</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandTitle" xml:space="preserve">
-    <value>minimiser / maximiser</value>
+    <value>minimiser / agrandir</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsHideAddButton" xml:space="preserve">
-    <value>caché (seulement horiz. geste de balayage)</value>
+    <value>caché (geste horizontal seulement)</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsShowAddButton" xml:space="preserve">
@@ -351,15 +353,15 @@ De nous montrer un peu d'amour dans le Windows Store nous aide à continuer à t
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsShowCreationDate" xml:space="preserve">
-    <value>afficher la date de création</value>
+    <value>montrer la date de création.</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsTitle" xml:space="preserve">
-    <value>Listes</value>
+    <value>Liste</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsLiveTileTitle" xml:space="preserve">
-    <value>Vignettes dynamiques</value>
+    <value>Tuile dynamique</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsLockScreenTitle" xml:space="preserve">
@@ -367,27 +369,27 @@ De nous montrer un peu d'amour dans le Windows Store nous aide à continuer à t
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsMedium" xml:space="preserve">
-    <value>moyen</value>
+    <value>moyenne</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsMinimiumItemsTitle" xml:space="preserve">
-    <value>minimum nombre de notes</value>
+    <value>nombre minimum d'éléments</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsPreview" xml:space="preserve">
-    <value>impression</value>
+    <value>aperçu</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsSmall" xml:space="preserve">
-    <value>petit</value>
+    <value>petite</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTapToSelect" xml:space="preserve">
-    <value>appuyez-à-sélectionnez</value>
+    <value>toucher pour selectionner à partir de la librairie</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTileNoteCountTitle" xml:space="preserve">
-    <value>montrer le nombre de notes sur la vignette principal</value>
+    <value>montrer le nombre d'éléments sur la tuile principale</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
@@ -395,7 +397,7 @@ De nous montrer un peu d'amour dans le Windows Store nous aide à continuer à t
     <comment>SettingsPage</comment>
   </data>
   <data name="SupportAndFeedback" xml:space="preserve">
-    <value>retour d'expérience</value>
+    <value>support et feedback</value>
     <comment>About Page</comment>
   </data>
 </root>
