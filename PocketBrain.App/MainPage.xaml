@@ -90,7 +90,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="MinimizedNoteTemplate">
-            <Border Background="{StaticResource PhoneAccentBrush}">
+            <Border Background="{StaticResource PhoneAccentBrush}" ManipulationCompleted="SwipeDeleteManipulationCompleted">
                 <Button Style="{StaticResource CustomButtonStyle}" Margin="-1" Tag="{Binding Id}" Tap="NoteTapped" >
                     <toolkit:ContextMenuService.ContextMenu>
                         <toolkit:ContextMenu>

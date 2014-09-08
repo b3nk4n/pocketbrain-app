@@ -130,7 +130,7 @@
                             <TextBlock Text="{Binding Path=LocalizedResources.SettingsBackgroundImageTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
                             <Button x:Name="SelectBackgroundImageButton"
                                 Style="{StaticResource CustomButtonStyle}">
-                                <TextBlock Text="{Binding Path=LocalizedResources.SettingsTapToSelect, Source={StaticResource LocalizedStrings}}" Width="432" FontSize="26" />
+                                <TextBlock Text="{Binding Path=LocalizedResources.SettingsTapToSelect, Source={StaticResource LocalizedStrings}}" Width="432" FontSize="26" TextWrapping="Wrap" />
                             </Button>
                         </StackPanel>
                         <StackPanel Margin="0,0,0,12" DataContext="{StaticResource lockScreenViewModel}">
