@@ -32,6 +32,21 @@ namespace PocketBrain.App
         /// </summary>
         private DateTime _lastShakeEventTime = DateTime.MinValue;
 
+        /// <summary>
+        /// The swipe/flick value add limit for the gesture in X direction.
+        /// </summary>
+        private const int SWIPE_VALUE_ADD_LIMIT = 1750;
+
+        /// <summary>
+        /// The swipe/flick value delete limit for the gesture in X direction.
+        /// </summary>
+        private const int SWIPE_VALUE_DELETE_LIMIT = 2000;
+
+        /// <summary>
+        /// The swipe/flick value limit for the gesture in Y direction.
+        /// </summary>
+        private const int SWIPE_VALUE_LIMIT_Y = 100;
+
         // Konstruktor
         public MainPage()
         {
@@ -49,7 +64,7 @@ namespace PocketBrain.App
                 {
                     FeedbackManager.Instance.StartFirst();
                 });
-            StartupActionManager.Instance.Register(10, ActionExecutionRule.Equals, () =>
+            StartupActionManager.Instance.Register(15, ActionExecutionRule.Equals, () =>
                 {
                     FeedbackManager.Instance.StartSecond();
                 });
@@ -283,9 +298,39 @@ namespace PocketBrain.App
         private void SwipeManipulationCompleted(object sender, System.Windows.Input.ManipulationCompletedEventArgs e)
         {
             double flickX = e.FinalVelocities.LinearVelocity.X;
+            double flickY = e.FinalVelocities.LinearVelocity.Y;
 
-            if (Math.Abs(flickX) > 1750)
+            if (flickX > SWIPE_VALUE_ADD_LIMIT && Math.Abs(flickY) < SWIPE_VALUE_LIMIT_Y)
+            {
                 NewNote();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SwipeDeleteManipulationCompleted(object sender, System.Windows.Input.ManipulationCompletedEventArgs e)
+        {
+            FrameworkElement element = sender as FrameworkElement;
+            if (element == null)
+                return;
+
+            double flickX = e.FinalVelocities.LinearVelocity.X;
+            double flickY = e.FinalVelocities.LinearVelocity.Y;
+
+            if (flickX < -SWIPE_VALUE_DELETE_LIMIT && Math.Abs(flickY) < SWIPE_VALUE_LIMIT_Y)
+            {
+                var data = element.DataContext as NoteViewModel;
+                if (data != null)
+                {
+                    if (data.DeleteCommand.CanExecute(null))
+                    {
+                        data.DeleteCommand.Execute(null);
+                    }
+                }
+            }
         }
 
         #region Properties

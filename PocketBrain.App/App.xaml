@@ -332,7 +332,7 @@
         			Margin="0 0 0 8"/>
         		<Grid>
         			<Border x:Name="Border"
-        				Background="Transparent"
+        				Background="{StaticResource MyPhoneChromeLightBrush}"
         				BorderThickness="0">
         				<UserControl x:Name="UserControl" Foreground="{TemplateBinding Foreground}">
         					<StackPanel>

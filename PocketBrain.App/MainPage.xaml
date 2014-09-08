@@ -53,7 +53,7 @@
         </Storyboard>
 
         <DataTemplate x:Key="MaximizedNoteTemplate">
-            <Border Background="{StaticResource PhoneAccentBrush}">
+            <Border Background="{StaticResource PhoneAccentBrush}" ManipulationCompleted="SwipeDeleteManipulationCompleted">
                 <Button Style="{StaticResource CustomButtonStyle}" Margin="-1" Tag="{Binding Id}" Tap="NoteTapped">
                     <toolkit:ContextMenuService.ContextMenu>
                         <toolkit:ContextMenu>
@@ -150,7 +150,7 @@
             <Grid Grid.Row="1" Background="{StaticResource MyPhoneChromeBrush}" ManipulationCompleted="SwipeManipulationCompleted">
                 <Image Source="Assets/finger_swipe.png" Width="240" Opacity="0.33"  Visibility="{Binding IsNoteListEmpty, Converter={StaticResource boolToVis}}" />
                 <Grid x:Name="NotesListContainer" Visibility="Collapsed">
-                    <ListBox x:Name="NotesList" ItemTemplate="{StaticResource MaximizedNoteTemplate}" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+                    <ListBox x:Name="NotesList" ItemTemplate="{StaticResource MaximizedNoteTemplate}" ScrollViewer.VerticalScrollBarVisibility="Hidden"  />
                 </Grid>
                 <Grid x:Name="NotesListMinimizedContainer" Visibility="Collapsed">
                     <rlb:ReorderListBox x:Name="NotesListMinimized" IsReorderEnabled="True"

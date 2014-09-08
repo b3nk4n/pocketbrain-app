@@ -97,7 +97,7 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die 1.10.1 ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die 1.11 ähnelt.
         /// </summary>
         public static string ApplicationVersion {
             get {
