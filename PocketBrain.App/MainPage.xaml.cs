@@ -156,7 +156,7 @@ namespace PocketBrain.App
                 ScrollToTopOnNextNavigationTo = false;
             }
 
-            StartupActionManager.Instance.Fire();
+            StartupActionManager.Instance.Fire(e);
 
             // activate shake listener
             if (Settings.ExpandListsMethod.Value == "0" || Settings.ExpandListsMethod.Value == "2")
