@@ -164,15 +164,9 @@
                             Style="{StaticResource CustomButtonStyle}">
                             <Image x:Name="ShareButtonImage" Source="{Binding Path=ShareImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                         </Button>
-                        <Button Grid.Column="2" Command="{Binding PinToStartCommand}"
-                            Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}}"
+                        <Button x:Name="DeleteNoteButton" Grid.Column="2" Command="{Binding DeleteCommand}"
                             Style="{StaticResource CustomButtonStyle}">
-                            <Image Source="{Binding Path=PinImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
-                        </Button>
-                        <Button Grid.Column="2" Command="{Binding UnpinFromStartCommand}"
-                            Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}, ConverterParameter=!}"
-                            Style="{StaticResource CustomButtonStyle}">
-                            <Image Source="{Binding Path=PinRemoveImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
+                            <Image Source="{Binding Path=DeleteImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                         </Button>
                     </Grid>
                     <Grid>
@@ -188,9 +182,15 @@
                             Style="{StaticResource CustomButtonStyle}">
                             <Image Source="{Binding Path=EyeImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                         </Button>
-                        <Button x:Name="DeleteNoteButton" Grid.Column="1" Command="{Binding DeleteCommand}"
+                        <Button Grid.Column="1" Command="{Binding PinToStartCommand}"
+                            Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}}"
                             Style="{StaticResource CustomButtonStyle}">
-                            <Image Source="{Binding Path=DeleteImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
+                            <Image Source="{Binding Path=PinImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
+                        </Button>
+                        <Button Grid.Column="1" Command="{Binding UnpinFromStartCommand}"
+                            Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}, ConverterParameter=!}"
+                            Style="{StaticResource CustomButtonStyle}">
+                            <Image Source="{Binding Path=PinRemoveImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                         </Button>
                     </Grid>
                 </StackPanel>
