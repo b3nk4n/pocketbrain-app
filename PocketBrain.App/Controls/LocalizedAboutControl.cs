@@ -39,7 +39,7 @@ namespace PocketBrain.App.Controls
             SetContributorsList(new List<ContributorModel>() {
                 new ContributorModel("/Assets/Languages/italiano.png","Roc Lat"),
                 new ContributorModel("/Assets/Languages/chinese.png","吕文志"),
-                new ContributorModel("/Assets/Languages/french.png","Vincent Vuillaume")});
+                new ContributorModel("/Assets/Languages/french.png","Karim Bihi")});
         }
     }
 }
