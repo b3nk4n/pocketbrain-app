@@ -195,7 +195,18 @@ namespace PocketBrain.App
 
             if (!string.IsNullOrEmpty(id))
             {
-                NoteListViewModel.Instance.CurrentNote = NoteListViewModel.Instance.GetNoteById(id);
+                var note = NoteListViewModel.Instance.GetNoteById(id);
+
+                if (note != null)
+                {
+                    NoteListViewModel.Instance.CurrentNote = note;
+                }
+                else
+                {
+                    // note tile was invalid. Go to main page!
+                    NavigationService.Navigate(new Uri("/MainPage.xaml?clearbackstack=true", UriKind.Relative));
+                }
+
             }
             else if (NoteListViewModel.Instance.CurrentNote != null && !string.IsNullOrEmpty(NoteListViewModel.Instance.CurrentNote.Id))
             {
