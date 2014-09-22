@@ -97,7 +97,7 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die 1.11 ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die 2.0 ähnelt.
         /// </summary>
         public static string ApplicationVersion {
             get {
@@ -111,6 +111,42 @@ namespace PocketBrain.App.Resources {
         public static string ArchiveTitle {
             get {
                 return ResourceManager.GetString("ArchiveTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Attention: ähnelt.
+        /// </summary>
+        public static string AttentionTitle {
+            get {
+                return ResourceManager.GetString("AttentionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die You can create a backup of your data, which are going to be saved on you OneDrive. You can later restore the data on any device. ähnelt.
+        /// </summary>
+        public static string BackupInfoText {
+            get {
+                return ResourceManager.GetString("BackupInfoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die backups ähnelt.
+        /// </summary>
+        public static string BackupTitle {
+            get {
+                return ResourceManager.GetString("BackupTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Keep this app active until the operation is finished. A stable internet connection is required. ähnelt.
+        /// </summary>
+        public static string CommonBackupWarningText {
+            get {
+                return ResourceManager.GetString("CommonBackupWarningText", resourceCulture);
             }
         }
         
@@ -174,6 +210,15 @@ namespace PocketBrain.App.Resources {
         public static string Contributors {
             get {
                 return ResourceManager.GetString("Contributors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die create ähnelt.
+        /// </summary>
+        public static string CreateBackupHeaderText {
+            get {
+                return ResourceManager.GetString("CreateBackupHeaderText", resourceCulture);
             }
         }
         
@@ -261,6 +306,78 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die loading... ähnelt.
+        /// </summary>
+        public static string InAppStoreLoading {
+            get {
+                return ResourceManager.GetString("InAppStoreLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die There are currently no in-app purchases available. Please try again later. ähnelt.
+        /// </summary>
+        public static string InAppStoreNoProducts {
+            get {
+                return ResourceManager.GetString("InAppStoreNoProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die purchased ähnelt.
+        /// </summary>
+        public static string InAppStorePurchased {
+            get {
+                return ResourceManager.GetString("InAppStorePurchased", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die in-app store ähnelt.
+        /// </summary>
+        public static string InAppStoreTitle {
+            get {
+                return ResourceManager.GetString("InAppStoreTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die sign in ähnelt.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die sign out ähnelt.
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Die Backup &apos;{0}&apos; could not be created. Please check you internet connection. ähnelt.
+        /// </summary>
+        public static string MessageBoxBackupErrorText {
+            get {
+                return ResourceManager.GetString("MessageBoxBackupErrorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Die Backup &apos;{0}&apos; has been created successfully. ähnelt.
+        /// </summary>
+        public static string MessageBoxBackupSuccessText {
+            get {
+                return ResourceManager.GetString("MessageBoxBackupSuccessText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Do you really want to clear the archive? ähnelt.
         /// </summary>
         public static string MessageBoxClearCheck {
@@ -297,6 +414,24 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Die Backup &apos;{0}&apos; could ne be restored. Please check you internet connection. ähnelt.
+        /// </summary>
+        public static string MessageBoxRestoreErrorText {
+            get {
+                return ResourceManager.GetString("MessageBoxRestoreErrorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Die Backup &apos;{0}&apos; has been restored successfully. ähnelt.
+        /// </summary>
+        public static string MessageBoxRestoreSuccessText {
+            get {
+                return ResourceManager.GetString("MessageBoxRestoreSuccessText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Warning ähnelt.
         /// </summary>
         public static string MessageBoxWarningTitle {
@@ -311,6 +446,15 @@ namespace PocketBrain.App.Resources {
         public static string MoreApps {
             get {
                 return ResourceManager.GetString("MoreApps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Backup title ähnelt.
+        /// </summary>
+        public static string NameOfBackupHintText {
+            get {
+                return ResourceManager.GetString("NameOfBackupHintText", resourceCulture);
             }
         }
         
@@ -400,6 +544,24 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die restore ähnelt.
+        /// </summary>
+        public static string RestoreBackupHeaderText {
+            get {
+                return ResourceManager.GetString("RestoreBackupHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die You can restore you data here. Current notes and tiles are going to be removed. ähnelt.
+        /// </summary>
+        public static string RestoreInfoText {
+            get {
+                return ResourceManager.GetString("RestoreInfoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die 1 item ähnelt.
         /// </summary>
         public static string Settings1Item {
@@ -427,7 +589,7 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die 6 items ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die 6 items (PRO) ähnelt.
         /// </summary>
         public static string Settings6Items {
             get {
@@ -463,7 +625,7 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die extra large ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die extra large (PRO) ähnelt.
         /// </summary>
         public static string SettingsExtraLarge {
             get {
@@ -616,7 +778,7 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die minimum items count ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die items count ähnelt.
         /// </summary>
         public static string SettingsMinimiumItemsTitle {
             get {

@@ -8,7 +8,7 @@
     <Language code="it" />
     <Language code="zh" />
   </Languages>
-  <App xmlns="" ProductID="{ab482544-c92e-478e-b1f5-f5c6661d7693}" Title="pocketBRAIN" RuntimeType="Silverlight" Version="1.11.0.0" Genre="apps.normal" Author="PocketBrain.App author" Description="This application is your quick and easy helper to relieve your brain." Publisher="PocketBrain.App" PublisherID="{47e5a50a-aca2-469e-be1a-a4ac16765a5f}">
+  <App xmlns="" ProductID="{ad1227e4-9f80-4967-957f-6db140dc0c90}" Title="pocketBRAIN" RuntimeType="Silverlight" Version="2.0.0.0" Genre="apps.normal" Author="Benjamin Sautermeister" Description="This application is your quick and easy helper to relieve your brain." Publisher="bsautermeister" PublisherID="{47e5a50a-aca2-469e-be1a-a4ac16765a5f}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_SPEECH_RECOGNITION" />
@@ -16,6 +16,7 @@
       <Capability Name="ID_CAP_SENSORS" />
       <Capability Name="ID_CAP_NETWORKING" />
       <Capability Name="ID_CAP_MEDIALIB_PHOTO" />
+      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />

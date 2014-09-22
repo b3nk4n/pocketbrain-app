@@ -313,5 +313,27 @@ namespace PocketBrain.App.Misc
                 return GetImagePath("arrow.collapsed.png");
             }
         }
+
+        /// <summary>
+        /// Gets the backup button image path.
+        /// </summary>
+        public string BackupImagePath
+        {
+            get
+            {
+                return GetImagePath("backup.png");
+            }
+        }
+
+        /// <summary>
+        /// Gets the store button image path.
+        /// </summary>
+        public string StoreImagePath
+        {
+            get
+            {
+                return GetImagePath("appbar.star.add.png");
+            }
+        }
     }
 }

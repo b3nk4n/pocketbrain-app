@@ -134,12 +134,28 @@
     <comment>General</comment>
   </data>
   <data name="ApplicationVersion" xml:space="preserve">
-    <value>1.11</value>
+    <value>2.0</value>
     <comment>General</comment>
   </data>
   <data name="ArchiveTitle" xml:space="preserve">
     <value>存档</value>
     <comment>ArchivePage</comment>
+  </data>
+  <data name="AttentionTitle" xml:space="preserve">
+    <value>Attention:</value>
+    <comment>Backup</comment>
+  </data>
+  <data name="BackupInfoText" xml:space="preserve">
+    <value>You can create a backup of your data, which are going to be saved on you OneDrive. You can later restore the data on any device.</value>
+    <comment>Backup</comment>
+  </data>
+  <data name="BackupTitle" xml:space="preserve">
+    <value>backups</value>
+    <comment>Backup</comment>
+  </data>
+  <data name="CommonBackupWarningText" xml:space="preserve">
+    <value>Keep this app active until the operation is finished. A stable internet connection is required.</value>
+    <comment>Backup</comment>
   </data>
   <data name="ContextMenuDelete" xml:space="preserve">
     <value>删除</value>
@@ -168,6 +184,10 @@
   <data name="Contributors" xml:space="preserve">
     <value>支持者</value>
     <comment>AboutPage</comment>
+  </data>
+  <data name="CreateBackupHeaderText" xml:space="preserve">
+    <value>create</value>
+    <comment>Backup</comment>
   </data>
   <data name="DefaultTitle" xml:space="preserve">
     <value>无标题</value>
@@ -212,6 +232,38 @@ Application Version: {4}
     <value>提交反馈</value>
     <comment>FeedbackDialogControl</comment>
   </data>
+  <data name="InAppStoreLoading" xml:space="preserve">
+    <value>加载...</value>
+    <comment>InAppStorePage</comment>
+  </data>
+  <data name="InAppStoreNoProducts" xml:space="preserve">
+    <value>目前没有任何应用内购买. 请稍后再试.</value>
+    <comment>InAppStorePage</comment>
+  </data>
+  <data name="InAppStorePurchased" xml:space="preserve">
+    <value>行</value>
+    <comment>InAppStorePage</comment>
+  </data>
+  <data name="InAppStoreTitle" xml:space="preserve">
+    <value>在应用程序商店</value>
+    <comment>InAppStorePage</comment>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>登入</value>
+    <comment>General</comment>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>登出</value>
+    <comment>General</comment>
+  </data>
+  <data name="MessageBoxBackupErrorText" xml:space="preserve">
+    <value>Die Backup '{0}' could not be created. Please check you internet connection.</value>
+    <comment>Backup</comment>
+  </data>
+  <data name="MessageBoxBackupSuccessText" xml:space="preserve">
+    <value>Die Backup '{0}' has been created successfully.</value>
+    <comment>Backup</comment>
+  </data>
   <data name="MessageBoxClearCheck" xml:space="preserve">
     <value>确定清除存档？</value>
     <comment>MessageBox</comment>
@@ -228,6 +280,14 @@ Application Version: {4}
     <value>未激活语音识别器。请参阅您的手机设置。</value>
     <comment>MessageBox</comment>
   </data>
+  <data name="MessageBoxRestoreErrorText" xml:space="preserve">
+    <value>Die Backup '{0}' could ne be restored. Please check you internet connection.</value>
+    <comment>Backup</comment>
+  </data>
+  <data name="MessageBoxRestoreSuccessText" xml:space="preserve">
+    <value>Die Backup '{0}' has been restored successfully.</value>
+    <comment>Backup</comment>
+  </data>
   <data name="MessageBoxWarningTitle" xml:space="preserve">
     <value>警告</value>
     <comment>MessageBox</comment>
@@ -235,6 +295,10 @@ Application Version: {4}
   <data name="MoreApps" xml:space="preserve">
     <value>更多软件</value>
     <comment>AboutPage</comment>
+  </data>
+  <data name="NameOfBackupHintText" xml:space="preserve">
+    <value>Backup title</value>
+    <comment>Backup</comment>
   </data>
   <data name="PrivacyInfo" xml:space="preserve">
     <value>隐私政策</value>
@@ -276,6 +340,14 @@ Application Version: {4}
     <value>zh</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
+  <data name="RestoreBackupHeaderText" xml:space="preserve">
+    <value>restore</value>
+    <comment>Backup</comment>
+  </data>
+  <data name="RestoreInfoText" xml:space="preserve">
+    <value>You can restore you data here. Current notes and tiles are going to be removed.</value>
+    <comment>Backup</comment>
+  </data>
   <data name="Settings1Item" xml:space="preserve">
     <value>1项</value>
     <comment>SettingsPage</comment>
@@ -289,7 +361,7 @@ Application Version: {4}
     <comment>SettingsPage</comment>
   </data>
   <data name="Settings6Items" xml:space="preserve">
-    <value>6项</value>
+    <value>6项 (PRO)</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsBackgroundImageTitle" xml:space="preserve">
@@ -305,7 +377,7 @@ Application Version: {4}
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsExtraLarge" xml:space="preserve">
-    <value>极大</value>
+    <value>极大 (PRO)</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsFontSize" xml:space="preserve">
@@ -373,7 +445,7 @@ Application Version: {4}
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsMinimiumItemsTitle" xml:space="preserve">
-    <value>最少项目数</value>
+    <value>项目数</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsPreview" xml:space="preserve">

@@ -30,5 +30,10 @@ namespace PocketBrain.App
         /// The media library index for attachements.
         /// </summary>
         public const string PARAM_MEDIA_LIB_INDEX = "mediaLibIndex";
+
+        /// <summary>
+        /// The PRO version key.
+        /// </summary>
+        public const string PRO_VERSION_KEY = "pro_version";
     }
 }

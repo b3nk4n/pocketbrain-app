@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using BugSense.Core.Model;
 using BugSense;
 using System.Diagnostics;
+using PhoneKit.Framework.InAppPurchase;
 
 namespace PocketBrain.App
 {
@@ -151,6 +152,9 @@ namespace PocketBrain.App
             SelectByTag(LiveTileFontSizePicker, Settings.LiveTileFontSize.Value);
             SelectByTag(LockScreenFontSizePicker, Settings.LockScreenFontSize.Value);
             SelectByTag(KeyboardExtendedAutoCorrectPicker, Settings.KeyboardWordAutocorrection.Value);
+
+            // hack: make sure the backup-button is visible after purchase.
+            NoteListViewModel.Instance.UpdateHasProVersion();
         }
 
         /// <summary>
@@ -169,15 +173,30 @@ namespace PocketBrain.App
                 pos++;
                 Settings.ExpandListsMethod.Value = (string)(ExpandListPicker.SelectedItem as ListPickerItem).Tag;
                 pos++;
-                Settings.MaximumLockItems.Value = (string)(MaxLockItemsPicker.SelectedItem as ListPickerItem).Tag;
+                var valueLockItems = (string)(MaxLockItemsPicker.SelectedItem as ListPickerItem).Tag;
+                if (valueLockItems == "6" && !InAppPurchaseHelper.IsProductActive(AppConstants.PRO_VERSION_KEY))
+                {
+                    valueLockItems = "4";
+                }
+                Settings.MaximumLockItems.Value = valueLockItems;
                 pos++;
                 Settings.ShowNoteCountOnLiveTile.Value = (string)(TileNoteCountListPicker.SelectedItem as ListPickerItem).Tag;
                 pos++;
                 Settings.ShowAddNoteButton.Value = (string)(AddNoteButtonPicker.SelectedItem as ListPickerItem).Tag;
                 pos++;
-                Settings.LiveTileFontSize.Value = (string)(LiveTileFontSizePicker.SelectedItem as ListPickerItem).Tag;
+                var valueTileSize = (string)(LiveTileFontSizePicker.SelectedItem as ListPickerItem).Tag;
+                if (valueTileSize == "extralarge" && !InAppPurchaseHelper.IsProductActive(AppConstants.PRO_VERSION_KEY))
+                {
+                    valueTileSize = "large";
+                }
+                Settings.LiveTileFontSize.Value = valueTileSize;
                 pos++;
-                Settings.LockScreenFontSize.Value = (string)(LockScreenFontSizePicker.SelectedItem as ListPickerItem).Tag;
+                var valueLockSize = (string)(LockScreenFontSizePicker.SelectedItem as ListPickerItem).Tag;
+                if (valueLockSize == "extralarge" && !InAppPurchaseHelper.IsProductActive(AppConstants.PRO_VERSION_KEY))
+                {
+                    valueLockSize = "large";
+                }
+                Settings.LockScreenFontSize.Value = valueLockSize;
                 pos++;
                 Settings.KeyboardWordAutocorrection.Value = (string)(KeyboardExtendedAutoCorrectPicker.SelectedItem as ListPickerItem).Tag;
                 pos++;

@@ -24,6 +24,7 @@
     <ValidateXaml>true</ValidateXaml>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <ExpressionBlendVersion>12.0.50429.0</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -99,11 +100,17 @@
     <Compile Include="ArchivePage.xaml.cs">
       <DependentUpon>ArchivePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BackupPage.xaml.cs">
+      <DependentUpon>BackupPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\AboutControlBase.xaml.cs">
       <DependentUpon>AboutControlBase.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\BackupControlViewModel.cs" />
     <Compile Include="Controls\LocalizedAboutControl.cs" />
+    <Compile Include="Controls\LocalizedBackupControl.cs" />
     <Compile Include="Controls\LocalizedFeedbackDialogControl.cs" />
+    <Compile Include="Controls\LocalizedInAppStoreControl.cs" />
     <Compile Include="Controls\NoteLockScreen.xaml.cs">
       <DependentUpon>NoteLockScreen.xaml</DependentUpon>
     </Compile>
@@ -123,6 +130,9 @@
       <DependentUpon>NoteWideTile.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomUriMapper.cs" />
+    <Compile Include="InAppStorePage.xaml.cs">
+      <DependentUpon>InAppStorePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -161,6 +171,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="BackupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\AboutControlBase.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -186,6 +200,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\NoteWideTile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InAppStorePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -219,12 +237,14 @@
     <Content Include="Assets\finger_swipe.png" />
     <Content Include="Assets\Images\dark\add.note.png" />
     <Content Include="Assets\Images\dark\add.png" />
+    <Content Include="Assets\Images\dark\appbar.star.add.png" />
     <Content Include="Assets\Images\dark\append.png" />
     <Content Include="Assets\Images\dark\archive.clear.png" />
     <Content Include="Assets\Images\dark\archive.png" />
     <Content Include="Assets\Images\dark\arrow.collapsed.png" />
     <Content Include="Assets\Images\dark\arrow.expand.png" />
     <Content Include="Assets\Images\dark\back.cropped.png" />
+    <Content Include="Assets\Images\dark\backup.png" />
     <Content Include="Assets\Images\dark\delete.png" />
     <Content Include="Assets\Images\dark\email.png" />
     <Content Include="Assets\Images\dark\eye.hide.png" />
@@ -247,7 +267,9 @@
     <Content Include="Assets\Images\dark\share.png" />
     <Content Include="Assets\Images\dark\whatsapp.png" />
     <Content Include="Assets\Images\light\add.note.png" />
+    <Content Include="Assets\Images\light\appbar.star.add.png" />
     <Content Include="Assets\Images\light\arrow.expand.png" />
+    <Content Include="Assets\Images\light\backup.png" />
     <Content Include="Assets\Images\light\microphone.png" />
     <Content Include="Assets\Images\light\append.png" />
     <Content Include="Assets\Images\light\archive.clear.png" />
@@ -312,17 +334,14 @@
     <Reference Include="BugSense-WP8">
       <HintPath>..\packages\BugSense.WP8.3.6.4.0\lib\wp8\BugSense-WP8.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Phone.Controls.Toolkit">
-      <HintPath>..\Lib\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    <Reference Include="Microsoft.Expression.Interactions" />
+    <Reference Include="Microsoft.Live, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=8.0.1.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\PhoneKit.Framework\Libs\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.2\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="PhoneKit.Framework">
-      <HintPath>..\Lib\PhoneKit.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="PhoneKit.Framework.Core">
-      <HintPath>..\Lib\PhoneKit.Framework.Core.dll</HintPath>
     </Reference>
     <Reference Include="ReorderListBox">
       <HintPath>..\packages\ReorderListBox.1.2.0.0\lib\wp80\ReorderListBox.dll</HintPath>
@@ -336,8 +355,18 @@
     <Reference Include="System.Net.Http.Primitives">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.20\lib\sl4-windowsphone71\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Interactivity" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\PhoneKit.Framework\PhoneKit.Framework.Core\PhoneKit.Framework.Core.csproj">
+      <Project>{0028ac27-312b-4f73-b8f2-c3b8d9740a86}</Project>
+      <Name>PhoneKit.Framework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PhoneKit.Framework\PhoneKit.Framework\PhoneKit.Framework.csproj">
+      <Project>{9274ed00-223e-41d1-a1bc-e7cdd8c8d34d}</Project>
+      <Name>PhoneKit.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

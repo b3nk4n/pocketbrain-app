@@ -20,6 +20,7 @@ using PhoneKit.Framework.Core.LockScreen;
 using System.Windows.Media;
 using PhoneKit.Framework.Tile;
 using PhoneKit.Framework.Core.Themeing;
+using PhoneKit.Framework.InAppPurchase;
 
 namespace PocketBrain.App.ViewModel
 {
@@ -148,12 +149,9 @@ namespace PocketBrain.App.ViewModel
             InsertNote(note);
         }
 
-        /// <summary>
-        /// Loads the notes data.
-        /// </summary>
-        protected override void Load()
+        public override void Load(bool forceReload = false)
         {
-            if (_isDataLoaded)
+            if (_isDataLoaded && !forceReload)
                 return;
 
             var loadedNotes = StorageHelper.LoadSerializedFile<ObservableCollection<NoteViewModel>>("notes.data");
@@ -415,6 +413,26 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return LockScreenHelper.HasAccess();
+            }
+        }
+
+        public void UpdateHasProVersion()
+        {
+            NotifyPropertyChanged("HasProVersion");
+        }
+
+        /// <summary>
+        /// Gets whether the application is a pro version.
+        /// </summary>
+        public bool HasProVersion
+        {
+            get
+            {
+#if DEBUG
+                return true;
+#else
+                return InAppPurchaseHelper.IsProductActive(AppConstants.PRO_VERSION_KEY);
+#endif
             }
         }
 

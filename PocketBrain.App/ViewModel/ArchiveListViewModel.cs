@@ -112,12 +112,9 @@ namespace PocketBrain.App.ViewModel
             _clearCommand.RaiseCanExecuteChanged();
         }
 
-        /// <summary>
-        /// Loads the achived notes data.
-        /// </summary>
-        protected override void Load()
+        public override void Load(bool forceReload = false)
         {
-            if (_isDataLoaded)
+            if (_isDataLoaded && !forceReload)
                 return;
 
             var loadedNotes = StorageHelper.LoadSerializedFile<ObservableCollection<NoteViewModel>>("archive.data");

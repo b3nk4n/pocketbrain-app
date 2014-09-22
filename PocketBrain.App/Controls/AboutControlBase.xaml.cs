@@ -74,6 +74,10 @@ namespace PocketBrain.App.Controls
                 };
         }
 
+        #endregion
+
+        #region Methods
+
         /// <summary>
         /// Sets the contributors to the list.
         /// </summary>
@@ -90,10 +94,6 @@ namespace PocketBrain.App.Controls
         /// Localizes the user control content and texts.
         /// </summary>
         protected abstract void LocalizeContent();
-
-        #endregion
-
-        #region Methods
 
         /// <summary>
         /// Sets the framework branding.

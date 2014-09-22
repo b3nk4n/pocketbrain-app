@@ -16,6 +16,7 @@ using PhoneKit.Framework.OS;
 using PocketBrain.App.Misc;
 using BugSense.Core.Model;
 using BugSense;
+using PhoneKit.Framework.InAppPurchase;
 
 namespace PocketBrain.App
 {
@@ -451,6 +452,9 @@ namespace PocketBrain.App
         /// </summary>
         private void ShowKeyboard()
         {
+            if (!InAppPurchaseHelper.IsProductActive(AppConstants.PRO_VERSION_KEY))
+                return;
+
             if (DeviceHelper.IsLumia1520 && DisplayHelper.GetResolution() == ScreenResolution.P1080)
             {
                 // special animation for lumia1520, because there is a different view behaviour

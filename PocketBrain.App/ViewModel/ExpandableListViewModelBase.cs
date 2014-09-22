@@ -40,7 +40,8 @@ namespace PocketBrain.App.ViewModel
         /// <summary>
         /// Loads the data.
         /// </summary>
-        protected abstract void Load();
+        /// <param name="forceReload">True to force the relaod even when the data has already been loaded.</param>
+        public abstract void Load(bool forceReload = false);
 
         /// <summary>
         /// Saves the data.

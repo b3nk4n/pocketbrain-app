@@ -134,12 +134,28 @@
     <comment>General</comment>
   </data>
   <data name="ApplicationVersion" xml:space="preserve">
-    <value>1.11</value>
+    <value>2.0</value>
     <comment>General</comment>
   </data>
   <data name="ArchiveTitle" xml:space="preserve">
     <value>archiv</value>
     <comment>ArchivePage</comment>
+  </data>
+  <data name="AttentionTitle" xml:space="preserve">
+    <value>Achtung:</value>
+    <comment>Backup</comment>
+  </data>
+  <data name="BackupInfoText" xml:space="preserve">
+    <value>Sie können eine Sicherung ihrer Notizen erstellen, welche auf ihrem OneDrive gespeichert werden. Die Daten können auf einem beliebigen Gerät wiederherstellt werden.</value>
+    <comment>Backup</comment>
+  </data>
+  <data name="BackupTitle" xml:space="preserve">
+    <value>sicherungen</value>
+    <comment>Backup</comment>
+  </data>
+  <data name="CommonBackupWarningText" xml:space="preserve">
+    <value>Lassen Sie die App aktiv, bis der Vorgang abgeschlossen ist. Es wird eine Internetverbindung benötigt.</value>
+    <comment>Backup</comment>
   </data>
   <data name="ContextMenuDelete" xml:space="preserve">
     <value>löschen</value>
@@ -168,6 +184,10 @@
   <data name="Contributors" xml:space="preserve">
     <value>Unterstützt von</value>
     <comment>AboutPage</comment>
+  </data>
+  <data name="CreateBackupHeaderText" xml:space="preserve">
+    <value>erstellen</value>
+    <comment>Backup</comment>
   </data>
   <data name="DefaultTitle" xml:space="preserve">
     <value>Unbenannt</value>
@@ -212,6 +232,38 @@ Erzählen Sie uns von Ihren Erfahrungen oder teilen Sie uns Vorschläge mit, dam
     <value>feedback</value>
     <comment>FeedbackDialogControl</comment>
   </data>
+  <data name="InAppStoreLoading" xml:space="preserve">
+    <value>lade...</value>
+    <comment>InAppStorePage</comment>
+  </data>
+  <data name="InAppStoreNoProducts" xml:space="preserve">
+    <value>Aktuell gibt es keine In-App-Käufe. Versuchen Sie es später noch einmal.</value>
+    <comment>InAppStorePage</comment>
+  </data>
+  <data name="InAppStorePurchased" xml:space="preserve">
+    <value>gekauft</value>
+    <comment>InAppStorePage</comment>
+  </data>
+  <data name="InAppStoreTitle" xml:space="preserve">
+    <value>erweiterungen</value>
+    <comment>InAppStorePage</comment>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>anmelden</value>
+    <comment>General</comment>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>abmelden</value>
+    <comment>General</comment>
+  </data>
+  <data name="MessageBoxBackupErrorText" xml:space="preserve">
+    <value>Die Sicherung '{0}' konnte leider nicht erstellt werden. Bitte prüfen Sie ihre Internetverbindung.</value>
+    <comment>Backup</comment>
+  </data>
+  <data name="MessageBoxBackupSuccessText" xml:space="preserve">
+    <value>Die Sicherung '{0}' wurde erfolgreich erstellt.</value>
+    <comment>Backup</comment>
+  </data>
   <data name="MessageBoxClearCheck" xml:space="preserve">
     <value>Wollen Sie wirklich das Archiv leeren?</value>
     <comment>MessageBox</comment>
@@ -228,6 +280,14 @@ Erzählen Sie uns von Ihren Erfahrungen oder teilen Sie uns Vorschläge mit, dam
     <value>Spracherkennung ist nicht aktiviert. Bitte beziehen Sie sich auf Ihre Telefoneinstellungen.</value>
     <comment>MessageBox</comment>
   </data>
+  <data name="MessageBoxRestoreErrorText" xml:space="preserve">
+    <value>Die Sicherung '{0}' konnte leider nicht wiederhergestellt werden. Bitte prüfen Sie ihre Internetverbindung.</value>
+    <comment>Backup</comment>
+  </data>
+  <data name="MessageBoxRestoreSuccessText" xml:space="preserve">
+    <value>Die Sicherung '{0}' wurde erfolgreich wiederhergestellt.</value>
+    <comment>Backup</comment>
+  </data>
   <data name="MessageBoxWarningTitle" xml:space="preserve">
     <value>Warnung</value>
     <comment>MessageBox</comment>
@@ -235,6 +295,10 @@ Erzählen Sie uns von Ihren Erfahrungen oder teilen Sie uns Vorschläge mit, dam
   <data name="MoreApps" xml:space="preserve">
     <value>mehr apps</value>
     <comment>AboutPage</comment>
+  </data>
+  <data name="NameOfBackupHintText" xml:space="preserve">
+    <value>Sicherungsname</value>
+    <comment>Backup</comment>
   </data>
   <data name="PrivacyInfo" xml:space="preserve">
     <value>datenschutz informationen</value>
@@ -276,6 +340,14 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <value>de</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
+  <data name="RestoreBackupHeaderText" xml:space="preserve">
+    <value>wiederherstellen</value>
+    <comment>Backup</comment>
+  </data>
+  <data name="RestoreInfoText" xml:space="preserve">
+    <value>Sie können Ihre erstellten Sicherungen hier wiederherstellen. Vorhandene Notizen werden überschrieben und erstellte Kacheln entfernt.</value>
+    <comment>Backup</comment>
+  </data>
   <data name="Settings1Item" xml:space="preserve">
     <value>1 element</value>
     <comment>SettingsPage</comment>
@@ -289,7 +361,7 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="Settings6Items" xml:space="preserve">
-    <value>6 elemente</value>
+    <value>6 elemente (PRO)</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsBackgroundImageTitle" xml:space="preserve">
@@ -305,7 +377,7 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsExtraLarge" xml:space="preserve">
-    <value>sehr groß</value>
+    <value>sehr groß (PRO)</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsFontSize" xml:space="preserve">
@@ -373,7 +445,7 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsMinimiumItemsTitle" xml:space="preserve">
-    <value>minimale anzahl elemente</value>
+    <value>anzahl elemente</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsPreview" xml:space="preserve">
