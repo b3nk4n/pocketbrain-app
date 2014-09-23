@@ -34,6 +34,6 @@ namespace PocketBrain.App
         /// <summary>
         /// The PRO version key.
         /// </summary>
-        public const string PRO_VERSION_KEY = "pro_version";
+        public const string PRO_VERSION_KEY = "pocketbrain_pro";
     }
 }

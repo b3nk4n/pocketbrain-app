@@ -97,7 +97,7 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die 2.0 ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die 2.0.1 ähnelt.
         /// </summary>
         public static string ApplicationVersion {
             get {
@@ -796,7 +796,7 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die small ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die small (PRO) ähnelt.
         /// </summary>
         public static string SettingsSmall {
             get {

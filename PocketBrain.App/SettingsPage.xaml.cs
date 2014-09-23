@@ -174,9 +174,12 @@ namespace PocketBrain.App
                 Settings.ExpandListsMethod.Value = (string)(ExpandListPicker.SelectedItem as ListPickerItem).Tag;
                 pos++;
                 var valueLockItems = (string)(MaxLockItemsPicker.SelectedItem as ListPickerItem).Tag;
-                if (valueLockItems == "6" && !InAppPurchaseHelper.IsProductActive(AppConstants.PRO_VERSION_KEY))
+                if (!InAppPurchaseHelper.IsProductActive(AppConstants.PRO_VERSION_KEY))
                 {
-                    valueLockItems = "4";
+                    if (valueLockItems == "6")
+                    {
+                        valueLockItems = "4";
+                    }
                 }
                 Settings.MaximumLockItems.Value = valueLockItems;
                 pos++;
@@ -185,16 +188,30 @@ namespace PocketBrain.App
                 Settings.ShowAddNoteButton.Value = (string)(AddNoteButtonPicker.SelectedItem as ListPickerItem).Tag;
                 pos++;
                 var valueTileSize = (string)(LiveTileFontSizePicker.SelectedItem as ListPickerItem).Tag;
-                if (valueTileSize == "extralarge" && !InAppPurchaseHelper.IsProductActive(AppConstants.PRO_VERSION_KEY))
+                if (!InAppPurchaseHelper.IsProductActive(AppConstants.PRO_VERSION_KEY))
                 {
-                    valueTileSize = "large";
+                    if (valueTileSize == "extralarge")
+                    {
+                        valueTileSize = "large";
+                    }
+                    else if (valueTileSize == "small")
+                    {
+                        valueTileSize = "medium";
+                    }
                 }
                 Settings.LiveTileFontSize.Value = valueTileSize;
                 pos++;
                 var valueLockSize = (string)(LockScreenFontSizePicker.SelectedItem as ListPickerItem).Tag;
-                if (valueLockSize == "extralarge" && !InAppPurchaseHelper.IsProductActive(AppConstants.PRO_VERSION_KEY))
+                if (!InAppPurchaseHelper.IsProductActive(AppConstants.PRO_VERSION_KEY))
                 {
-                    valueLockSize = "large";
+                    if (valueLockSize == "extralarge")
+                    {
+                        valueLockSize = "large";
+                    }
+                    else if (valueLockSize == "small")
+                    {
+                        valueLockSize = "medium";
+                    }
                 }
                 Settings.LockScreenFontSize.Value = valueLockSize;
                 pos++;

@@ -134,7 +134,7 @@
     <comment>General</comment>
   </data>
   <data name="ApplicationVersion" xml:space="preserve">
-    <value>2.0</value>
+    <value>2.0.1</value>
     <comment>General</comment>
   </data>
   <data name="ArchiveTitle" xml:space="preserve">
@@ -453,7 +453,7 @@ Votre soutien sur le Store nous aide à améliorer sans cesse notre app!</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsSmall" xml:space="preserve">
-    <value>petite</value>
+    <value>petite (PRO)</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTapToSelect" xml:space="preserve">

@@ -9,7 +9,7 @@ using System.Resources;
 [assembly: AssemblyTitle("PocketBrain")]
 [assembly: AssemblyDescription("A modern note application.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("bsautermeister")]
 [assembly: AssemblyProduct("PocketBrain")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
@@ -32,6 +32,6 @@ using System.Resources;
 //
 // Sie können alle Werte angeben oder die Standardwerte für Revisions- und Buildnummer verwenden 
 // übernehmen, indem Sie "*" wie folgt verwenden:
-[assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("2.0.0.0")]
+[assembly: AssemblyVersion("2.0.1.0")]
+[assembly: AssemblyFileVersion("2.0.1.0")]
 [assembly: NeutralResourcesLanguageAttribute("en")]

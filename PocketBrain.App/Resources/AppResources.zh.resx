@@ -134,7 +134,7 @@
     <comment>General</comment>
   </data>
   <data name="ApplicationVersion" xml:space="preserve">
-    <value>2.0</value>
+    <value>2.0.1</value>
     <comment>General</comment>
   </data>
   <data name="ArchiveTitle" xml:space="preserve">
@@ -453,7 +453,7 @@ Application Version: {4}
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsSmall" xml:space="preserve">
-    <value>小</value>
+    <value>小 (PRO)</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTapToSelect" xml:space="preserve">
