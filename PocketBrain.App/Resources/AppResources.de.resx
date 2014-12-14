@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutTitle" xml:space="preserve">
-    <value>hilfe</value>
+    <value>Hilfe</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationAuthor" xml:space="preserve">
@@ -134,11 +134,11 @@
     <comment>General</comment>
   </data>
   <data name="ApplicationVersion" xml:space="preserve">
-    <value>2.0.1</value>
+    <value>2.1</value>
     <comment>General</comment>
   </data>
   <data name="ArchiveTitle" xml:space="preserve">
-    <value>archiv</value>
+    <value>Archiv</value>
     <comment>ArchivePage</comment>
   </data>
   <data name="AttentionTitle" xml:space="preserve">
@@ -150,7 +150,7 @@
     <comment>Backup</comment>
   </data>
   <data name="BackupTitle" xml:space="preserve">
-    <value>sicherungen</value>
+    <value>Sicherungen</value>
     <comment>Backup</comment>
   </data>
   <data name="CommonBackupWarningText" xml:space="preserve">
@@ -158,27 +158,27 @@
     <comment>Backup</comment>
   </data>
   <data name="ContextMenuDelete" xml:space="preserve">
-    <value>löschen</value>
+    <value>Löschen</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuHide" xml:space="preserve">
-    <value>am Sperrbildschirm verstecken</value>
+    <value>Am Sperrbildschirm verstecken</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuPinToStart" xml:space="preserve">
-    <value>auf startseite</value>
+    <value>Auf Startseite</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuRestore" xml:space="preserve">
-    <value>wiederherstellen</value>
+    <value>Wiederherstellen</value>
     <comment>ArchivePage</comment>
   </data>
   <data name="ContextMenuShow" xml:space="preserve">
-    <value>am Sperrbildschirm anzeigen</value>
+    <value>Am Sperrbildschirm anzeigen</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="ContextMenuUnpinFromStart" xml:space="preserve">
-    <value>von startseite entfernen</value>
+    <value>Von Startseite entfernen</value>
     <comment>ContextMenu</comment>
   </data>
   <data name="Contributors" xml:space="preserve">
@@ -186,7 +186,7 @@
     <comment>AboutPage</comment>
   </data>
   <data name="CreateBackupHeaderText" xml:space="preserve">
-    <value>erstellen</value>
+    <value>Erstellen</value>
     <comment>Backup</comment>
   </data>
   <data name="DefaultTitle" xml:space="preserve">
@@ -233,7 +233,7 @@ Erzählen Sie uns von Ihren Erfahrungen oder teilen Sie uns Vorschläge mit, dam
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="InAppStoreLoading" xml:space="preserve">
-    <value>lade...</value>
+    <value>Laden...</value>
     <comment>InAppStorePage</comment>
   </data>
   <data name="InAppStoreNoProducts" xml:space="preserve">
@@ -245,7 +245,7 @@ Erzählen Sie uns von Ihren Erfahrungen oder teilen Sie uns Vorschläge mit, dam
     <comment>InAppStorePage</comment>
   </data>
   <data name="InAppStoreTitle" xml:space="preserve">
-    <value>erweiterungen</value>
+    <value>Erweiterungen</value>
     <comment>InAppStorePage</comment>
   </data>
   <data name="Login" xml:space="preserve">
@@ -293,7 +293,7 @@ Erzählen Sie uns von Ihren Erfahrungen oder teilen Sie uns Vorschläge mit, dam
     <comment>MessageBox</comment>
   </data>
   <data name="MoreApps" xml:space="preserve">
-    <value>mehr apps</value>
+    <value>Mehr Apps</value>
     <comment>AboutPage</comment>
   </data>
   <data name="NameOfBackupHintText" xml:space="preserve">
@@ -301,11 +301,11 @@ Erzählen Sie uns von Ihren Erfahrungen oder teilen Sie uns Vorschläge mit, dam
     <comment>Backup</comment>
   </data>
   <data name="PrivacyInfo" xml:space="preserve">
-    <value>datenschutz informationen</value>
+    <value>Datenschutz-Informationen</value>
     <comment>About Page</comment>
   </data>
   <data name="RateAndReview" xml:space="preserve">
-    <value>bewerten und kritik schreiben</value>
+    <value>Bewerten und Kritik schreiben</value>
     <comment>AboutPage</comment>
   </data>
   <data name="RatingMessage10Text" xml:space="preserve">
@@ -341,7 +341,7 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="RestoreBackupHeaderText" xml:space="preserve">
-    <value>wiederherstellen</value>
+    <value>Wiederherstellen</value>
     <comment>Backup</comment>
   </data>
   <data name="RestoreInfoText" xml:space="preserve">
@@ -365,7 +365,7 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsBackgroundImageTitle" xml:space="preserve">
-    <value>hintergrundbild</value>
+    <value>Hintergrundbild</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsDisabled" xml:space="preserve">
@@ -381,11 +381,11 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsFontSize" xml:space="preserve">
-    <value>schriftgröße</value>
+    <value>Schriftgröße</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsKeyboardExtendedAutoCorrectTitle" xml:space="preserve">
-    <value>automatische wortkorrektur</value>
+    <value>Automatische Wortkorrektur</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsKeyboardTitle" xml:space="preserve">
@@ -397,27 +397,27 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsAddNoteTitle" xml:space="preserve">
-    <value>notiz-hinzufügen schaltfläche</value>
+    <value>Notiz-Hinzufügen Schaltfläche</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandButton" xml:space="preserve">
-    <value>zeige eine schaltfläche</value>
+    <value>zeige eine Schaltfläche</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandByGesture" xml:space="preserve">
-    <value>durch schüttel-geste</value>
+    <value>durch Schüttel-Geste</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandByGestureAndButton" xml:space="preserve">
-    <value>durch schüttel-geste und schalftfläche</value>
+    <value>durch Schüttel-Geste und Schalftfläche</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandTitle" xml:space="preserve">
-    <value>minimieren / maximieren</value>
+    <value>Minimieren / Maximieren</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsHideAddButton" xml:space="preserve">
-    <value>verbergen (nur horizontales wischen)</value>
+    <value>verbergen (nur horizontales Wischen)</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsShowAddButton" xml:space="preserve">
@@ -425,7 +425,7 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsShowCreationDate" xml:space="preserve">
-    <value>erstellungsdatum anzeigen</value>
+    <value>Erstellungsdatum anzeigen</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsTitle" xml:space="preserve">
@@ -445,11 +445,11 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsMinimiumItemsTitle" xml:space="preserve">
-    <value>anzahl elemente</value>
+    <value>Anzahl Elemente</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsPreview" xml:space="preserve">
-    <value>vorschau</value>
+    <value>Vorschau</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsSmall" xml:space="preserve">
@@ -457,19 +457,19 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTapToSelect" xml:space="preserve">
-    <value>hier tippen um bild zu wählen</value>
+    <value>hier tippen um Bild zu wählen</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTileNoteCountTitle" xml:space="preserve">
-    <value>anzahl notizen auf haupt-kachel anzeigen</value>
+    <value>Anzahl Notizen auf Haupt-kachel anzeigen</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>einstellungen</value>
+    <value>Einstellungen</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SupportAndFeedback" xml:space="preserve">
-    <value>hilfe und feedback</value>
+    <value>Hilfe und Feedback</value>
     <comment>About Page</comment>
   </data>
 </root>

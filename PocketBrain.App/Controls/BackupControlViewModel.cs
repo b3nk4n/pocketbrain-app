@@ -1,4 +1,5 @@
 ﻿using PhoneKit.Framework.Controls;
+using PhoneKit.Framework.Storage;
 using PocketBrain.App.Resources;
 using PocketBrain.App.ViewModel;
 using System;
@@ -17,6 +18,11 @@ namespace PocketBrain.App.Controls
             : base("000000004C119E36", AppResources.ApplicationTitle)
         {
             
+        }
+
+        protected override IEnumerable<string> GetScopes()
+        {
+            return OneDriveManager.SCOPES_PHOTOS;
         }
 
         protected override IDictionary<string, IList<string>> GetBackupDirectoriesAndFiles()
