@@ -60,11 +60,11 @@ namespace PocketBrain.App
                 };
 
             // register startup actions
-            StartupActionManager.Instance.Register(5, ActionExecutionRule.Equals, () =>
+            StartupActionManager.Instance.Register(10, ActionExecutionRule.Equals, () =>
                 {
                     FeedbackManager.Instance.StartFirst();
                 });
-            StartupActionManager.Instance.Register(15, ActionExecutionRule.Equals, () =>
+            StartupActionManager.Instance.Register(25, ActionExecutionRule.Equals, () =>
                 {
                     FeedbackManager.Instance.StartSecond();
                 });
