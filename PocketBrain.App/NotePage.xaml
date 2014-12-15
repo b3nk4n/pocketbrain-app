@@ -227,7 +227,7 @@
                 <Rectangle Grid.Row="2" Grid.ColumnSpan="2" Fill="{StaticResource PhoneChromeBrush}" />
             </Grid>
         </Border>
-        <Border VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,110,0,0">
+        <Border VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,110,0,0" Visibility="{Binding IsSpeechSupported, Converter={StaticResource boolToVis}}">
             <Button x:Name="SpeakButton"
                     Style="{StaticResource CustomCornerButtonStyle}">
                 <Image x:Name="ExpansionButtonImage" Source="{Binding Path=SpeakImagePath, Source={StaticResource ThemedImageSource}}" Height="38" HorizontalAlignment="Right" Margin="0,0,-12,0" />

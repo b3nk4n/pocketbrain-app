@@ -244,11 +244,17 @@ namespace PocketBrain.App.ViewModel
                 {
                     try
                     {
+                        if (Speech.Instance.HasRecognizerUIError)
+                            return;
+
+                        // enforce to instantiate the recoginizer UI
+                        var recognizer = Speech.Instance.RecognizerUI;
+
                         if (Speech.Instance.HasRecognizerUI)
                         {
-                            Speech.Instance.RecognizerUI.Settings.ReadoutEnabled = false;
-                            Speech.Instance.RecognizerUI.Settings.ShowConfirmation = false;
-                            var result = await Speech.Instance.RecognizerUI.RecognizeWithUIAsync();
+                            recognizer.Settings.ReadoutEnabled = false;
+                            recognizer.Settings.ShowConfirmation = false;
+                            var result = await recognizer.RecognizeWithUIAsync();
 
                             if (result.ResultStatus == Windows.Phone.Speech.Recognition.SpeechRecognitionUIStatus.Succeeded)
                             {
@@ -273,11 +279,17 @@ namespace PocketBrain.App.ViewModel
                 {
                     try
                     {
+                        if (Speech.Instance.HasRecognizerUIError)
+                            return;
+
+                        // enforce to instantiate the recoginizer UI
+                        var recognizer = Speech.Instance.RecognizerUI;
+
                         if (Speech.Instance.HasRecognizerUI)
                         {
-                            Speech.Instance.RecognizerUI.Settings.ReadoutEnabled = false;
-                            Speech.Instance.RecognizerUI.Settings.ShowConfirmation = false;
-                            var result = await Speech.Instance.RecognizerUI.RecognizeWithUIAsync();
+                            recognizer.Settings.ReadoutEnabled = false;
+                            recognizer.Settings.ShowConfirmation = false;
+                            var result = await recognizer.RecognizeWithUIAsync();
 
                             if (result.ResultStatus == Windows.Phone.Speech.Recognition.SpeechRecognitionUIStatus.Succeeded)
                             {
@@ -302,11 +314,17 @@ namespace PocketBrain.App.ViewModel
                 {
                     try
                     {
+                        if (Speech.Instance.HasRecognizerUIError)
+                            return;
+
+                        // enforce to instantiate the recoginizer UI
+                        var recognizer = Speech.Instance.RecognizerUI;
+
                         if (Speech.Instance.HasRecognizerUI)
                         {
-                            Speech.Instance.RecognizerUI.Settings.ReadoutEnabled = false;
-                            Speech.Instance.RecognizerUI.Settings.ShowConfirmation = false;
-                            var result = await Speech.Instance.RecognizerUI.RecognizeWithUIAsync();
+                            recognizer.Settings.ReadoutEnabled = false;
+                            recognizer.Settings.ShowConfirmation = false;
+                            var result = await recognizer.RecognizeWithUIAsync();
 
                             if (result.ResultStatus == Windows.Phone.Speech.Recognition.SpeechRecognitionUIStatus.Succeeded)
                             {
@@ -749,6 +767,14 @@ namespace PocketBrain.App.ViewModel
             get
             {
                 return (!string.IsNullOrEmpty(Title) || !string.IsNullOrEmpty(Content)) && !IsHidden;
+            }
+        }
+
+        public bool IsSpeechSupported
+        {
+            get
+            {
+                return !Speech.Instance.HasRecognizerUIError;
             }
         }
 
