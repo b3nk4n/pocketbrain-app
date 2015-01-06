@@ -171,39 +171,12 @@
 			</StackPanel>
 		</ScrollViewer>
 		<StackPanel Grid.Row="1">
-			<Border Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
-				<StackPanel>
-                    <Button Command="{Binding LockScreenCommand}" Visibility="{Binding HasLockScreenAccess, ConverterParameter=!, Converter={StaticResource boolToVis}}"
+            <Border Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
+                <Button Command="{Binding LockScreenCommand}" Visibility="{Binding HasLockScreenAccess, ConverterParameter=!, Converter={StaticResource boolToVis}}"
 						Style="{StaticResource CustomButtonStyle}">
-						<Image Source="{Binding LockImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
-					</Button>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Style="{StaticResource CustomButtonStyle}" Width="240"
-                            Visibility="{Binding HasProVersion, Converter={StaticResource boolToVis}}">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <ec:NavigateToPageAction TargetPage="/BackupPage.xaml"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                            <Image Source="{Binding BackupImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
-                        </Button>
-                        <Button Grid.Column="1" Style="{StaticResource CustomButtonStyle}">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <ec:NavigateToPageAction TargetPage="/InAppStorePage.xaml"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                            <Image Source="{Binding StoreImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
-                        </Button>
-                    </Grid>
-					
-                </StackPanel>
-                
-			</Border>
+                <Image Source="{Binding LockImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
+                </Button>
+            </Border>
 
 		</StackPanel>
 

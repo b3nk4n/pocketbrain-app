@@ -10,6 +10,7 @@
     xmlns:local="clr-namespace:PocketBrain.App.Controls"
     xmlns:converter="clr-namespace:PhoneKit.Framework.Conversion;assembly=PhoneKit.Framework"
     xmlns:rlb="clr-namespace:ReorderListBox;assembly=ReorderListBox"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:ec="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -180,6 +181,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Button x:Name="ArchiveButton" Grid.Column="0"
                                 Style="{StaticResource CustomButtonStyle}">
@@ -189,7 +191,25 @@
                                 Style="{StaticResource CustomButtonStyle}">
                         <Image Source="{Binding Path=SettingsImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                     </Button>
-                    <Button x:Name="AboutButton" Grid.Column="2"
+                    <Button Grid.Column="2" Style="{StaticResource CustomButtonStyle}"
+                            Visibility="{Binding HasProVersion, Converter={StaticResource boolToVis}, ConverterParameter=!}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <ec:NavigateToPageAction TargetPage="/InAppStorePage.xaml"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Image Source="{Binding StoreImagePath, Source={StaticResource ThemedImageSource}}" Height="42" />
+                    </Button>
+                    <Button Grid.Column="2" Style="{StaticResource CustomButtonStyle}"
+                            Visibility="{Binding HasProVersion, Converter={StaticResource boolToVis}}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <ec:NavigateToPageAction TargetPage="/BackupPage.xaml"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Image Source="{Binding BackupImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
+                    </Button>
+                    <Button x:Name="AboutButton" Grid.Column="3"
                                 Style="{StaticResource CustomButtonStyle}">
                         <Image Source="{Binding Path=InfoImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                     </Button>
