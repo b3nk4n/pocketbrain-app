@@ -405,11 +405,11 @@ Showing us some love on the store helps us to continue to work on the app and ma
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandByGesture" xml:space="preserve">
-    <value>by shake geasture</value>
+    <value>by shake gesture</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandByGestureAndButton" xml:space="preserve">
-    <value>by shake geasture and button</value>
+    <value>by shake gesture and button</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsListsExpandTitle" xml:space="preserve">

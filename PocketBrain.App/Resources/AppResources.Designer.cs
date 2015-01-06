@@ -688,7 +688,7 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die by shake geasture ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die by shake gesture ähnelt.
         /// </summary>
         public static string SettingsListsExpandByGesture {
             get {
@@ -697,7 +697,7 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die by shake geasture and button ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die by shake gesture and button ähnelt.
         /// </summary>
         public static string SettingsListsExpandByGestureAndButton {
             get {
