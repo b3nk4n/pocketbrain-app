@@ -74,20 +74,20 @@ namespace PocketBrain.App.Controls
             switch (Settings.LockScreenFontSize.Value)
             {
                 case "small":
-                    this.Title1.FontSize = this.Title2.FontSize = this.Title3.FontSize = this.Title4.FontSize = this.Title5.FontSize = this.Title6.FontSize = 32;
-                    this.Text1.FontSize = this.Text2.FontSize = this.Text3.FontSize = this.Text4.FontSize = this.Text5.FontSize = this.Text6.FontSize = 26;
+                    this.Title1.FontSize = this.Title2.FontSize = this.Title3.FontSize = this.Title4.FontSize = this.Title5.FontSize = this.Title6.FontSize = 30;
+                    this.Text1.FontSize = this.Text2.FontSize = this.Text3.FontSize = this.Text4.FontSize = this.Text5.FontSize = this.Text6.FontSize = 24;
                     break;
                 case "normal":
                     this.Title1.FontSize = this.Title2.FontSize = this.Title3.FontSize = this.Title4.FontSize = this.Title5.FontSize = this.Title6.FontSize = 36;
                     this.Text1.FontSize = this.Text2.FontSize = this.Text3.FontSize = this.Text4.FontSize = this.Text5.FontSize = this.Text6.FontSize = 28;
                     break;
                 case "large":
-                    this.Title1.FontSize = this.Title2.FontSize = this.Title3.FontSize = this.Title4.FontSize = this.Title5.FontSize = this.Title6.FontSize = 42;
-                    this.Text1.FontSize = this.Text2.FontSize = this.Text3.FontSize = this.Text4.FontSize = this.Text5.FontSize = this.Text6.FontSize = 30;
+                    this.Title1.FontSize = this.Title2.FontSize = this.Title3.FontSize = this.Title4.FontSize = this.Title5.FontSize = this.Title6.FontSize = 44;
+                    this.Text1.FontSize = this.Text2.FontSize = this.Text3.FontSize = this.Text4.FontSize = this.Text5.FontSize = this.Text6.FontSize = 32;
                     break;
                 case "extralarge":
-                    this.Title1.FontSize = this.Title2.FontSize = this.Title3.FontSize = this.Title4.FontSize = this.Title5.FontSize = this.Title6.FontSize = 48;
-                    this.Text1.FontSize = this.Text2.FontSize = this.Text3.FontSize = this.Text4.FontSize = this.Text5.FontSize = this.Text6.FontSize = 32;
+                    this.Title1.FontSize = this.Title2.FontSize = this.Title3.FontSize = this.Title4.FontSize = this.Title5.FontSize = this.Title6.FontSize = 52;
+                    this.Text1.FontSize = this.Text2.FontSize = this.Text3.FontSize = this.Text4.FontSize = this.Text5.FontSize = this.Text6.FontSize = 36;
                     break;
             }
         }
