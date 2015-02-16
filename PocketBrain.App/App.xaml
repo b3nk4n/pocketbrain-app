@@ -99,11 +99,11 @@
         							</VisualState>
         						</VisualStateGroup>
         					</VisualStateManager.VisualStateGroups>
-        					<Polygon x:Name="BorderOuterBackground" Width="40" Height="90" Points="0,64 0,26 40,0 40,90" VerticalAlignment="Center" HorizontalAlignment="Right" Fill="{StaticResource PhoneChromeBrush}"
+        					<Polygon x:Name="BorderOuterBackground" Width="44" Height="90" Points="0,64 0,26 44,0 44,90" VerticalAlignment="Center" HorizontalAlignment="Right" Fill="{StaticResource PhoneChromeBrush}"
         						toolkit:TiltEffect.IsTiltEnabled="True"/>
-        					<Polygon x:Name="BorderBackground2" Width="40" Height="90" Points="5,61 5,29 40,5 40,85" VerticalAlignment="Center" HorizontalAlignment="Right" Fill="{StaticResource PhoneBackgroundBrush}"
+        					<Polygon x:Name="BorderBackground2" Width="44" Height="90" Points="5,61 5,29 44,5 44,85" VerticalAlignment="Center" HorizontalAlignment="Right" Fill="{StaticResource PhoneBackgroundBrush}"
         						toolkit:TiltEffect.IsTiltEnabled="True"/>
-        					<Polygon x:Name="BorderBackground" Width="40" Height="90" Points="5,61 5,29 40,5 40,85" VerticalAlignment="Center" HorizontalAlignment="Right" Fill="{TemplateBinding Background}"
+        					<Polygon x:Name="BorderBackground" Width="44" Height="90" Points="5,61 5,29 44,5 44,85" VerticalAlignment="Center" HorizontalAlignment="Right" Fill="{TemplateBinding Background}"
         						toolkit:TiltEffect.IsTiltEnabled="True"/>
         					<ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
         				</Grid>
