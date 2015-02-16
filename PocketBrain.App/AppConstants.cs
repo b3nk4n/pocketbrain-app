@@ -35,5 +35,20 @@ namespace PocketBrain.App
         /// The PRO version key.
         /// </summary>
         public const string PRO_VERSION_KEY = "pocketbrain_pro";
+
+        /// <summary>
+        /// The swipe/flick value add limit for the gesture in X direction.
+        /// </summary>
+        public const int SWIPE_VALUE_ADD_LIMIT = 1500;
+
+        /// <summary>
+        /// The swipe/flick value delete limit for the gesture in X direction.
+        /// </summary>
+        public const int SWIPE_VALUE_DELETE_LIMIT = 1750;
+
+        /// <summary>
+        /// The swipe/flick value limit for the gesture in Y direction.
+        /// </summary>
+        public const int SWIPE_VALUE_LIMIT_Y = 100;
     }
 }

@@ -8,9 +8,8 @@ using System.Windows;
 using PhoneKit.Framework.OS.ShakeGestures;
 using System.Windows.Media.Imaging;
 using PhoneKit.Framework.OS;
-using Microsoft.Phone.Info;
-using Windows.Graphics.Display;
 using PocketBrain.App.Misc;
+using System.Windows.Media.Animation;
 
 namespace PocketBrain.App
 {
@@ -31,21 +30,6 @@ namespace PocketBrain.App
         /// The last shake event time.
         /// </summary>
         private DateTime _lastShakeEventTime = DateTime.MinValue;
-
-        /// <summary>
-        /// The swipe/flick value add limit for the gesture in X direction.
-        /// </summary>
-        private const int SWIPE_VALUE_ADD_LIMIT = 1750;
-
-        /// <summary>
-        /// The swipe/flick value delete limit for the gesture in X direction.
-        /// </summary>
-        private const int SWIPE_VALUE_DELETE_LIMIT = 2000;
-
-        /// <summary>
-        /// The swipe/flick value limit for the gesture in Y direction.
-        /// </summary>
-        private const int SWIPE_VALUE_LIMIT_Y = 100;
 
         // Konstruktor
         public MainPage()
@@ -300,7 +284,7 @@ namespace PocketBrain.App
             double flickX = e.FinalVelocities.LinearVelocity.X;
             double flickY = e.FinalVelocities.LinearVelocity.Y;
 
-            if (flickX > SWIPE_VALUE_ADD_LIMIT && Math.Abs(flickY) < SWIPE_VALUE_LIMIT_Y)
+            if (flickX > AppConstants.SWIPE_VALUE_ADD_LIMIT && Math.Abs(flickY) < AppConstants.SWIPE_VALUE_LIMIT_Y)
             {
                 NewNote();
             }
@@ -320,14 +304,27 @@ namespace PocketBrain.App
             double flickX = e.FinalVelocities.LinearVelocity.X;
             double flickY = e.FinalVelocities.LinearVelocity.Y;
 
-            if (flickX < -SWIPE_VALUE_DELETE_LIMIT && Math.Abs(flickY) < SWIPE_VALUE_LIMIT_Y)
+            if (flickX < -AppConstants.SWIPE_VALUE_DELETE_LIMIT && Math.Abs(flickY) < AppConstants.SWIPE_VALUE_LIMIT_Y)
             {
                 var data = element.DataContext as NoteViewModel;
                 if (data != null)
                 {
-                    if (data.DeleteCommand.CanExecute(null))
+                    Border b = element as Border;
+                    Storyboard storyboard;
+                    var id = data.Id;
+                    storyboard = b.Resources["DeleteAnimation"] as Storyboard;
+                    storyboard.Completed += (s, t) => {
+                        if (data != null)
+                        {
+                            if (data.DeleteCommand.CanExecute(null))
+                            {
+                                data.DeleteCommand.Execute(null);
+                            }
+                        }
+                    };
+                    if (storyboard != null)
                     {
-                        data.DeleteCommand.Execute(null);
+                        storyboard.Begin();
                     }
                 }
             }

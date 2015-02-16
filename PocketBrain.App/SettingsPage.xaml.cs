@@ -71,7 +71,15 @@ namespace PocketBrain.App
 
             SelectBackgroundImageButton.Click += (s, e) =>
                 {
-                    _photoTask.Show();
+                    try
+                    {
+                        _photoTask.Show();
+                    }
+                    catch (Exception)
+                    {
+                        // just make sure show is not called multiple times
+                    }
+                    
                 };
 
             MaxLockItemsPicker.SelectionChanged += (s, e) =>

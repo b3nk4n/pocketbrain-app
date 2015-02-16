@@ -54,7 +54,22 @@
         </Storyboard>
 
         <DataTemplate x:Key="MaximizedNoteTemplate">
-            <Border Background="{StaticResource PhoneAccentBrush}" ManipulationCompleted="SwipeDeleteManipulationCompleted">
+            <Border x:Name="ItemContainer"  Background="{StaticResource PhoneAccentBrush}" ManipulationCompleted="SwipeDeleteManipulationCompleted">
+                <Border.RenderTransform>
+                    <TranslateTransform />
+                </Border.RenderTransform>
+                <Border.Resources>
+                    <Storyboard x:Name="DeleteAnimation">
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Opacity)" Storyboard.TargetName="ItemContainer">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.66" Value="0">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <CubicEase EasingMode="EaseOut"/>
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="ItemContainer" Duration="0:0:0.66" To="-480" />
+                    </Storyboard>
+                </Border.Resources>
                 <Button Style="{StaticResource CustomButtonStyle}" Margin="-1" Tag="{Binding Id}" Tap="NoteTapped">
                     <toolkit:ContextMenuService.ContextMenu>
                         <toolkit:ContextMenu>
@@ -91,7 +106,22 @@
         </DataTemplate>
 
         <DataTemplate x:Key="MinimizedNoteTemplate">
-            <Border Background="{StaticResource PhoneAccentBrush}" ManipulationCompleted="SwipeDeleteManipulationCompleted">
+            <Border x:Name="ItemContainer" Background="{StaticResource PhoneAccentBrush}" ManipulationCompleted="SwipeDeleteManipulationCompleted">
+                <Border.RenderTransform>
+                    <TranslateTransform />
+                </Border.RenderTransform>
+                <Border.Resources>
+                    <Storyboard x:Name="DeleteAnimation">
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Opacity)" Storyboard.TargetName="ItemContainer">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.66" Value="0">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <CubicEase EasingMode="EaseOut"/>
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="ItemContainer" Duration="0:0:0.66" To="-480" />
+                    </Storyboard>
+                </Border.Resources>
                 <Button Style="{StaticResource CustomButtonStyle}" Margin="-1" Tag="{Binding Id}" Tap="NoteTapped" >
                     <toolkit:ContextMenuService.ContextMenu>
                         <toolkit:ContextMenu>

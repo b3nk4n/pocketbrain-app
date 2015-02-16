@@ -5,6 +5,8 @@ using PocketBrain.App.Misc;
 using PocketBrain.App.ViewModel;
 using System;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 
@@ -126,6 +128,47 @@ namespace PocketBrain.App
             }
 
             ExpansionButtonImage.Source = new BitmapImage(uri);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SwipeDeleteManipulationCompleted(object sender, System.Windows.Input.ManipulationCompletedEventArgs e)
+        {
+            FrameworkElement element = sender as FrameworkElement;
+            if (element == null)
+                return;
+
+            double flickX = e.FinalVelocities.LinearVelocity.X;
+            double flickY = e.FinalVelocities.LinearVelocity.Y;
+
+            if (flickX < -AppConstants.SWIPE_VALUE_DELETE_LIMIT && Math.Abs(flickY) < AppConstants.SWIPE_VALUE_LIMIT_Y)
+            {
+                var data = element.DataContext as NoteViewModel;
+                if (data != null)
+                {
+                    Border b = element as Border;
+                    Storyboard storyboard;
+                    var id = data.Id;
+                    storyboard = b.Resources["DeleteAnimation"] as Storyboard;
+                    storyboard.Completed += (s, t) =>
+                    {
+                        if (data != null)
+                        {
+                            if (data.DeleteFromArchiveCommand.CanExecute(null))
+                            {
+                                data.DeleteFromArchiveCommand.Execute(null);
+                            }
+                        }
+                    };
+                    if (storyboard != null)
+                    {
+                        storyboard.Begin();
+                    }
+                }
+            }
         }
     }
 }
