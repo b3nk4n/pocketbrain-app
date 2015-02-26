@@ -57,21 +57,25 @@ namespace PocketBrain.App.Controls
         {
             switch (Settings.LockScreenFontSize.Value)
             {
-                case "small":
+                case AppConstants.SIZE_S:
                     this.Title1.FontSize = this.Title2.FontSize = this.Title3.FontSize = this.Title4.FontSize = 30;
                     this.Text1.FontSize = this.Text2.FontSize = this.Text3.FontSize = this.Text4.FontSize = 24;
                     break;
-                case "normal":
+                case AppConstants.SIZE_M:
                     this.Title1.FontSize = this.Title2.FontSize = this.Title3.FontSize = this.Title4.FontSize = 36;
                     this.Text1.FontSize = this.Text2.FontSize = this.Text3.FontSize = this.Text4.FontSize = 28;
                     break;
-                case "large":
+                case AppConstants.SIZE_L:
                     this.Title1.FontSize = this.Title2.FontSize = this.Title3.FontSize = this.Title4.FontSize = 44;
                     this.Text1.FontSize = this.Text2.FontSize = this.Text3.FontSize = this.Text4.FontSize = 32;
                     break;
-                case "extralarge":
+                case AppConstants.SIZE_XL:
                     this.Title1.FontSize = this.Title2.FontSize = this.Title3.FontSize = this.Title4.FontSize = 52;
                     this.Text1.FontSize = this.Text2.FontSize = this.Text3.FontSize = this.Text4.FontSize = 36;
+                    break;
+                case AppConstants.SIZE_XXL:
+                    this.Title1.FontSize = this.Title2.FontSize = this.Title3.FontSize = this.Title4.FontSize = 58;
+                    this.Text1.FontSize = this.Text2.FontSize = this.Text3.FontSize = this.Text4.FontSize = 40;
                     break;
             }
         }

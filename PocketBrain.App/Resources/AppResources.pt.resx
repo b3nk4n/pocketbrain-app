@@ -468,6 +468,10 @@ Mostre o seu interesse na loja e ajude-nos a continuar trabalhando para tornar e
     <value>configurações</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsXXL" xml:space="preserve">
+    <value>XXL (PRO)</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SupportAndFeedback" xml:space="preserve">
     <value>suporte e feedback</value>
     <comment>About Page</comment>

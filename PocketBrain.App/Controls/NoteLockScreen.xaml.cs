@@ -43,21 +43,25 @@ namespace PocketBrain.App.Controls
         {
             switch (Settings.LockScreenFontSize.Value)
             {
-                case "small":
+                case AppConstants.SIZE_S:
                     this.Title.FontSize = 44;
                     this.Text.FontSize = 30;
                     break;
-                case "normal":
+                case AppConstants.SIZE_M:
                     this.Title.FontSize = 52;
                     this.Text.FontSize = 36;
                     break;
-                case "large":
+                case AppConstants.SIZE_L:
                     this.Title.FontSize = 60;
                     this.Text.FontSize = 42;
                     break;
-                case "extralarge":
+                case AppConstants.SIZE_XL:
                     this.Title.FontSize = 70;
                     this.Text.FontSize = 48;
+                    break;
+                case AppConstants.SIZE_XXL:
+                    this.Title.FontSize = 78;
+                    this.Text.FontSize = 52;
                     break;
             }
         }

@@ -196,31 +196,11 @@ namespace PocketBrain.App
                 Settings.ShowAddNoteButton.Value = (string)(AddNoteButtonPicker.SelectedItem as ListPickerItem).Tag;
                 pos++;
                 var valueTileSize = (string)(LiveTileFontSizePicker.SelectedItem as ListPickerItem).Tag;
-                if (!InAppPurchaseHelper.IsProductActive(AppConstants.PRO_VERSION_KEY))
-                {
-                    if (valueTileSize == "extralarge")
-                    {
-                        valueTileSize = "large";
-                    }
-                    else if (valueTileSize == "small")
-                    {
-                        valueTileSize = "medium";
-                    }
-                }
+                valueTileSize = GetCheckedSize(valueTileSize);
                 Settings.LiveTileFontSize.Value = valueTileSize;
                 pos++;
                 var valueLockSize = (string)(LockScreenFontSizePicker.SelectedItem as ListPickerItem).Tag;
-                if (!InAppPurchaseHelper.IsProductActive(AppConstants.PRO_VERSION_KEY))
-                {
-                    if (valueLockSize == "extralarge")
-                    {
-                        valueLockSize = "large";
-                    }
-                    else if (valueLockSize == "small")
-                    {
-                        valueLockSize = "medium";
-                    }
-                }
+                valueLockSize = GetCheckedSize(valueLockSize);
                 Settings.LockScreenFontSize.Value = valueLockSize;
                 pos++;
                 Settings.KeyboardWordAutocorrection.Value = (string)(KeyboardExtendedAutoCorrectPicker.SelectedItem as ListPickerItem).Tag;
@@ -232,6 +212,22 @@ namespace PocketBrain.App
                 // Invoke the LogException method with additional extra data that will be merged with the global extras in the request.
                 BugSenseLogResult logResult = BugSenseHandler.Instance.LogException(ex, "SettingsSave", "Saving the settings failed on position: " + pos);
             }
+        }
+
+        private static string GetCheckedSize(string valueTileSize)
+        {
+            if (!InAppPurchaseHelper.IsProductActive(AppConstants.PRO_VERSION_KEY))
+            {
+                if (valueTileSize == AppConstants.SIZE_XL || valueTileSize == AppConstants.SIZE_XXL)
+                {
+                    valueTileSize = AppConstants.SIZE_L;
+                }
+                else if (valueTileSize == AppConstants.SIZE_S)
+                {
+                    valueTileSize = AppConstants.SIZE_M;
+                }
+            }
+            return valueTileSize;
         }
 
         /// <summary>

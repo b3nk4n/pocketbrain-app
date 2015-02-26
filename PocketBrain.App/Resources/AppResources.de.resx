@@ -468,6 +468,10 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <value>Einstellungen</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsXXL" xml:space="preserve">
+    <value>XXL (PRO)</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SupportAndFeedback" xml:space="preserve">
     <value>Hilfe und Feedback</value>
     <comment>About Page</comment>

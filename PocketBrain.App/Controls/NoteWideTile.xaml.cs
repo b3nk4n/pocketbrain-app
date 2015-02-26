@@ -39,21 +39,25 @@ namespace PocketBrain.App.Controls
         {
             switch (Settings.LiveTileFontSize.Value)
             {
-                case "small":
+                case AppConstants.SIZE_S:
                     this.Title.FontSize = 36;
                     this.Text.FontSize = 20;
                     break;
-                case "normal":
+                case AppConstants.SIZE_M:
                     this.Title.FontSize = 40;
                     this.Text.FontSize = 24;
                     break;
-                case "large":
+                case AppConstants.SIZE_L:
                     this.Title.FontSize = 44;
                     this.Text.FontSize = 28;
                     break;
-                case "extralarge":
+                case AppConstants.SIZE_XL:
                     this.Title.FontSize = 48;
                     this.Text.FontSize = 32;
+                    break;
+                case AppConstants.SIZE_XXL:
+                    this.Title.FontSize = 52;
+                    this.Text.FontSize = 36;
                     break;
             }
         }

@@ -112,6 +112,7 @@
 							<toolkit:ListPickerItem Content="{Binding LocalizedResources.SettingsMedium, Source={StaticResource LocalizedStrings}}" Tag="medium" Style="{StaticResource ListPickerItemStyle}" />
 							<toolkit:ListPickerItem Content="{Binding LocalizedResources.SettingsLarge, Source={StaticResource LocalizedStrings}}" Tag="large" Style="{StaticResource ListPickerItemStyle}" />
 							<toolkit:ListPickerItem Content="{Binding LocalizedResources.SettingsExtraLarge, Source={StaticResource LocalizedStrings}}" Tag="extralarge" Style="{StaticResource ListPickerItemStyle}" />
+                            <toolkit:ListPickerItem Content="{Binding LocalizedResources.SettingsXXL, Source={StaticResource LocalizedStrings}}" Tag="xxl" Style="{StaticResource ListPickerItemStyle}" />
 						</toolkit:ListPicker>
 					</StackPanel>
 					<StackPanel Visibility="{Binding HasLockScreenAccess, Converter={StaticResource boolToVis}}">
@@ -132,6 +133,7 @@
 								<toolkit:ListPickerItem Content="{Binding LocalizedResources.SettingsMedium, Source={StaticResource LocalizedStrings}}" Tag="medium" Style="{StaticResource ListPickerItemStyle}" />
 								<toolkit:ListPickerItem Content="{Binding LocalizedResources.SettingsLarge, Source={StaticResource LocalizedStrings}}" Tag="large" Style="{StaticResource ListPickerItemStyle}" />
 								<toolkit:ListPickerItem Content="{Binding LocalizedResources.SettingsExtraLarge, Source={StaticResource LocalizedStrings}}" Tag="extralarge" Style="{StaticResource ListPickerItemStyle}" />
+                                <toolkit:ListPickerItem Content="{Binding LocalizedResources.SettingsXXL, Source={StaticResource LocalizedStrings}}" Tag="xxl" Style="{StaticResource ListPickerItemStyle}" />
 							</toolkit:ListPicker>
 						</StackPanel>
 						<StackPanel Margin="0, 12">

@@ -50,5 +50,30 @@ namespace PocketBrain.App
         /// The swipe/flick value limit for the gesture in Y direction.
         /// </summary>
         public const int SWIPE_VALUE_LIMIT_Y = 100;
+
+        /// <summary>
+        /// The small tile or lock screen size.
+        /// </summary>
+        public const string SIZE_S = "small";
+
+        /// <summary>
+        /// The medium tile or lock screen size.
+        /// </summary>
+        public const string SIZE_M = "medium";
+
+        /// <summary>
+        /// The large tile or lock screen size.
+        /// </summary>
+        public const string SIZE_L = "large";
+
+        /// <summary>
+        /// The extra large tile or lock screen size.
+        /// </summary>
+        public const string SIZE_XL = "extralarge";
+
+        /// <summary>
+        /// The extra extra large (xxl) tile or lock screen size.
+        /// </summary>
+        public const string SIZE_XXL = "xxl";
     }
 }

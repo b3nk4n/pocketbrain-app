@@ -832,6 +832,15 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die XXL (PRO) ähnelt.
+        /// </summary>
+        public static string SettingsXXL {
+            get {
+                return ResourceManager.GetString("SettingsXXL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die support and feedback ähnelt.
         /// </summary>
         public static string SupportAndFeedback {
