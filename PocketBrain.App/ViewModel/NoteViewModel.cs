@@ -17,6 +17,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.Xna.Framework.Media;
+using PocketBrain.App.Helpers;
+using System.Windows.Media.Imaging;
 
 namespace PocketBrain.App.ViewModel
 {
@@ -189,7 +191,15 @@ namespace PocketBrain.App.ViewModel
 
             _addAttachementCommand = new DelegateCommand(() =>
                 {
-                    _photoTask.Show();
+                    try
+                    {
+                        _photoTask.Show();
+                    }
+                    catch(Exception)
+                    {
+                        // supress multiple Show() call error.
+                    }
+                    
                 },
                 () =>
                 {
@@ -372,8 +382,11 @@ namespace PocketBrain.App.ViewModel
                     if (pr.Error != null || pr.TaskResult != TaskResult.OK)
                         return;
                     // save a copy in local storage
+                    FileInfo fileInfo = new FileInfo(pr.OriginalFileName);
                     string filePath = GetUniqueLocalFilePathOfFile(pr.OriginalFileName);
-                    if (StorageHelper.SaveFileFromStream(filePath, pr.ChosenPhoto))
+
+                    var image = StaticMediaLibrary.GetImageFromFileName(fileInfo.Name);
+                    if (image != null && StorageHelper.SaveJpeg(filePath, image.PreviewImage as WriteableBitmap) != null)
                     {
                         SetAttachement(filePath);
                     }

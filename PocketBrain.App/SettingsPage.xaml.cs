@@ -17,6 +17,8 @@ using BugSense.Core.Model;
 using BugSense;
 using System.Diagnostics;
 using PhoneKit.Framework.InAppPurchase;
+using Microsoft.Xna.Framework.Media;
+using PocketBrain.App.Helpers;
 
 namespace PocketBrain.App
 {
@@ -69,7 +71,9 @@ namespace PocketBrain.App
                 string filePath = string.Format("lockScreenBackground{0}{1}", nextExtension, fileInfo.Extension);
                 _nextLockScreenExtension.Value = (nextExtension == "A") ? "B" : "A";
 
-                if (StorageHelper.SaveFileFromStream(filePath, pr.ChosenPhoto))
+                var image = StaticMediaLibrary.GetImageFromFileName(fileInfo.Name);
+               
+                if (image != null && StorageHelper.SaveJpeg(filePath, image.PreviewImage as WriteableBitmap) != null)
                 {
                     // save
                     Settings.LockScreenBackgroundImagePath.Value = filePath;

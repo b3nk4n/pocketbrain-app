@@ -130,6 +130,7 @@
       <DependentUpon>NoteWideTile.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomUriMapper.cs" />
+    <Compile Include="Helpers\StaticMediaLibrary.cs" />
     <Compile Include="InAppStorePage.xaml.cs">
       <DependentUpon>InAppStorePage.xaml</DependentUpon>
     </Compile>
