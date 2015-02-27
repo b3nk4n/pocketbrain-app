@@ -38,6 +38,16 @@ namespace PocketBrain.App
         private StoredObject<string> _nextLockScreenExtension = new StoredObject<string>("nextLockScreenBackgroundExtension", "A");
 
         /// <summary>
+        /// The initial tile size to detect a change when navigated from for updating all tiles.
+        /// </summary>
+        private string navigatedToTileSize;
+
+        /// <summary>
+        /// The initial tile size to detect a change when navigated from for updating the lock screen.
+        /// </summary>
+        private string navigatedToLockScreenSize;
+
+        /// <summary>
         /// Creates a SettingsPage instance.
         /// </summary>
         public SettingsPage()
@@ -157,8 +167,10 @@ namespace PocketBrain.App
             SelectByTag(MaxLockItemsPicker, Settings.MaximumLockItems.Value);
             SelectByTag(TileNoteCountListPicker, Settings.ShowNoteCountOnLiveTile.Value);
             SelectByTag(AddNoteButtonPicker, Settings.ShowAddNoteButton.Value);
-            SelectByTag(LiveTileFontSizePicker, Settings.LiveTileFontSize.Value);
-            SelectByTag(LockScreenFontSizePicker, Settings.LockScreenFontSize.Value);
+            this.navigatedToTileSize = Settings.LiveTileFontSize.Value;
+            SelectByTag(LiveTileFontSizePicker, navigatedToTileSize);
+            this.navigatedToLockScreenSize = Settings.LockScreenFontSize.Value;
+            SelectByTag(LockScreenFontSizePicker, navigatedToLockScreenSize);
             SelectByTag(KeyboardExtendedAutoCorrectPicker, Settings.KeyboardWordAutocorrection.Value);
 
             // hack: make sure the backup-button is visible after purchase.
@@ -173,6 +185,14 @@ namespace PocketBrain.App
         {
             base.OnNavigatedFrom(e);
             int pos = 0;
+
+            var valueTileSize = (string)(LiveTileFontSizePicker.SelectedItem as ListPickerItem).Tag;
+            valueTileSize = GetCheckedSize(valueTileSize);
+            Settings.LiveTileFontSize.Value = valueTileSize;
+            pos++;
+            var valueLockSize = (string)(LockScreenFontSizePicker.SelectedItem as ListPickerItem).Tag;
+            valueLockSize = GetCheckedSize(valueLockSize);
+            Settings.LockScreenFontSize.Value = valueLockSize;
 
             // save settings
             try
@@ -195,14 +215,6 @@ namespace PocketBrain.App
                 pos++;
                 Settings.ShowAddNoteButton.Value = (string)(AddNoteButtonPicker.SelectedItem as ListPickerItem).Tag;
                 pos++;
-                var valueTileSize = (string)(LiveTileFontSizePicker.SelectedItem as ListPickerItem).Tag;
-                valueTileSize = GetCheckedSize(valueTileSize);
-                Settings.LiveTileFontSize.Value = valueTileSize;
-                pos++;
-                var valueLockSize = (string)(LockScreenFontSizePicker.SelectedItem as ListPickerItem).Tag;
-                valueLockSize = GetCheckedSize(valueLockSize);
-                Settings.LockScreenFontSize.Value = valueLockSize;
-                pos++;
                 Settings.KeyboardWordAutocorrection.Value = (string)(KeyboardExtendedAutoCorrectPicker.SelectedItem as ListPickerItem).Tag;
                 pos++;
             }
@@ -212,6 +224,22 @@ namespace PocketBrain.App
                 // Invoke the LogException method with additional extra data that will be merged with the global extras in the request.
                 BugSenseLogResult logResult = BugSenseHandler.Instance.LogException(ex, "SettingsSave", "Saving the settings failed on position: " + pos);
             }
+
+            // update tiles when font size has changed
+            if (!valueTileSize.Equals(navigatedToTileSize))
+            {
+                foreach (var note in NoteListViewModel.Instance.Notes)
+                {
+                    note.UpdateTile();
+                }
+            }
+
+            // update lockscreen when font size has changed
+            if (!valueLockSize.Equals(navigatedToLockScreenSize))
+            {
+                NoteListViewModel.Instance.UpdateLockScreen();
+            }
+
         }
 
         private static string GetCheckedSize(string valueTileSize)

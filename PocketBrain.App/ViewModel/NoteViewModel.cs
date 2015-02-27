@@ -467,8 +467,11 @@ namespace PocketBrain.App.ViewModel
         {
             var noteWideGfx = GraphicsHelper.Create(new NoteWideTile(Title, Content));
             var noteWideUri = StorageHelper.SavePng(TileWidePath, noteWideGfx);
+            GraphicsHelper.CleanUpMemory(noteWideGfx);
+
             var noteNormalGfx = GraphicsHelper.Create(new NoteNormalTile(Title, Content));
             var noteNormalUri = StorageHelper.SavePng(TileNormalPath, noteNormalGfx);
+            GraphicsHelper.CleanUpMemory(noteNormalGfx);
 
             if (HasAttachement)
             {

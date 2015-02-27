@@ -321,6 +321,7 @@ namespace PocketBrain.App.ViewModel
                 // render lock image
                 var nextExtension = _nextLockScreenExtension.Value;
                 lockUri = StorageHelper.SaveJpeg(string.Format("/locknote_{0}.jpg", nextExtension), lockGfx);
+                GraphicsHelper.CleanUpMemory(lockGfx);
                 isLocal = true;
                 _nextLockScreenExtension.Value = (nextExtension == "A") ? "B" : "A";
             }
