@@ -8,7 +8,7 @@
     <Language code="it" />
     <Language code="zh" />
   </Languages>
-  <App xmlns="" ProductID="{ad1227e4-9f80-4967-957f-6db140dc0c90}" Title="pocketBRAIN" RuntimeType="Silverlight" Version="2.4.0.0" Genre="apps.normal" Author="Benjamin Sautermeister" Description="This application is your quick and easy helper to relieve your brain." Publisher="bsautermeister" PublisherID="{47e5a50a-aca2-469e-be1a-a4ac16765a5f}">
+  <App xmlns="" ProductID="{ad1227e4-9f80-4967-957f-6db140dc0c90}" Title="pocketBRAIN" RuntimeType="Silverlight" Version="2.4.1.0" Genre="apps.normal" Author="Benjamin Sautermeister" Description="This application is your quick and easy helper to relieve your brain." Publisher="bsautermeister" PublisherID="{47e5a50a-aca2-469e-be1a-a4ac16765a5f}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_SPEECH_RECOGNITION" />

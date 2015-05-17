@@ -519,11 +519,9 @@ namespace PocketBrain.App.ViewModel
             }
             else
             {
-                var imageUri = new Uri("/Assets/Tiles/FlipCycleTileSmall.png", UriKind.Relative);
-
                 var tile = new FlipTileData
                 {
-                    SmallBackgroundImage = imageUri,
+                    SmallBackgroundImage = noteNormalUri,
                     WideBackgroundImage = noteWideUri,
                     BackgroundImage = noteNormalUri
                 };
