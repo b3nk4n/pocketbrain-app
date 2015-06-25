@@ -254,8 +254,8 @@ namespace PocketBrain.App.ViewModel
                 {
                     try
                     {
-                        if (Speech.Instance.HasRecognizerUIError)
-                            return;
+                        //if (Speech.Instance.HasRecognizerUIError)
+                        //    return;
 
                         // enforce to instantiate the recoginizer UI
                         var recognizer = Speech.Instance.RecognizerUI;
@@ -289,8 +289,8 @@ namespace PocketBrain.App.ViewModel
                 {
                     try
                     {
-                        if (Speech.Instance.HasRecognizerUIError)
-                            return;
+                        //if (Speech.Instance.HasRecognizerUIError)
+                        //    return;
 
                         // enforce to instantiate the recoginizer UI
                         var recognizer = Speech.Instance.RecognizerUI;
@@ -324,8 +324,8 @@ namespace PocketBrain.App.ViewModel
                 {
                     try
                     {
-                        if (Speech.Instance.HasRecognizerUIError)
-                            return;
+                        //if (Speech.Instance.HasRecognizerUIError)
+                        //    return;
 
                         // enforce to instantiate the recoginizer UI
                         var recognizer = Speech.Instance.RecognizerUI;
@@ -784,13 +784,13 @@ namespace PocketBrain.App.ViewModel
             }
         }
 
-        public bool IsSpeechSupported
-        {
-            get
-            {
-                return !Speech.Instance.HasRecognizerUIError;
-            }
-        }
+        //public bool IsSpeechSupported
+        //{
+        //    get
+        //    {
+        //        return !Speech.Instance.HasRecognizerUIError;
+        //    }
+        //}
 
         /// <summary>
         /// Gets the delete note command.
