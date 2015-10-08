@@ -155,7 +155,7 @@
 												<RowDefinition Height="1*" />
 											</Grid.RowDefinitions>
 											<Image x:Name="PreviewImageBackground" Grid.RowSpan="5" Source="/Assets/LockScreenPlaceholder.png"
-												Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="0.66" />
+												Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="{Binding ElementName=LockscreenImageOpacitySlider, Path=Value}" />
 											<Image x:Name="PreviewImageForeground" Grid.RowSpan="5"
 												Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" />
 											<StackPanel Grid.Row="1" Margin="6,0,0,0">
@@ -167,6 +167,8 @@
 									</Border>
 								</Border>
 							</Border>
+                            <TextBlock Text="{Binding LocalizedResources.SettingsBackgroundOpacityTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
+                            <Slider x:Name="LockscreenImageOpacitySlider" Minimum="0" Maximum="1" SmallChange="0.1" LargeChange="0.2" Margin="14,0" />
 						</StackPanel>
 					</StackPanel>
 				</StackPanel>

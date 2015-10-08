@@ -50,6 +50,11 @@ namespace PocketBrain.App
         private string navigatedToLockScreenSize;
 
         /// <summary>
+        /// The initial opacity from the lock screen to detect when navigated from for update the lock screen.
+        /// </summary>
+        private double navigatedToLockScreenOpacity;
+
+        /// <summary>
         /// Creates a SettingsPage instance.
         /// </summary>
         public SettingsPage()
@@ -171,11 +176,14 @@ namespace PocketBrain.App
             SelectByTag(MaxLockItemsPicker, Settings.MaximumLockItems.Value);
             SelectByTag(TileNoteCountListPicker, Settings.ShowNoteCountOnLiveTile.Value);
             SelectByTag(AddNoteButtonPicker, Settings.ShowAddNoteButton.Value);
-            this.navigatedToTileSize = Settings.LiveTileFontSize.Value;
+            navigatedToTileSize = Settings.LiveTileFontSize.Value;
             SelectByTag(LiveTileFontSizePicker, navigatedToTileSize);
-            this.navigatedToLockScreenSize = Settings.LockScreenFontSize.Value;
+            navigatedToLockScreenSize = Settings.LockScreenFontSize.Value;
             SelectByTag(LockScreenFontSizePicker, navigatedToLockScreenSize);
             SelectByTag(KeyboardExtendedAutoCorrectPicker, Settings.KeyboardWordAutocorrection.Value);
+
+            navigatedToLockScreenOpacity = Settings.LockscreenImageOpacity.Value;
+            LockscreenImageOpacitySlider.Value = navigatedToLockScreenOpacity;
 
             // hack: make sure the backup-button is visible after purchase.
             NoteListViewModel.Instance.UpdateHasProVersion();
@@ -197,6 +205,9 @@ namespace PocketBrain.App
             var valueLockSize = (string)(LockScreenFontSizePicker.SelectedItem as ListPickerItem).Tag;
             valueLockSize = GetCheckedSize(valueLockSize);
             Settings.LockScreenFontSize.Value = valueLockSize;
+
+            var valueLockOpacity = LockscreenImageOpacitySlider.Value;
+            Settings.LockscreenImageOpacity.Value = valueLockOpacity;
 
             // save settings
             try
@@ -230,7 +241,7 @@ namespace PocketBrain.App
             }
 
             // update tiles when font size has changed
-            if (!valueTileSize.Equals(navigatedToTileSize))
+            if (valueTileSize != navigatedToTileSize)
             {
                 foreach (var note in NoteListViewModel.Instance.Notes)
                 {
@@ -238,8 +249,9 @@ namespace PocketBrain.App
                 }
             }
 
-            // update lockscreen when font size has changed
-            if (!valueLockSize.Equals(navigatedToLockScreenSize))
+            // update lockscreen when font size has changed or the opacity has changed
+            if (valueLockSize != navigatedToLockScreenSize ||
+                valueLockOpacity != navigatedToLockScreenOpacity)
             {
                 NoteListViewModel.Instance.UpdateLockScreen();
             }

@@ -368,6 +368,10 @@ Dimostraci che ami questa app votandola sullo store, così da spingerci a miglio
     <value>immagine di sfondo</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsBackgroundOpacityTitle" xml:space="preserve">
+    <value>sfondo opacità</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsDisabled" xml:space="preserve">
     <value>disabilitato</value>
     <comment>SettingsPage</comment>
@@ -461,7 +465,7 @@ Dimostraci che ami questa app votandola sullo store, così da spingerci a miglio
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTileNoteCountTitle" xml:space="preserve">
-    <value>Mostra num. di note sulla tile</value>
+    <value>mostra num. di note sulla tile</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="SettingsTitle" xml:space="preserve">

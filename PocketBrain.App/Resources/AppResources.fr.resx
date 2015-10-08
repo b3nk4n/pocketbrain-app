@@ -368,6 +368,10 @@ Votre soutien sur le Store nous aide à améliorer sans cesse notre app!</value>
     <value>Fond d'écran</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsBackgroundOpacityTitle" xml:space="preserve">
+    <value>l'opacité de fond</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsDisabled" xml:space="preserve">
     <value>désactivé</value>
     <comment>SettingsPage</comment>

@@ -368,6 +368,10 @@ Showing us some love on the store helps us to continue to work on the app and ma
     <value>background image</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsBackgroundOpacityTitle" xml:space="preserve">
+    <value>background opacity</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsDisabled" xml:space="preserve">
     <value>disabled</value>
     <comment>SettingsPage</comment>

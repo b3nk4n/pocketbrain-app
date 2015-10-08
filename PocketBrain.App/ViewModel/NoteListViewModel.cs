@@ -323,7 +323,9 @@ namespace PocketBrain.App.ViewModel
                 lockUri = StorageHelper.SaveJpeg(string.Format("/locknote_{0}.jpg", nextExtension), lockGfx);
                 GraphicsHelper.CleanUpMemory(lockGfx);
                 isLocal = true;
-                _nextLockScreenExtension.Value = (nextExtension == "A") ? "B" : "A";
+
+                // A,B,C. We added C, because it was not working when we saved twice (A->B->A => no lockscreen update)
+                _nextLockScreenExtension.Value = (nextExtension == "A") ? "B" : (nextExtension == "B") ? "C": "A";
             }
 
             // set lockscreen image

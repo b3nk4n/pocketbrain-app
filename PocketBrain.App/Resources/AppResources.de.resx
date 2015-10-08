@@ -368,6 +368,10 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <value>Hintergrundbild</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsBackgroundOpacityTitle" xml:space="preserve">
+    <value>Deckkraft des Hintergrundbilds</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsDisabled" xml:space="preserve">
     <value>deaktiviert</value>
     <comment>SettingsPage</comment>

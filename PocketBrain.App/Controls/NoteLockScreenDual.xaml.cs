@@ -1,13 +1,10 @@
-﻿using System.Windows.Controls;
-using PhoneKit.Framework.Core.Storage;
-using System.Windows.Media.Imaging;
-
+﻿
 namespace PocketBrain.App.Controls
 {
     /// <summary>
     /// The note gual lock screen template.
     /// </summary>
-    public partial class NoteLockScreenDual : UserControl
+    public partial class NoteLockScreenDual : LockScreenUserControl
     {
         /// <summary>
         /// Creates a NoteLockScreenDual instance.
@@ -32,7 +29,7 @@ namespace PocketBrain.App.Controls
             this.Text2.Text = text2;
 
             SetupFontSizeFromSettings();
-            SetBackgroundImage(backgroundPath);
+            SetBackgroundImage(BackgroundImage, backgroundPath);
         }
 
         /// <summary>
@@ -62,35 +59,6 @@ namespace PocketBrain.App.Controls
                     this.Title1.FontSize = this.Title2.FontSize = 70;
                     this.Text1.FontSize = this.Text2.FontSize = 48;
                     break;
-            }
-        }
-
-        /// <summary>
-        /// Updates the attached image from the models image path.
-        /// </summary>
-        /// <remarks>
-        /// Binding the image URI or path didn't work when the image is located in isolated storage,
-        /// so we do it now this way manuelly.
-        /// </remarks>
-        /// <param name="note">The current note view model.</param>
-        private void SetBackgroundImage(string imagePath)
-        {
-            // check if the default image should be used.
-            if (imagePath == null)
-                return;
-
-            BitmapImage image = new BitmapImage();
-            using (var imageStream = StorageHelper.GetFileStream(imagePath))
-            {
-                // in case of a not successfully saved image
-                if (imageStream == null)
-                {
-                    BackgroundImage.Source = null;
-                    return;
-                }
-
-                image.SetSource(imageStream);
-                BackgroundImage.Source = image;
             }
         }
     }

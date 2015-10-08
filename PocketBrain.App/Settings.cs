@@ -56,8 +56,13 @@ namespace PocketBrain.App
         public static readonly StoredObject<string> LiveTileFontSize = new StoredObject<string>("livetileFontSize", "large");
 
         /// <summary>
-        /// Setting for auto correction of the keyboard/content-textboxe
+        /// Setting for auto correction of the keyboard/content-textbox.
         /// </summary>
         public static readonly StoredObject<string> KeyboardWordAutocorrection = new StoredObject<string>("keyboardAutoCorrect", "0");
+
+        /// <summary>
+        /// Settings for the lock screen background image opacity.
+        /// </summary>
+        public static readonly StoredObject<double> LockscreenImageOpacity = new StoredObject<double>("lockImageOpacity", 0.66);
     }
 }

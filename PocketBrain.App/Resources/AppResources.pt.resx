@@ -368,6 +368,10 @@ Mostre o seu interesse na loja e ajude-nos a continuar trabalhando para tornar e
     <value>fundo</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsBackgroundOpacityTitle" xml:space="preserve">
+    <value>opacidade fundo</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsDisabled" xml:space="preserve">
     <value>desativada</value>
     <comment>SettingsPage</comment>

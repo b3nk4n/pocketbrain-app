@@ -111,6 +111,7 @@
     <Compile Include="Controls\LocalizedBackupControl.cs" />
     <Compile Include="Controls\LocalizedFeedbackDialogControl.cs" />
     <Compile Include="Controls\LocalizedInAppStoreControl.cs" />
+    <Compile Include="Controls\LockScreenUserControl.cs" />
     <Compile Include="Controls\NoteLockScreen.xaml.cs">
       <DependentUpon>NoteLockScreen.xaml</DependentUpon>
     </Compile>

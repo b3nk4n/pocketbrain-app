@@ -1,21 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using System.Windows.Media.Imaging;
-using PhoneKit.Framework.Core.Storage;
-
+﻿
 namespace PocketBrain.App.Controls
 {
     /// <summary>
     /// The note lock screen template.
     /// </summary>
-    public partial class NoteLockScreen : UserControl
+    public partial class NoteLockScreen : LockScreenUserControl
     {
         /// <summary>
         /// Creates a NoteLockScreen instance.
@@ -33,7 +22,7 @@ namespace PocketBrain.App.Controls
             this.Text.Text = text;
 
             SetupFontSizeFromSettings();
-            SetBackgroundImage(backgroundPath);
+            SetBackgroundImage(BackgroundImage, backgroundPath);
         }
 
         /// <summary>
@@ -63,35 +52,6 @@ namespace PocketBrain.App.Controls
                     this.Title.FontSize = 78;
                     this.Text.FontSize = 52;
                     break;
-            }
-        }
-
-        /// <summary>
-        /// Updates the attached image from the models image path.
-        /// </summary>
-        /// <remarks>
-        /// Binding the image URI or path didn't work when the image is located in isolated storage,
-        /// so we do it now this way manuelly.
-        /// </remarks>
-        /// <param name="note">The current note view model.</param>
-        private void SetBackgroundImage(string imagePath)
-        {
-            // check if the default image should be used.
-            if (imagePath == null)
-                return;
-
-            BitmapImage image = new BitmapImage();
-            using (var imageStream = StorageHelper.GetFileStream(imagePath))
-            {
-                // in case of a not successfully saved image
-                if (imageStream == null)
-                {
-                    BackgroundImage.Source = null;
-                    return;
-                }
-
-                image.SetSource(imageStream);
-                BackgroundImage.Source = image;
             }
         }
     }

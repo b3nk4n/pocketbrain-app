@@ -368,6 +368,10 @@ Application Version: {4}
     <value>背景图片</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsBackgroundOpacityTitle" xml:space="preserve">
+    <value>背景透明度</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsDisabled" xml:space="preserve">
     <value>关闭</value>
     <comment>SettingsPage</comment>
