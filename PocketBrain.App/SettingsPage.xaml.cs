@@ -61,6 +61,9 @@ namespace PocketBrain.App
         {
             InitializeComponent();
 
+            LiveTileFontSizePicker.SetValue(ListPicker.ItemCountThresholdProperty, 100);
+            LockScreenFontSizePicker.SetValue(ListPicker.ItemCountThresholdProperty, 100);
+
             // init photo chooser task
             _photoTask.ShowCamera = true;
             _photoTask.Completed += (se, pr) =>
@@ -255,14 +258,13 @@ namespace PocketBrain.App
             {
                 NoteListViewModel.Instance.UpdateLockScreen();
             }
-
         }
 
         private static string GetCheckedSize(string valueTileSize)
         {
             if (!InAppPurchaseHelper.IsProductActive(AppConstants.PRO_VERSION_KEY))
             {
-                if (valueTileSize == AppConstants.SIZE_XL || valueTileSize == AppConstants.SIZE_XXL)
+                if (valueTileSize == AppConstants.SIZE_XL || valueTileSize == AppConstants.SIZE_XXL || valueTileSize == AppConstants.SIZE_XXXL)
                 {
                     valueTileSize = AppConstants.SIZE_L;
                 }

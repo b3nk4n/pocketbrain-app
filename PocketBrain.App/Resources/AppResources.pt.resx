@@ -472,6 +472,10 @@ Mostre o seu interesse na loja e ajude-nos a continuar trabalhando para tornar e
     <value>XXL (PRO)</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsXXXL" xml:space="preserve">
+    <value>XXXL (PRO)</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SupportAndFeedback" xml:space="preserve">
     <value>suporte e feedback</value>
     <comment>About Page</comment>

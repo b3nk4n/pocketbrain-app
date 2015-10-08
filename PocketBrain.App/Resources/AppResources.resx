@@ -472,6 +472,10 @@ Showing us some love on the store helps us to continue to work on the app and ma
     <value>XXL (PRO)</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsXXXL" xml:space="preserve">
+    <value>XXXL (PRO)</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SupportAndFeedback" xml:space="preserve">
     <value>support and feedback</value>
     <comment>About Page</comment>

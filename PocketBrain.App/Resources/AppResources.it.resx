@@ -472,6 +472,10 @@ Dimostraci che ami questa app votandola sullo store, così da spingerci a miglio
     <value>XXL (PRO)</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsXXXL" xml:space="preserve">
+    <value>XXXL (PRO)</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SupportAndFeedback" xml:space="preserve">
     <value>supporto e feedback</value>
     <comment>About Page</comment>

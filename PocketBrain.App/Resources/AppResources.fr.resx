@@ -472,6 +472,10 @@ Votre soutien sur le Store nous aide à améliorer sans cesse notre app!</value>
     <value>XXL (PRO)</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsXXXL" xml:space="preserve">
+    <value>XXXL (PRO)</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SupportAndFeedback" xml:space="preserve">
     <value>support et feedback</value>
     <comment>About Page</comment>

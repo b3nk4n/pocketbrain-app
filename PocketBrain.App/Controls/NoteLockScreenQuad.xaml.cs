@@ -74,6 +74,10 @@ namespace PocketBrain.App.Controls
                     this.Title1.FontSize = this.Title2.FontSize = this.Title3.FontSize = this.Title4.FontSize = 58;
                     this.Text1.FontSize = this.Text2.FontSize = this.Text3.FontSize = this.Text4.FontSize = 40;
                     break;
+                case AppConstants.SIZE_XXXL:
+                    this.Title1.FontSize = this.Title2.FontSize = this.Title3.FontSize = this.Title4.FontSize = 64;
+                    this.Text1.FontSize = this.Text2.FontSize = this.Text3.FontSize = this.Text4.FontSize = 44;
+                    break;
             }
         }
     }

@@ -841,6 +841,15 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to XXXL (PRO).
+        /// </summary>
+        public static string SettingsXXXL {
+            get {
+                return ResourceManager.GetString("SettingsXXXL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to support and feedback.
         /// </summary>
         public static string SupportAndFeedback {

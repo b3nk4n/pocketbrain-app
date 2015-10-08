@@ -11,9 +11,7 @@ using System.Windows.Controls;
 using Microsoft.Xna.Framework;
 using System.Windows;
 using System.Windows.Data;
-using Microsoft.Xna.Framework.GamerServices;
 using PhoneKit.Framework.OS;
-using PocketBrain.App.Misc;
 using BugSense.Core.Model;
 using BugSense;
 using PhoneKit.Framework.InAppPurchase;
@@ -145,7 +143,8 @@ namespace PocketBrain.App
                         {
                             var file = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri(StorageHelper.APPDATA_LOCAL_SCHEME + note.AttachedImagePath));
                             await Windows.System.Launcher.LaunchFileAsync(file);
-                        } catch (Exception ex)
+                        }
+                        catch (Exception ex)
                         {
                             BugSenseLogResult logResult = BugSenseHandler.Instance.LogException(ex, "ShowAttachement", "Tried to show attachement file : " + (note.AttachedImagePath != null ? note.AttachedImagePath : "null"));
                         }

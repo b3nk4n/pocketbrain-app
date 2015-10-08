@@ -472,6 +472,10 @@ Application Version: {4}
     <value>极极大 (PRO)</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsXXXL" xml:space="preserve">
+    <value>极极极大 (PRO)</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SupportAndFeedback" xml:space="preserve">
     <value>建议与反馈</value>
     <comment>About Page</comment>

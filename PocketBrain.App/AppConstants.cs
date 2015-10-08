@@ -75,5 +75,10 @@ namespace PocketBrain.App
         /// The extra extra large (xxl) tile or lock screen size.
         /// </summary>
         public const string SIZE_XXL = "xxl";
+
+        /// <summary>
+        /// The extra extra extra large (xxxl) tile or lock screen size.
+        /// </summary>
+        public const string SIZE_XXXL = "xxxl";
     }
 }

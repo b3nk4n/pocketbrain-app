@@ -52,6 +52,10 @@ namespace PocketBrain.App.Controls
                     this.Title.FontSize = 78;
                     this.Text.FontSize = 52;
                     break;
+                case AppConstants.SIZE_XXXL:
+                    this.Title.FontSize = 86;
+                    this.Text.FontSize = 56;
+                    break;
             }
         }
     }
