@@ -43,13 +43,38 @@ namespace PocketBrain.App
 
                     OverrideCreationDateMargin();
 
-                    if (ContentTextBox.Text.Length == 0)
+                    if (TitleTextBox.Text.Length == 0)
                     {
                         // select the text end of the notes content text field
+                        try
+                        {
+                            TitleTextBox.Focus();
+                            TitleTextBox.Select(ContentTextBox.Text.Length, 0);
+                        }
+                        catch (Exception)
+                        {
+                            // paranoid exception, because there could be the case that there is a BUG in the OS here.
+                        }
+                    }
+                };
+
+            TitleTextBox.KeyUp += (s, e) =>
+            {
+                // select the content when the enter key was pressed.
+                if (e.Key == Key.Enter)
+                {
+                    // select the text end of the notes content text field
+                    try
+                    {
                         ContentTextBox.Focus();
                         ContentTextBox.Select(ContentTextBox.Text.Length, 0);
                     }
-                };
+                    catch (Exception)
+                    {
+                        // paranoid exception, because there could be the case that there is a BUG in the OS here.
+                    }  
+                }
+            };
 
             TitleTextBox.GotFocus += (s, e) =>
                 {
