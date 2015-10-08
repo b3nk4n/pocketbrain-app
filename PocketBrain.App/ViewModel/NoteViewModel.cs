@@ -70,19 +70,9 @@ namespace PocketBrain.App.ViewModel
         private DelegateCommand _unpinFromStartCommand;
 
         /// <summary>
-        /// The email sharing command.
+        /// The sharing command.
         /// </summary>
-        private DelegateCommand _shareEmailCommand;
-
-        /// <summary>
-        /// The message sharing command.
-        /// </summary>
-        private DelegateCommand _shareMessageCommand;
-
-        /// <summary>
-        /// The WhatsApp sharing command.
-        /// </summary>
-        private DelegateCommand _shareWhatsappCommand;
+        private DelegateCommand _shareCommand;
 
         /// <summary>
         /// The append text command.
@@ -199,7 +189,6 @@ namespace PocketBrain.App.ViewModel
                     {
                         // supress multiple Show() call error.
                     }
-                    
                 },
                 () =>
                 {
@@ -226,28 +215,11 @@ namespace PocketBrain.App.ViewModel
                     return !CanPinToStart;
                 });
 
-            _shareEmailCommand = new DelegateCommand(() =>
+            _shareCommand = new DelegateCommand(() =>
                 {
-                    EmailComposeTask emailTask = new EmailComposeTask();
-                    emailTask.Subject = DisplayedTitle;
-                    emailTask.Body = Content;
-                    emailTask.Show();
-                });
-
-            _shareMessageCommand = new DelegateCommand(() =>
-                {
-                    SmsComposeTask smsTask = new SmsComposeTask();
-                    smsTask.Body = string.Format("{0}\r\r{1}", DisplayedTitle, Content);
-                    smsTask.Show();
-                });
-
-            _shareWhatsappCommand = new DelegateCommand(async () =>
-                {
-                    if (MessageBox.Show(AppResources.MessageBoxInfoClipboard, AppResources.MessageBoxInfoTitle, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-                    {
-                        Clipboard.SetText(string.Format("{0}\r\r{1}", DisplayedTitle, Content));
-                        await Windows.System.Launcher.LaunchUriAsync(new Uri("whatsapp:"));
-                    }
+                    ShareStatusTask shareTask = new ShareStatusTask();
+                    shareTask.Status = string.Format("{0}\r\r{1}", DisplayedTitle, Content);
+                    shareTask.Show();
                 });
 
             _speakPrependTextCommand = new DelegateCommand(async () =>
@@ -870,35 +842,13 @@ namespace PocketBrain.App.ViewModel
         }
 
         /// <summary>
-        /// Gets the share email command.
+        /// Gets the share command.
         /// </summary>
-        public ICommand ShareEmailCommand
+        public ICommand ShareCommand
         {
             get
             {
-                return _shareEmailCommand;
-            }
-        }
-
-        /// <summary>
-        /// Gets the share message command.
-        /// </summary>
-        public ICommand ShareMessageCommand
-        {
-            get
-            {
-                return _shareMessageCommand;
-            }
-        }
-
-        /// <summary>
-        /// Gets the share Whatsapp command.
-        /// </summary>
-        public ICommand ShareWhatsappCommand
-        {
-            get
-            {
-                return _shareWhatsappCommand;
+                return _shareCommand;
             }
         }
 

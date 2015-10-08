@@ -268,10 +268,6 @@ Erzählen Sie uns von Ihren Erfahrungen oder teilen Sie uns Vorschläge mit, dam
     <value>Wollen Sie wirklich das Archiv leeren?</value>
     <comment>MessageBox</comment>
   </data>
-  <data name="MessageBoxInfoClipboard" xml:space="preserve">
-    <value>Der Inhalt wird in die Zwischenablage kopiert.</value>
-    <comment>MessageBox</comment>
-  </data>
   <data name="MessageBoxInfoTitle" xml:space="preserve">
     <value>Information</value>
     <comment>MessageBox</comment>

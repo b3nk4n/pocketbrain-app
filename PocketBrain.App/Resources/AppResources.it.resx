@@ -268,10 +268,6 @@ Raccontaci la tua esperienza d'uso o suggeriscici come possiamo migliorare la no
     <value>Desideri ripulire l'archivio?</value>
     <comment>MessageBox</comment>
   </data>
-  <data name="MessageBoxInfoClipboard" xml:space="preserve">
-    <value>Elemento copiato negli appunti</value>
-    <comment>MessageBox</comment>
-  </data>
   <data name="MessageBoxInfoTitle" xml:space="preserve">
     <value>Informazione</value>
     <comment>MessageBox</comment>

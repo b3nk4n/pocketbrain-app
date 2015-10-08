@@ -125,25 +125,6 @@
             
             <Border Grid.Row="2"  Background="{StaticResource PhoneAccentBrush}" Padding="0,4,0,0">
                 <StackPanel>
-                    <Grid x:Name="SharingContainer" Visibility="Visible">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Command="{Binding ShareEmailCommand}"
-                                Style="{StaticResource CustomButtonStyle}" Click="SharingButtonClicked">
-                            <Image Source="{Binding Path=EmailImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
-                        </Button>
-                        <Button Grid.Column="1" Command="{Binding ShareMessageCommand}"
-                                Style="{StaticResource CustomButtonStyle}" Click="SharingButtonClicked">
-                            <Image Source="{Binding Path=MessageImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
-                        </Button>
-                        <Button Grid.Column="2" Command="{Binding ShareWhatsappCommand}"
-                                Style="{StaticResource CustomButtonStyle}" Click="SharingButtonClicked">
-                            <Image Source="{Binding Path=WhatsappImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
-                        </Button>
-                    </Grid>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -160,7 +141,7 @@
                             Style="{StaticResource CustomButtonStyle}">
                             <Image Source="{Binding Path=PaperclipRemoveImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                         </Button>
-                        <Button x:Name="ShareButton" Grid.Column="1"
+                        <Button Grid.Column="1" Command="{Binding ShareCommand}"
                             Style="{StaticResource CustomButtonStyle}">
                             <Image x:Name="ShareButtonImage" Source="{Binding Path=ShareImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                         </Button>

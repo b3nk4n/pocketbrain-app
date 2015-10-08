@@ -268,10 +268,6 @@ Tell us about your experience or suggest how we can make it even better.</value>
     <value>Do you really want to clear the archive?</value>
     <comment>MessageBox</comment>
   </data>
-  <data name="MessageBoxInfoClipboard" xml:space="preserve">
-    <value>The content is copied to the clipboard.</value>
-    <comment>MessageBox</comment>
-  </data>
   <data name="MessageBoxInfoTitle" xml:space="preserve">
     <value>Information</value>
     <comment>MessageBox</comment>

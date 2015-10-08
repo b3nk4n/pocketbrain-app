@@ -268,10 +268,6 @@ Conte-nos sobre a sua experiência ou sugira como podemos melhorá-lo.</value>
     <value>Você realmente deseja apagar o arquivo?</value>
     <comment>MessageBox</comment>
   </data>
-  <data name="MessageBoxInfoClipboard" xml:space="preserve">
-    <value>O conteúdo é copiado para a área de transferência.</value>
-    <comment>MessageBox</comment>
-  </data>
   <data name="MessageBoxInfoTitle" xml:space="preserve">
     <value>Informação</value>
     <comment>MessageBox</comment>

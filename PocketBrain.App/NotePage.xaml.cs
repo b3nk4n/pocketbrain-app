@@ -92,11 +92,6 @@ namespace PocketBrain.App
                     ClearAttachedImageSource();
                 };
 
-            ShareButton.Click += (s, e) =>
-                {
-                    ToggleSharingViewState();
-                };
-
             SpeakButton.Click += (s, e) =>
             {
                 var note = DataContext as NoteViewModel;
@@ -158,7 +153,6 @@ namespace PocketBrain.App
             base.OnNavigatedTo(e);
 
             // reset the exdenting buttons
-            ResetSharingExpandButtonsVisibility();
             ResetSpeakExpandButtonsVisibility();
 
             // read navigation params
@@ -358,32 +352,6 @@ namespace PocketBrain.App
         }
 
         /// <summary>
-        /// Toggles the share button view state
-        /// </summary>
-        private void ToggleSharingViewState()
-        {
-            var currentNote = DataContext as NoteViewModel;
-
-            if (currentNote == null)
-                return;
-
-            var themedImageSource = (ThemedImageSource)App.Current.Resources["ThemedImageSource"];
-
-            if (SharingContainer.Visibility == System.Windows.Visibility.Collapsed)
-            {
-                SharingContainer.Visibility = System.Windows.Visibility.Visible;
-                ShareButtonImage.Source = new BitmapImage(new Uri(themedImageSource.ShareOpenImagePath, UriKind.Relative));
-                ShareButton.Opacity = 0.95f;
-            }
-            else
-            {
-                SharingContainer.Visibility = System.Windows.Visibility.Collapsed;
-                ShareButtonImage.Source = new BitmapImage(new Uri(themedImageSource.ShareImagePath, UriKind.Relative));
-                ShareButton.Opacity = 1f;
-            }
-        }
-
-        /// <summary>
         /// Clears the attached image source.
         /// </summary>
         /// <remarks>
@@ -396,31 +364,12 @@ namespace PocketBrain.App
         }
 
         /// <summary>
-        /// Resets the sharing expanding buttons visibility.
-        /// </summary>
-        private void ResetSharingExpandButtonsVisibility()
-        {
-            ShareButton.Visibility = System.Windows.Visibility.Visible;
-            SharingContainer.Visibility = System.Windows.Visibility.Collapsed;
-        }
-
-        /// <summary>
         /// Resets the speak expanding buttons visibility.
         /// </summary>
         private void ResetSpeakExpandButtonsVisibility()
         {
             SpeakButton.Visibility = System.Windows.Visibility.Visible;
             SpeakContainer.Visibility = System.Windows.Visibility.Collapsed;
-        }
-
-        /// <summary>
-        /// Resets the exander button state when any sharing button was clicked.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The event args.</param>
-        private void SharingButtonClicked(object sender, System.Windows.RoutedEventArgs e)
-        {
-            ResetSharingExpandButtonsVisibility();
         }
 
         /// <summary>

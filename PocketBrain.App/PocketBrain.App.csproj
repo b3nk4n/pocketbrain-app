@@ -248,12 +248,10 @@
     <Content Include="Assets\Images\dark\back.cropped.png" />
     <Content Include="Assets\Images\dark\backup.png" />
     <Content Include="Assets\Images\dark\delete.png" />
-    <Content Include="Assets\Images\dark\email.png" />
     <Content Include="Assets\Images\dark\eye.hide.png" />
     <Content Include="Assets\Images\dark\eye.png" />
     <Content Include="Assets\Images\dark\information.png" />
     <Content Include="Assets\Images\dark\lock.png" />
-    <Content Include="Assets\Images\dark\message.png" />
     <Content Include="Assets\Images\dark\microphone.cropped.png" />
     <Content Include="Assets\Images\dark\microphone.png" />
     <Content Include="Assets\Images\dark\next.cropped.png" />
@@ -267,7 +265,6 @@
     <Content Include="Assets\Images\dark\settings.png" />
     <Content Include="Assets\Images\dark\share.open.png" />
     <Content Include="Assets\Images\dark\share.png" />
-    <Content Include="Assets\Images\dark\whatsapp.png" />
     <Content Include="Assets\Images\light\add.note.png" />
     <Content Include="Assets\Images\light\appbar.star.add.png" />
     <Content Include="Assets\Images\light\arrow.expand.png" />
@@ -279,12 +276,10 @@
     <Content Include="Assets\Images\light\arrow.collapsed.png" />
     <Content Include="Assets\Images\light\back.cropped.png" />
     <Content Include="Assets\Images\light\delete.png" />
-    <Content Include="Assets\Images\light\email.png" />
     <Content Include="Assets\Images\light\eye.hide.png" />
     <Content Include="Assets\Images\light\eye.png" />
     <Content Include="Assets\Images\light\information.png" />
     <Content Include="Assets\Images\light\lock.png" />
-    <Content Include="Assets\Images\light\message.png" />
     <Content Include="Assets\Images\light\next.cropped.png" />
     <Content Include="Assets\Images\light\next.total.cropped.png" />
     <Content Include="Assets\Images\light\paperclip.png" />
@@ -296,7 +291,6 @@
     <Content Include="Assets\Images\light\settings.png" />
     <Content Include="Assets\Images\light\share.open.png" />
     <Content Include="Assets\Images\light\share.png" />
-    <Content Include="Assets\Images\light\whatsapp.png" />
     <Content Include="Assets\Languages\chinese.png" />
     <Content Include="Assets\Languages\french.png" />
     <Content Include="Assets\Languages\italiano.png" />

@@ -387,15 +387,6 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The content is copied to the clipboard..
-        /// </summary>
-        public static string MessageBoxInfoClipboard {
-            get {
-                return ResourceManager.GetString("MessageBoxInfoClipboard", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Information.
         /// </summary>
         public static string MessageBoxInfoTitle {

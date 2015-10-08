@@ -268,10 +268,6 @@ Dites-nous ce que vous en pensez ou faites-nous des suggestions pour améliorer 
     <value>Voulez-vous vraiment effacer les archives?</value>
     <comment>MessageBox</comment>
   </data>
-  <data name="MessageBoxInfoClipboard" xml:space="preserve">
-    <value>Le contenu a été copié dans le presse-papier</value>
-    <comment>MessageBox</comment>
-  </data>
   <data name="MessageBoxInfoTitle" xml:space="preserve">
     <value>Information</value>
     <comment>MessageBox</comment>
