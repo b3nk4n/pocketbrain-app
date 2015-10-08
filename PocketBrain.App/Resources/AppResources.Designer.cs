@@ -97,7 +97,7 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2.4.2.
+        ///   Looks up a localized string similar to 2.5.
         /// </summary>
         public static string ApplicationVersion {
             get {
