@@ -41,6 +41,7 @@
     <phone:PhoneApplicationPage.Resources>
         <converter:BooleanToVisibilityConverter x:Key="boolToVis" />
         <converter:ShortDateConverter x:Key="dateConverter" />
+        <converter:ShortTimeConverter x:Key="timeConverter" />
 
         <Storyboard x:Name="WelcomeAnimation" RepeatBehavior="Forever">
         	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Opacity)" Storyboard.TargetName="image">
@@ -86,8 +87,12 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="{Binding DateCreated, Converter={StaticResource dateConverter}}" Style="{StaticResource PhoneTextNormalStyle}" FontSize="16" Foreground="Gray"
-                                   Visibility="{Binding IsDateVisible, Converter={StaticResource boolToVis}}"/>
+                        <TextBlock Grid.Row="0" Style="{StaticResource PhoneTextNormalStyle}" FontSize="16" Foreground="Gray"
+                                   Visibility="{Binding IsDateVisible, Converter={StaticResource boolToVis}}">
+                            <Run Text="{Binding DateCreated, Converter={StaticResource dateConverter}}" />
+                            <Run Text="-" />
+                            <Run Text="{Binding DateCreated, Converter={StaticResource timeConverter}}" />
+                        </TextBlock>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
