@@ -152,14 +152,14 @@
                     </Grid>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="ShowNoteButton" Grid.Column="0" Command="{Binding ShowCommand}" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}"
+                        <Button x:Name="ShowNoteButton" Grid.Column="0" Width="240" Command="{Binding ShowCommand}" Visibility="{Binding IsHiddenAndActive, Converter={StaticResource boolToVis}}"
                             Style="{StaticResource CustomButtonStyle}">
                             <Image Source="{Binding Path=EyeHideImagePath, Source={StaticResource ThemedImageSource}}" Height="52" Opacity="0.33" />
                         </Button>
-                        <Button x:Name="HideNoteButton" Grid.Column="0" Command="{Binding HideCommand}"  Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}, ConverterParameter=!}"
+                        <Button x:Name="HideNoteButton" Grid.Column="0" Width="240" Command="{Binding HideCommand}"  Visibility="{Binding IsNotHiddenAndActive, Converter={StaticResource boolToVis}}"
                             Style="{StaticResource CustomButtonStyle}">
                             <Image Source="{Binding Path=EyeImagePath, Source={StaticResource ThemedImageSource}}" Height="52" />
                         </Button>

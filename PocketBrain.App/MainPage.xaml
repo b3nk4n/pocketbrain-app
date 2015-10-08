@@ -78,8 +78,8 @@
                         <toolkit:ContextMenu>
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuPinToStart, Source={StaticResource LocalizedStrings}}" Command="{Binding PinToStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}}" />
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuUnpinFromStart, Source={StaticResource LocalizedStrings}}" Command="{Binding UnpinFromStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}, ConverterParameter=!}" />
-                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuShow, Source={StaticResource LocalizedStrings}}" Command="{Binding ShowCommand}" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}" />
-                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuHide, Source={StaticResource LocalizedStrings}}" Command="{Binding HideCommand}" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}, ConverterParameter=!}" />
+                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuShow, Source={StaticResource LocalizedStrings}}" Command="{Binding ShowCommand}" Visibility="{Binding IsHiddenAndActive, Converter={StaticResource boolToVis}}"  />
+                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuHide, Source={StaticResource LocalizedStrings}}" Command="{Binding HideCommand}" Visibility="{Binding IsNotHiddenAndActive, Converter={StaticResource boolToVis}}"/>
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuDelete, Source={StaticResource LocalizedStrings}}" Command="{Binding DeleteCommand}" />
                         </toolkit:ContextMenu>
                     </toolkit:ContextMenuService.ContextMenu>
@@ -134,8 +134,8 @@
                         <toolkit:ContextMenu>
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuPinToStart, Source={StaticResource LocalizedStrings}}" Command="{Binding PinToStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}}" />
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuUnpinFromStart, Source={StaticResource LocalizedStrings}}" Command="{Binding UnpinFromStartCommand}" Visibility="{Binding CanPinToStart, Converter={StaticResource boolToVis}, ConverterParameter=!}" />
-                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuShow, Source={StaticResource LocalizedStrings}}" Command="{Binding ShowCommand}" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}" />
-                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuHide, Source={StaticResource LocalizedStrings}}" Command="{Binding HideCommand}" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}, ConverterParameter=!}" />
+                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuShow, Source={StaticResource LocalizedStrings}}" Command="{Binding ShowCommand}" Visibility="{Binding IsHiddenAndActive, Converter={StaticResource boolToVis}}" />
+                            <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuHide, Source={StaticResource LocalizedStrings}}" Command="{Binding HideCommand}" Visibility="{Binding IsNotHiddenAndActive, Converter={StaticResource boolToVis}}" />
                             <toolkit:MenuItem Header="{Binding Path=LocalizedResources.ContextMenuDelete, Source={StaticResource LocalizedStrings}}" Command="{Binding DeleteCommand}" />
                         </toolkit:ContextMenu>
                     </toolkit:ContextMenuService.ContextMenu>

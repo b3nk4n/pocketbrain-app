@@ -19,6 +19,7 @@ using System.Windows.Input;
 using Microsoft.Xna.Framework.Media;
 using PocketBrain.App.Helpers;
 using System.Windows.Media.Imaging;
+using PhoneKit.Framework.Core.LockScreen;
 
 namespace PocketBrain.App.ViewModel
 {
@@ -683,7 +684,34 @@ namespace PocketBrain.App.ViewModel
                 {
                     _note.IsHidden = value;
                     NotifyPropertyChanged("IsHidden");
+                    NotifyPropertyChanged("IsNotHidden");
+                    NotifyPropertyChanged("IsHiddenAndActive");
+                    NotifyPropertyChanged("IsNotHiddenAndActive");
                 } 
+            }
+        }
+
+        public bool IsNotHidden
+        {
+            get
+            {
+                return !_note.IsHidden;
+            }
+        }
+
+        public bool IsHiddenAndActive
+        {
+            get
+            {
+                return _note.IsHidden && LockScreenHelper.HasAccess();
+            }
+        }
+
+        public bool IsNotHiddenAndActive
+        {
+            get
+            {
+                return !_note.IsHidden && LockScreenHelper.HasAccess();
             }
         }
 
