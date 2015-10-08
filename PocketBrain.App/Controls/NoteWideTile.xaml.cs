@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace PocketBrain.App.Controls
 {
@@ -30,6 +31,12 @@ namespace PocketBrain.App.Controls
             this.Text.Text = content;
 
             SetupFontSizeFromSettings();
+
+            // background transparency
+            if (Settings.UseTransparentTile.Value == "0")
+            {
+                BackgroundBorder.Background = (Brush)Resources["PhoneAccentBrush"];
+            }
         }
 
         /// <summary>

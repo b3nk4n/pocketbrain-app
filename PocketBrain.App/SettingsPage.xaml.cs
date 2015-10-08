@@ -55,6 +55,11 @@ namespace PocketBrain.App
         private double navigatedToLockScreenOpacity;
 
         /// <summary>
+        /// The initial tranparency from the live tiles to detect when navigated from for update the live tiles.
+        /// </summary>
+        private string navigatedToUseTileTransparency;
+
+        /// <summary>
         /// Creates a SettingsPage instance.
         /// </summary>
         public SettingsPage()
@@ -181,6 +186,8 @@ namespace PocketBrain.App
             SelectByTag(AddNoteButtonPicker, Settings.ShowAddNoteButton.Value);
             navigatedToTileSize = Settings.LiveTileFontSize.Value;
             SelectByTag(LiveTileFontSizePicker, navigatedToTileSize);
+            navigatedToUseTileTransparency = Settings.UseTransparentTile.Value;
+            SelectByTag(TransparentTilePicker, navigatedToUseTileTransparency);
             navigatedToLockScreenSize = Settings.LockScreenFontSize.Value;
             SelectByTag(LockScreenFontSizePicker, navigatedToLockScreenSize);
             SelectByTag(KeyboardExtendedAutoCorrectPicker, Settings.KeyboardWordAutocorrection.Value);
@@ -211,6 +218,9 @@ namespace PocketBrain.App
 
             var valueLockOpacity = LockscreenImageOpacitySlider.Value;
             Settings.LockscreenImageOpacity.Value = valueLockOpacity;
+
+            var valueTileTransparency = (string)(TransparentTilePicker.SelectedItem as ListPickerItem).Tag;
+            Settings.UseTransparentTile.Value = valueTileTransparency;
 
             // save settings
             try
@@ -243,8 +253,8 @@ namespace PocketBrain.App
                 BugSenseLogResult logResult = BugSenseHandler.Instance.LogException(ex, "SettingsSave", "Saving the settings failed on position: " + pos);
             }
 
-            // update tiles when font size has changed
-            if (valueTileSize != navigatedToTileSize)
+            // update tiles when font size or transparency has changed
+            if (valueTileSize != navigatedToTileSize || valueTileTransparency != navigatedToUseTileTransparency)
             {
                 foreach (var note in NoteListViewModel.Instance.Notes)
                 {

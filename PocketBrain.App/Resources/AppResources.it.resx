@@ -468,6 +468,10 @@ Dimostraci che ami questa app votandola sullo store, così da spingerci a miglio
     <value>impostazioni</value>
     <comment>SettingsPage</comment>
   </data>
+  <data name="SettingsUseTransparentTile" xml:space="preserve">
+    <value>sfondo trasparente</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="SettingsXXL" xml:space="preserve">
     <value>XXL (PRO)</value>
     <comment>SettingsPage</comment>

@@ -116,7 +116,14 @@
                             <toolkit:ListPickerItem Content="{Binding LocalizedResources.SettingsXXXL, Source={StaticResource LocalizedStrings}}" Tag="xxxl" Style="{StaticResource ListPickerItemStyle}" />
 						</toolkit:ListPicker>
 					</StackPanel>
-					<StackPanel Visibility="{Binding HasLockScreenAccess, Converter={StaticResource boolToVis}}">
+                    <StackPanel Margin="0, 12">
+                        <TextBlock Text="{Binding LocalizedResources.SettingsUseTransparentTile, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
+                        <toolkit:ListPicker x:Name="TransparentTilePicker" Template="{StaticResource CustomListPickerStyle}" Margin="0">
+                            <toolkit:ListPickerItem Content="{Binding LocalizedResources.SettingsDisabled, Source={StaticResource LocalizedStrings}}" Tag="0" Style="{StaticResource ListPickerItemStyle}" />
+                            <toolkit:ListPickerItem Content="{Binding LocalizedResources.SettingsEnabled, Source={StaticResource LocalizedStrings}}" Tag="1" Style="{StaticResource ListPickerItemStyle}" />
+                        </toolkit:ListPicker>
+                    </StackPanel>
+                    <StackPanel Visibility="{Binding HasLockScreenAccess, Converter={StaticResource boolToVis}}">
 						<TextBlock Text="{Binding LocalizedResources.SettingsLockScreenTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextGroupHeaderStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>
 						<StackPanel Margin="0, 12">
 							<TextBlock Text="{Binding LocalizedResources.SettingsMinimiumItemsTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="24,0" Foreground="{StaticResource PhoneAccentBrush}"/>

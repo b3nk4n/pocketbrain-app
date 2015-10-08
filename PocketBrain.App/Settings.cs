@@ -64,5 +64,10 @@ namespace PocketBrain.App
         /// Settings for the lock screen background image opacity.
         /// </summary>
         public static readonly StoredObject<double> LockscreenImageOpacity = new StoredObject<double>("lockImageOpacity", 0.66);
+
+        /// <summary>
+        /// Setting for whether the tile is transparent or not.
+        /// </summary>
+        public static readonly StoredObject<string> UseTransparentTile = new StoredObject<string>("transparentTile", "1");
     }
 }

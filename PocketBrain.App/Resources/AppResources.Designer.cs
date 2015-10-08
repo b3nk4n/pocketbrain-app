@@ -832,6 +832,15 @@ namespace PocketBrain.App.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to transparent background.
+        /// </summary>
+        public static string SettingsUseTransparentTile {
+            get {
+                return ResourceManager.GetString("SettingsUseTransparentTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to XXL (PRO).
         /// </summary>
         public static string SettingsXXL {
