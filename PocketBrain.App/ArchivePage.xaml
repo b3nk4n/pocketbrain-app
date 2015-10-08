@@ -9,6 +9,7 @@
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:local="clr-namespace:PocketBrain.App.Controls"
     xmlns:converter="clr-namespace:PhoneKit.Framework.Conversion;assembly=PhoneKit.Framework"
+    xmlns:localConv="clr-namespace:PocketBrain.App.Converters"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -39,6 +40,8 @@
     <phone:PhoneApplicationPage.Resources>
         <converter:BooleanToVisibilityConverter x:Key="boolToVis" />
         <converter:ShortDateConverter x:Key="dateConverter" />
+        <converter:ShortTimeConverter x:Key="timeConverter" />
+        <localConv:StringToVisibilityConverter x:Key="stringToVisConverter" />
 
         <DataTemplate x:Key="MaximizedNoteTemplate">
             <Border x:Name="ItemContainer" Background="{StaticResource PhoneAccentBrush}" ManipulationCompleted="SwipeDeleteManipulationCompleted">
@@ -70,14 +73,18 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="{Binding DateDeleted, Converter={StaticResource dateConverter}}" Style="{StaticResource PhoneTextNormalStyle}" FontSize="16" Foreground="Gray"
-                                   Visibility="{Binding IsDateVisible, Converter={StaticResource boolToVis}}"/>
+                        <TextBlock Grid.Row="0" Style="{StaticResource PhoneTextNormalStyle}" FontSize="16" Foreground="Gray"
+                                   Visibility="{Binding IsDateVisible, Converter={StaticResource boolToVis}}">
+                            <Run Text="{Binding DateDeleted, Converter={StaticResource dateConverter}}" />
+                            <Run Text="-" />
+                            <Run Text="{Binding DateDeleted, Converter={StaticResource timeConverter}}" />
+                        </TextBlock>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="48" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding DisplayedTitle}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
+                            <TextBlock Grid.Column="0" Text="{Binding Title}" Visibility="{Binding Title, Converter={StaticResource stringToVisConverter}}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
                             <Image Grid.Column="1" Source="{Binding PaperclipImagePath}" Width="48" Height="48" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
                         </Grid>
                         <TextBlock Grid.Row="2" Text="{Binding Content}" Style="{StaticResource PhoneTextNormalStyle}"
@@ -120,7 +127,7 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="48" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding DisplayedTitle}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
+                            <TextBlock Grid.Column="0" Text="{Binding Title}" Visibility="{Binding Title, Converter={StaticResource stringToVisConverter}}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
                             <Image Grid.Column="1" Source="{Binding PaperclipImagePath}" Width="48" Height="48" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
                         </Grid>
                         <TextBlock Grid.Row="1" Text="{Binding Content}" Style="{StaticResource PhoneTextNormalStyle}"

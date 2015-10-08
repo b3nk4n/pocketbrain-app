@@ -9,6 +9,7 @@
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:local="clr-namespace:PocketBrain.App.Controls"
     xmlns:converter="clr-namespace:PhoneKit.Framework.Conversion;assembly=PhoneKit.Framework"
+    xmlns:localConv="clr-namespace:PocketBrain.App.Converters"
     xmlns:rlb="clr-namespace:ReorderListBox;assembly=ReorderListBox"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:ec="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
     mc:Ignorable="d"
@@ -42,6 +43,7 @@
         <converter:BooleanToVisibilityConverter x:Key="boolToVis" />
         <converter:ShortDateConverter x:Key="dateConverter" />
         <converter:ShortTimeConverter x:Key="timeConverter" />
+        <localConv:StringToVisibilityConverter x:Key="stringToVisConverter" />
 
         <Storyboard x:Name="WelcomeAnimation" RepeatBehavior="Forever">
         	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Opacity)" Storyboard.TargetName="image">
@@ -99,7 +101,7 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding DisplayedTitle}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
+                            <TextBlock Grid.Column="0" Text="{Binding Title}" Visibility="{Binding Title, Converter={StaticResource stringToVisConverter}}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
                             <Image Grid.Column="1" Source="{Binding Path=EyeHideImagePath, Source={StaticResource ThemedImageSource}}" Width="48" Height="48" Opacity="0.5" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}" />
                             <Image Grid.Column="2" Source="{Binding Path=PaperclipImagePath, Source={StaticResource ThemedImageSource}}" Width="48" Height="48" Opacity="0.5" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
                         </Grid>
@@ -148,7 +150,7 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding DisplayedTitle}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
+                            <TextBlock Grid.Column="0" Text="{Binding Title}" Visibility="{Binding Title, Converter={StaticResource stringToVisConverter}}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" TextTrimming="WordEllipsis" />
                             <Image Grid.Column="1" Source="{Binding Path=EyeHideImagePath, Source={StaticResource ThemedImageSource}}" Width="48" Height="48" Opacity="0.5" Visibility="{Binding IsHidden, Converter={StaticResource boolToVis}}" />
                             <Image Grid.Column="2" Source="{Binding Path=PaperclipImagePath, Source={StaticResource ThemedImageSource}}" Width="48" Height="48" Opacity="0.5" Visibility="{Binding HasAttachement, Converter={StaticResource boolToVis}}" />
                         </Grid>

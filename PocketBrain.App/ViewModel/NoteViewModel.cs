@@ -218,7 +218,16 @@ namespace PocketBrain.App.ViewModel
             _shareCommand = new DelegateCommand(() =>
                 {
                     ShareStatusTask shareTask = new ShareStatusTask();
-                    shareTask.Status = string.Format("{0}\r\r{1}", DisplayedTitle, Content);
+
+                    if (string.IsNullOrWhiteSpace(Title))
+                    {
+                        shareTask.Status = string.Format("{0}", Content);
+                    }
+                    else
+                    {
+                        shareTask.Status = string.Format("{0}\r\r{1}", Title, Content);
+                    }
+                   
                     shareTask.Show();
                 });
 
@@ -571,19 +580,7 @@ namespace PocketBrain.App.ViewModel
                 {
                     _note.Title = value;
                     NotifyPropertyChanged("Title");
-                    NotifyPropertyChanged("DisplayedTitle");
                 }
-            }
-        }
-
-        /// <summary>
-        /// Gets the displayed title.
-        /// </summary>
-        public string DisplayedTitle
-        {
-            get
-            {
-                return string.IsNullOrEmpty(_note.Title) ? AppResources.DefaultTitle : _note.Title;
             }
         }
 

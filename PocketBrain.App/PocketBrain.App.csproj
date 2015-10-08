@@ -130,6 +130,7 @@
     <Compile Include="Controls\NoteWideTile.xaml.cs">
       <DependentUpon>NoteWideTile.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\StringToVisibilityConverter.cs" />
     <Compile Include="CustomUriMapper.cs" />
     <Compile Include="Helpers\StaticMediaLibrary.cs" />
     <Compile Include="InAppStorePage.xaml.cs">
